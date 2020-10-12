@@ -1,0 +1,36 @@
+OptionValue "MaxStat"
+{
+    0, "200"
+    1, "150"
+}
+
+OptionMenu "Glorykills"
+{
+    Title "Glorykill Options"
+	Option "Glory kill", "be_ExecutionsON", YesNo
+	Option "Protection during Glory kill", "be_Protection", YesNo
+	Option "Fear during Glory kill", "be_Fear", YesNo
+	Slider  "Stun duration","be_StaggerLenght",4 ,12, 1
+	StaticText " "
+	Option "Fatality kill HealthBonus", "be_HealthBonus", YesNo
+	StaticText " "
+	StaticText "This option requires Fatality kill HealthBonus turned on."
+	Option "Only Berserk Kill HealthBonus", "be_OnlyBerserk", YesNo
+	StaticText " "
+	StaticText " "
+	Option "Additional Bonus Drop", "be_AdditionalBonus", YesNo
+	Option "Ammo Bonus Drop", "be_AmmoBonus", YesNo
+	StaticText " "
+	Slider  "Collecting Health & Armor Radius","sv_bonusrange",0 ,150, 1
+	Slider  "Collecting Ammo & Grenade Radius","sv_ammorange",0 ,150, 1
+	StaticText " "
+	StaticText " "
+	Option "Health & Armor recovery limit", "sv_glmax", "MaxStat"
+	StaticText "Additional Bonus are always limit 200"
+	
+}
+
+AddOptionMenu "OptionsMenu" {
+	StaticText " "
+	Submenu "Glorykill Options", "Glorykills"
+}
