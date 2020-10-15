@@ -78,6 +78,7 @@ ACTOR Juggernaut : Fatso Replaces SpiderMastermind
 	Goto Standby
 	Standby:
 	    BS1W A 1
+		TNT1 A 0 A_GiveInventory("DontGlorySaw")
 	    BS1W AC 10 A_Look
 	    Loop
 	//////////////////

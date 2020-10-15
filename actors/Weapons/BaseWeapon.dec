@@ -17,6 +17,10 @@ Actor WW_HealthBackPackSelected : Inventory {inventory.maxamount 1}
 //Actions observed by the AI!
 Actor PlayerIsThrowingAGrenade : Inventory {inventory.maxamount 1}
 Actor CantWeaponSpecial : Inventory {inventory.maxamount 1}
+Actor DoGloryChainsaw : Inventory {inventory.maxamount 1}
+Actor GlorySawToken : Inventory {inventory.maxamount 4}
+Actor GlorySawTarget : Inventory {inventory.maxamount 4}
+Actor DontGlorySaw : Inventory {inventory.maxamount 1}
 
 Actor PB_Weapon : PB_WeaponBase
 {
@@ -228,6 +232,217 @@ States
 		TNT1 A 0 A_CustomPunch(10000,1,0,"GloryKillPuff",150,0,0,Null)
 		TNT1 A 0
 		"####" "#" 0 { return ResolveState("DoFatality"); }	
+	
+	// GloryChainSaw
+	
+	GloryChainsaw:
+		SAWG G 0
+		{	
+			if (!CountInv("Chain_saw"))
+			{
+				A_Print("You need a ChainSaw!");
+				A_PlaySound("Beep");
+				A_TakeInventory("DoGloryChainsaw",1);
+				return ResolveState("GoingToReady");
+			}		
+			if (!CountInv("GLFuel"))
+			{
+				A_Print("You need a Fuel!");
+				A_PlaySound("Beep");
+				A_TakeInventory("DoGloryChainsaw",1);
+				return ResolveState("GoingToReady");
+			}
+			if (CountInv("DontGlorySaw",AAPTR_PLAYER_GETTARGET))
+			{
+				A_Print("Invalid Target");
+				A_PlaySound("Beep");
+				A_TakeInventory("DoGloryChainsaw",1);
+				return ResolveState("GoingToReady");
+			}
+			if (CountInv("GLFuel") < CountInv("GlorySawTarget",AAPTR_PLAYER_GETTARGET))
+			{
+				A_Print("Not Enough Fuel");
+				A_PlaySound("Beep");
+				A_TakeInventory("DoGloryChainsaw",1);
+				return ResolveState("GoingToReady");
+			}
+			return ResolveState("GloryCleansaw");
+		}
+		Goto GoingToReady
+	
+	GloryCleansaw:
+		TNT1 A 0 A_Takeinventory("PowerBloodOnVisor",1)
+		TNT1 A 0 A_Takeinventory("PowerBlueBloodOnVisor",1)
+		TNT1 A 0 A_Takeinventory("PowerGreenBloodOnVisor",1)
+		TNT1 A 0 A_JumpIfInventory("PowerGreenBloodOnVisor",1,"GloryGreensaw")
+		TNT1 A 0 A_JumpIfInventory("PowerBlueBloodOnVisor",1,"GloryBluesaw")
+		TNT1 A 0 A_JumpIfInventory("PowerBloodOnVisor",1,"GloryRedsaw")
+		TNT1 A 0 A_PlaySound("sawswing", CHAN_WEAPON, 0.5)
+		TNT1 A 0 A_AlertMonsters
+		C5S1 ABCDE 1 A_SetRoll(roll-0.2,SPF_INTERPOLATE)
+		Goto GloryCleansawContinue+3
+		
+	GloryCleansawContinue:
+		C5S1 LM 1 
+		C5S1 N 1 
+		{
+			A_Saw("", "Machete/Yum", 50, "GlorySawPuff", SF_NOPULLIN | SF_NOTURN , 120);
+			A_Giveinventory("Superarmorsmall",1);
+		}	
+		TNT1 A 0 A_JumpIfInventory("PowerGreenBloodOnVisor",1,"GloryGreensawContinue")
+		TNT1 A 0 A_JumpIfInventory("PowerBlueBloodOnVisor",1,"GloryBluesawContinue")
+		TNT1 A 0 A_JumpIfInventory("PowerBloodOnVisor",1,"GloryRedsawContinue")
+		TNT1 A 0 A_playsound("weapons/chainsaw/loop", 7,0.7)
+		TNT1 A 0 A_JumpIfCloser(119, "GloryCleansawContinue")
+		C5S1 FGHIJ 1
+			{
+				A_Saw("", "Machete/Yum", 2, "GlorySawPuff", SF_NOPULLIN | SF_NOTURN , 120, 32);
+				A_SetRoll(roll+.2,SPF_INTERPOLATE);
+			}
+		TNT1 A 0 A_Playsound("CSAWSTAT", 7)
+		C4S1 RSTU 1 A_FireCustomMissile("GunFireSmoke", 0, 0, -5, -5, 0, 0)
+		SAWG GH 1 
+			{
+				A_WeaponReady;
+				
+				if (CountInv("DoPunch") == 1) { return state("QuickPunch"); }
+				if (CountInv("Grabbing_A_Ledge") == 1) { return state("LedgeClimb"); }
+				if (CountInv("GoWeaponSpecialAbility") == 1) { return state("WeaponSpecial"); }
+				if (CountInv("UseEquipment") == 1) { return state("UseEquipment"); }
+				if (CountInv("ToggleEquipment") == 1) { return state("SwitchEquipment"); }
+				if (CountInv("GrabbedBarrel") == 1) { return state("GrabBarrel"); }
+				if (CountInv("Kicking") == 1) { return state("DoKick"); }
+				if (CountInv("Taunting") == 1) { return state("Taunt"); }
+				if (CountInv("Salute1") == 1 || CountInv("Salute2") == 1) { return state("Salute"); }
+				return state("");
+			}
+		TNT1 A 0 
+		{
+			if(CountInv("GlorySawToken") >= 1)
+			{
+				A_TakeInventory("GLFuel",CountInv("GlorySawToken"));
+				A_TakeInventory("GlorySawToken",CountInv("GlorySawToken"));
+			}
+			A_TakeInventory("DoGloryChainsaw",1);
+		}
+		Goto GoingToReady
+	
+	// RedBlood
+	
+	GloryRedsaw:
+		TNT1 A 0 A_PlaySound("sawswing", CHAN_WEAPON, 0.5)
+		TNT1 A 0 A_AlertMonsters
+		C5S2 ABCDE 1 A_SetRoll(roll-0.2,SPF_INTERPOLATE)
+		Goto GloryRedsawContinue+4	
+		
+	GloryRedsawContinue:
+		TNT1 A 0 A_Gunflash("SawBloodSprayRed")
+		C5S2 LM 1 
+		C5S2 N 1 	
+		{
+			A_Saw("", "Machete/Yum", 50, "GlorySawPuff", SF_NOPULLIN | SF_NOTURN , 120);
+			A_Giveinventory("Superarmorsmall",1);
+		}
+		TNT1 A 0 A_JumpIfInventory("PowerGreenBloodOnVisor",1,"GloryGreensawContinue")
+		TNT1 A 0 A_JumpIfInventory("PowerBlueBloodOnVisor",1,"GloryBluesawContinue")
+		TNT1 A 0 A_playsound("weapons/chainsaw/loop", 7,0.7)
+		TNT1 A 0 A_JumpIfCloser(119, "GloryRedsawContinue")
+		C5S2 FGHIJ 1 
+			{
+				A_Saw("", "Machete/Yum", 2, "GlorySawPuff", SF_NOPULLIN | SF_NOTURN , 120, 32);
+				A_SetRoll(roll+.2,SPF_INTERPOLATE);
+			}
+		TNT1 A 0 A_Playsound("CSAWSTAT", 7)
+		C4S2 RSTU 1 A_FireCustomMissile("GunFireSmoke", 0, 0, -5, -5, 0, 0)
+		TNT1 A 0 
+		{
+			if(CountInv("GlorySawToken") >= 1)
+			{
+				A_TakeInventory("GLFuel",CountInv("GlorySawToken"));
+				A_TakeInventory("GlorySawToken",CountInv("GlorySawToken"));
+			}
+			A_TakeInventory("DoGloryChainsaw",1);
+		}
+		SAW2 GHGH 1 A_WeaponReady
+		SAW2 GGHH 1 A_WeaponReady
+		Goto GoingToReady	
+	
+	
+	// Blue Blood
+	
+	GloryBluesaw:
+		TNT1 A 0 A_PlaySound("sawswing", CHAN_WEAPON, 0.5)
+		TNT1 A 0 A_AlertMonsters
+		C5S3 ABCDE 1 A_SetRoll(roll-0.2,SPF_INTERPOLATE)
+		Goto GloryBluesawContinue+3
+		
+	GloryBluesawContinue:
+		C5S3 LM 1 
+		C5S3 N 1 
+		{
+			A_Saw("", "Machete/Yum", 50, "GlorySawPuff", SF_NOPULLIN | SF_NOTURN , 120);
+			A_Giveinventory("Superarmorsmall",1);
+		}	
+		TNT1 A 0 A_JumpIfInventory("PowerGreenBloodOnVisor",1,"GloryGreensawContinue")
+		TNT1 A 0 A_playsound("weapons/chainsaw/loop", 7,0.7)
+		TNT1 A 0 A_JumpIfCloser(119, "GloryBluesawContinue")
+		C5S3 FGHIJ 1 
+			{
+				A_Saw("", "Machete/Yum", 2, "GlorySawPuff", SF_NOPULLIN | SF_NOTURN , 120, 32);
+				A_SetRoll(roll+.2,SPF_INTERPOLATE);
+			}
+		TNT1 A 0 A_Playsound("CSAWSTAT", 7)
+		C4S3 RSTU 1 A_FireCustomMissile("GunFireSmoke", 0, 0, -5, -5, 0, 0)
+		TNT1 A 0 
+		{
+			if(CountInv("GlorySawToken") >= 1)
+			{
+				A_TakeInventory("GLFuel",CountInv("GlorySawToken"));
+				A_TakeInventory("GlorySawToken",CountInv("GlorySawToken"));
+			}
+			A_TakeInventory("DoGloryChainsaw",1);
+		}
+		SAW3 GHGH 1 A_WeaponReady
+		SAW3 GGHH 1 A_WeaponReady
+		Goto GoingToReady
+		
+	// Green Blood	
+		
+	GloryGreensaw:
+		TNT1 A 0 A_PlaySound("sawswing", CHAN_WEAPON, 0.5)
+		TNT1 A 0 A_AlertMonsters
+		C5S4 ABCDE 1 A_SetRoll(roll-0.2,SPF_INTERPOLATE)
+		Goto GloryGreensawContinue+3
+		
+	GloryGreensawContinue:
+		C5S4 LM 1 
+		C5S4 N 1	
+		{
+			A_Saw("", "Machete/Yum", 50, "GlorySawPuff", SF_NOPULLIN | SF_NOTURN , 120);
+			A_Giveinventory("Superarmorsmall",1);
+		}	
+		TNT1 A 0 A_playsound("weapons/chainsaw/loop", 7,0.7)
+		TNT1 A 0 A_JumpIfCloser(119, "GloryGreensawContinue")
+		C5S4 FGHIJ 1 
+			{
+				A_Saw("", "Machete/Yum", 2, "GlorySawPuff", SF_NOPULLIN | SF_NOTURN , 120, 32);
+				A_SetRoll(roll+.2,SPF_INTERPOLATE);
+			}
+		TNT1 A 0 A_Playsound("CSAWSTAT", 7)
+		C4S4 RSTU 1 A_FireCustomMissile("GunFireSmoke", 0, 0, -5, -5, 0, 0)
+		TNT1 A 0 
+		{
+			if(CountInv("GlorySawToken") >= 1)
+			{
+				A_TakeInventory("GLFuel",CountInv("GlorySawToken"));
+				A_TakeInventory("GlorySawToken",CountInv("GlorySawToken"));
+			}
+			A_TakeInventory("DoGloryChainsaw",1);
+		}
+		SAW4 GHGH 1 A_WeaponReady
+		SAW4 GGHH 1 A_WeaponReady
+		Goto GoingToReady
+		
 		
 		
 	//First Person Legs in Doom (because, you know, "I'm not original")
@@ -639,7 +854,10 @@ States
 		TNT1 A 0
 		{
 			if(countinv("FinisherToken",AAPTR_PLAYER_GETTARGET)>=1 && A_CheckLOF("Null",CLOFF_SETTARGET|CLOFF_NOAIM_VERT|CLOFF_IGNOREGHOST|CLOFF_MUSTBESOLID ,180))
-			{ 
+			{
+			A_TakeInventory("Zoomed",1);
+			A_ZoomFactor(1.0);
+			A_TakeInventory("ADSmode",1);
 			return ResolveState("PermormGloryKill");
 			}
 			return ResolveState("");
@@ -1071,6 +1289,9 @@ States
 		{
 			if(countinv("FinisherToken",AAPTR_PLAYER_GETTARGET)>=1 && A_CheckLOF("Null",CLOFF_SETTARGET|CLOFF_NOAIM_VERT|CLOFF_IGNOREGHOST|CLOFF_MUSTBESOLID ,180))
 			{ 
+			A_TakeInventory("Zoomed",1);
+			A_ZoomFactor(1.0);
+			A_TakeInventory("ADSmode",1);
 			return ResolveState("PermormGloryKill");	
 			}
 			return ResolveState("");

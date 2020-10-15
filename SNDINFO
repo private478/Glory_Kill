@@ -2,3 +2,6 @@ BONECR1 BONECR1
 BONECR2 BONECR2
 CYBPAIN CYBPAIN
 LOWHEALTH	"sounds/Player/LowHealth.ogg"
+AmmoBig			"sounds/Pickups/AmmoBigger.ogg"
+AmmoSmall			"sounds/Pickups/Ammo.ogg"
+Beep				"sounds/Player/Beep.ogg"

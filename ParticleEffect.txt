@@ -23,6 +23,12 @@ ACTOR Superarmor : PowerInvulnerable
   Powerup.Mode Reflective
 }
 
+ACTOR Superarmorsmall : PowerInvulnerable
+{
+  Powerup.Duration -1
+  Powerup.Mode Reflective
+}
+
 Actor GreenPinataParticles
 {
 	var int user_t;

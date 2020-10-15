@@ -1,0 +1,3 @@
+addkeysection "Glory kill" GloryKill             
+addmenukey "Glory Chainsaw" glorysaw
+alias glorysaw "puke 6000"

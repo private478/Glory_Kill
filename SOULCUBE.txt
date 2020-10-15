@@ -455,17 +455,18 @@ Actor GloryLowPinataSpawn
 	States
 	{
 		Spawn:
-			TNT1 A 0 Nodelay A_JumpIf(GetCvar("beedgreensindeeb") == 1,"Null")
 			TNT1 A 0 A_JumpIf(GetCvar("sv_glmax") == 1,"Spawn150")
-			TNT1 AAAAA 0 A_SpawnItemEx("HealthPinataPermL0",0,0,32,random(0,8),0,random(0,8),random(0,360))
+			TNT1 AAAAA 0 A_SpawnItemEx("HealthPinataPermL0",0,0,16,random(0,8),0,random(0,8),random(0,360))
+			TNT1 A 0 A_SpawnItemEx("RandomFuelLow",0,0,16,random(0,8),0,random(0,8),random(0,360))
 			TNT1 A 0 A_JumpIf(GetCvar("be_AmmoBonus") == 1,"AmmoSpawn")
 			Stop
 		Spawn150:
-			TNT1 AAAAA 0 A_SpawnItemEx("HealthPinata150",0,0,32,random(0,8),0,random(0,8),random(0,360))
+			TNT1 AAAAA 0 A_SpawnItemEx("HealthPinata150",0,0,16,random(0,8),0,random(0,8),random(0,360))
+			TNT1 A 0 A_SpawnItemEx("RandomFuelLow",0,0,16,random(0,8),0,random(0,8),random(0,360))
 			TNT1 A 0 A_JumpIf(GetCvar("be_AmmoBonus") == 1,"AmmoSpawn")
 			stop
 		AmmoSpawn:
-			TNT1 AA 0 A_SpawnItemEx("RandomDice",0,0,32,random(0,8),0,random(0,8),random(0,360))
+			TNT1 AA 0 A_SpawnItemEx("RandomDice",0,0,16,random(0,8),0,random(0,8),random(0,360))
 			stop
 	}
 }
@@ -475,23 +476,24 @@ Actor GloryLowPinataSpawn2
 	States
 	{
 		Spawn:
-			TNT1 A 0 Nodelay A_JumpIf(GetCvar("beedgreensindeeb") == 1,"Null")
 			TNT1 A 0 A_JumpIf(GetCvar("sv_glmax") == 1,"Spawn150")
-			TNT1 AAAAA 0 A_SpawnItemEx("HealthPinataPermL0",0,0,32,random(0,8),0,random(0,8),random(0,360))
+			TNT1 AAAAA 0 A_SpawnItemEx("HealthPinataPermL0",0,0,16,random(0,8),0,random(0,8),random(0,360))
+			TNT1 A 0 A_SpawnItemEx("RandomFuelLow",0,0,16,random(0,8),0,random(0,8),random(0,360))
 			TNT1 A 0 A_JumpIf(GetCvar("be_AdditionalBonus") == 1,"Spawn2")
 			TNT1 A 0 A_JumpIf(GetCvar("be_AmmoBonus") == 1,"AmmoSpawn")
 			stop
 		Spawn150:
-			TNT1 AAAAA 0 A_SpawnItemEx("HealthPinata150",0,0,32,random(0,8),0,random(0,8),random(0,360))
+			TNT1 AAAAA 0 A_SpawnItemEx("HealthPinata150",0,0,16,random(0,8),0,random(0,8),random(0,360))
+			TNT1 A 0 A_SpawnItemEx("RandomFuelLow",0,0,16,random(0,8),0,random(0,8),random(0,360))
 			TNT1 A 0 A_JumpIf(GetCvar("be_AdditionalBonus") == 1,"Spawn2")
 			TNT1 A 0 A_JumpIf(GetCvar("be_AmmoBonus") == 1,"AmmoSpawn")
 			stop	
 		Spawn2:
-			TNT1 AA 0 A_SpawnItemEx("HealthPinataPermL1",0,0,32,random(0,8),0,random(0,8),random(0,360))
+			TNT1 AA 0 A_SpawnItemEx("HealthPinataPermL1",0,0,16,random(0,8),0,random(0,8),random(0,360))
 			TNT1 A 0 A_JumpIf(GetCvar("be_AmmoBonus") == 1,"AmmoSpawn")
 			stop	
 		AmmoSpawn:
-			TNT1 AAA 0 A_SpawnItemEx("RandomDice",0,0,32,random(0,8),0,random(0,8),random(0,360))
+			TNT1 AAA 0 A_SpawnItemEx("RandomDice",0,0,16,random(0,8),0,random(0,8),random(0,360))
 			stop
 	}
 }
@@ -502,19 +504,20 @@ Actor GloryMedPinataSpawn
 	States
 	{
 		Spawn:
-			TNT1 A 0 Nodelay A_JumpIf(GetCvar("beedgreensindeeb") == 1,"Null")
 			TNT1 A 0 A_JumpIf(GetCvar("sv_glmax") == 1,"Spawn150")
-			TNT1 AAAAA 0 A_SpawnItemEx("HealthPinataPermL0",0,0,32,random(0,8),0,random(0,8),random(0,360))
-			TNT1 AAAAA 0 A_SpawnItemEx("ArmorPinataL0",0,0,32,random(0,8),0,random(0,8),random(0,360))
+			TNT1 AAAAA 0 A_SpawnItemEx("HealthPinataPermL0",0,0,16,random(0,8),0,random(0,8),random(0,360))
+			TNT1 AAAAA 0 A_SpawnItemEx("ArmorPinataL0",0,0,16,random(0,8),0,random(0,8),random(0,360))
+			TNT1 A 0 A_SpawnItemEx("RandomFuelMed",0,0,16,random(0,8),0,random(0,8),random(0,360))
 			TNT1 A 0 A_JumpIf(GetCvar("be_AmmoBonus") == 1,"AmmoSpawn")
 			Stop
 		Spawn150:
-			TNT1 AAAAA 0 A_SpawnItemEx("HealthPinata150",0,0,32,random(0,8),0,random(0,8),random(0,360))
-			TNT1 AAAAA 0 A_SpawnItemEx("ArmorPinata150",0,0,32,random(0,8),0,random(0,8),random(0,360))
+			TNT1 AAAAA 0 A_SpawnItemEx("HealthPinata150",0,0,16,random(0,8),0,random(0,8),random(0,360))
+			TNT1 AAAAA 0 A_SpawnItemEx("ArmorPinata150",0,0,16,random(0,8),0,random(0,8),random(0,360))
+			TNT1 A 0 A_SpawnItemEx("RandomFuelMed",0,0,16,random(0,8),0,random(0,8),random(0,360))
 			TNT1 A 0 A_JumpIf(GetCvar("be_AmmoBonus") == 1,"AmmoSpawn")
 			stop	
 		AmmoSpawn:
-			TNT1 AAAA 0 A_SpawnItemEx("RandomDice2",0,0,32,random(0,8),0,random(0,8),random(0,360))
+			TNT1 AAAA 0 A_SpawnItemEx("RandomDice2",0,0,16,random(0,8),0,random(0,8),random(0,360))
 			stop
 	}
 }
@@ -524,26 +527,27 @@ Actor GloryMedPinataSpawn2
 	States
 	{
 		Spawn:
-			TNT1 A 0 Nodelay A_JumpIf(GetCvar("beedgreensindeeb") == 1,"Null")
 			TNT1 A 0 A_JumpIf(GetCvar("sv_glmax") == 1,"Spawn150")
-			TNT1 AAAAA 0 A_SpawnItemEx("HealthPinataPermL0",0,0,32,random(0,8),0,random(0,8),random(0,360))
-			TNT1 AAAAA 0 A_SpawnItemEx("ArmorPinataL0",0,0,32,random(0,8),0,random(0,8),random(0,360))
+			TNT1 AAAAA 0 A_SpawnItemEx("HealthPinataPermL0",0,0,16,random(0,8),0,random(0,8),random(0,360))
+			TNT1 AAAAA 0 A_SpawnItemEx("ArmorPinataL0",0,0,16,random(0,8),0,random(0,8),random(0,360))
+			TNT1 A 0 A_SpawnItemEx("RandomFuelMed",0,0,16,random(0,8),0,random(0,8),random(0,360))
 			TNT1 A 0 A_JumpIf(GetCvar("be_AdditionalBonus") == 1,"Spawn2")
 			TNT1 A 0 A_JumpIf(GetCvar("be_AmmoBonus") == 1,"AmmoSpawn")
 			Stop
 		Spawn150:
-			TNT1 AAAAA 0 A_SpawnItemEx("HealthPinata150",0,0,32,random(0,8),0,random(0,8),random(0,360))
-			TNT1 AAAAA 0 A_SpawnItemEx("ArmorPinata150",0,0,32,random(0,8),0,random(0,8),random(0,360))
+			TNT1 AAAAA 0 A_SpawnItemEx("HealthPinata150",0,0,16,random(0,8),0,random(0,8),random(0,360))
+			TNT1 AAAAA 0 A_SpawnItemEx("ArmorPinata150",0,0,16,random(0,8),0,random(0,8),random(0,360))
+			TNT1 A 0 A_SpawnItemEx("RandomFuelMed",0,0,16,random(0,8),0,random(0,8),random(0,360))
 			TNT1 A 0 A_JumpIf(GetCvar("be_AdditionalBonus") == 1,"Spawn2")
 			TNT1 A 0 A_JumpIf(GetCvar("be_AmmoBonus") == 1,"AmmoSpawn")
 			stop	
 		Spawn2:
-			TNT1 AAA 0 A_SpawnItemEx("HealthPinataPermL1",0,0,32,random(0,8),0,random(0,8),random(0,360))
-			TNT1 AAA 0 A_SpawnItemEx("ArmorPinataL1",0,0,32,random(0,8),0,random(0,8),random(0,360))
+			TNT1 AAA 0 A_SpawnItemEx("HealthPinataPermL1",0,0,16,random(0,8),0,random(0,8),random(0,360))
+			TNT1 AAA 0 A_SpawnItemEx("ArmorPinataL1",0,0,16,random(0,8),0,random(0,8),random(0,360))
 			TNT1 A 0 A_JumpIf(GetCvar("be_AmmoBonus") == 1,"AmmoSpawn")
 			stop
 		AmmoSpawn:
-			TNT1 AAAA 0 A_SpawnItemEx("RandomDice2",0,0,32,random(0,8),0,random(0,8),random(0,360))
+			TNT1 AAAA 0 A_SpawnItemEx("RandomDice2",0,0,16,random(0,8),0,random(0,8),random(0,360))
 			stop
 	}
 }
@@ -553,20 +557,21 @@ Actor GloryHightPinataSpawn
 	States
 	{
 		Spawn:
-			TNT1 A 0 Nodelay A_JumpIf(GetCvar("beedgreensindeeb") == 1,"Null")
 			TNT1 A 0 A_JumpIf(GetCvar("sv_glmax") == 1,"Spawn150")
-			TNT1 AAAAAAAAAA 0 A_SpawnItemEx("HealthPinataPermL0",0,0,32,random(0,8),0,random(0,8),random(0,360))
-			TNT1 AAAAAAAAAA 0 A_SpawnItemEx("ArmorPinataL0",0,0,32,random(0,8),0,random(0,8),random(0,360))
+			TNT1 AAAAAAAAAA 0 A_SpawnItemEx("HealthPinataPermL0",0,0,16,random(0,8),0,random(0,8),random(0,360))
+			TNT1 AAAAAAAAAA 0 A_SpawnItemEx("ArmorPinataL0",0,0,16,random(0,8),0,random(0,8),random(0,360))
+			TNT1 A 0 A_SpawnItemEx("RandomFuelHight",0,0,16,random(0,8),0,random(0,8),random(0,360))
 			TNT1 A 0 A_JumpIf(GetCvar("be_AmmoBonus") == 1,"AmmoSpawn")
 			stop
 		Spawn150:
-			TNT1 AAAAAAAAAA 0 A_SpawnItemEx("HealthPinata150",0,0,32,random(0,8),0,random(0,8),random(0,360))
-			TNT1 AAAAAAAAAA 0 A_SpawnItemEx("ArmorPinata150",0,0,32,random(0,8),0,random(0,8),random(0,360))
+			TNT1 AAAAAAAAAA 0 A_SpawnItemEx("HealthPinata150",0,0,16,random(0,8),0,random(0,8),random(0,360))
+			TNT1 AAAAAAAAAA 0 A_SpawnItemEx("ArmorPinata150",0,0,16,random(0,8),0,random(0,8),random(0,360))
+			TNT1 A 0 A_SpawnItemEx("RandomFuelHight",0,0,16,random(0,8),0,random(0,8),random(0,360))
 			TNT1 A 0 A_JumpIf(GetCvar("be_AmmoBonus") == 1,"AmmoSpawn")
 			stop		
 		AmmoSpawn:
-			TNT1 AAAAA 0 A_SpawnItemEx("RandomDice3",0,0,32,random(0,8),0,random(0,8),random(0,360))
-			TNT1 AA 0 A_SpawnItemEx("RandomDiceBonus",0,0,32,random(0,8),0,random(0,8),random(0,360))
+			TNT1 AAAAA 0 A_SpawnItemEx("RandomDice3",0,0,16,random(0,8),0,random(0,8),random(0,360))
+			TNT1 AA 0 A_SpawnItemEx("RandomDiceBonus",0,0,16,random(0,8),0,random(0,8),random(0,360))
 			stop
 	}
 }
@@ -576,27 +581,28 @@ Actor GloryHightPinataSpawn2
 	States
 	{
 		Spawn:
-			TNT1 A 0 Nodelay A_JumpIf(GetCvar("beedgreensindeeb") == 1,"Null")
 			TNT1 A 0 A_JumpIf(GetCvar("sv_glmax") == 1,"Spawn150")
-			TNT1 AAAAAAAAAA 0 A_SpawnItemEx("HealthPinataPermL0",0,0,32,random(0,8),0,random(0,8),random(0,360))
-			TNT1 AAAAAAAAAA 0 A_SpawnItemEx("ArmorPinataL0",0,0,32,random(0,8),0,random(0,8),random(0,360))
+			TNT1 AAAAAAAAAA 0 A_SpawnItemEx("HealthPinataPermL0",0,0,16,random(0,8),0,random(0,8),random(0,360))
+			TNT1 AAAAAAAAAA 0 A_SpawnItemEx("ArmorPinataL0",0,0,16,random(0,8),0,random(0,8),random(0,360))
+			TNT1 A 0 A_SpawnItemEx("RandomFuelHight",0,0,16,random(0,8),0,random(0,8),random(0,360))
 			TNT1 A 0 A_JumpIf(GetCvar("be_AdditionalBonus") == 1,"Spawn2")
 			TNT1 A 0 A_JumpIf(GetCvar("be_AmmoBonus") == 1,"AmmoSpawn")
 			Stop
 		Spawn150:
-			TNT1 AAAAAAAAAA 0 A_SpawnItemEx("HealthPinata150",0,0,32,random(0,8),0,random(0,8),random(0,360))
-			TNT1 AAAAAAAAAA 0 A_SpawnItemEx("ArmorPinata150",0,0,32,random(0,8),0,random(0,8),random(0,360))
+			TNT1 AAAAAAAAAA 0 A_SpawnItemEx("HealthPinata150",0,0,16,random(0,8),0,random(0,8),random(0,360))
+			TNT1 AAAAAAAAAA 0 A_SpawnItemEx("ArmorPinata150",0,0,16,random(0,8),0,random(0,8),random(0,360))
+			TNT1 A 0 A_SpawnItemEx("RandomFuelHight",0,0,16,random(0,8),0,random(0,8),random(0,360))
 			TNT1 A 0 A_JumpIf(GetCvar("be_AdditionalBonus") == 1,"Spawn2")
 			TNT1 A 0 A_JumpIf(GetCvar("be_AmmoBonus") == 1,"AmmoSpawn")
 			stop		
 		Spawn2:
-			TNT1 AAAAA 0 A_SpawnItemEx("HealthPinataPermL1",0,0,32,random(0,8),0,random(0,8),random(0,360))
-			TNT1 AAAAA 0 A_SpawnItemEx("ArmorPinataL1",0,0,32,random(0,8),0,random(0,8),random(0,360))
+			TNT1 AAAAA 0 A_SpawnItemEx("HealthPinataPermL1",0,0,16,random(0,8),0,random(0,8),random(0,360))
+			TNT1 AAAAA 0 A_SpawnItemEx("ArmorPinataL1",0,0,16,random(0,8),0,random(0,8),random(0,360))
 			TNT1 A 0 A_JumpIf(GetCvar("be_AmmoBonus") == 1,"AmmoSpawn")
 			stop
 		AmmoSpawn:
-			TNT1 AAAAA 0 A_SpawnItemEx("RandomDice3",0,0,32,random(0,8),0,random(0,8),random(0,360))
-			TNT1 AAA 0 A_SpawnItemEx("RandomDiceBonus",0,0,32,random(0,8),0,random(0,8),random(0,360))
+			TNT1 AAAAA 0 A_SpawnItemEx("RandomDice3",0,0,16,random(0,8),0,random(0,8),random(0,360))
+			TNT1 AAA 0 A_SpawnItemEx("RandomDiceBonus",0,0,16,random(0,8),0,random(0,8),random(0,360))
 			stop
 	}
 }

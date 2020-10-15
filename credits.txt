@@ -1,6 +1,8 @@
-GloryKillMechanics,Pinata pickup sound - BrutalDoom Black Edition's Team
+GloryKillMechanics - BrutalDoom Black Edition's Team
+Pinata pickup sound - BrutalDoom Black Edition's Team
 GloryKillShader - D4D Teams
-Pinata, Ammo Sprites - D4D Teams
+Pinata, Ammo Sprites - D4D Teams, LJG2023
+Gas Sprite,Voxel - D4D Teams
 Low Health Sound - D4D Teams
 Item Collecting Mechanics - D4D Teams
 CYBERDEMON FATALITY - SgtMarkIV (BrutalDoom)

@@ -6,7 +6,7 @@ ACTOR MinigunGuy : Zombie_Man Replaces ZombieMan
 	Obituary "%o became a Minigun Zombie's target practice."
 	States
 	{
-			Wound:
+	Wound:
 		"####" "#" 1
 		{
 			if(GetCvar("be_ExecutionsON"))
@@ -62,10 +62,12 @@ ACTOR MinigunGuy : Zombie_Man Replaces ZombieMan
 		Loop
 	
 	Death.GloryKill:
-		
 		Goto Death.Fatality
 	
-	
+	Death.GlorySaw:
+		TNT1 A 0 A_GiveToTarget("GlorySawToken",1)
+		TNT1 A 0 A_SpawnItemEx("GlorySawPinataLow",0,0,32,random(0,8),0,random(0,8),random(0,360))
+		Goto Death.cut	
 	
 	  Possession:
 		TNT1 A 0 A_SetInvulnerable

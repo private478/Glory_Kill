@@ -1,1 +1,3 @@
 lowhealth
+GloryChain
+GloryHUD

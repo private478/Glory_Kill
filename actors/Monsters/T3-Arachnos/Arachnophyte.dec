@@ -102,8 +102,12 @@ actor Arachnophyte replaces Arachnotron
 		Loop
 	
 	Death.GloryKill:
-		
 		Goto Death.Fatality
+		
+	Death.GlorySaw:
+		TNT1 A 0 A_GiveToTarget("GlorySawToken",2)
+		TNT1 A 0 A_SpawnItemEx("GlorySawPinataMed",0,0,32,random(0,8),0,random(0,8),random(0,360))
+		Goto Death.cut	
 	
 	
 	
@@ -122,9 +126,10 @@ actor Arachnophyte replaces Arachnotron
 	
 	Spawn:
 	    TNT1 A 0 ACS_ExecuteAlways(796, 0, 0, 0, 0)//Check if Vanilla Mode is activated
+		TNT1 A 0 A_GiveInventory("GlorySawTarget", 2)
 		TNT1 AA 0
         MARP Z 7 A_Look
-        Goto Spawn+2
+        Goto Spawn+3
     See:
 		TNT1 A 0 A_GiveInventory("ArachnophyteAlerted", 1)
 		TNT1 A 0 A_Playsound("cbaron/metal")

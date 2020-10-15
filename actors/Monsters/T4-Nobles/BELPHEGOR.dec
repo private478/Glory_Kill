@@ -40,7 +40,6 @@ ACTOR LordBelphegor : BaronofHell replaces BaronofHell
    
 	States
 	{
-	
 	Wound:
 		"####" "#" 1
 		{
@@ -97,8 +96,12 @@ ACTOR LordBelphegor : BaronofHell replaces BaronofHell
 		Loop
 	
 	Death.GloryKill:
-		
 		Goto Death.Fatality
+		
+	Death.GlorySaw:
+		TNT1 A 0 A_GiveToTarget("GlorySawToken",4)
+		TNT1 A 0 A_SpawnItemEx("GlorySawPinataMed",0,0,32,random(0,8),0,random(0,8),random(0,360))
+		Goto Death.cut	
 	
 	
 	Death.Shrink:
@@ -126,8 +129,9 @@ ACTOR LordBelphegor : BaronofHell replaces BaronofHell
 	Spawn:
 		TNT1 A 0 ACS_ExecuteAlways(796, 0, 0, 0, 0)//Check if Vanilla Mode is activated
 	Stand:
+		TNT1 A 0 A_GiveInventory("GlorySawTarget", 4)
 		BOS3 BD 10 A_Look
-		Loop
+		Goto Stand+1
 		
 	See:
 		BOS3 AA 2 A_Chase

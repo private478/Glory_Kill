@@ -1,4 +1,5 @@
 //GLORY KILLS PORTED FROM D4D
+server int MaxDrawDistance = 2048;
 server cheat bool be_ExecutionsON = true;
 server noarchive bool be_ExecutionHighlight = true;
 server noarchive bool be_MonsterStagger = true;
@@ -7,6 +8,7 @@ server bool be_HealthBonus = true;
 server bool be_OnlyBerserk = true;
 server bool be_AdditionalBonus = true;
 server bool be_AmmoBonus = true;
+server bool be_GSAmmoBonus = true;
 server bool be_Protection = true;
 server bool be_Fear = true;
 server int be_StaggerLenght = 4;
