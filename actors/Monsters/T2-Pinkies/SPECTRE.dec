@@ -125,9 +125,10 @@ damagefactor "Blood", 0.0 damagefactor "BlueBlood", 0.0 damagefactor "GreenBlood
 		stop
 	
 	Spawn:
+		TNT1 A 0
 		TNT1 A 0 A_GiveInventory("GlorySawTarget", 2)
 		SPEC A 10 BRIGHT A_Look
-		Goto Spawn+1
+		Goto Spawn+2
 	See:
         TNT1 A 0 A_SpawnItemEx("FootStep", 0, 0, 30, 0, 0)
 		SPEC AAABBBAAABBB 1 BRIGHT A_Chase
