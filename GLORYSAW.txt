@@ -20,7 +20,7 @@ ACTOR GLFuel : Ammo
 
 ACTOR LargeGLFuel : GLFuel 
 {
-	Scale 0.75
+	Scale 0.6
 	Inventory.PickUpMessage "Picked up a Large Chainsaw Fuel"
 	Inventory.PickUpSound "AmmoBig"
 	Inventory.Amount 2
