@@ -5,3 +5,61 @@ LOWHEALTH	"sounds/Player/LowHealth.ogg"
 AmmoBig			"sounds/Pickups/AmmoBigger.ogg"
 AmmoSmall			"sounds/Pickups/Ammo.ogg"
 Beep				"sounds/Player/Beep.ogg"
+
+//==============================================================================
+// Crucible
+//==============================================================================
+Crucible_Deselect		"Sounds/Crucible/Deselect.ogg"
+Crucible_Deploy			"Sounds/Crucible/Deploy.ogg"
+Crucible_Select			"Sounds/Crucible/Select.ogg"
+Crucible_Pickup			"Sounds/Crucible/Pickup.ogg"
+Crucible_Idle				"Sounds/Crucible/Idle.ogg"
+
+Eternal/Crucible/Swing1			"Sounds/Crucible/Swing1.ogg"
+Eternal/Crucible/Swing2			"Sounds/Crucible/Swing2.ogg"
+Eternal/Crucible/Swing3			"Sounds/Crucible/Swing3.ogg"
+Eternal/Crucible/Swing4			"Sounds/Crucible/Swing4.ogg"
+Eternal/Crucible/Swing5			"Sounds/Crucible/Swing5.ogg"
+Eternal/Crucible/Swing6			"Sounds/Crucible/Swing6.ogg"
+Eternal/Crucible/Swing7			"Sounds/Crucible/Swing7.ogg"
+Eternal/Crucible/Return1		"Sounds/Crucible/Return1.ogg"
+Eternal/Crucible/Return2		"Sounds/Crucible/Return2.ogg"
+Eternal/Crucible/Return3		"Sounds/Crucible/Return3.ogg"
+Eternal/Crucible/Return4		"Sounds/Crucible/Return4.ogg"
+Eternal/Crucible/Return5		"Sounds/Crucible/Return5.ogg"
+Eternal/Crucible/Slice1			"Sounds/Crucible/Slice1.ogg"
+Eternal/Crucible/Slice2			"Sounds/Crucible/Slice2.ogg"
+Eternal/Crucible/Slice3			"Sounds/Crucible/Slice3.ogg"
+Eternal/Crucible/Slice4			"Sounds/Crucible/Slice4.ogg"
+Eternal/Crucible/Slice5			"Sounds/Crucible/Slice5.ogg"
+Eternal/Crucible/Slice6			"Sounds/Crucible/Slice6.ogg"
+
+$random Crucible_Slice
+{
+	Eternal/Crucible/Slice1
+	Eternal/Crucible/Slice2
+	Eternal/Crucible/Slice3
+	Eternal/Crucible/Slice4
+	Eternal/Crucible/Slice5
+	Eternal/Crucible/Slice6
+}
+
+$random Crucible_Swing
+{
+	Eternal/Crucible/Swing1	Eternal/Crucible/Swing2	Eternal/Crucible/Swing3
+	Eternal/Crucible/Swing4	Eternal/Crucible/Swing5	Eternal/Crucible/Swing6
+	Eternal/Crucible/Swing7
+}
+
+$random Crucible_Return
+{
+	Eternal/Crucible/Return1
+	Eternal/Crucible/Return2
+	Eternal/Crucible/Return3
+	Eternal/Crucible/Return4
+	Eternal/Crucible/Return5
+}
+
+$limit Crucible_Swing 0
+$limit Crucible_Slice 0
+$limit Eternal/Crucible/Return 0

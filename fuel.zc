@@ -16,7 +16,7 @@ class FuelHandler : EventHandler
 	{
 		if (!e.Thing) return;
 		e.Thing.A_SpawnItemEx("LargeGLFuel",0,0,16,random(0,8),0,random(0,8),random(0,360),0,255);
-		e.Thing.A_SpawnItemEx("GLFuel",0,0,16,random(0,8),0,random(0,8),random(0,360),0,250);
+		e.Thing.A_SpawnItemEx("GLFuel",0,0,16,random(0,8),0,random(0,8),random(0,360),0,252);
 	}
 
 }

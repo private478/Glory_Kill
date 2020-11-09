@@ -22,6 +22,7 @@ OptionMenu "Glorykills"
 {
     Title "Glorykill Options"
 	Option "Glory kill", "be_ExecutionsON", YesNo
+	Option "Holdable Chainsaw", "be_holdablesaw", YesNo
 	Option "Protection during Glory kill", "be_Protection", YesNo
 	Option "Fear during Glory kill", "be_Fear", YesNo
 	Slider  "Stun duration","be_StaggerLenght",4 ,12, 1
@@ -44,6 +45,7 @@ OptionMenu "Glorykills"
 	StaticText "Additional Bonus are always limit 200"
 	StaticText " "
 	StaticText "Fuel HUD"
+	Option "ChainSaw Fuel Hud Enable", "be_fuelhud", YesNo
 	Option "ChainSaw Fuel Hud Background", "sv_fuelhud_background", "BackStyle"
 	Option "ChainSaw Fuel Hud Size", "sv_fuelhud_size", "FHudsize"
 	Slider  "ChainSaw Fuel Hud X","sv_fuelhud_x",-1024 ,1024, 1

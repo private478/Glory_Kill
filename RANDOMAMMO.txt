@@ -571,7 +571,7 @@ ACTOR LeechPinata : LeechGrenade
 		TNT1 A 0 A_SetUserVar("user_curtime",0)
 		TNT1 A 0 A_SetUserVar("user_timer",35*11)
 	SpawnLoop:
-		PWRB ABCDEFGHIJ 8 bright
+		D4GR C 4 bright
 		{
 			if(user_curtime > user_timer)
 			{
@@ -585,8 +585,8 @@ ACTOR LeechPinata : LeechGrenade
 		}
 		Loop
 	Fade:
-		PWRB ABCDEFGHIJ 8 bright A_FadeOut(0.2)
-		PWRB ABCDEFGHIJ 8 A_FadeOut(0.2)
+		D4GR C 4 bright A_FadeOut(0.2)
+		D4GR C 4 A_FadeOut(0.2)
 		loop
 	}
 }

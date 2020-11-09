@@ -864,21 +864,21 @@ Class PB_SpecialWheelHandler : EventHandler
 					wheelSpecials.Push(carbine_dualwield);
 				}
 				PB_SpecialWheel_Mode carbine_fullauto = new ("PB_SpecialWheel_Mode");
-				carbine_fullauto.specialIcon = TexMan.CheckForTexture("graphics/pywheel/Minigun_3.png",TexMan.Type_Any);
+				carbine_fullauto.specialIcon = TexMan.CheckForTexture("graphics/pywheel/Carbine_Fullauto.png",TexMan.Type_Any);
 				carbine_fullauto.specialName = "SelectCarbine_FullAutoFire";
 				carbine_fullauto.specialAlias = "Toggle Full-Auto Fire";
 				carbine_fullauto.specialPriority = 2;
 				carbine_fullauto.iconScale = iconScale;
 				
 				PB_SpecialWheel_Mode carbine_burst = new ("PB_SpecialWheel_Mode");
-				carbine_burst.specialIcon = TexMan.CheckForTexture("graphics/pywheel/Minigun_1.png",TexMan.Type_Any);
+				carbine_burst.specialIcon = TexMan.CheckForTexture("graphics/pywheel/Carbine_burst.png",TexMan.Type_Any);
 				carbine_burst.specialName = "SelectCarbine_SemiFire";
-				carbine_burst.specialAlias = "Toggle Semi-Auto Fire";
+				carbine_burst.specialAlias = "Toggle Semi-auto Fire";
 				carbine_burst.specialPriority = 3;
 				carbine_burst.iconScale = iconScale;
 				
 				PB_SpecialWheel_Mode carbine_semi = new ("PB_SpecialWheel_Mode");
-				carbine_semi.specialIcon = TexMan.CheckForTexture("graphics/pywheel/Minigun_2.png",TexMan.Type_Any);
+				carbine_semi.specialIcon = TexMan.CheckForTexture("graphics/pywheel/Carbine_semiauto.png",TexMan.Type_Any);
 				carbine_semi.specialName = "SelectCarbine_BurstFire";
 				carbine_semi.specialAlias = "Toggle Burst Fire";
 				carbine_semi.specialPriority = 4;

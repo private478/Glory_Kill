@@ -1,3 +1,8 @@
 addkeysection "Glory kill" GloryKill             
-addmenukey "Glory Chainsaw" glorysaw
-alias glorysaw "puke 6000"
+addmenukey "Glory Chainsaw" +glorysaw
+
+alias +glorysaw "puke 6000"
+alias -glorysaw "puke 6001"
+
+addmenukey "Change Melee" changemelee
+alias changemelee "puke 6002"

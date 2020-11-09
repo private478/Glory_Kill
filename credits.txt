@@ -1,6 +1,8 @@
 GloryKillMechanics - BrutalDoom Black Edition's Team
 Pinata pickup sound - BrutalDoom Black Edition's Team
 GloryKillShader - D4D Teams
+Crucible sprite , Sound - D4D Teams
+Crucible trail - Embers Of Armageddon
 Pinata, Ammo Sprites - D4D Teams, LJG2023
 Gas Sprite,Voxel - D4D Teams
 Low Health Sound - D4D Teams
