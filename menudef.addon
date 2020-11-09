@@ -4,6 +4,20 @@ OptionValue "MaxStat"
     1, "150"
 }
 
+OptionValue "FHudsize"
+{
+    0, "Small"
+    1, "Normal"
+	2, "Big"
+}
+
+OptionValue "BackStyle"
+{
+    0, "Panel"
+    1, "Panel + Font"
+	2, "None"
+}
+
 OptionMenu "Glorykills"
 {
     Title "Glorykill Options"
@@ -28,6 +42,12 @@ OptionMenu "Glorykills"
 	StaticText " "
 	Option "Health & Armor recovery limit", "sv_glmax", "MaxStat"
 	StaticText "Additional Bonus are always limit 200"
+	StaticText " "
+	StaticText "Fuel HUD"
+	Option "ChainSaw Fuel Hud Background", "sv_fuelhud_background", "BackStyle"
+	Option "ChainSaw Fuel Hud Size", "sv_fuelhud_size", "FHudsize"
+	Slider  "ChainSaw Fuel Hud X","sv_fuelhud_x",-1024 ,1024, 1
+	Slider  "ChainSaw Fuel Hud Y","sv_fuelhud_y",-768 ,768, 1
 	
 }
 

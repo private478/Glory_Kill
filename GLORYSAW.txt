@@ -13,8 +13,13 @@ ACTOR GLFuel : Ammo
 	States
 	{
 	Spawn:
-		AMGS A -1 NODELAY A_SetAngle(random(0,359))
-		Stop
+		TNT1 A 0 A_jumpif(GetCvar(V5_MODELS)==1, "Spawn.V5")
+		AMGN A 10
+		loop
+	Spawn.V5:
+		TNT1 A 0 A_jumpif(GetCvar(V5_MODELS)==0 , "Spawn")
+		AMGV A 10
+		loop
 	}
 }
 
@@ -24,13 +29,6 @@ ACTOR LargeGLFuel : GLFuel
 	Inventory.PickUpMessage "Picked up a Large Chainsaw Fuel"
 	Inventory.PickUpSound "AmmoBig"
 	Inventory.Amount 2
-	
-	States
-	{
-	Spawn:
-		AMGS A -1 NODELAY A_SetAngle(random(0,359))
-		Stop
-	}
 }
 
 Actor GlorySawPuff : SSawPuff

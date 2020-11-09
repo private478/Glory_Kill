@@ -846,8 +846,8 @@ States
 	{
 	
 	Spawn:
-		TNT1 A 1 A_Jump(32, "SpawnLargeFuel")
-		TNT1 A 1 A_Jump(64, "SpawnFuel")
+		TNT1 A 1 A_Jump(16, "SpawnLargeFuel")
+		TNT1 A 1 A_Jump(32, "SpawnFuel")
 		TNT1 A 0	
 		stop
 		
@@ -867,8 +867,8 @@ States
 	{
 	
 	Spawn:
-		TNT1 A 1 A_Jump(64, "SpawnLargeFuel")
-		TNT1 A 1 A_Jump(128, "SpawnFuel")
+		TNT1 A 1 A_Jump(32, "SpawnLargeFuel")
+		TNT1 A 1 A_Jump(64, "SpawnFuel")
 		TNT1 A 0	
 		stop
 		
@@ -888,8 +888,8 @@ States
 	{
 	
 	Spawn:
-		TNT1 A 1 A_Jump(102, "SpawnLargeFuel")
-		TNT1 A 1 A_Jump(165, "SpawnFuel")
+		TNT1 A 1 A_Jump(64, "SpawnLargeFuel")
+		TNT1 A 1 A_Jump(128, "SpawnFuel")
 		TNT1 A 0	
 		stop
 		
