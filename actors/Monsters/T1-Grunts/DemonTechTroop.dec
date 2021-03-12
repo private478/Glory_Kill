@@ -94,8 +94,9 @@ ACTOR HellTrooper Replaces ShotgunGuy
 	Obituary "%o was silenced by a demon tech trooper."
 	damagefactor "Taunt", 1.0
 	DropItem "LeechGrenade" 3
+	DropItem "Crucible" 9
 
-	WoundHealth 55
+	WoundHealth 50
 	States
 	{
 	Wound:

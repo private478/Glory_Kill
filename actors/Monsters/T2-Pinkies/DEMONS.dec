@@ -62,7 +62,8 @@ damagefactor "Blood", 0.0 damagefactor "BlueBlood", 0.0 damagefactor "GreenBlood
 	DropItem "DemonStrengthRune" 2
 	
 	DropItem "Demonpickup" 100
-	WoundHealth 69
+	DropItem "Crucible" 3
+	WoundHealth 70
 	
 	States
 	{

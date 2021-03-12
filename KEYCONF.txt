@@ -1,5 +1,5 @@
 addkeysection "Glory kill" GloryKill             
-addmenukey "Glory Chainsaw" +glorysaw
+addmenukey "Glory Chainsaw & Crucible" +glorysaw
 
 alias +glorysaw "puke 6000"
 alias -glorysaw "puke 6001"

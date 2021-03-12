@@ -17,8 +17,8 @@ Actor Infernus : BaronofHell2 replaces BaronOfHell
 	DropItem "Demonpickup2" 76
 	DropItem "Demonpickup2" 76
   Scale 1.08
-  
-  WoundHealth 307
+  DropItem "Crucible" 12
+  WoundHealth 300
   
   States
   {

@@ -41,8 +41,8 @@ ACTOR Mancubus : Fatso Replaces Fatso
 	
 	DropItem "Demonpickup2" 60
 	DropItem "Demonpickup2" 250
-	
-	WoundHealth 214
+	DropItem "Crucible" 6
+	WoundHealth 130
 	
 	States
     {

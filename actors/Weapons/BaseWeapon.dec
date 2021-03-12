@@ -14,14 +14,12 @@ Actor WW_StunGrenadeSelected : Inventory {inventory.maxamount 1}
 Actor WW_LeechSelected : Inventory {inventory.maxamount 1}
 Actor WW_HealthBackPackSelected : Inventory {inventory.maxamount 1}
 
+Actor DualFiring: Inventory {Inventory.maxamount 1}
+Actor DualFireReload: Inventory {Inventory.maxamount 2}
+
 //Actions observed by the AI!
 Actor PlayerIsThrowingAGrenade : Inventory {inventory.maxamount 1}
 Actor CantWeaponSpecial : Inventory {inventory.maxamount 1}
-Actor DoGloryChainsaw : Inventory {inventory.maxamount 1}
-Actor GlorySawToken : Inventory {inventory.maxamount 4}
-Actor GlorySawTarget : Inventory {inventory.maxamount 4}
-Actor DontGlorySaw : Inventory {inventory.maxamount 1}
-Actor CrucibleToken : Inventory {inventory.maxamount 1}
 
 Actor PB_Weapon : PB_WeaponBase
 {
@@ -43,20 +41,20 @@ States
 	Fire:
 	Ready:
 		Goto GoingToReady
-		
 	Deselect:
 		TNT1 A 1 A_Lower
 		Wait
 		
 	LedgeClimb:
 		TNT1 A 0 {
+			A_WeaponReady(WRF_ALLOWRELOAD|WRF_NOFIRE);
 			A_Zoomfactor(1.0);
 			A_TakeInventory("RailgunInfrared", 1);
 			A_GiveInventory("KeepLaserDeactivated",1);
 			A_PlaySound("IronSights",0);
 			A_GunFlash("DontFlashClimbing");
 			A_FireCustomMissile("ShakeYourAssMinor", 0, 0, 0, 0);
-			A_ClearOverlays(4,11); 
+			A_ClearOverlays(4,11);
 		}
 		CL1M ABCDE 1 {
 			A_SetPitch(pitch-2, SPF_INTERPOLATE);
@@ -71,23 +69,29 @@ States
 		FinishClimb:
 			TNT1 A 0 A_SetPitch(0, SPF_INTERPOLATE)
 			CL1M KLM 1
-		Goto GoingToReady2
+			TNT1 A 0 {
+				A_ClearOverlays(12);
+				A_Overlay(-9, "LedgeGrabCheck");
+				A_TakeInventory("CantWeaponSpecial" ,1 );
+				if (CountInv("RevenantLauncherSelected") >= 1) {
+					return state("Ready3");
+				}
+				return state("");
+			}
+			Goto GoingToReady2 //Select
 		
-// 		CL1M A 1//A_SetPitch(-20,SPF_INTERPOLATE)
-// 		CL1M B 1 //A_SetPitch(-20,SPF_INTERPOLATE)
-// 		CL1M C 1 //A_SetPitch(-24,SPF_INTERPOLATE)
-// 		CL1M D 1 //A_SetPitch(-28,SPF_INTERPOLATE)
-// 		CL1M E 1 //A_SetPitch(-20,SPF_INTERPOLATE)
-// 		CL1M F 1 //A_SetPitch(-16,SPF_INTERPOLATE)
-// 		CL1M G 1 // A_SetPitch(-12,SPF_INTERPOLATE)
-// 		CL1M H 1 //A_SetPitch(-8,SPF_INTERPOLATE)
-// 		CL1M I 1 //A_SetPitch(-4,SPF_INTERPOLATE)
-// 		CL1M J 1 //A_SetPitch(4,SPF_INTERPOLATE)
-// 		CL1M K 1 //A_SetPitch(8,SPF_INTERPOLATE)
-// 		CL1M L 1 //A_SetPitch(12,SPF_INTERPOLATE)
-// 		CL1M M 1 //A_SetPitch(16,SPF_INTERPOLATE)
-// 		TNT1 A 0 //A_SetPitch(0,SPF_INTERPOLATE)
-		//Goto GoingToReady2
+	LedgeGrabCheck:
+		TNT1 A 1
+		TNT1 A 0 A_JumpIfInventory("Grabbing_A_Ledge",1,"LedgeGrabOverlay")
+		Goto LedgeGrabCheck
+	LedgeGrabOverlay:
+		TNT1 A 0 A_Overlay(12, "LedgeGrabFlash")
+		TNT1 A 0 A_ClearOverlays(-1,1)
+		TNT1 A 0 A_OverlayFlags(-9, PSPF_ADDWEAPON, False)
+		TNT1 A 0 A_Overlay(1,"LedgeClimb")
+		TNT1 A 17
+		Goto LedgeGrabCheck
+		
 		
 	GoingToReady:
 	SelectingAnimation:
@@ -101,8 +105,17 @@ States
 		TNT1 A 0 A_TakeInventory("DoGrenade",1)
 		TNT1 A 0 A_TakeInventory("IsRunning",1)
 		TNT1 A 0 A_TakeInventory("Reloading",1)
+		TNT1 A 0 A_Overlay(-10, "FirstPersonLegsStand")
 		TNT1 A 0 A_Jump(255,"Ready4")
 		TNT1 AAAA 1 A_Jump(255, "Ready3")
+		Loop
+	
+	SelectFirstPersonLegs:
+		//TNT1 A 0 A_Overlay(10, "Flash")
+		TNT1 A 0 A_TakeInventory("DualFireReload",2)
+		TNT1 A 0 A_Overlay(-10, "FirstPersonLegsStand")
+		TNT1 A 0 A_Overlay(-9, "LedgeGrabCheck")
+		TNT1 A 0 A_Jump(255, "SelectContinue")
 		Loop
 		
 	TryToSelectDrum:
@@ -144,6 +157,7 @@ States
 		TNT1 A 0 A_TakeInventory("ToggleEquipment",1)
 		TNT1 A 0 A_TakeInventory("Reloading",1)
 		TNT1 A 0 A_JumpIfInventory("SawSelected", 1, "OnLoop")
+		TNT1 A 0 A_Overlay(-10, "FirstPersonLegsStand")
 		TNT1 AAAA 0 A_Jump(255, "SelectAnimation")
 		TNT1 AAAA 1 A_Jump(255, "Ready")
 		Loop
@@ -215,6 +229,8 @@ States
 				A_Giveinventory("Superarmor",1);
 			}
 		}
+		TNT1 A 0 A_Takeinventory("Kicking",1)
+		TNT1 A 0 A_Takeinventory("DoPunch",1)
 		"####" "#" 0 { return state("DoFatality"); }
 		
 	PermormGloryKill:
@@ -231,7 +247,7 @@ States
 		}
 		TNT1 A 0 A_Takeinventory("Kicking",1)
 		TNT1 A 0 A_Takeinventory("DoPunch",1)
-		TNT1 A 0 A_CustomPunch(10000,1,0,"GloryKillPuff",150,0,0,Null)
+		TNT1 A 0 A_CustomPunch(10000,1,0,"GloryKillPuff",150,0,0)
 		TNT1 A 0
 		"####" "#" 0 { return ResolveState("DoFatality"); }	
 	
@@ -244,7 +260,7 @@ States
 		{	
 			if (CountInv("CrucibleToken"))
 			{
-				if(CountInv("Demonpower") < 200)
+				if(CountInv("Demonpower") < 250)
 				{
 					A_Print("Not Enough Energy");
 					A_TakeInventory("DoGloryChainsaw",1);
@@ -490,6 +506,7 @@ States
 		{
 			A_StartSound("Crucible_Deploy", CHAN_WEAPON, CHANF_OVERLAP);
 			A_WeaponOffset(-2, 4, WOF_ADD);
+			A_TakeInventory("Demonpower",250);
 		}
 		CRCB D 3 bright A_WeaponOffset(-2, 4, WOF_ADD)//-10, 20
 		CRCB DDD 1 bright A_WeaponOffset(3, -6, WOF_ADD)
@@ -524,37 +541,36 @@ States
 		
 		//First Swing
 		
-		CRCB E 1
+		CRCB EEF 1 
 		{
-			A_Saw("", "Crucible_Slice", 10000, "GlorySawPuff", SF_NOPULLIN | SF_NOTURN , 128, 32);
-		}
-		CRCB EF 1 
-		{
-			A_Saw("", "Crucible_Slice", 10000, "GlorySawPuff", SF_NOPULLIN | SF_NOTURN , 128, 32);
+			A_Saw("", "Crucible_Slice", 300, "GlorySawPuff", SF_NOPULLIN | SF_NOTURN , 150, 32);
 		}
 		CRCB G 1
 		{
 			A_WeaponOffset(-40, 0, WOF_ADD);
-			A_Saw("", "Crucible_Slice", 10000, "GlorySawPuff", SF_NOPULLIN | SF_NOTURN , 128, 32);
+			A_Saw("", "Crucible_Slice", 300, "GlorySawPuff", SF_NOPULLIN | SF_NOTURN , 150, 32);
 			A_SpawnItemEx("CrucibleBladeWave", 0, 0, Height / 2, 0, 0, 0, 0, SXF_CLIENTSIDE|SXF_TRANSFERPITCH);
-		}
-		TNT1 A 0
-		{
-			if(CountInv("GlorySawToken") >= 1)
-			{
-				A_TakeInventory("Demonpower",250);
-				A_TakeInventory("GlorySawToken",CountInv("GlorySawToken"));
-			}
-			A_TakeInventory("DoGloryChainsaw",1);
 		}
 		
 		TNT1 A 0 A_WeaponReady(WRF_NoFire|WRF_NoSwitch)
 		
-		CRCB HII 1 A_WeaponOffset(-40, 8, WOF_ADD)
-		
+		CRCB HII 1 
+		{
+			A_WeaponOffset(-40, 8, WOF_ADD);
+			A_Saw("", "Crucible_Slice", 300, "GlorySawPuff", SF_NOPULLIN | SF_NOTURN , 150, 32);
+		}
 		CRCB D 0 A_WeaponOffset(325, 24, WOF_ADD)
 		
 		NULL A 10 
+		
+		TNT1 A 0
+		{
+			if(CountInv("GlorySawToken") >= 1)
+			{
+				A_TakeInventory("GlorySawToken",CountInv("GlorySawToken"));
+			}
+			A_TakeInventory("DoGloryChainsaw",1);
+		}
 		
 		CRCB D 1 A_WeaponOffset(-60, -12, WOF_ADD)
 		CRCB D 1 A_WeaponOffset(-50, -10, WOF_ADD)
@@ -574,13 +590,61 @@ States
 		CRCB A 5
 		Goto GoingToReady
 		
-		
 	//First Person Legs in Doom (because, you know, "I'm not original")
-		
+	FirstPersonLegsKickRight:
+		//STGN A 0 A_JumpIfInventory("GreenBloodOnBoots",1,4)
+	    //STBN A 0 A_JumpIfInventory("BlueBloodOnBoots",1,3)
+	    //STRN A 0 A_JumpIfInventory("RedBloodOnBoots",1,2)
+		STAN A 0
+		"####" A 0
+		"####" A 0 A_GiveInventory("KeepLaserDeactivated",1)
+		"####" A 0 A_JumpIf(Height < 54, "FirstPersonLegsHide")
+		"####" A 0 A_JumpIfInventory("FPSLegChecker", 1, 2)
+		"####" O 1
+		{
+			A_OverlayFlags(-10, PSPF_ADDWEAPON, False);
+			A_OverlayFlags(-10, PSPF_PLAYERTRANSLATED, True);
+			A_OverlayOffset(-10, 0, (-pitch*2)+230);
+		}
+		Loop
+		"####" P 1
+		{
+			A_OverlayFlags(-10, PSPF_ADDWEAPON, False);
+			A_OverlayFlags(-10, PSPF_PLAYERTRANSLATED, True);
+			A_OverlayOffset(-10, 0, (-pitch*2)+230);
+		}
+		Loop
+	FirstPersonLegsKickLeft:
+		//STGL A 0 A_JumpIfInventory("GreenBloodOnBoots",1,4)
+	    //STBL A 0 A_JumpIfInventory("BlueBloodOnBoots",1,3)
+	    //STRL A 0 A_JumpIfInventory("RedBloodOnBoots",1,2)
+		STAL A 0
+		"####" A 0
+		"####" A 0 A_GiveInventory("KeepLaserDeactivated",1)
+		"####" A 0 A_JumpIf(Height < 54, "FirstPersonLegsHide")
+		"####" A 0 A_JumpIfInventory("FPSLegChecker", 1, 2)
+		"####" P 1
+		{
+			A_OverlayFlags(-10, PSPF_ADDWEAPON, False);
+			A_OverlayFlags(-10, PSPF_PLAYERTRANSLATED, True);
+			A_OverlayOffset(-10, 0, (-pitch*2)+230);
+		}
+		Loop
+		"####" O 1
+		{
+			A_OverlayFlags(-10, PSPF_ADDWEAPON, False);
+			A_OverlayFlags(-10, PSPF_PLAYERTRANSLATED, True);
+			A_OverlayOffset(-10, 0, (-pitch*2)+230);
+		}
+		Loop
 	FirstPersonLegsHide:
-		TNT1 A 0 A_GiveInventory("KeepLaserDeactivated",1)
-		TNT1 A 20
-		TNT1 A 0 A_TakeInventory("KeepLaserDeactivated",1)
+		"####" Q 1 
+		{
+			A_OverlayFlags(-10, PSPF_ADDWEAPON, False);
+			A_OverlayFlags(-10, PSPF_PLAYERTRANSLATED, True);
+			A_OverlayOffset(-10, 0, (-pitch*2)+230);
+		}
+		Loop
 	FirstPersonLegsStand:
 		TNT1 A 0 
 		TNT1 A 0 A_JumpIf(momx > 0.8 || momx < -0.8 || momy > 0.8 || momy < -0.8, "FirstPersonLegsWalk1")
@@ -589,8 +653,9 @@ States
 		TNT1 A 0 A_JumpIfInventory("FPSLegChecker", 1, 2)
 		STAN A 1 
 		{
-			A_OverlayFlags(-10,PSPF_PLAYERTRANSLATED, true);
-			A_OverlayOffset(-10, 0, (-pitch*2)+200);
+			A_OverlayFlags(-10, PSPF_ADDWEAPON, False);
+			A_OverlayFlags(-10, PSPF_PLAYERTRANSLATED, True);
+			A_OverlayOffset(-10, 0, (-pitch*2)+230);
 		}
 		Loop
 		TNT1 A 0 
@@ -598,13 +663,14 @@ States
 		TNT1 A 0 A_JumpIf(momZ != 0, "FirstPersonLegsJump")
 		STAN M 1 
 		{
-			A_OverlayFlags(-10,PSPF_PLAYERTRANSLATED, true);
-			A_OverlayOffset(-10, 0, (-pitch*2)+200);
+			A_OverlayFlags(-10, PSPF_ADDWEAPON, False);
+			A_OverlayFlags(-10, PSPF_PLAYERTRANSLATED, True);
+			A_OverlayOffset(-10, 0, (-pitch*2)+230);
 		}
 		Loop
 		
 	FirstPersonLegsCrouch:
-		TNT1 A 0 
+		TNT1 A 0
 		TNT1 A 0 A_PlaySound("IronSights", 0) //Sound when player crouches
 		FirstPersonLegsCrouchContinue:
 		TNT1 A 0 A_JumpIf(momZ != 0, "FirstPersonLegsJump")
@@ -612,20 +678,23 @@ States
 		TNT1 A 0 A_JumpIf(Height > 54, "FirstPersonLegsStand")
 		STAN N 1 
 		{
-			A_OverlayFlags(-10,PSPF_PLAYERTRANSLATED, true);
-			A_OverlayOffset(-10, 0, (-pitch*2)+200);
+			A_OverlayFlags(-10, PSPF_ADDWEAPON, False);
+			A_OverlayFlags(-10, PSPF_PLAYERTRANSLATED, True);
+			A_OverlayOffset(-10, 0, (-pitch*2)+230);
 		}
 		Loop
 		
 	FirstPersonLegsWalk1:
 		TNT1 A 0
+		TNT1 A 0 A_JumpIf(momZ != 0, "FirstPersonLegsJump")
 		TNT1 A 0 A_JumpIfInventory("FPSLegChecker", 1, "FirstPersonLegsWalk2")
 		TNT1 A 0 A_JumpIf(momZ != 0, "FirstPersonLegsJump")
 		TNT1 A 0 A_GiveInventory("FPSLegChecker",1)
 		STAN BCCDDEEFF 1
 		{
-			A_OverlayFlags(-10,PSPF_PLAYERTRANSLATED, true);
-			A_OverlayOffset(-10, 0, (-pitch*2)+200);
+			A_OverlayFlags(-10, PSPF_ADDWEAPON, False);
+			A_OverlayFlags(-10, PSPF_PLAYERTRANSLATED, True);
+			A_OverlayOffset(-10, 0, (-pitch*2)+230);
 			return A_JumpIf(momZ != 0, "FirstPersonLegsJump");
 		}
 		Goto FirstPersonLegsStand
@@ -636,25 +705,31 @@ States
 		TNT1 A 0 A_TakeInventory("FPSLegChecker",1)
 		STAN GHHIIJJKLL 1 
 		{
-			A_OverlayFlags(-10,PSPF_PLAYERTRANSLATED, true);
-			A_OverlayOffset(-10, 0, (-pitch*2)+200);
+			A_OverlayFlags(-10, PSPF_ADDWEAPON, False);
+			A_OverlayFlags(-10, PSPF_PLAYERTRANSLATED, True);
+			A_OverlayOffset(-10, 0, (-pitch*2)+230);
 			return A_JumpIf(momZ != 0, "FirstPersonLegsJump");
 		}
 		Goto FirstPersonLegsStand
 			
 	FirstPersonLegsJump:
 		TNT1 A 0 
-		STAN I 1 
+		STAN I 5
 		{
-			A_OverlayFlags(-10,PSPF_PLAYERTRANSLATED, true);
-			A_OverlayOffset(-10, 0, (-pitch*2)+200);
+			A_OverlayFlags(-10, PSPF_ADDWEAPON, False);
+			A_OverlayFlags(-10, PSPF_PLAYERTRANSLATED, True);
+			A_OverlayOffset(-10, 0, (-pitch*2)+230);
 		}
-		Goto FirstPersonLegsStand		
+		Goto FirstPersonLegsStand
 			
 	//NEW EQUIPMENT SYSTEM
 	UseEquipment:
 		TNT1 A 0 A_TakeInventory("RailgunInfrared", 1)
-		TNT1 A 0 A_ClearOverlays(10,11)
+		TNT1 A 0 {
+			A_ClearOverlays(10,11);
+			A_ClearOverlays(3,4);
+			A_GunFlash("Null"); //Fixes the Minigun heat overlay oversight
+			}
 		TNT1 A 0 A_TakeInventory("UseEquipment", 1)
 		TNT1 A 0 A_GiveInventory("KeepLaserDeactivated",1)
 		TNT1 A 0 A_JumpIfInventory("FragGrenadeSelected", 1, "ThrowGrenade")
@@ -827,7 +902,6 @@ States
 		TNT1 A 0 A_TakeInventory("UseEquipment", 1)
 		TNT1 A 0 A_JumpIfInventory("StunGrenadeAmmo", 1, 1)
 		Goto NoStun
-		TNT1 A 0 A_TakeInventory("Swarmers", 1)
 		STNG BCDEF 1
 		STNG F 1 Offset(-2,34)
 		NULL A 0 A_PlaySound("StunGrenadeArm", 2)
@@ -845,54 +919,6 @@ States
 	NoStun:	
 		TNT1 A 0
 		TNT1 A 0 A_Print("No Stun Grenades left")
-		TNT1 A 0
-		Goto GoingToReady
-	
-		
-		
-	ThrowSwarmPod:
-		TNT1 A 0 A_ZoomFactor(1.0)
-		TNT1 A 0 A_TakeInventory("ADSMode", 1)
-		TNT1 A 0 A_TakeInventory("DoSwarmPod", 1)
-		TNT1 A 0 A_JumpIfInventory("Swarmers", 1, 1)
-		Goto NoSwarmPod
-		TNT1 A 0 A_TakeInventory("Swarmers", 1)
-		XHFA LKJIHG 1
-		XHFF A 1
-		NULL A 0 A_PlaySound("weapons/pbarm", 2)
-		XHFF G 2
-		XHFF IJKL 1
-		XHFF A 0 A_PlaySound("MINE002", 3)
-		ELPD A 0 A_ThrowGrenade("SwarmerPodSet",4,16,3,0)
-		XHFF MNOPQRSTUVWXYZ 1
-		Goto GoingToReady2
-		
-	NoSwarmPod:	
-		TNT1 A 0
-		TNT1 A 0 A_Print("No Swarmers left")
-		TNT1 A 0
-		Goto GoingToReady
-		
-	ThrowElecPod:
-		TNT1 A 0 A_ZoomFactor(1.0)
-		TNT1 A 0 A_TakeInventory("ADSMode", 1)
-		TNT1 A 0 A_TakeInventory("DoElecPod", 1)
-		TNT1 A 0 A_JumpIfInventory("ElecPod", 1, 1)
-		Goto NoElecPod
-		TNT1 A 0 A_TakeInventory("ElecPod", 1)
-		XHFA ABCDEF 1
-		XHFF A 1
-		NULL A 0 A_PlaySound("weapons/pbarm", 2)
-		XHFF B 2
-		XHFF CDEF 1
-		XHFF A 0 A_PlaySound("MINE002", 3)
-		ELPD A 0 A_ThrowGrenade("ElectricPodSet",4,16,3,0)
-		XHFF MNOPQRSTUVWXYZ 1
-		Goto GoingToReady2
-		
-	NoElecPod:	
-		TNT1 A 0
-		TNT1 A 0 A_Print("No Electropods left")
 		TNT1 A 0
 		Goto GoingToReady
 		
@@ -943,13 +969,7 @@ States
 		TNT1 A 0
 		Goto GoingToReady
 		
-	MinePurist:
-		TNT1 A 0 A_Print("Land Mines disabled in Classic Mode!")
-		TNT1 A 0 A_TakeInventory("DoMine", 1)
-		Goto GoingToReady
-		
 	ThrowMine:
-		TNT1 A 0 A_JumpIfInventory("IsPlayingAsPurist", 1, "MinePurist")
 		TNT1 A 0 A_ZoomFactor(1.0)
 		TNT1 A 0 A_TakeInventory("ADSMode", 1)
 		TNT1 A 0 A_TakeInventory("UseEquipment", 1)
@@ -974,12 +994,7 @@ States
 		Goto GoingToReady
 		
 	////////////////////////////////////////////////KNIFE COMBO//////////////////////////////////////////////////////////////
-		
-	QuickPunchPurist:
-		TNT1 A 0 A_Print("Knife Combos Not Allowed In Classic Mode!")
-		TNT1 A 0 A_Takeinventory("DoPunch",1)
-		Goto GoingToReady
-		
+				
 	QuickPunch:
 		TNT1 A 0
 		{
@@ -992,7 +1007,6 @@ States
 			}
 			return ResolveState("");
 		}
-		TNT1 A 0 A_JumpIfInventory("IsPlayingAsPurist", 1, "QuickPunchPurist")
 		TNT1 A 0 A_Overlay(-10, "FirstPersonLegsHide")
 		TNT1 A 0 A_JumpIfInventory("PowerStrength",1,"SuperQuickPunch")
 		TNT1 A 0 A_TakeInventory("DoPunch",1)
@@ -1322,7 +1336,7 @@ States
 		
 	KickLeft:
 		TNT1 A 0 {
-			A_Overlay(-10,"FirstPersonLegsHide");
+			A_Overlay(-10, "FirstPersonLegsKickLeft");
 			A_OverlayFlags(1,PSPF_PLAYERTRANSLATED, true);
 		}
 		KIK1 ABC 1
@@ -1345,7 +1359,7 @@ States
 		
 	SuperKickLeft:
 		TNT1 A 0 {
-			A_Overlay(-10,"FirstPersonLegsHide");
+			A_Overlay(-10, "FirstPersonLegsKickLeft");
 			A_OverlayFlags(1,PSPF_PLAYERTRANSLATED, true);
 		}
 		KIK1 ABC 1
@@ -1368,7 +1382,7 @@ States
 		
 	KickRight:
 		TNT1 A 0 {
-			A_Overlay(-10,"FirstPersonLegsHide");
+			A_Overlay(-10, "FirstPersonLegsKickRight");
 			A_OverlayFlags(1,PSPF_PLAYERTRANSLATED, true);
 		}
 		KIK2 ABC 1
@@ -1391,7 +1405,7 @@ States
 		
 	SuperKickRight:
 		TNT1 A 0 {
-			A_Overlay(-10,"FirstPersonLegsHide");
+			A_Overlay(-10, "FirstPersonLegsKickRight");
 			A_OverlayFlags(1,PSPF_PLAYERTRANSLATED, true);
 		}
 		KIK2 ABC 1
@@ -1428,7 +1442,7 @@ States
 		}
 		TNT1 A 0 {
 			A_Giveinventory("PB_LockScreenTilt",1);
-			A_Overlay(-10, "FirstPersonLegsHide");
+			A_Overlay(-10, "FirstPersonLegsKickRight");
 			A_OverlayFlags(1,PSPF_PLAYERTRANSLATED, true);
 			A_TakeInventory("Zoomed",1);
 			A_TakeInventory("ADSmode",1);
@@ -1640,7 +1654,7 @@ States
 		TNT1 A 0 A_ZoomFactor(0.975)
         AKCK IJK 1
 		TNT1 A 0 A_ZoomFactor(0.995)
-		KICK A 0 A_TakeInventory("Kicking",1)
+		TNT1 A 0 A_TakeInventory("Kicking",1)
 		AKCK LM 1
 		AKCK N 1 A_SetRoll(roll+2, SPF_INTERPOLATE)
 		AKCK O 1 A_SetRoll(roll+2, SPF_INTERPOLATE)
@@ -1660,7 +1674,7 @@ States
 		TNT1 A 0 A_ZoomFactor(0.975)
         AKCK IJK 1
 		TNT1 A 0 A_ZoomFactor(0.995)
-		KICK A 0 A_TakeInventory("Kicking",1)
+		TNT1 A 0 A_TakeInventory("Kicking",1)
 		AKCK LM 1
 		AKCK N 1 A_SetRoll(roll+2, SPF_INTERPOLATE)
 		AKCK O 1 A_SetRoll(roll+2, SPF_INTERPOLATE)
@@ -1674,8 +1688,12 @@ States
     Taunt:
 		TNT1 A 0 A_StopSound(6)
 		TNT1 A 0 A_TakeInventory("Zoomed", 1)
-        TNT1 A 0 A_ZoomFactor(1.0)
-        TNT1 A 1 A_ClearOverlays(10,11)
+    TNT1 A 0 A_ZoomFactor(1.0)
+    TNT1 A 1 {
+			A_ClearOverlays(10,11);
+			A_ClearOverlays(3,4);
+			A_Gunflash("Null"); //Fixes the Minigun heat overlay oversight
+			}
 		FUCK A 1
 		TNT1 A 0 BRIGHT A_FireCustomMissile("Taunter", 0, 0, -1, 0)
 		TNT1 A 0 BRIGHT A_FireCustomMissile("Taunter", -9, 0, -1, 0)
@@ -1689,8 +1707,13 @@ States
 		
 	Salute:
 		TNT1 A 0 A_StopSound(6)
-	    TNT1 A 0 SetPlayerProperty(0,1,0)
+	  TNT1 A 0 SetPlayerProperty(0,1,0)
 		TNT1 A 0 A_ALertMonsters
+		 TNT1 A 0 {
+			A_ClearOverlays(10,11);
+			A_ClearOverlays(3,4);
+			A_Gunflash("Null"); //Fixes the Minigun heat overlay oversight
+			}
 		SALU ABCDEDCDEDCDEDCBA 4
 		TNT1 A 0 A_TakeInventory("Salute1",1)
 		TNT1 A 0 A_TakeInventory("Salute2",1)
@@ -1721,8 +1744,8 @@ States
 		
 	Steady:
 	TNT1 A 1
+	TNT1 A 0 A_JumpIfInventory("GoFatality",1,"Steady")
 	Goto GoingToReady
-	
 }
 }
 
@@ -1732,13 +1755,9 @@ States
 	{
 	 ThrowMine:
 	 ThrowGrenade:
-	 ThrowElecPod:
-	 ThrowSwarmPod:
 		TNT1 A 0 A_ZoomFactor(1.0)
 		TNT1 A 0 A_TakeInventory("ADSMode", 1)
 		TNT1 A 0 A_TakeInventory("DoGrenade", 1)
-		TNT1 A 0 A_TakeInventory("DoSwarmPod", 1)
-		TNT1 A 0 A_TakeInventory("DoElecPod", 1)
 		TNT1 A 0 A_TakeInventory("DoMine", 1)
 		TNT1 A 0
 		TNT1 A 0 A_Print("You can't throw right now!")

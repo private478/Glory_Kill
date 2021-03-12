@@ -8,7 +8,8 @@ ACTOR BeamRevenant : Revenant1 Replaces Revenant
   DropItem "Demonpickup2" 80
   DropItem "Demonpickup" 255
   DropItem "DemonMorphRune" 1
-  WoundHealth 90
+  DropItem "Crucible" 6
+  WoundHealth 80
   
   
   	Species "Bonehead"

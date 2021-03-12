@@ -15,7 +15,7 @@ ACTOR HealthPinata : Health
 	Inventory.MaxAmount 200
 	Inventory.PickupMessage "$GOTPINATAHEALTH"
 	Inventory.PickupSound "items/health/Sshard"
-	Gravity 0.85
+	Gravity 0.65
 	scale 0.4
 	RenderStyle Add
 	States
@@ -73,13 +73,13 @@ ACTOR HealthPinata : Health
 		}
 		"####" "#" 1
 		{
-			if (GetDistance(true,TracerPtr) <= sv_bonusrange + 32 && CountInv("GoFatality",TracerPtr) == 0)
+			if (GetDistance(true,TracerPtr) <= sv_bonusrange + 32 && CountInv("GoFatality",TracerPtr) == 0 && CountInv("DoGloryChainsaw",TracerPtr) == 0)
 			{
 				A_ChangeFlag(NOCLIP,true);
 				A_FaceTracer(0,0,0,0,FAF_MIDDLE);
 				A_SetTics(2); A_ChangeVelocity(cos(-pitch)*PSpeed,0,sin(pitch)*PSpeed,CVF_RELATIVE|CVF_REPLACE);
 			}
-			if (GetDistance(true,TracerPtr) <= sv_bonusrange && CountInv("GoFatality",TracerPtr) == 0)
+			if (GetDistance(true,TracerPtr) <= sv_bonusrange && CountInv("GoFatality",TracerPtr) == 0 && CountInv("DoGloryChainsaw",TracerPtr) == 0)
 			{
 				A_Warp(TracerPtr,0,0,16,0,WARPF_NOCHECKPOSITION|WARPF_INTERPOLATE|WARPF_STOP);
 				A_ChangeFlag(NOCLIP,false);
@@ -103,7 +103,7 @@ ACTOR ArmorPinata : BasicArmorBonus
 	Inventory.PickupSound "items/armor/Sshard"
 	Inventory.PickupMessage "$GOTPINATAARMOR"
 	scale 0.4
-	Gravity 0.85
+	Gravity 0.65
 	RenderStyle Add
 	States
 	{
@@ -160,12 +160,12 @@ ACTOR ArmorPinata : BasicArmorBonus
 		}
 		"####" "#" 1
 		{
-			if (GetDistance(true,TracerPtr) <= sv_bonusrange + 32 && CountInv("GoFatality",TracerPtr) == 0)
+			if (GetDistance(true,TracerPtr) <= sv_bonusrange + 32 && CountInv("GoFatality",TracerPtr) == 0 && CountInv("DoGloryChainsaw",TracerPtr) == 0)
 			{
 				A_ChangeFlag(NOCLIP,true);
 				A_FaceTracer(0,0,0,0,FAF_MIDDLE);
 			}
-			if (GetDistance(true,TracerPtr) <= sv_bonusrange && CountInv("GoFatality",TracerPtr) == 0)
+			if (GetDistance(true,TracerPtr) <= sv_bonusrange && CountInv("GoFatality",TracerPtr) == 0 && CountInv("DoGloryChainsaw",TracerPtr) == 0)
 			{
 				A_Warp(TracerPtr,0,0,16,0,WARPF_NOCHECKPOSITION|WARPF_INTERPOLATE|WARPF_STOP);
 				A_ChangeFlag(NOCLIP,false);
@@ -242,12 +242,12 @@ ACTOR HealthPinataPermL1 : HealthPinata
 		}
 		"####" "#" 1
 		{
-			if (GetDistance(true,TracerPtr) <= sv_bonusrange + 32 && CountInv("GoFatality",TracerPtr) == 0)
+			if (GetDistance(true,TracerPtr) <= sv_bonusrange + 32 && CountInv("GoFatality",TracerPtr) == 0 && CountInv("DoGloryChainsaw",TracerPtr) == 0)
 			{
 				A_ChangeFlag(NOCLIP,true);
 				A_FaceTracer(0,0,0,0,FAF_MIDDLE);
 			}
-			if (GetDistance(true,TracerPtr) <= sv_bonusrange && CountInv("GoFatality",TracerPtr) == 0)
+			if (GetDistance(true,TracerPtr) <= sv_bonusrange && CountInv("GoFatality",TracerPtr) == 0 && CountInv("DoGloryChainsaw",TracerPtr) == 0)
 			{
 				A_Warp(TracerPtr,0,0,16,0,WARPF_NOCHECKPOSITION|WARPF_INTERPOLATE|WARPF_STOP);
 				A_ChangeFlag(NOCLIP,false);
@@ -344,12 +344,12 @@ ACTOR ArmorPinataL1 : ArmorPinata
 		}
 		"####" "#" 1
 		{
-			if (GetDistance(true,TracerPtr) <= sv_bonusrange + 32 && CountInv("GoFatality",TracerPtr) == 0)
+			if (GetDistance(true,TracerPtr) <= sv_bonusrange + 32 && CountInv("GoFatality",TracerPtr) == 0 && CountInv("DoGloryChainsaw",TracerPtr) == 0)
 			{
 				A_ChangeFlag(NOCLIP,true);
 				A_FaceTracer(0,0,0,0,FAF_MIDDLE);
 			}
-			if (GetDistance(true,TracerPtr) <= sv_bonusrange && CountInv("GoFatality",TracerPtr) == 0)
+			if (GetDistance(true,TracerPtr) <= sv_bonusrange && CountInv("GoFatality",TracerPtr) == 0 && CountInv("DoGloryChainsaw",TracerPtr) == 0)
 			{
 				A_Warp(TracerPtr,0,0,16,0,WARPF_NOCHECKPOSITION|WARPF_INTERPOLATE|WARPF_STOP);
 				A_ChangeFlag(NOCLIP,false);
@@ -416,12 +416,12 @@ ACTOR ArmorPinataL2 : ArmorPinata
 		}
 		"####" "#" 1
 		{
-			if (GetDistance(true,TracerPtr) <= sv_bonusrange + 32 && CountInv("GoFatality",TracerPtr) == 0)
+			if (GetDistance(true,TracerPtr) <= sv_bonusrange + 32 && CountInv("GoFatality",TracerPtr) == 0 && CountInv("DoGloryChainsaw",TracerPtr) == 0)
 			{
 				A_ChangeFlag(NOCLIP,true);
 				A_FaceTracer(0,0,0,0,FAF_MIDDLE);
 			}
-			if (GetDistance(true,TracerPtr) <= sv_bonusrange && CountInv("GoFatality",TracerPtr) == 0)
+			if (GetDistance(true,TracerPtr) <= sv_bonusrange && CountInv("GoFatality",TracerPtr) == 0 && CountInv("DoGloryChainsaw",TracerPtr) == 0)
 			{
 				A_Warp(TracerPtr,0,0,16,0,WARPF_NOCHECKPOSITION|WARPF_INTERPOLATE|WARPF_STOP);
 				A_ChangeFlag(NOCLIP,false);
@@ -448,6 +448,17 @@ ACTOR ArmorPinataL4 : ArmorPinata
 ACTOR ArmorPinataL5 : ArmorPinata
 {
 	Armor.Saveamount 25
+}
+
+
+ACTOR HealthPinata150 : HealthPinata
+{
+	Inventory.MaxAmount 150
+}
+
+ACTOR ArmorPinata150 : ArmorPinata
+{
+	Inventory.MaxAmount 150
 }
 
 Actor GloryLowPinataSpawn

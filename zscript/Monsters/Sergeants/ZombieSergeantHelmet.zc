@@ -3,7 +3,7 @@ Class PB_ShotgunGuyHelmet : PB_ShotgunGuy
 		Default
 		{
 			damagefactor "Head", 0.6;
-			WoundHealth 25;
+			WoundHealth 30;
 		}
 		
 		
@@ -1336,7 +1336,7 @@ Class PB_ShotgunGuyHelmet : PB_ShotgunGuy
 			TNT1 A 0 {
 				bSHOOTABLE = false;
 				bSOLID = false;
-				A_SpawnItem("FrozenShotgunGuy");
+				A_SpawnItem("FrozenHelmetShotgunguy");
 			}
 			Stop;
 		

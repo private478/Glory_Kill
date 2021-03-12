@@ -73,7 +73,7 @@ Actor PumpshotgunMagNotInserted: Inventory
 inventory.maxamount 1
 }
 
-Actor PumpshotgunUpgrade: Custominventory
+Actor PumpshotgunUpgrade: PB_UpgradeItem
 {
 //$Category Ammunition
 	SpawnID 9310
@@ -86,9 +86,16 @@ Actor PumpshotgunUpgrade: Custominventory
 	Scale 0.45
 	States
 	{
+	Spawn.V5:
+		VSMU A 10 Bright Light("WeaponUpgradeSpawner"){
+			IF( A_CHECKRANGE( V5_MDist , "NULL", TRUE) ) {A_SetSpawnSprite("9SMU");}
+			}
 	Spawn:
-		9SMU A 1 BRIGHT Light("WeaponUpgradeSpawner")
-		Loop
+		TNT1 A 0 NoDelay A_Jumpif( V5_MODELS == 1 && V5_Cull == 1, "Spawn.V5")
+		9SMU A 10 Bright Light("WeaponUpgradeSpawner"){
+			If ( GetCvar( "V5_MODELS" ) == 1 && GetCVar( "V5_Cull" ) == 0 ) {A_SetSpawnSprite("VSMU");}
+			}
+		LOOP
 	
     Pickup:
 		TNT1 A 0 ACS_NamedExecuteAlways("PumpShotgunMag", 0)
@@ -246,6 +253,7 @@ ACTOR Shot_Gun : PB_Weapon Replaces Shotgun
 	+WEAPON.NOAUTOFIRE
 	PB_WeaponBase.UnloaderToken "PBPumpShotgunHasUnloaded"
 	Scale 0.45
+	Inventory.AltHUDIcon "SHTCA0"
 	States
 	{
 	
@@ -385,7 +393,7 @@ ACTOR Shot_Gun : PB_Weapon Replaces Shotgun
 	Ready3:
 		TNT1 A 0 {
 			A_SetRoll(0);
-			A_SetCrosshair(0);
+			PB_HandleCrosshair(69);
 			A_TakeInventory("PB_LockScreenTilt",1);
 			}
 			TNT1 A 0 
@@ -878,7 +886,7 @@ ACTOR Shot_Gun : PB_Weapon Replaces Shotgun
 		TNT1 A 0 {
 			A_WeaponOffset(0,32);
 			A_SetRoll(0);
-			A_SetCrosshair(0);
+			PB_HandleCrosshair(69);
 			A_TakeInventory("PB_LockScreenTilt",1);
 		}
 		TNT1 A 0
@@ -893,14 +901,15 @@ ACTOR Shot_Gun : PB_Weapon Replaces Shotgun
 		Wait
 		
 	Select:
-		TNT1 A 0 A_Overlay(-10, "FirstPersonLegsStand")
 		TNT1 A 0 ACS_NamedExecuteAlways("ToggleShotgunUpgraded",0) //For people who want this weapon to replace another
 		TNT1 A 0 {
 			A_WeaponOffset(0,32);
 			A_SetRoll(0);
-			A_SetCrosshair(0);
+			PB_HandleCrosshair(69);
 			A_TakeInventory("PB_LockScreenTilt",1);
 		}
+		Goto SelectFirstPersonLegs
+		SelectContinue:
 		TNT1 A 0 
 		{
 		 A_Takeinventory("Unloading",1);
@@ -937,6 +946,10 @@ ACTOR Shot_Gun : PB_Weapon Replaces Shotgun
 		 A_TakeInventory("LostSoulSelected",1);
 		 A_TakeInventory("HasBarrel",1);
 		 A_TakeInventory("HasBurningBarrel",1);
+		 A_TakeInventory("HasPlasmaWeapon",1);
+
+		 A_TakeInventory("HasIncendiaryWeapon", 1);
+
 		}
 		TNT1 A 0 A_Raise
 		Wait
@@ -945,7 +958,7 @@ ACTOR Shot_Gun : PB_Weapon Replaces Shotgun
 		TNT1 A 0 {
 			A_WeaponOffset(0,32);
 			A_SetRoll(0);
-			A_SetCrosshair(0);
+			PB_HandleCrosshair(69);
 			A_TakeInventory("PB_LockScreenTilt",1);
 		}
 		TNT1 A 0 {
@@ -965,6 +978,7 @@ ACTOR Shot_Gun : PB_Weapon Replaces Shotgun
 		 A_FireCustomMissile("ShotgunParticles", random(-17,17), 0, -1, random(-17,17));
 		 A_FireCustomMissile("GunFireSmoke", 0, 0, 0, 0, 0, 0);
 		 A_FireCustomMissile("GunFireSmoke", 0, 0, 0, 0, 0, 0);
+		 A_GunFlash;
 		 
 		 If (CountInv("HasSlugs") >=1 )        
 		    {A_PlaySoundEx("SlugShot", "Weapon");
@@ -982,25 +996,11 @@ ACTOR Shot_Gun : PB_Weapon Replaces Shotgun
 		SHTF B 1 BRIGHT
 		SHTF C 1 {
 			A_FireCustomMissile("ShotgunWad",random(-17,17),0,random(-17,17),-6,FPF_NOAUTOAIM,random(-17,17));
-			if (CountInv("PowerStrength") >= 1 ) {
-				A_SetPitch(pitch-0.62, SPF_INTERPOLATE);
-				A_SetAngle(angle+0.22, SPF_INTERPOLATE);
-				}
-			else {
-				A_SetPitch(pitch-1.24, SPF_INTERPOLATE);
-				A_SetAngle(angle+0.44, SPF_INTERPOLATE);
-				}
+            PB_WeaponRecoil(-1.24,+0.44);
 		}
 
 		SHTF D 1 {
-			if (CountInv("PowerStrength") >= 1 ) {
-				A_SetPitch(pitch-0.62, SPF_INTERPOLATE);
-				A_SetAngle(angle+0.22, SPF_INTERPOLATE);
-				}
-			else {
-				A_SetPitch(pitch-1.24, SPF_INTERPOLATE);
-				A_SetAngle(angle+0.44, SPF_INTERPOLATE);
-				}
+            PB_WeaponRecoil(-1.24,+0.44);
 		}
 		SHTF EFG 1 
 	Pump1:
@@ -1191,15 +1191,15 @@ ACTOR Shot_Gun : PB_Weapon Replaces Shotgun
 		}
 		TNT1 A 0 
 		{
-		 If (CountInv("PowerStrength") >=1 ){A_SetPitch(pitch-0.25);return state("BerserkAltPump1");}
-		 else {A_SetPitch(pitch-0.2);} //this line was moved somehow in the conflict
+		 If (CountInv("PowerStrength") >=1 ){PB_WeaponRecoilBasic(-0.25);return state("BerserkAltPump1");}
+		 else {PB_WeaponRecoilBasic(-0.2);} //this line was moved somehow in the conflict
 		 return state("");
 	    }
 		SHT8 GHI 1
 		{
-		 If (CountInv("HasSlugs") >=1 ) {A_SetWeaponSprite("SHT6");A_SetPitch(pitch-1);}
-		 If (CountInv("HasDragonBreath") >=1 ) {A_SetWeaponSprite("SHT4");A_SetPitch(pitch-1);}
-		 else {A_SetPitch(pitch-1);}
+		 If (CountInv("HasSlugs") >=1 ) {A_SetWeaponSprite("SHT6");PB_WeaponRecoilBasic(-1);}
+		 If (CountInv("HasDragonBreath") >=1 ) {A_SetWeaponSprite("SHT4");PB_WeaponRecoilBasic(-1);}
+		 else {PB_WeaponRecoilBasic(-1);}
 		 return state("");
 		}
 		TNT1 A 0 {
@@ -1208,7 +1208,7 @@ ACTOR Shot_Gun : PB_Weapon Replaces Shotgun
 				if (!PressingAltfire() && CountInv("ShotgunAmmo") > 1){
 						A_TakeInventory("Zoomed",1);
 						A_ZoomFactor(1.0);
-						A_SetCrosshair(0);
+						PB_HandleCrosshair(69);
 						return state("Pump1");
 				}
 			}
@@ -1300,7 +1300,7 @@ ACTOR Shot_Gun : PB_Weapon Replaces Shotgun
 		TNT1 A 0 {
 			A_WeaponOffset(0,32);
 			A_SetRoll(0);
-			A_SetCrosshair(0);
+			PB_HandleCrosshair(69);
 			A_TakeInventory("PB_LockScreenTilt",1);
 		}
 		TNT1 A 0 {
@@ -1322,7 +1322,7 @@ ACTOR Shot_Gun : PB_Weapon Replaces Shotgun
 		TNT1 A 0 {
 			A_TakeInventory("Zoomed",1);
 			A_ZoomFactor(1.0);
-			A_SetCrosshair(0);
+			PB_HandleCrosshair(69);
 		}
 		SHT8 KDEE 1 {
 		 If(CountInv("HasSlugs") >=1 )        
@@ -1345,7 +1345,7 @@ ACTOR Shot_Gun : PB_Weapon Replaces Shotgun
 		SHTG A 1 {
 		 If(CountInv("HasSlugs") >=1 ) {A_SetWeaponSprite("SHTS");} 
 		 If(CountInv("HasDragonBreath") >=1 ) {A_SetWeaponSprite("SHTD");}
-		 A_SetCrosshair(0);
+		 PB_HandleCrosshair(69);
 		 A_DoPBWeaponAction;
 		 return state("");
 		}
@@ -1597,9 +1597,16 @@ ACTOR Shot_Gun : PB_Weapon Replaces Shotgun
 			}
 		Goto Ready3
 		
+	Spawn.V5:
+		VHTC A 10 {
+			IF( A_CHECKRANGE( V5_MDist , "NULL", TRUE) ) {A_SetSpawnSprite("SHTC");}
+			}
 	Spawn:
-		SHTC A -1
-		Stop
+		TNT1 A 0 NoDelay A_jumpif( V5_MODELS == 1 && V5_Cull == 1, "Spawn.V5")
+		SHTC A 10 {
+			if ( GetCvar( "V5_MODELS" ) == 1 && GetCVar( "V5_Cull" ) == 0 ) {A_SetSpawnSprite("VHTC");}
+			}
+		LOOP
 	
     FlashKicking:
 	    TNT1 A 0 A_WeaponOffset(0,32)

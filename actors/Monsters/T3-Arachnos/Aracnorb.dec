@@ -60,7 +60,8 @@ actor Aracnorb
   Obituary "%o was zapped by an aracnorb."
   HitObituary "%o had %p skull chewed by an aracnorb."
   Scale 0.85
-  WoundHealth 87
+  DropItem "Crucible" 6
+  WoundHealth 60
   
   States
   {

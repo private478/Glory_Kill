@@ -47,7 +47,8 @@ Actor Afrit replaces Cacodemon
 	
 	DropItem "Demonpickup2" 160
 	DropItem "Demonpickup" 255
-	WoundHealth 124
+	DropItem "Crucible" 9
+	WoundHealth 100
 	
 	Species "FlyingBalls"
     +DONTHARMSPECIES

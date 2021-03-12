@@ -39,6 +39,7 @@ Class PB_ShotgunGuy : PB_Monster
 		damagefactor "killme", 0.0;
 		damagefactor "Taunt", 1.0;
 		DamageFactor "CauseObjectsToSplash", 0.0;
+		damagefactor "TeleportRemover", 0.0;
 		damagefactor "SSG", 50.0;
 		damagefactor "Shotgun", 1.2;
 		damagefactor "Saw", 0.5;
@@ -52,7 +53,7 @@ Class PB_ShotgunGuy : PB_Monster
 		+DOHARMSPECIES;
 		+HARMFRIENDS;
 		Species "Former_Human";
-		WoundHealth 25;
+		WoundHealth 30;
 		}
 		
 		int movement_direction;
@@ -717,17 +718,17 @@ Class PB_ShotgunGuy : PB_Monster
 	
 		Pain.Stun:
 			TNT1 A 0 A_TakeInventory("IsProning", 1);
-			SPO4 G 1 A_Pain();
-			SPO4 GGGGGGGGGG 3 A_SpawnItemEx ("StunElectrocute", random (-12, 12), random (-12, 12),  random (16, 52), 0, 0);
-			SPO4 G 1 A_Pain();
-			SPO4 GGGGGGGGGG 3 A_SpawnItemEx ("StunElectrocute", random (-12, 12), random (-12, 12),  random (16, 52), 0, 0);
-			SPO4 G 1 A_Pain();
-			SPO4 GGGGGGGGGG 3 A_SpawnItemEx ("StunElectrocute", random (-12, 12), random (-12, 12),  random (16, 52), 0, 0);
-			SPO4 G 1 A_Pain();
-			SPO4 GGGGGGGGGG 3 A_SpawnItemEx ("StunElectrocute", random (-12, 12), random (-12, 12),  random (16, 52), 0, 0);
-			SPO4 G 1 A_Pain();
-			SPO4 GGGGGGGGGG 3 A_SpawnItemEx ("StunElectrocute", random (-12, 12), random (-12, 12),  random (16, 52), 0, 0);
-			SPO4 G 1 A_Pain();
+			SPOS G 1 A_Pain();
+			SPOS GGGGGGGGGG 3 A_SpawnItemEx ("StunElectrocute", random (-12, 12), random (-12, 12),  random (16, 52), 0, 0);
+			SPOS G 1 A_Pain();
+			SPOS GGGGGGGGGG 3 A_SpawnItemEx ("StunElectrocute", random (-12, 12), random (-12, 12),  random (16, 52), 0, 0);
+			SPOS G 1 A_Pain();
+			SPOS GGGGGGGGGG 3 A_SpawnItemEx ("StunElectrocute", random (-12, 12), random (-12, 12),  random (16, 52), 0, 0);
+			SPOS G 1 A_Pain();
+			SPOS GGGGGGGGGG 3 A_SpawnItemEx ("StunElectrocute", random (-12, 12), random (-12, 12),  random (16, 52), 0, 0);
+			SPOS G 1 A_Pain();
+			SPOS GGGGGGGGGG 3 A_SpawnItemEx ("StunElectrocute", random (-12, 12), random (-12, 12),  random (16, 52), 0, 0);
+			SPOS G 1 A_Pain();
 			Goto See;
 			
 		PlayerActionDialogue:

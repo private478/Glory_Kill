@@ -51,7 +51,8 @@ ACTOR MechDemon: Demon Replaces Demon
 	
 	DropItem "Demonpickup" 150
 	DropItem "Demonpickup" 100
-	WoundHealth 79
+	DropItem "Crucible" 3
+	WoundHealth 100
 	
 	States
 	{

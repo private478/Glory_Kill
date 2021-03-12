@@ -32,9 +32,8 @@ ACTOR ICEVILE Replaces Archvile
 	DamageFactor "Freeze", 0.0//THE FUCKER CAN'T BE KILLED BY THE FREEZER
 	DropItem "DemonStrengthRune" 8
 	DropItem "DemonMorphRune" 5
-	DropItem "RageSphere" 7
+	DropItem "HasteSphere" 7
 	DropItem "DoubleSphere" 7
-	DropItem "TimeSphere" 7
 	DropItem "Demonpickup2" 255
 	DropItem "Demonpickup2" 255
 	DamageFactor "Saw", 0.8
@@ -49,8 +48,8 @@ ACTOR ICEVILE Replaces Archvile
 	DamageFactor "Blood", 0.0 DamageFactor "BlueBlood", 0.0 DamageFactor "GreenBlood", 0.0
 	DamageFactor "Fire", 1.45 //KILL IT WITH FIRE
 	DamageFactor "Flames", 1.45 //KILL IT WITH FIRE
-	WoundHealth 231
-	
+	WoundHealth 140
+	DropItem "Crucible" 15
 	States
 	{
     Wound:

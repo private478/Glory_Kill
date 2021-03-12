@@ -38,6 +38,7 @@ ACTOR EldritchAbomination : BossBrainBase
 	DamageFactor "CauseObjectsToSplashBlood", 0.0 DamageFactor "CauseObjectsToSplashLava", 0.0
 	damagefactor "Blood", 0.0 damagefactor "BlueBlood", 0.0 damagefactor "GreenBlood", 0.0
 	Scale 2.3
+	DropItem "Crucible" 25
 	States
 	{
 	Death.GlorySaw:

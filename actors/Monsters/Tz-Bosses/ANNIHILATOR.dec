@@ -43,9 +43,8 @@ ACTOR Annihilator: Cyberdemon Replaces Cyberdemon
 	PainChance "Siphon", 255
 	DropItem "DemonStrengthRune" 25
 	DropItem "DemonMorphRune" 25
-	DropItem "RageSphere" 25
+	DropItem "HasteSphere" 25
 	DropItem "DoubleSphere" 25
-	DropItem "ShieldSphere" 20
     BloodType "Brutal_Blood"
 DamageFactor "Blood", 0.0 DamageFactor "BlueBlood", 0.0 DamageFactor "GreenBlood", 0.0
 	
@@ -65,6 +64,7 @@ DamageFactor "Blood", 0.0 DamageFactor "BlueBlood", 0.0 DamageFactor "GreenBlood
 	PainSound "monster/annpain" 
 	DeathSound "monster/anndth" 
 	ActiveSound "monster/annidle" 
+	DropItem "Crucible" 25
 	States
 	{
 	Death.GlorySaw:

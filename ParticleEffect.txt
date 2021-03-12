@@ -29,6 +29,72 @@ ACTOR Superarmorsmall : PowerInvulnerable
   Powerup.Mode Reflective
 }
 
+actor CrucibleEffect
+{
+	+VISIBILITYPULSE
+	Radius 0
+	Height 0
+	+NOGRAVITY
+	+NOINTERACTION
+	Speed 0
+	+RANDOMIZE
+	+DontSplash
+	+THRUACTORS
+	+NOBLOOD
+	RenderStyle Add
+	//Alpha 0.4
+	Scale 0.27
+	States
+	{
+	Spawn:
+			TNT1 A 0
+			TNT1 A 0 A_Jump (256, "Spawn2", "Spawn3", "Spawn4", "Spawn5", "Spawn6", "Spawn7", "Spawn8", "Spawn9", "Spawn10")
+			CRI6 ABCDEFGHIJK 1 bright
+			Stop
+		Spawn2:
+			TNT1 A 0
+			CRI7 ABCDEFGHIJK 1 bright
+			Stop
+		Spawn2:
+			TNT1 A 0
+			CRI8 ABCDEFGHIJK 1 bright
+			Stop
+		Spawn3:
+			TNT1 A 0
+			CRI9 ABCDEFGHIJK 1 bright
+			Stop
+		Spawn4:
+			TNT1 A 0
+			CRI0 ABCDEFGHIJK 1 bright
+			Stop
+		Spawn5:
+			TNT1 A 0
+			CRI6 ABCDEFGHIJK 1 bright
+			Stop
+		Spawn6:
+			TNT1 A 0
+			CRI7 LMNOPQRSTUV 1 bright
+			Stop
+		Spawn7:
+			TNT1 A 0
+			CRI8 LMNOPQRSTUV 1 bright
+			Stop
+		Spawn8:
+			TNT1 A 0
+			CRI9 LMNOPQRSTUV 1 bright
+			Stop
+		Spawn9:
+			TNT1 A 0
+			CRI0 LMNOPQRSTUV 1 bright
+			Stop
+		Spawn10:
+			TNT1 A 0
+			CRI0 ABCDEFGHIJK 1 bright
+			Stop
+	}
+}
+
+
 Actor GreenPinataParticles
 {
 	var int user_t;

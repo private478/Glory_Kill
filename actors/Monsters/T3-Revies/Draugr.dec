@@ -13,7 +13,8 @@ ACTOR Draugr : Revenant1 Replaces Revenant
   Scale 1.02
   	Species "Bonehead"
    +DONTHARMSPECIES
-   WoundHealth 150
+   DropItem "Crucible" 6
+   WoundHealth 110
    
 
   States

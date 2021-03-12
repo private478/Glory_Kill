@@ -6,7 +6,8 @@
 ACTOR Cacodemon_ : Cacodemon Replaces Cacodemon
 {
 	Game Doom
-  bloodtype "Blue_Blood"
+	BloodColor "Blue"
+	bloodtype "NashGoreBlood_Blue"
   +NOBLOODDECALS
 	SpawnID 19
     GibHealth 25
@@ -47,7 +48,8 @@ damagefactor "Blood", 0.0 damagefactor "BlueBlood", 0.0 damagefactor "GreenBlood
 	+DONTHURTSPECIES
 	+DONTHARMSPECIES
     +DONTHARMCLASS
-	WoundHealth 104
+	DropItem "Crucible" 6
+	WoundHealth 80
 	
 	
 	States

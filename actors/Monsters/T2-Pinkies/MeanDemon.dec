@@ -30,9 +30,8 @@ Actor DemonX : Demon Replaces Demon
 	DeathSound "demon/Death"
 	ActiveSound "demon/sg2act"
 	DropItem "DemonStrengthRune" 4
-	DropItem "RageSphere" 3
+	DropItem "HasteSphere" 3
 	DropItem "DoubleSphere" 2
-	DropItem "ShieldSphere" 1
 	BloodType "Brutal_Blood", "BloodSPlatterReplacer", "Brutal_Blood"
 	DamageFactor "CauseObjectsToSplash", 0.0
 	DropItem "Demonpickup" 150
@@ -41,7 +40,8 @@ Actor DemonX : Demon Replaces Demon
 	PainChance "Siphon", 255
 	MaxStepHeight 32
 	MaxDropOffHeight 32
-	WoundHealth 79
+	DropItem "Crucible" 3
+	WoundHealth 80
 	
 	States
 	{

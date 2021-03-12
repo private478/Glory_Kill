@@ -19,6 +19,7 @@ ACTOR ASGGuy : ShotgunGuy1 Replaces ShotgunGuy
 	DropItem "DropedASG"
     DropItem "NewShell"
 	DropItem "DropedGrenade" 5
+	DropItem "Crucible" 3
 	WoundHealth 25
 	
     States
