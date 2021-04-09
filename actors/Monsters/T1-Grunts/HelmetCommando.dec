@@ -45,7 +45,7 @@ ACTOR ChaingunGuy3: ChaingunGuy Replaces ChaingunGuy
 	DropItem "None" 3
 	Obituary "%o has been mowed down by a Zombie Commando."
 	DamageFactor "CauseObjectsToSplash", 0.0
-	DropItem "Crucible" 3
+	DropItem "Crucible" 1
 	WoundHealth 32
 	
 	States

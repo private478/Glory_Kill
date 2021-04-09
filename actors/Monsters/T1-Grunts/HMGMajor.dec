@@ -10,7 +10,7 @@ Actor ChaingunMajor : ChaingunGuy1 Replaces ChaingunGuy
   Obituary "%o was perforated by a heavy weapons major."
   Decal Bulletchip
   Dropitem "DropedHMG", 256
-  DropItem "Crucible" 3
+  DropItem "Crucible" 1
   WoundHealth 35
   
   States

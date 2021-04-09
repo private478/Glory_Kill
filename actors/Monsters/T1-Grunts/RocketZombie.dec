@@ -4,7 +4,7 @@ ACTOR RocketZombie: ShotgunGuy1 Replaces ShotgunGuy
 	SpawnID 1260
 	+NOTARGET
 	Painchance "Avoid", 0
-	DropItem "Crucible" 3
+	DropItem "Crucible" 1
 	WoundHealth 25
 	
 	States

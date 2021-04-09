@@ -17,7 +17,7 @@ Actor QuadShotgunZombie: ShotgunGuy1 Replaces ShotgunGuy
   DropItem "NewShell"
   DropItem "DropedSSG"
   DropItem "DropedGrenade" 5
-  DropItem "Crucible" 3
+  DropItem "Crucible" 1
   WoundHealth 20
   States
   {

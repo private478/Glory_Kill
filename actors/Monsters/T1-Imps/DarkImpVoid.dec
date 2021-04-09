@@ -57,7 +57,7 @@ actor VoidDarkImp Replaces DoomImp
 	MaxStepHeight 24
 	MaxDropOffHeight 32
 	DropItem "Demonpickup" 225
-	DropItem "Crucible" 3
+	DropItem "Crucible" 1
 	WoundHealth 35
 	
     States

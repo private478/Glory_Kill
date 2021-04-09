@@ -58,7 +58,7 @@ ACTOR SavageImp: DoomImp Replaces DoomImp
 	PainChance "Trample", 255
 	
 	DropItem "Demonpickup" 60
-	DropItem "Crucible" 3
+	DropItem "Crucible" 1
 	WoundHealth 32
 	
 	States

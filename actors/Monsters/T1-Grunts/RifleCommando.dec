@@ -21,7 +21,7 @@ ACTOR RifleCommando : ChaingunGuy1 Replaces ChaingunGuy
    DropItem "NewClip"
  //  DropItem "LMG"
    Obituary "%o was assaulted by a commando." 
-   DropItem "Crucible" 3
+   DropItem "Crucible" 1
    WoundHealth 40
    
    States 

@@ -156,7 +156,7 @@ damagefactor "Blood", 0.0 damagefactor "BlueBlood", 0.0 damagefactor "GreenBlood
     Speed 8
 	
 	DropItem "Demonpickup" 60
-	DropItem "Crucible" 3
+	DropItem "Crucible" 1
 	WoundHealth 25
 	
 	States

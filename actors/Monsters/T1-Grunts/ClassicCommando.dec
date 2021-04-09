@@ -44,7 +44,7 @@ ACTOR ChaingunGuy2: ChaingunGuy1 Replaces ChaingunGuy
 	DeathSound "commando/death"
 	ActiveSound "commando/active"
 	Obituary "%o has been chopped down by a Commando"
-	DropItem "Crucible" 3
+	DropItem "Crucible" 1
 	WoundHealth 25
 	
 	States
