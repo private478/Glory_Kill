@@ -37,8 +37,8 @@ OptionMenu "Glorykills"
 	Option "Ammo Bonus Drop", "be_AmmoBonus", YesNo
 	Option "Glory ChainSaw Ammo Bonus", "be_GSAmmoBonus", YesNo
 	StaticText " "
-	Slider  "Collecting Health & Armor Radius","sv_bonusrange",0 ,150, 1
-	Slider  "Collecting Ammo & Grenade Radius","sv_ammorange",0 ,150, 1
+	Slider  "Collecting Health & Armor Radius","sv_bonusrange",0 ,200, 1
+	Slider  "Collecting Ammo & Grenade Radius","sv_ammorange",0 ,200, 1
 	StaticText " "
 	StaticText " "
 	Option "Health & Armor recovery limit", "sv_glmax", "MaxStat"

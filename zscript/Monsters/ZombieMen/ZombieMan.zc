@@ -47,8 +47,7 @@ Class PB_ZombieMan : PB_Monster
 		damagefactor "TeleportRemover", 0.0;
 		DropItem "Rifle";
 		DropItem "DropedGrenade", 7;
-		DropItem "Crucible", 1;
-		DropItem "PBPistol";
+		DropItem "PB_Pistol";
 		Obituary "%o has been gunned down by a Zombie Soldier.";
 		+FLOORCLIP;
 		+SLIDESONWALLS;
@@ -974,7 +973,7 @@ Class PB_ZombieMan : PB_Monster
 		POSS K 6 ;
 		TNT1 A 0 {
 			A_StartSound("BODYF",6);
-			A_SpawnItem("DeadZombieman1");
+			A_SpawnItem("Dead_AR_ZombieMan1");
 			A_SpawnItem ("GrowingBloodPool");
 			}
 		Stop;

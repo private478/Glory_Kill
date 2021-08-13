@@ -1,6 +1,12 @@
 BONECR1 BONECR1
 BONECR2 BONECR2
 CYBPAIN CYBPAIN
+
+items/armor/Sshard			armrshrd
+
+Health_Small		"Sounds/SOULCUBE/HealthSmall.ogg"
+Health_Med				"Sounds/SOULCUBE/HealthMed.ogg"
+
 LOWHEALTH	"sounds/Player/LowHealth.ogg"
 AmmoBig			"sounds/Pickups/AmmoBigger.ogg"
 AmmoSmall			"sounds/Pickups/Ammo.ogg"
@@ -14,6 +20,7 @@ Crucible_Deploy			"Sounds/Crucible/Deploy.ogg"
 Crucible_Select			"Sounds/Crucible/Select.ogg"
 Crucible_Pickup			"Sounds/Crucible/Pickup.ogg"
 Crucible_Idle				"Sounds/Crucible/Idle.ogg"
+Crucible_AmmoPickup		"Sounds/Crucible/AmmoPickup.ogg"
 
 Eternal/Crucible/Swing1			"Sounds/Crucible/Swing1.ogg"
 Eternal/Crucible/Swing2			"Sounds/Crucible/Swing2.ogg"
@@ -58,6 +65,15 @@ $random Crucible_Return
 	Eternal/Crucible/Return3
 	Eternal/Crucible/Return4
 	Eternal/Crucible/Return5
+}
+
+$random Crucible_Lighting
+{
+	PZPCHR2	
+	LGEnd1 
+	LGEnd2	
+	STNBOMB	
+	LGBOMB
 }
 
 $limit Crucible_Swing 0

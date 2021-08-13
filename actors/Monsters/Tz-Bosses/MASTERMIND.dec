@@ -3,7 +3,7 @@
 // Spider boss
 //
 //===========================================================================
-ACTOR TheSpiderMastermind Replaces SpiderMastermind
+ACTOR PB_Mastermind Replaces SpiderMastermind
 {
 	SpawnID 2420	
     damagefactor "BFG", 0.38
@@ -73,7 +73,7 @@ ACTOR TheSpiderMastermind Replaces SpiderMastermind
 	DropItem "DemonMorphRune" 25
 	Species "MasterMind"
 	DropItem "Crucible" 25
-	WoundHealth 550
+	WoundHealth 300
 	
 	States
 	{
@@ -147,14 +147,13 @@ ACTOR TheSpiderMastermind Replaces SpiderMastermind
 		Stop
 	
 	Death.GlorySaw:
-		TNT1 A 0 A_GiveToTarget("GlorySawToken",4)
 		TNT1 A 0 A_SpawnItemEx("GlorySawPinataMax",0,0,32,random(0,8),0,random(0,8),random(0,360))
 		Goto Death
 	
 	Death.KillMe:
     Death.Taunt:
 	    TNT1 A 0 A_ChangeFlag("SOLID", 0)
-        TNT1 A 0 A_SpawnItem("TheSpiderMastermind")
+        TNT1 A 0 A_SpawnItem("PB_Mastermind")
         Stop
 	ReplaceVanilla:
 		TNT1 A 0 A_ChangeFlag("THRUACTORS", 1)
@@ -877,7 +876,7 @@ ACTOR StompedMastermind
 
 ///////////////////////////======VANILLA======//////////////////////////////////
 
-Actor Vanilla_SpiderMastermind : TheSpiderMastermind
+Actor Vanilla_SpiderMastermind : PB_Mastermind
 {
 	DropItem "DemonStrengthRune" 35
 	States

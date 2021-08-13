@@ -1,4 +1,4 @@
-actor NetherDarkImp Replaces DoomImp
+actor PB_DarkImpNether Replaces DoomImp
 {
     Game Doom
     Scale 1.04
@@ -57,7 +57,6 @@ actor NetherDarkImp Replaces DoomImp
 	MaxStepHeight 24
 	MaxDropOffHeight 32
 	DropItem "Demonpickup" 225
-	DropItem "Crucible" 1
 	WoundHealth 40
 	
     States
@@ -1498,7 +1497,7 @@ actor NetherLightningSpark
 
 ///////////////////////////======VANILLA======//////////////////////////////////
 
-Actor Vanilla_NetherDarkImp : NetherDarkImp
+Actor Vanilla_NetherDarkImp : PB_DarkImpNether
 {
 	DropItem "DemonStrengthRune" 1
 	States

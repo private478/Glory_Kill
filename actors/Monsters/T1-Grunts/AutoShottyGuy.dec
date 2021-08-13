@@ -1,4 +1,4 @@
-ACTOR ASGGuy : ShotgunGuy1 Replaces ShotgunGuy
+ACTOR ASGGuy : PB_Sergeant Replaces ShotgunGuy
 {
 //$Category Z2M3_Monsters
     Health 65
@@ -19,7 +19,6 @@ ACTOR ASGGuy : ShotgunGuy1 Replaces ShotgunGuy
 	DropItem "DropedASG"
     DropItem "NewShell"
 	DropItem "DropedGrenade" 5
-	DropItem "Crucible" 1
 	WoundHealth 25
 	
     States

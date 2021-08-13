@@ -1,4 +1,4 @@
-ACTOR Annihilator: Cyberdemon Replaces Cyberdemon
+ACTOR PB_Annihilator : Cyberdemon Replaces Cyberdemon
 {
 	SpawnID 2410
 	
@@ -65,17 +65,79 @@ DamageFactor "Blood", 0.0 DamageFactor "BlueBlood", 0.0 DamageFactor "GreenBlood
 	DeathSound "monster/anndth" 
 	ActiveSound "monster/annidle" 
 	DropItem "Crucible" 25
+	WoundHealth 400
 	States
 	{
+	Wound:
+		"####" "#" 1
+		{
+			if(GetCvar("be_ExecutionsON"))
+			{
+				if(countinv("FinisherToken")==0) //if it isnt healing already
+				{								//will heal and give the token that indicates it's executable
+					A_SpawnItemEx("BaronHighlight",0,0,0,0,0,0,0,SXF_SETMASTER|SXF_NOCHECKPOSITION); //to highlight if ON, and to remove the token after the monster heals
+					A_GiveInventory("FinisherToken",1);	//token to allow melee attack to execute
+				}
+				
+				if(GetCvar(be_MonsterStagger)==1) //will the monsters stagger at all?
+				{
+					return state("Stagger");	//stays there for a few seconds
+				}
+				else
+				{
+					return state(0);
+				}
+			}
+			return state(0);
+		}
+		Goto See
+	Stagger:
+		CYMA B 0
+		{
+			if(getcvar(be_ExecutionHighlight)==1)
+			{	return state("PrepareStaggerHighlight");}
+			else
+			{	return state("StagLooper");	}
+		}
+		Goto StagLooper
+	PrepareStaggerHighlight:
+		//RFTR X 0
+		ANNF G 4
+		Goto StagLooper
+	
+	StagLooper:
+		"####" "#" 4
+		{
+			if(!countinv("FinisherToken"))
+			{
+				return state("See");
+			}
+			if(getcvar(be_NoisyStagger) && countinv("PainSoundToken"))
+			{ 
+				A_Pain; 
+				A_TakeInventory("PainSoundToken");
+			}
+			return state(0);
+		}
+		"####" "#" 0 A_SpawnItem("HeadshotTarget4b", 0, 66,0)
+		"####" "#" 0
+		Loop
+	
+	Death.GloryKill:
+		TNT1 A 0 A_SpawnItemEx("GloryHightPinataSpawn2",0,0,32,random(0,8),0,random(0,8),random(0,360))
+		TNT1 A 0 A_NoBlocking
+        TNT1 A 0 A_GiveToTarget("CyberdemonFatality", 1)
+		TNT1 A 0 A_GiveToTarget("GoFatality", 1)
+        Stop
+	
 	Death.GlorySaw:
-		TNT1 A 0 A_GiveToTarget("GlorySawToken",4)
 		TNT1 A 0 A_SpawnItemEx("GlorySawPinataMax",0,0,32,random(0,8),0,random(0,8),random(0,360))
 		Goto Death
 	
 	Death.KillMe:
     Death.Taunt:
 	    TNT1 A 0 A_ChangeFlag("SOLID", 0)
-        TNT1 A 0 A_SpawnItem("TheCyberdemon")
+        TNT1 A 0 A_SpawnItem("PB_Cyberdemon")
         Stop
 
     ReplaceVanilla:
@@ -87,7 +149,7 @@ DamageFactor "Blood", 0.0 DamageFactor "BlueBlood", 0.0 DamageFactor "GreenBlood
 	ReplaceToggle:
 		TNT1 A 0 A_ChangeFlag("THRUACTORS", 1)
 		TNT1 A 0 A_ChangeFlag("COUNTKILL", 0)
-		TNT1 A 0 A_SpawnItemEx("TheCyberdemon",0,0,0,0,0,0,0,288)
+		TNT1 A 0 A_SpawnItemEx("PB_Cyberdemon",0,0,0,0,0,0,0,288)
 		Stop
 	
 	
@@ -430,7 +492,7 @@ DamageFactor "Blood", 0.0 DamageFactor "BlueBlood", 0.0 DamageFactor "GreenBlood
 
 ///////////////////////////======VANILLA======//////////////////////////////////
 
-Actor Vanilla_Annihilator : Annihilator
+Actor Vanilla_Annihilator : PB_Annihilator
 {
 	DropItem "DemonStrengthRune" 50
 	States

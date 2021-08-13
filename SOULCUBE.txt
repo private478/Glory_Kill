@@ -14,7 +14,7 @@ ACTOR HealthPinata : Health
 	Inventory.Amount 1
 	Inventory.MaxAmount 200
 	Inventory.PickupMessage "$GOTPINATAHEALTH"
-	Inventory.PickupSound "items/health/Sshard"
+	Inventory.PickupSound "Health_Small"
 	Gravity 0.65
 	scale 0.4
 	RenderStyle Add
@@ -187,6 +187,7 @@ ACTOR HealthPinataPermL0 : HealthPinata
 ACTOR HealthPinataPermL1 : HealthPinata
 {
 	Inventory.Amount 2
+	Inventory.PickupSound "Health_Med"
 	States
 	{
 	Spawn:

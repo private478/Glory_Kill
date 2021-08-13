@@ -1,4 +1,4 @@
-actor NamiDarkImp Replaces DoomImp
+actor PB_DarkImpNami Replaces DoomImp
 {
 	//$Category Monsters
     	Game Doom
@@ -58,7 +58,6 @@ actor NamiDarkImp Replaces DoomImp
 	MaxStepHeight 24
 	MaxDropOffHeight 32
 	DropItem "Demonpickup" 225
-	DropItem "Crucible" 1
 	WoundHealth 35
 	
     States
@@ -1258,7 +1257,7 @@ actor DarkSeeker
 
 ///////////////////////////======VANILLA======//////////////////////////////////
 
-Actor Vanilla_NamiDarkImp : NamiDarkImp
+Actor Vanilla_NamiDarkImp : PB_DarkImpNami
 {
 	DropItem "DemonStrengthRune" 1
 	States

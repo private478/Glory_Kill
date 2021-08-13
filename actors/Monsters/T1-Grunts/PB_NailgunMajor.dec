@@ -1,5 +1,5 @@
 // Temporary Changes to the Major Commando - will become nailgun zombie later, rewritten in zscript
-Actor NailgunMajor : ChaingunGuy1 Replaces ChaingunGuy
+Actor PB_NailgunMajor : PB_Commando Replaces ChaingunGuy
 {
   Scale 0.99
   Health 105
@@ -10,7 +10,6 @@ Actor NailgunMajor : ChaingunGuy1 Replaces ChaingunGuy
   Obituary "%o was perforated by a heavy weapons major."
   Decal Bulletchip
   Dropitem "DroppedPB_Nailgun", 256
-  DropItem "Crucible" 1
   WoundHealth 35
   
   States
@@ -1424,7 +1423,7 @@ actor BrutalizedNailgunMajor5: CurbstompedMarine
 	   
 ///////////////////////////======VANILLA======//////////////////////////////////
 
-Actor Vanilla_NailgunMajor : NailgunMajor
+Actor Vanilla_NailgunMajor : PB_NailgunMajor
 {
 	DropItem "DropedMinigun" 256
 	DropItem "DropedGrenade" 5

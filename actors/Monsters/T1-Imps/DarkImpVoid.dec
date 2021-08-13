@@ -1,4 +1,4 @@
-actor VoidDarkImp Replaces DoomImp
+actor PB_DarkImpVoid Replaces DoomImp
 {
 	Game Doom
     Scale 1.04
@@ -57,7 +57,6 @@ actor VoidDarkImp Replaces DoomImp
 	MaxStepHeight 24
 	MaxDropOffHeight 32
 	DropItem "Demonpickup" 225
-	DropItem "Crucible" 1
 	WoundHealth 35
 	
     States
@@ -1363,7 +1362,7 @@ actor DarkTail
 
 ///////////////////////////======VANILLA======//////////////////////////////////
 
-Actor Vanilla_VoidDarkImp : VoidDarkImp
+Actor Vanilla_VoidDarkImp : PB_DarkImpVoid
 {
 	DropItem "DemonStrengthRune" 1
 	States

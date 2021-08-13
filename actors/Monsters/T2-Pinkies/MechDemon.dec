@@ -4,7 +4,7 @@
 //
 //===========================================================================
 
-ACTOR MechDemon: Demon Replaces Demon
+ACTOR PB_MechDemon: Demon Replaces Demon
 {
     GibHealth 35
 	//Radius 30
@@ -973,7 +973,7 @@ Death:
 }
 }
 	
-Actor Vanilla_MechDemon : MechDemon
+Actor Vanilla_MechDemon : PB_MechDemon
 {
 	DropItem "DemonStrengthRune" 4
 	States
@@ -986,5 +986,5 @@ Actor Vanilla_MechDemon : MechDemon
 	}
 }
 
-Actor MaulerDemon : MechDemon
+Actor MaulerDemon : PB_MechDemon
 {}
