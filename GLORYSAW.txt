@@ -4,6 +4,7 @@ Actor GlorySawTarget : Inventory {inventory.maxamount 4}
 Actor DontGlorySaw : Inventory {inventory.maxamount 1}
 Actor CrucibleToken : Inventory {inventory.maxamount 1}
 Actor CrucibleEnergy : Inventory {inventory.maxamount 3}
+Actor DoFlamethrower : Inventory {inventory.maxamount 1}
 
 ACTOR Crucible : Custominventory 
 {
