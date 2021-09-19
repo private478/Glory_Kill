@@ -545,7 +545,7 @@ States
 		Goto GoingToReady
 		
 	/////////////////////////////////////////////////////////////////////////////////////////////
-	// Shoulder FlameThrower
+	// Shoulder Cannon
 	////////////////////////////////////////////////////////////////////////////////////////////
 		
 	ReadyFirethrower:
@@ -558,19 +558,25 @@ States
 		{
 			if (countinv("Gas") < 4)
 			{
-				return ResolveState("FireEmptyFlameThrower");
+				return ResolveState("StopEmptyCannon");
 			}
 			return ResolveState("");
 		}
-		SCF0 G 5 bright A_GunFlash
+		TNT1 A 0 {
+			if (countinv("SCfiremode")) {
+				return ResolveState("FireFreezer");
+			}
+			return ResolveState("");
+		}
 		Goto FireFlamethrower
-	
+		
 	FireFlamethrower:
+		SCF0 G 5 bright A_GunFlash
 		TNT1 A 0
 		{
 			if (countinv("Gas") < 4)
 			{
-				return ResolveState("FireEmptyFlameThrower");
+				return ResolveState("StopEmptyCannon");
 			}
 			return ResolveState("");
 		}
@@ -582,13 +588,40 @@ States
 		{
 			if (!countinv(DoFlamethrower))
 			{
-				return ResolveState("StopFlameThrower");
+				return ResolveState("StopCannon");
 			}
 			return ResolveState("");
 		}
-		Goto FireFlamethrower
+		Goto FireFlamethrower+1
+	
+	FireFreezer:
+		SCFI G 3 bright A_GunFlash
+		TNT1 A 0
+		{
+			if (countinv("Gas") < 8)
+			{
+				return ResolveState("StopEmptyCannon");
+			}
+			return ResolveState("");
+		}
+		TNT1 A 0 A_TakeInventory("Gas",8)
+		SCFI HI 1 bright
+		SCFI J 1 bright {
+			A_Playsound("weapons/freezer/fire");
+			A_FireCustomMissile("FreezerBall", -3, 0, Random(-17, -13), 12, FPF_NOAUTOAIM, -10);
+			}
+		SCF0 F 10
+		{
+			if (!countinv(DoFlamethrower))
+			{
+				return ResolveState("StopCannon");
+			}
+			return ResolveState("");
+		}
+		Goto FireFreezer
 		
-	FireEmptyFlameThrower:
+		
+	FireEmptyCannon:
 		TNT1 A 0 A_StopSoundEx("Weapon")
 		SCFR BCD 1
 		TNT1 A 0
@@ -599,16 +632,16 @@ States
 			}
 			return ResolveState("");
 		}
-		Goto FireEmptyFlameThrower
+		Goto StopEmptyCannon
 		
-	StopFlameThrower:
+	StopCannon:
 		TNT1 A 0 A_StopSoundEx("Weapon")
 		TNT1 A 0 A_PlaySoundEx("FLMREND", "Weapon")
 		SCF0 DCBA 1 A_TakeInventory("DoFlamethrower",1)
 		TNT1 A 1 A_Raise
 		Goto GoingToReady
 		
-	StopEmptyFlameThrower:
+	StopEmptyCannon:
 		TNT1 A 0 A_StopSoundEx("Weapon")
 		SCF0 DCBA 1 A_TakeInventory("DoFlamethrower",1)
 		TNT1 A 1 A_Raise
