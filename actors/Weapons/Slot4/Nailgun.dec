@@ -1244,7 +1244,6 @@ Actor EnemyNail
   }
 }
 
-
 Actor NailBlur       
 {
   Height 8

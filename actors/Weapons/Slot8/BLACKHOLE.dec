@@ -397,8 +397,6 @@ Death:
 }
 }
 
-
-
 Actor BHSmoke : DMBTrail
 {
 Scale 2.2
