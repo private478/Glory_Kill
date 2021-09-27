@@ -76,6 +76,7 @@ Class PB_ZombieScientistChainsaw : PB_ZombieScientist
 			Spawn:
 				5CZA A 1;
 				TNT1 A 0 A_GiveInventory("SKChainsawZombie", 1);
+				TNT1 A 0 A_GiveInventory("GlorySawTarget", 1);
 			Stand:
 				5CZA A 10 A_Look();
 				Loop;

@@ -8,8 +8,6 @@ alias -glorysaw "puke 6001"
 alias +firethrower "puke 6003"
 alias -firethrower "puke 6004"
 
-addmenukey "Change FireMode" changeFM
-alias changeFM "puke 6005"
-
-addmenukey "Change Melee" changemelee
-alias changemelee "puke 6002"
+   AddMenuKey "Equipment Selection Wheel" "+GKEquipSpecial"
+	alias "+GKEquipSpecial" "netevent GKEquipSpecialOn"
+	alias "-GKEquipSpecial" "netevent GKEquipSpecialOff"

@@ -182,6 +182,7 @@ Class PB_ZombieMan : PB_Monster
 				A_TakeInventory("ZombiemanAmmo", 20);
 				A_GiveInventory("ZombieManAmmo", random(1,10));
 				A_GiveInventory("SKZombieman", 1);
+				A_GiveInventory("GlorySawTarget", 1);
 				A_GiveInventory("TypeZombieMan", 1);
 			}
 			

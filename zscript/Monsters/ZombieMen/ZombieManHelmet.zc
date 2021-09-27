@@ -87,6 +87,7 @@ Class PB_HelmetZombieman: PB_Zombieman //Replaces ZombieMan
 				A_TakeInventory("ZombiemanAmmo", 20);
 				A_GiveInventory("ZombieManAmmo", random(1,10));
 				A_GiveInventory("SKHelmetZombie1", 1);
+				A_GiveInventory("GlorySawTarget", 1);
 				A_GiveInventory("TypeZombieMan", 1);
 			}
 		Stand:
