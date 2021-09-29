@@ -126,6 +126,7 @@ Steady:
 		TNT1 A 0 A_JumpIfInventory("LMGAmmoBelt", 1, "BeltReady")
 		TNT1 A 0 A_JumpIfInventory("DoGloryChainsaw", 1, "GloryChainsaw")
 		TNT1 A 0 A_JumpIfInventory("DoFlamethrower", 1, "ReadyFirethrower")
+		TNT1 A 0 A_JumpIfInventory("ToggleGKEquipment", 1, "SwitchGKEquipment")
         TNT1 A 0 A_SetCrosshair(0)
 		LMGG A 1 A_WeaponReady(WRF_ALLOWRELOAD)
 		Goto Ready+11

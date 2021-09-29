@@ -55,7 +55,7 @@ Actor PB_Afrit replaces Cacodemon
 	
   States
   {
-  		Wound:
+  	Wound:
 		"####" "#" 1
 		{
 			if(GetCvar("be_ExecutionsON"))
@@ -111,11 +111,14 @@ Actor PB_Afrit replaces Cacodemon
 	Death.GloryKill:
 		Goto Death.Fatality
   
-  	 Death.GlorySaw:
+  	Death.GlorySaw:
 		TNT1 A 0 A_GiveToTarget("GlorySawToken",3)
 		TNT1 A 0 A_SpawnItemEx("GlorySawPinataHight",0,0,32,random(0,8),0,random(0,8),random(0,360))
 		Goto Death.cut	
-  
+		
+	Death.GloryFire:
+		TNT1 A 0 A_SpawnItemEx("FlamePinataSpawnHigh",0,0,32,random(0,8),0,random(0,8),random(0,360))
+		Goto Death.Flames
   
   Death.Blackhole:
 		TNT1 A 0 A_Scream

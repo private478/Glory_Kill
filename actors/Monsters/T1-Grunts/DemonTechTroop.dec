@@ -162,6 +162,9 @@ ACTOR PB_DemonTechZombie Replaces ShotgunGuy
 		TNT1 A 0 A_SpawnItemEx("GlorySawPinataLow",0,0,32,random(0,8),0,random(0,8),random(0,360))
 		Goto Death.cut	
 	
+	Death.GloryFire:
+		TNT1 A 0 A_SpawnItemEx("FlamePinataSpawn",0,0,32,random(0,8),0,random(0,8),random(0,360))
+		Goto Death.Flames
 	
 	Death.Shrink:
 		TNT1 A 1 A_PlaySound("Shrink", 3)

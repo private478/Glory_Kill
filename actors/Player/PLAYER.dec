@@ -972,6 +972,7 @@ ACTOR Doomer : PlayerPawnBase Replaces DoomPlayer
 	damagefactor "CancelTeleportFog", 0.0
 	damagefactor "SpawnMarine", 0.0
 	DamageFactor "KillMeBot", 0.0
+	DamageFactor "GloryFire", 0.0
 	
 	damagefactor "Flames", 0.875
 	damagefactor "Fire", 0.875
