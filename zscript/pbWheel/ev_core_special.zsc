@@ -1082,23 +1082,23 @@ Class PB_SpecialWheelHandler : EventHandler
 				ice_bomb.specialAlias = "Ice Bomb";
 				ice_bomb.specialPriority = 2;
 				ice_bomb.iconScale = iconScale;
-				PB_SpecialWheel_Mode gk_chainsaw = new ("PB_SpecialWheel_Mode");
-				gk_chainsaw.specialIcon = TexMan.CheckForTexture("graphics/HUD/GK_chainsaw.png",TexMan.Type_Any);
-				gk_chainsaw.specialName = "GK_ChainsawSelected";
-				gk_chainsaw.specialAlias = "Chainsaw";
-				gk_chainsaw.specialPriority = 3;
-				gk_chainsaw.iconScale = iconScale;
-				PB_SpecialWheel_Mode gk_crucible = new ("PB_SpecialWheel_Mode");
-				gk_crucible.specialIcon = TexMan.CheckForTexture("graphics/HUD/GK_crucible.png",TexMan.Type_Any);
-				gk_crucible.specialName = "GK_CrucibleSelected";
-				gk_crucible.specialAlias = "Crucible";
-				gk_crucible.specialPriority = 4;
-				gk_crucible.iconScale = iconScale;
+				PB_SpecialWheel_Mode Blood_Punch = new ("PB_SpecialWheel_Mode");
+				Blood_Punch.specialIcon = TexMan.CheckForTexture("graphics/HUD/GK_BloodPunch.png",TexMan.Type_Any);
+				Blood_Punch.specialName = "GK_BloodPunchSelected";
+				Blood_Punch.specialAlias = "Blood Punch";
+				Blood_Punch.specialPriority = 3;
+				Blood_Punch.iconScale = iconScale;
+				PB_SpecialWheel_Mode Crucible = new ("PB_SpecialWheel_Mode");
+				Crucible.specialIcon = TexMan.CheckForTexture("graphics/HUD/GK_crucible.png",TexMan.Type_Any);
+				Crucible.specialName = "GK_CrucibleSelected";
+				Crucible.specialAlias = "Crucible";
+				Crucible.specialPriority = 4;
+				Crucible.iconScale = iconScale;
 				
 				wheelSpecials.Push(flame_belch);
 				wheelSpecials.Push(ice_bomb);
-				wheelSpecials.Push(gk_chainsaw);
-				wheelSpecials.Push(gk_crucible);
+				wheelSpecials.Push(Blood_Punch);
+				wheelSpecials.Push(Crucible);
 				
 				specialWheel_handleMouse();
 	}

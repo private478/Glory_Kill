@@ -1,1 +1,0 @@
-AMGVA = "AMGVA" //gas can

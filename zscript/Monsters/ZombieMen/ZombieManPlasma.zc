@@ -69,16 +69,25 @@ Class PB_PlasmaZombie : PB_Zombieman
 		Loop;
 	
 	Death.GloryKill:
+		TNT1 A 0 A_GiveToTarget("BPtoken",1);
 		Goto Death.Fatality;
 		
-	Death.GlorySaw:
-		TNT1 A 0 A_GiveToTarget("GlorySawToken",1);
-		TNT1 A 0 A_SpawnItemEx("GlorySawPinataLow",0,0,32,random(0,8),0,random(0,8),random(0,360));
+	Death.Crucible:
+		TNT1 A 0 A_SpawnItemEx("GlorySawPinataLow",0,0,Height / 2,random(0,8),0,random(0,8),random(0,360));
 		Goto Death.cut;
 		
 	Death.GloryFire:
-		TNT1 A 0 A_SpawnItemEx("FlamePinataSpawn",0,0,32,random(0,8),0,random(0,8),random(0,360));
+		TNT1 A 0 A_SpawnItemEx("FlamePinataSpawn",0,0,Height / 2,random(0,8),0,random(0,8),random(0,360));
 		Goto Death.Flames;		
+		
+	Death.BloodPunch:
+		TNT1 A 0 A_GiveToTarget("BloodPunchKilled",1);
+		TNT1 A 0	A_SpawnItemEx("BloodpunchWave", 0, 0, Height / 2, 0, 0, 0, 0, SXF_CLIENTSIDE|SXF_TRANSFERPITCH);
+		TNT1 A 0	A_SpawnItemEx("BloodpunchWave", 0, 0, Height / 2, 0, 0, 0, 0, SXF_CLIENTSIDE|SXF_TRANSFERPITCH);
+		TNT1 A 0	A_SpawnItemEx("BloodpunchWave", 0, 0, Height / 2, 0, 0, 0, 0, SXF_CLIENTSIDE|SXF_TRANSFERPITCH);
+		TNT1 A 0	A_SpawnItemEx("BloodpunchWave", 0, 0, Height / 2, 0, 0, 0, 0, SXF_CLIENTSIDE|SXF_TRANSFERPITCH);
+		TNT1 A 0 A_SpawnItemEx("GlorySawPinataLow",0,0,Height / 2,random(0,8),0,random(0,8),random(0,360));
+		Goto Death.ExtremePunches;
 		
 			Spawn:
 				ZMAY A 1;
@@ -86,7 +95,6 @@ Class PB_PlasmaZombie : PB_Zombieman
 					A_TakeInventory("ZombiemanAmmo", 20);
 					A_GiveInventory("ZombieManAmmo", random(1,10));
 					A_GiveInventory("SKZombieman", 1);
-					A_GiveInventory("GlorySawTarget", 1);
 					A_GiveInventory("TypeZombieMan", 1);
 				}
 				
@@ -1675,7 +1683,7 @@ Class PB_PlasmaZombie : PB_Zombieman
 				TNT1 A 0 A_NoBlocking();
 		//		TNT1 A 0 A_JumpIfIntargetInventory("FistsSelected", 1, 1);
 		//		Goto Death.ExplosiveImpact;
-				TNT1 A 0 A_SpawnItemEx("GloryLowPinataSpawn",0,0,32,random(0,8),0,random(0,8),random(0,360));
+				TNT1 A 0 A_SpawnItemEx("GloryLowPinataSpawn",0,0,Height / 2,random(0,8),0,random(0,8),random(0,360));
 				TNT1 A 0 A_GiveToTarget("GoFatality", 1);
 				TNT1 A 0 A_Jump(256,"Death.Fatality1", "Death.Fatality2");
 				Goto Death.Fatality1;

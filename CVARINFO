@@ -14,7 +14,6 @@ server int be_StaggerLenght = 4;
 server bool PinataParticles = true;
 server int sv_bonusrange = 0;
 server int sv_ammorange = 0;
-server int sv_glmax = 0;
 server bool be_holdablesaw = true;
 server bool be_fuelhud = false;
 server int sv_fuelhud_background = 0;

@@ -13,6 +13,8 @@ AmmoSmall			"sounds/Pickups/Ammo.ogg"
 Beep				"sounds/Player/Beep.ogg"
 
 Glorykill				"sounds/Glorykill/GloryKillDing.ogg"
+Bloodpunch				"sounds/Glorykill/fistblod.ogg"
+BpunchReady				"sounds/Glorykill/BPCharge.ogg"
 
 Flame_belch1				"sounds/FlameBelch/flamebelch1.ogg"
 Flame_belch2				"sounds/FlameBelch/flamebelch2.ogg"

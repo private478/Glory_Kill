@@ -49,4 +49,38 @@ Sprite "CWAVF0", 464, 464
 	Patch "CRUWAV6", -18, -20
 }
 
+Sprite "BLWVA0", 256, 256
+{
+	Offset 128, 128
+	Patch "SHCKSEMI", 0, 0
+	{
+		Blend "#FF0000", 0.5
+	}
+	Patch "SHCKSEMI", 0, 0
+	{
+		Blend "#FF0000", 0.5
+	}
+	Patch "SHCKSEMI", 0, 0
+	{
+		Blend "#FF0000", 0.5
+	}
+	Patch "SHCKSEMI", 0, 0
+	{
+		Blend "#FF0000", 0.5
+	}
+	Patch "SHCKSEMI", 0, 0
+	{
+		Blend "#FF0000", 0.5
+	}
+	Patch "LBLTH0", 23, -32
+	{
+		Blend "#FF0000", 0.5
+	}
+	Patch "LBLTA0", -4, -3
+	{
+		Rotate 90
+		Blend "#FF0000", 0.5
+	}
+}
+
 // End of texture definitions

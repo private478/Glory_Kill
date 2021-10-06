@@ -3,7 +3,7 @@ Actor SCfiremode : Inventory {inventory.maxamount 1}
 Actor ToggleGKEquipment : Inventory {inventory.maxamount 1}
 Actor GK_FlamebelchSelected : Inventory {inventory.maxamount 1}
 Actor GK_IcebombSelected : Inventory {inventory.maxamount 1}
-Actor GK_ChainsawSelected : Inventory {inventory.maxamount 1}
+Actor GK_BloodPunchSelected : Inventory {inventory.maxamount 1}
 Actor GK_CrucibleSelected : Inventory {inventory.maxamount 1}
 
 ACTOR SC_CryoGrenade: PB_FragGrenade

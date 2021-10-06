@@ -53,6 +53,8 @@ damagefactor "Blood", 0.0 damagefactor "BlueBlood", 0.0 damagefactor "GreenBlood
    +DONTHARMSPECIES
 	DropItem "Demonpickup2" 50
 	DropItem "Demonpickup" 255
+	
+	
 	DropItem "Crucible" 6
 	WoundHealth 80
 	
@@ -67,6 +69,7 @@ damagefactor "Blood", 0.0 damagefactor "BlueBlood", 0.0 damagefactor "GreenBlood
 				{								//will heal and give the token that indicates it's executable
 					A_SpawnItemEx("RevenantHighlight",0,0,0,0,0,0,0,SXF_SETMASTER|SXF_NOCHECKPOSITION); //to highlight if ON, and to remove the token after the monster heals
 					A_GiveInventory("FinisherToken",1);	//token to allow melee attack to execute
+					A_GiveToTarget("BloodPunchKilled",1); // Check BloodPunch
 				}
 				
 				if(GetCvar(be_MonsterStagger)==1) //will the monsters stagger at all?
@@ -116,14 +119,30 @@ damagefactor "Blood", 0.0 damagefactor "BlueBlood", 0.0 damagefactor "GreenBlood
 	Death.GloryKill:
 		Goto Death.Fatality
 	
-	Death.GlorySaw:
-		TNT1 A 0 A_GiveToTarget("GlorySawToken",2)
-		TNT1 A 0 A_SpawnItemEx("GlorySawPinataMed",0,0,32,random(0,8),0,random(0,8),random(0,360))
+	Death.Crucible:
+		TNT1 A 0 A_SpawnItemEx("GlorySawPinataMed",0,0,Height / 2,random(0,8),0,random(0,8),random(0,360))
 		Goto Death.cut
 	
 	Death.GloryFire:
-		TNT1 A 0 A_SpawnItemEx("FlamePinataSpawn",0,0,32,random(0,8),0,random(0,8),random(0,360))
+		TNT1 A 0 A_SpawnItemEx("FlamePinataSpawn",0,0,Height / 2,random(0,8),0,random(0,8),random(0,360))
 		Goto Death.Flames
+	
+	Death.BloodPunch:
+		TNT1 A 0 A_GiveToTarget("BloodPunchKilled",1)
+		TNT1 A 0	A_SpawnItemEx("BloodpunchWave", 0, 0, Height / 2, 0, 0, 0, 0, SXF_CLIENTSIDE|SXF_TRANSFERPITCH)
+		TNT1 A 0	A_SpawnItemEx("BloodpunchWave", 0, 0, Height / 2, 0, 0, 0, 0, SXF_CLIENTSIDE|SXF_TRANSFERPITCH)
+		TNT1 A 0	A_SpawnItemEx("BloodpunchWave", 0, 0, Height / 2, 0, 0, 0, 0, SXF_CLIENTSIDE|SXF_TRANSFERPITCH)
+		TNT1 A 0	A_SpawnItemEx("BloodpunchWave", 0, 0, Height / 2, 0, 0, 0, 0, SXF_CLIENTSIDE|SXF_TRANSFERPITCH)
+		TNT1 A 0 A_SpawnItemEx("GlorySawPinataHight",0,0,Height / 2,random(0,8),0,random(0,8),random(0,360))
+		Goto Death.Railgun
+	
+	Pain.BloodPunch:
+		TNT1 A 0 A_GiveToTarget("BloodPunchKilled",1)
+		TNT1 A 0	A_SpawnItemEx("BloodpunchWave", 0, 0, Height / 2, 0, 0, 0, 0, SXF_CLIENTSIDE|SXF_TRANSFERPITCH)
+		TNT1 A 0	A_SpawnItemEx("BloodpunchWave", 0, 0, Height / 2, 0, 0, 0, 0, SXF_CLIENTSIDE|SXF_TRANSFERPITCH)
+		TNT1 A 0	A_SpawnItemEx("BloodpunchWave", 0, 0, Height / 2, 0, 0, 0, 0, SXF_CLIENTSIDE|SXF_TRANSFERPITCH)
+		TNT1 A 0	A_SpawnItemEx("BloodpunchWave", 0, 0, Height / 2, 0, 0, 0, 0, SXF_CLIENTSIDE|SXF_TRANSFERPITCH)
+		Goto Pain.ExtremePunches
 	
 	 Death.Blackhole:
 		TNT1 A 0 A_JumpIfInventory("RevenantJetpack", 1, "DeathBlackHoleJetpack")
@@ -161,7 +180,6 @@ damagefactor "Blood", 0.0 damagefactor "BlueBlood", 0.0 damagefactor "GreenBlood
 		TNT1 A 0 ACS_ExecuteAlways(796, 0, 0, 0, 0)//Check if Vanilla Mode is activated
 		TNT1 A 0 ACS_NamedExecuteAlways("JetpackRevenant", 0)
 	    TNT1 A 0 A_JumpIfInventory("Curbstomp_Marine", 1, "FatalityMarine")
-		TNT1 A 0 A_GiveInventory("GlorySawTarget", 2)
 	Stand:
 		TNT1 A 0 A_SpawnItem("HeadshotTarget10", 26, 70, 0)
 		SKEL A 10 A_Look
@@ -775,7 +793,7 @@ Death:
     Death.Fatality:
         TNT1 A 0 A_NoBlocking
 		TNT1 A 0
-		TNT1 A 0 A_SpawnItemEx("GloryMedPinataSpawn2",0,0,32,random(0,8),0,random(0,8),random(0,360))
+		TNT1 A 0 A_SpawnItemEx("GloryMedPinataSpawn2",0,0,Height / 2,random(0,8),0,random(0,8),random(0,360))
 	//	TNT1 A 0 A_JumpIfIntargetInventory("FistsSelected", 1, 1)
 	//	Goto Death
 		TNT1 A 0 A_GiveToTarget("GoFatality", 1)

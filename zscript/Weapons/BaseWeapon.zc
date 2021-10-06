@@ -242,7 +242,7 @@ class PB_WeaponBase : DoomWeapon
 			"Steady", "QuickPunch", //"LedgeClimb",
 			"DoKick", "Taunt", "Salute", "Salute",
 			"UseEquipment", "SwitchEquipment", "DualWieldBaby",
-			"NoDualWield", "WeaponSpecial", "GrabbedBarrel", "GrabbedBurningBarrel", "GloryChainsaw", "DoFlamethrower", "SwitchGKEquipment"
+			"NoDualWield", "WeaponSpecial", "GrabbedBarrel", "GrabbedBurningBarrel", "GloryMelee", "DoFlamethrower", "SwitchGKEquipment"
 		};
 		if (!(pbFlags & PBWEAP_UNLOADED)) pbFlags |= CheckUnloaded(invoker.UnloaderToken);
 		if (CountInv("GoFatality")>=1)
@@ -271,7 +271,7 @@ class PB_WeaponBase : DoomWeapon
 		}
 		if (CountInv("DoGloryChainsaw")>=1) 
 		{
-			return ResolveState("GloryChainsaw");
+			return ResolveState("GloryMelee");
 		}
 		if (CountInv("DoFlamethrower")>=1) 
 		{

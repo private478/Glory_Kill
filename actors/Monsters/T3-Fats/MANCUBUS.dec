@@ -55,6 +55,7 @@ ACTOR PB_Mancubus : Fatso Replaces Fatso
 				{								//will heal and give the token that indicates it's executable
 					A_SpawnItemEx("FatsoHighlight",0,0,0,0,0,0,0,SXF_SETMASTER|SXF_NOCHECKPOSITION); //to highlight if ON, and to remove the token after the monster heals
 					A_GiveInventory("FinisherToken",1);	//token to allow melee attack to execute
+					A_GiveToTarget("BloodPunchKilled",1); // Check BloodPunch
 				}
 				
 				if(GetCvar(be_MonsterStagger)==1) //will the monsters stagger at all?
@@ -102,16 +103,33 @@ ACTOR PB_Mancubus : Fatso Replaces Fatso
 		Loop
 	
 	Death.GloryKill:
+		TNT1 A 0 A_GiveToTarget("BPtoken",2)
 		Goto Death.Fatality
 		
-	Death.GlorySaw:
-		TNT1 A 0 A_GiveToTarget("GlorySawToken",3)
-		TNT1 A 0 A_SpawnItemEx("GlorySawPinataHight",0,0,32,random(0,8),0,random(0,8),random(0,360))
+	Death.Crucible:
+		TNT1 A 0 A_SpawnItemEx("GlorySawPinataHight",0,0,Height / 2,random(0,8),0,random(0,8),random(0,360))
 		Goto Death.cut	
 	
 	Death.GloryFire:
-		TNT1 A 0 A_SpawnItemEx("FlamePinataSpawn",0,0,32,random(0,8),0,random(0,8),random(0,360))
+		TNT1 A 0 A_SpawnItemEx("FlamePinataSpawn",0,0,Height / 2,random(0,8),0,random(0,8),random(0,360))
 		Goto Death.Fire
+	
+	Death.BloodPunch:
+		TNT1 A 0 A_GiveToTarget("BloodPunchKilled",1)
+		TNT1 A 0	A_SpawnItemEx("BloodpunchWave", 0, 0, Height / 2, 0, 0, 0, 0, SXF_CLIENTSIDE|SXF_TRANSFERPITCH)
+		TNT1 A 0	A_SpawnItemEx("BloodpunchWave", 0, 0, Height / 2, 0, 0, 0, 0, SXF_CLIENTSIDE|SXF_TRANSFERPITCH)
+		TNT1 A 0	A_SpawnItemEx("BloodpunchWave", 0, 0, Height / 2, 0, 0, 0, 0, SXF_CLIENTSIDE|SXF_TRANSFERPITCH)
+		TNT1 A 0	A_SpawnItemEx("BloodpunchWave", 0, 0, Height / 2, 0, 0, 0, 0, SXF_CLIENTSIDE|SXF_TRANSFERPITCH)
+		TNT1 A 0 A_SpawnItemEx("GlorySawPinataMed",0,0,Height / 2,random(0,8),0,random(0,8),random(0,360))
+		Goto Death.ExplosiveImpact
+	
+	Pain.BloodPunch:
+		TNT1 A 0 A_GiveToTarget("BloodPunchKilled",1)
+		TNT1 A 0	A_SpawnItemEx("BloodpunchWave", 0, 0, Height / 2, 0, 0, 0, 0, SXF_CLIENTSIDE|SXF_TRANSFERPITCH)
+		TNT1 A 0	A_SpawnItemEx("BloodpunchWave", 0, 0, Height / 2, 0, 0, 0, 0, SXF_CLIENTSIDE|SXF_TRANSFERPITCH)
+		TNT1 A 0	A_SpawnItemEx("BloodpunchWave", 0, 0, Height / 2, 0, 0, 0, 0, SXF_CLIENTSIDE|SXF_TRANSFERPITCH)
+		TNT1 A 0	A_SpawnItemEx("BloodpunchWave", 0, 0, Height / 2, 0, 0, 0, 0, SXF_CLIENTSIDE|SXF_TRANSFERPITCH)
+		Goto Pain.ExtremePunches
 	
 	Pain.Stun:
 		TNT1 A 0
@@ -168,12 +186,10 @@ ACTOR PB_Mancubus : Fatso Replaces Fatso
 		TNT1 A 0 A_SpawnItemEx ("Vanilla_Mancubus",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION |SXF_TRANSFERSPECIAL| SXF_TRANSFERAMBUSHFLAG ,0)
 		Stop
 
-
 	Spawn:
 		FATT B 1
 		TNT1 A 0 ACS_ExecuteAlways(796, 0, 0, 0, 0)//Check if Vanilla Mode is activated
 		TNT1 A 0 ACS_NamedExecuteAlways("MancubusFlamethrower", 0)
-		TNT1 A 0 A_GiveInventory("GlorySawTarget", 3)
 		Stand:
 		TNT1 A 0 A_CheckSight("Stand2")
 		TNT1 A 0 A_SpawnItem("HeadshotTarget100", 24, 62, 0)
@@ -373,7 +389,7 @@ ACTOR PB_Mancubus : Fatso Replaces Fatso
 		Goto See
 
     Death.Fatality:
-		TNT1 A 0 A_SpawnItemEx("GloryHightPinataSpawn",0,0,32,random(0,8),0,random(0,8),random(0,360))
+		TNT1 A 0 A_SpawnItemEx("GloryHightPinataSpawn",0,0,Height / 2,random(0,8),0,random(0,8),random(0,360))
 		TNT1 A 0 A_Jump(256, "Fatality1", "Fatality2")
         TNT1 A 0 
 		Stop
