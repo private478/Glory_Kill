@@ -101,7 +101,7 @@ DropItem "Demonpickup2" 188
 		Loop
 	
 	Death.GloryKill:
-		TNT1 A 0 A_GiveToTarget("BPtoken",4)
+		TNT1 A 0 A_GiveToTarget("BPtoken",5)
 		Goto Death.Fatality
   
   	Death.Crucible:

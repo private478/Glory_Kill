@@ -75,7 +75,7 @@ Actor DNImpVariant3 : PB_Imp Replaces DoomImp
 		Loop
 	
 	Death.GloryKill:
-		TNT1 A 0 A_GiveToTarget("BPtoken",1)
+		TNT1 A 0 A_GiveToTarget("BPtoken",2)
 		Goto Death.Fatality
 		
 	Death.Crucible:
