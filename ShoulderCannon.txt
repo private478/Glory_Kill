@@ -3,8 +3,6 @@ Actor SCfiremode : Inventory {inventory.maxamount 1}
 Actor ToggleGKEquipment : Inventory {inventory.maxamount 1}
 Actor GK_FlamebelchSelected : Inventory {inventory.maxamount 1}
 Actor GK_IcebombSelected : Inventory {inventory.maxamount 1}
-Actor GK_BloodPunchSelected : Inventory {inventory.maxamount 1}
-Actor GK_CrucibleSelected : Inventory {inventory.maxamount 1}
 
 ACTOR SC_CryoGrenade: PB_FragGrenade
 {
@@ -37,13 +35,13 @@ ACTOR SC_CryoGrenade: PB_FragGrenade
 			TNT1 A 0 Bright A_StopSound(CHAN_BODY)
 			TNT1 A 0 Bright A_ChangeFlag("ICEDAMAGE", 1)
 			TNT1 A 0 Bright A_ChangeFlag("NODAMAGETHRUST", 0)
-			TNT1 A 0 Bright A_Explode(150,100, 0)  
-			TNT1 A 0 Bright A_Explode(90, 190, 0) 
-			TNT1 AAAAAAAAAAA 0 Bright A_SpawnItemEx("CryoSmoke", 0, 0, 0, random(10, 30)*0.1, 0, random(0, 10)*0.1, random(1,360), SXF_CLIENTSIDE|SXF_NOCHECKPOSITION)
-			TNT1 AAAAA 0 Bright A_SpawnItemEx("CryoSmoke3", 0, 0, 0, random(10, 30)*0.04, 0, random(0, 10)*0.04, random(1,360), SXF_CLIENTSIDE|SXF_NOCHECKPOSITION,64)
+			TNT1 A 0 Bright A_Explode(150,200, 0)  
+			TNT1 A 0 Bright A_Explode(90, 290, 0) 
+			TNT1 AAAAAAAAAAA 0 Bright A_SpawnItemEx("CryoSmoke", 0, 0, 0, random(10, 30)*0.2, 0, random(0, 10)*0.2, random(1,360), SXF_CLIENTSIDE|SXF_NOCHECKPOSITION)
+			TNT1 AAAAA 0 Bright A_SpawnItemEx("CryoSmoke3", 0, 0, 0, random(10, 30)*0.08, 0, random(0, 10)*0.08, random(1,360), SXF_CLIENTSIDE|SXF_NOCHECKPOSITION,64)
 			TNT1 AAAAAAA 0 Bright A_SpawnItemEx("FreezerTrailSparksSmall", random(5,-5), random(5,-5), random(5,-5), random(10, 30)*0.04, 0, random(0, 10)*0.04, random(1,360), SXF_CLIENTSIDE|SXF_NOCHECKPOSITION,64)
-			TNT1 AAAAAAA 0 Bright A_SpawnItemEx("CryoSmoke2", 0, 0, 0, random(10, 30)*0.04, 0, random(0, 10)*0.04, random(1,360), SXF_CLIENTSIDE|SXF_NOCHECKPOSITION,64)
-			TNT1 AAAA 0 Bright A_SpawnItemEx("IceExplosionImpact", random(-2,2), random(-2,2), random(-2,2), 0, 0, 0, random(1,360), SXF_CLIENTSIDE|SXF_NOCHECKPOSITION)
+			TNT1 AAAAAAA 0 Bright A_SpawnItemEx("CryoSmoke2", 0, 0, 0, random(10, 30)*0.08, 0, random(0, 10)*0.08, random(1,360), SXF_CLIENTSIDE|SXF_NOCHECKPOSITION,64)
+			TNT1 AAAA 0 Bright A_SpawnItemEx("IceExplosionImpact", random(-4,4), random(-4,4), random(-4,4), 0, 0, 0, random(1,360), SXF_CLIENTSIDE|SXF_NOCHECKPOSITION)
 			Stop
 	}
 }

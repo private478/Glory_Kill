@@ -300,8 +300,9 @@ ACTOR Melee_Attacks : PB_Weapon Replaces Fist
  		TNT1 A 0 A_JumpIfInventory("GrabbedBurningBarrel", 1, "GrabObject")
  		TNT1 A 0 A_JumpIfInventory("HasBarrel",1,"ReadyBarrel")
  		TNT1 A 0 A_JumpIfInventory("HasBurningBarrel",1,"ReadyBurningBarrel")
-		TNT1 A 0 A_JumpIfInventory("DoGloryChainsaw", 1, "GloryMelee")
+		TNT1 A 0 A_JumpIfInventory("DoGloryMelee", 1, "GloryMelee")
 		TNT1 A 0 A_JumpIfInventory("DoFlamethrower", 1, "ReadyFirethrower")
+		TNT1 A 0 A_JumpIfInventory("DoFlamethrower", 1, "SwitchGKEquipment")
 		P0NG ABCDEFGHIJKLMNOPQRSRQPONMLKJIHGFEDCBA 1 {
 				A_WeaponReady(WRF_ALLOWRELOAD);
 				
@@ -317,9 +318,10 @@ ACTOR Melee_Attacks : PB_Weapon Replaces Fist
 				if (CountInv("GrabbedBarrel") == 1) { return state("GrabBarrel"); }
 				if (CountInv("Kicking") == 1) { return state("DoKick"); }
 				if (CountInv("Taunting") == 1) { return state("Taunt"); }
-				if (CountInv("DoGloryChainsaw") == 1) { return state("GloryMelee"); }
-				if (CountInv("DoFlamethrower") == 1) { return state("ReadyFirethrower"); }
 				if (CountInv("Salute1") == 1 || CountInv("Salute2") == 1) { return state("Salute"); }
+				if (CountInv("DoGloryMelee") == 1) { return state("GloryMelee"); }
+				if (CountInv("DoFlamethrower") == 1) { return state("ReadyFirethrower"); }
+				if (CountInv("ToggleGKEquipment") == 1) { return state("SwitchGKEquipment"); }
 				return state("");
 		}
 		loop

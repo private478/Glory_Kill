@@ -1,6 +1,6 @@
 addkeysection "Glory kill" GloryKill             
-addmenukey "Glory Chainsaw & Crucible" +glorysaw
-addmenukey "Fire FlameThrower" +firethrower
+addmenukey "Crucible" +glorysaw
+addmenukey "Equipment Lanucher" +firethrower
 
 alias +glorysaw "puke 6000"
 alias -glorysaw "puke 6001"

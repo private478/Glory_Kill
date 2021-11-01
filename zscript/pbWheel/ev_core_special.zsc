@@ -1069,7 +1069,7 @@ Class PB_SpecialWheelHandler : EventHandler
 
 	void specialWheel_Glorykill() {
 				wheelSpecials.Clear();
-				iconScale = (1.3, 1.3);
+				iconScale = (0.2, 0.2);
 				PB_SpecialWheel_Mode flame_belch = new ("PB_SpecialWheel_Mode");
 				flame_belch.specialIcon = TexMan.CheckForTexture("graphics/HUD/Flame_Belch.png",TexMan.Type_Any);
 				flame_belch.specialName = "GK_FlamebelchSelected";
@@ -1082,23 +1082,9 @@ Class PB_SpecialWheelHandler : EventHandler
 				ice_bomb.specialAlias = "Ice Bomb";
 				ice_bomb.specialPriority = 2;
 				ice_bomb.iconScale = iconScale;
-				PB_SpecialWheel_Mode Blood_Punch = new ("PB_SpecialWheel_Mode");
-				Blood_Punch.specialIcon = TexMan.CheckForTexture("graphics/HUD/GK_BloodPunch.png",TexMan.Type_Any);
-				Blood_Punch.specialName = "GK_BloodPunchSelected";
-				Blood_Punch.specialAlias = "Blood Punch";
-				Blood_Punch.specialPriority = 3;
-				Blood_Punch.iconScale = iconScale;
-				PB_SpecialWheel_Mode Crucible = new ("PB_SpecialWheel_Mode");
-				Crucible.specialIcon = TexMan.CheckForTexture("graphics/HUD/GK_crucible.png",TexMan.Type_Any);
-				Crucible.specialName = "GK_CrucibleSelected";
-				Crucible.specialAlias = "Crucible";
-				Crucible.specialPriority = 4;
-				Crucible.iconScale = iconScale;
 				
 				wheelSpecials.Push(flame_belch);
 				wheelSpecials.Push(ice_bomb);
-				wheelSpecials.Push(Blood_Punch);
-				wheelSpecials.Push(Crucible);
 				
 				specialWheel_handleMouse();
 	}

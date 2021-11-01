@@ -167,8 +167,6 @@ States
 				{
 				A_SetInventory("GK_FlamebelchSelected",0);
 				A_SetInventory("GK_IcebombSelected",0);
-				A_SetInventory("GK_BloodPunchSelected",0);
-				A_SetInventory("GK_CrucibleSelected",0);
 				A_SetInventory("CantWeaponSpecial",0);
 				}
 			goto GoingToReady
@@ -189,20 +187,6 @@ States
 						A_Print("Equipment Selected: Ice Bomb"); 
 						A_SetInventory("SCfiremode",1);
 						A_PlaySound("weapons/freezer/reload1", CHAN_UI);
-						Return State("WheelCancelGKEquipment");
-					}
-				if(CountInv("GK_BloodPunchSelected") >=1)
-					{ 
-						A_Print("Equipment Selected: Blood Punch"); 
-						A_SetInventory("CrucibleToken",0);
-						A_PlaySound("BpunchReady", CHAN_UI);
-						Return State("WheelCancelGKEquipment");
-					}
-				if(CountInv("GK_CrucibleSelected") >=1)
-					{ 
-						A_Print("Equipment Selected: Crucible"); 
-						A_SetInventory("CrucibleToken",1);
-						A_PlaySound("Crucible_Pickup", 3);
 						Return State("WheelCancelGKEquipment");
 					}
 			Return State("");
@@ -262,41 +246,26 @@ States
 	GloryMelee:
 		SAWG G 0
 		{	
-			if (CountInv("CrucibleToken"))
+			if(CountInv("CrucibleEnergy") > 0)
 			{
-				if(CountInv("CrucibleEnergy") < 1)
-				{
-					A_Print("Not Enough Energy");
-					A_PlaySound("Beep");
-					A_TakeInventory("DoGloryChainsaw",1);
-					return ResolveState("GoingToReady");
-				}
 				A_TakeInventory("Zoomed",1);
 				A_ZoomFactor(1.0);
 				A_TakeInventory("ADSmode",1);
 				return ResolveState("Crucible");
-			}	
-			if (CountInv("BPtoken") < 5)
-			{
-				A_Print("You need more power!");
-				A_PlaySound("Beep");
-				A_TakeInventory("DoGloryChainsaw",1);
-				return ResolveState("GoingToReady");
 			}
-			A_TakeInventory("Zoomed",1);
-			A_ZoomFactor(1.0);
-			A_TakeInventory("ADSmode",1);
-			A_TakeInventory("BloodPunchKilled");
-			return ResolveState("GloryPunch");
+				A_Print("Not Enough Energy");
+				A_PlaySound("Beep");
+				A_TakeInventory("DoGloryMelee",1);
+				return ResolveState("");
 		}
 		Goto GoingToReady
 		
 	
 	/////////////////////////////////////////////////////////////////////////////////////////////
-	// Glory Punch
+	// Blood Punch
 	////////////////////////////////////////////////////////////////////////////////////////////
 	
-	GloryPunch:
+	BloodPunch:
 		P1NK ABCD 1 {
 			if (CountInv("PowerBloodOnVisor") >= 1 ) { A_SetWeaponSprite("P2NK");}
 			if (CountInv("PowerBlueBloodOnVisor") >= 1 ) { A_SetWeaponSprite("P3NK");}
@@ -313,7 +282,7 @@ States
 			A_SetRoll(roll-2);
 		}
 		TNT1 A 0 {
-				A_Saw("", "player/cyborg/fist", 64, "BloodPunchPuff", SF_NOPULLIN | SF_NOTURN , 128);
+				A_Saw("", "player/cyborg/fist", 120, "BloodPunchPuff", SF_NOPULLIN | SF_NOTURN , 128);
 		}
 		P1NK G 1 {
 			if (CountInv("PowerBloodOnVisor") >= 1 ) { A_SetWeaponSprite("P2NK");}
@@ -344,9 +313,11 @@ States
 				A_PlaySound("BloodPunch", CHAN_AUTO);
 				A_TakeInventory("BloodPunchKilled");
 				A_TakeInventory("BPtoken");
-				A_Explode(100, 128, 0, true, 128 ,0 ,0, 0, "BPImpactPuff");
+				A_Explode(100, 175, 0, true, 175 ,0 ,0, 0, "BPImpactPuff");
 			}
 		}
+		TNT1 A 0 A_TakeInventory("DoPunch",1)
+		TNT1 A 0 A_TakeInventory("DoGloryMelee", 1)
 		TNT1 A 1 A_Raise
 		Goto GoingToReady
 	
@@ -374,7 +345,7 @@ States
 		CRCB D 1 bright
 		{
 			A_WeaponReady;
-			if (!countinv(DoGloryChainsaw))
+			if (!countinv(DoGloryMelee))
 			{
 				return ResolveState("DoCrucible");
 			}
@@ -421,7 +392,7 @@ States
 		
 		TNT1 A 0
 		{
-			A_TakeInventory("DoGloryChainsaw",1);
+			A_TakeInventory("DoGloryMelee",1);
 		}
 		
 		CRCB D 1 A_WeaponOffset(-60, -12, WOF_ADD)
@@ -449,17 +420,14 @@ States
 		
 	ReadyFirethrower:
 		TNT1 A 0 {
+			if (countinv("SCfiremode")) {
+				if (countinv("RocketAmmo") < 1)
+				{
+					return ResolveState("EmptyCannon");
+				}
 				A_TakeInventory("Zoomed",1);
 				A_ZoomFactor(1.0);
 				A_TakeInventory("ADSmode",1);
-		}
-		SCF0 ABCD 1 A_PlaySound("Flamethrower/Charge",1)
-		SCF0 E 3
-		SCF0 F 3 A_Quake(8, 8, 0, 32)
-		TNT1 A 0 A_Recoil (4)
-		TNT1 A 0 A_AlertMonsters
-		TNT1 A 0 {
-			if (countinv("SCfiremode")) {
 				return ResolveState("FireCryo");
 			}
 			return ResolveState("");
@@ -470,15 +438,23 @@ States
 			{
 				return ResolveState("EmptyCannon");
 			}
+			A_TakeInventory("Zoomed",1);
+			A_ZoomFactor(1.0);
+			A_TakeInventory("ADSmode",1);
 			return ResolveState("");
 		}
+		SCF0 ABCD 1 A_PlaySound("Flamethrower/Charge",1)
+		SCF0 E 3
+		SCF0 F 3 A_Quake(8, 8, 0, 32)
+		TNT1 A 0 A_Recoil (4)
 		Goto FireFlameBelch
 		
 	FireFlameBelch:
 		TNT1 A 0 A_PlaySoundEx("Flamebelch", "Weapon")
 		SCF0 G 5 bright A_GunFlash
+		TNT1 A 0 A_AlertMonsters
 		TNT1 A 0 A_TakeInventory("Gas",50)
-		SCF0 HIJHIJHIJHIJ 1 bright {
+		SCF0 HIJHIJHIJ 1 bright {
 			A_FireCustomMissile("GloryFireMissile", -3, 0, Random(-20, -10), 12, FPF_NOAUTOAIM, -10);
 		}
 		TNT1 A 0
@@ -489,37 +465,32 @@ States
 			}
 			return ResolveState("");
 		}
-		Goto StopCannon
+		SCF0 DCBA 1 A_TakeInventory("DoFlamethrower",1)
+		TNT1 A 1 A_Raise	
+		Goto GoingToReady
 		
 	FireCryo:
+		SCF0 ABCD 1 A_PlaySound("Flamethrower/Charge",1)
+		SCF0 E 3
+		SCF0 F 3 A_Quake(8, 8, 0, 32)
+		TNT1 A 0 A_Recoil (4)
 		SCF0 F 3 bright A_GunFlash
-		TNT1 A 0
-		{
-			if (countinv("RocketAmmo") < 1)
-			{
-				return ResolveState("EmptyCannon");
-			}
-			return ResolveState("");
-		}
+		TNT1 A 0 A_AlertMonsters
 		TNT1 A 0 A_TakeInventory("RocketAmmo",1)
 		SCF0 CD 1 bright
 		SCFG E 1 bright {
 			A_PlaySound ("weapons/firegrenade", CHAN_WEAPON);
 			A_FireCustomMissile("SC_CryoGrenade", -3, 0, Random(-17, -13), 12, FPF_NOAUTOAIM, -10);
 			}
-		Goto StopCannon
-		
+		SCF0 DCBA 1 A_TakeInventory("DoFlamethrower",1)
+		TNT1 A 1 A_Raise	
+		Goto GoingToReady
 		
 	EmptyCannon:
 		TNT1 A 0 A_StopSoundEx("Weapon")
-		SCFR BCD 1
-		Goto StopCannon
-		
-	StopCannon:
-		SCF0 DCBA 1 A_TakeInventory("DoFlamethrower",1)
-		TNT1 A 1 A_Raise
+		TNT1 A 0 A_PlaySound("Equip_notready")
+		TNT1 A 0 A_TakeInventory("DoFlamethrower",1)
 		Goto GoingToReady
-		
 		
 	//First Person Legs in Doom (because, you know, "I'm not original")
 	FirstPersonLegsKickRight:
@@ -892,10 +863,17 @@ States
 		{
 			if(countinv("FinisherToken",AAPTR_PLAYER_GETTARGET)>=1 && A_CheckLOF("Null",CLOFF_SETTARGET|CLOFF_NOAIM_VERT|CLOFF_IGNOREGHOST|CLOFF_MUSTBESOLID ,180))
 			{
-			A_TakeInventory("Zoomed",1);
-			A_ZoomFactor(1.0);
-			A_TakeInventory("ADSmode",1);
-			return ResolveState("PermormGloryKill");
+				A_TakeInventory("Zoomed",1);
+				A_ZoomFactor(1.0);
+				A_TakeInventory("ADSmode",1);
+				return ResolveState("PermormGloryKill");
+			}
+			if(countinv("BPToken") == 5){
+				A_TakeInventory("Zoomed",1);
+				A_ZoomFactor(1.0);
+				A_TakeInventory("ADSmode",1);
+				A_TakeInventory("BloodPunchKilled");
+				return ResolveState("BloodPunch");
 			}
 			return ResolveState("");
 		}

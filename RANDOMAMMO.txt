@@ -59,12 +59,12 @@ ACTOR CartridgePinata : BulletCartridge
 		}
 		"####" "#" 1
 		{
-			if (GetDistance(true,TracerPtr) <= sv_ammorange + 32 && CountInv("GoFatality",TracerPtr) == 0 && CountInv("DoGloryChainsaw",TracerPtr) == 0)
+			if (GetDistance(true,TracerPtr) <= sv_ammorange + 32 && CountInv("GoFatality",TracerPtr) == 0 && CountInv("DoGloryMelee",TracerPtr) == 0)
 			{
 				A_ChangeFlag(NOCLIP,true);
 				A_FaceTracer(0,0,0,0,FAF_MIDDLE);
 			}
-			if (GetDistance(true,TracerPtr) <= sv_ammorange && CountInv("GoFatality",TracerPtr) == 0 && CountInv("DoGloryChainsaw",TracerPtr) == 0)
+			if (GetDistance(true,TracerPtr) <= sv_ammorange && CountInv("GoFatality",TracerPtr) == 0 && CountInv("DoGloryMelee",TracerPtr) == 0)
 			{
 				A_Warp(TracerPtr,0,0,16,0,WARPF_NOCHECKPOSITION|WARPF_INTERPOLATE|WARPF_STOP);
 				A_ChangeFlag(NOCLIP,false);
@@ -138,12 +138,12 @@ ACTOR ClipPinata : NewClip
 		}
 		"####" "#" 1
 		{
-			if (GetDistance(true,TracerPtr) <= sv_ammorange + 32 && CountInv("GoFatality",TracerPtr) == 0 && CountInv("DoGloryChainsaw",TracerPtr) == 0)
+			if (GetDistance(true,TracerPtr) <= sv_ammorange + 32 && CountInv("GoFatality",TracerPtr) == 0 && CountInv("DoGloryMelee",TracerPtr) == 0)
 			{
 				A_ChangeFlag(NOCLIP,true);
 				A_FaceTracer(0,0,0,0,FAF_MIDDLE);
 			}
-			if (GetDistance(true,TracerPtr) <= sv_ammorange && CountInv("GoFatality",TracerPtr) == 0 && CountInv("DoGloryChainsaw",TracerPtr) == 0)
+			if (GetDistance(true,TracerPtr) <= sv_ammorange && CountInv("GoFatality",TracerPtr) == 0 && CountInv("DoGloryMelee",TracerPtr) == 0)
 			{
 				A_Warp(TracerPtr,0,0,16,0,WARPF_NOCHECKPOSITION|WARPF_INTERPOLATE|WARPF_STOP);
 				A_ChangeFlag(NOCLIP,false);
@@ -217,12 +217,12 @@ ACTOR ShellPinata : NewShell
 		}
 	"####" "#" 1
 		{
-			if (GetDistance(true,TracerPtr) <= sv_ammorange + 32 && CountInv("GoFatality",TracerPtr) == 0 && CountInv("DoGloryChainsaw",TracerPtr) == 0)
+			if (GetDistance(true,TracerPtr) <= sv_ammorange + 32 && CountInv("GoFatality",TracerPtr) == 0 && CountInv("DoGloryMelee",TracerPtr) == 0)
 			{
 				A_ChangeFlag(NOCLIP,true);
 				A_FaceTracer(0,0,0,0,FAF_MIDDLE);
 			}
-			if (GetDistance(true,TracerPtr) <= sv_ammorange && CountInv("GoFatality",TracerPtr) == 0 && CountInv("DoGloryChainsaw",TracerPtr) == 0)
+			if (GetDistance(true,TracerPtr) <= sv_ammorange && CountInv("GoFatality",TracerPtr) == 0 && CountInv("DoGloryMelee",TracerPtr) == 0)
 			{
 				A_Warp(TracerPtr,0,0,16,0,WARPF_NOCHECKPOSITION|WARPF_INTERPOLATE|WARPF_STOP);
 				A_ChangeFlag(NOCLIP,false);
@@ -295,12 +295,12 @@ ACTOR RocketPinata : NewRocketAmmo
 		}
 		"####" "#" 1
 		{
-			if (GetDistance(true,TracerPtr) <= sv_ammorange + 32 && CountInv("GoFatality",TracerPtr) == 0 && CountInv("DoGloryChainsaw",TracerPtr) == 0)
+			if (GetDistance(true,TracerPtr) <= sv_ammorange + 32 && CountInv("GoFatality",TracerPtr) == 0 && CountInv("DoGloryMelee",TracerPtr) == 0)
 			{
 				A_ChangeFlag(NOCLIP,true);
 				A_FaceTracer(0,0,0,0,FAF_MIDDLE);
 			}
-			if (GetDistance(true,TracerPtr) <= sv_ammorange && CountInv("GoFatality",TracerPtr) == 0 && CountInv("DoGloryChainsaw",TracerPtr) == 0)
+			if (GetDistance(true,TracerPtr) <= sv_ammorange && CountInv("GoFatality",TracerPtr) == 0 && CountInv("DoGloryMelee",TracerPtr) == 0)
 			{
 				A_Warp(TracerPtr,0,0,16,0,WARPF_NOCHECKPOSITION|WARPF_INTERPOLATE|WARPF_STOP);
 				A_ChangeFlag(NOCLIP,false);
@@ -374,12 +374,12 @@ ACTOR CellPinata : NewCell
 		}
 		"####" "#" 1
 		{
-			if (GetDistance(true,TracerPtr) <= sv_ammorange + 32 && CountInv("GoFatality",TracerPtr) == 0 && CountInv("DoGloryChainsaw",TracerPtr) == 0)
+			if (GetDistance(true,TracerPtr) <= sv_ammorange + 32 && CountInv("GoFatality",TracerPtr) == 0 && CountInv("DoGloryMelee",TracerPtr) == 0)
 			{
 				A_ChangeFlag(NOCLIP,true);
 				A_FaceTracer(0,0,0,0,FAF_MIDDLE);
 			}
-			if (GetDistance(true,TracerPtr) <= sv_ammorange && CountInv("GoFatality",TracerPtr) == 0 && CountInv("DoGloryChainsaw",TracerPtr) == 0)
+			if (GetDistance(true,TracerPtr) <= sv_ammorange && CountInv("GoFatality",TracerPtr) == 0 && CountInv("DoGloryMelee",TracerPtr) == 0)
 			{
 				A_Warp(TracerPtr,0,0,16,0,WARPF_NOCHECKPOSITION|WARPF_INTERPOLATE|WARPF_STOP);
 				A_ChangeFlag(NOCLIP,false);
@@ -452,12 +452,12 @@ ACTOR GrenadePinata : HandGrenadeAmmo
 		}
 		"####" "#" 1
 		{
-			if (GetDistance(true,TracerPtr) <= sv_ammorange + 32 && CountInv("GoFatality",TracerPtr) == 0 && CountInv("DoGloryChainsaw",TracerPtr) == 0)
+			if (GetDistance(true,TracerPtr) <= sv_ammorange + 32 && CountInv("GoFatality",TracerPtr) == 0 && CountInv("DoGloryMelee",TracerPtr) == 0)
 			{
 				A_ChangeFlag(NOCLIP,true);
 				A_FaceTracer(0,0,0,0,FAF_MIDDLE);
 			}
-			if (GetDistance(true,TracerPtr) <= sv_ammorange && CountInv("GoFatality",TracerPtr) == 0 && CountInv("DoGloryChainsaw",TracerPtr) == 0)
+			if (GetDistance(true,TracerPtr) <= sv_ammorange && CountInv("GoFatality",TracerPtr) == 0 && CountInv("DoGloryMelee",TracerPtr) == 0)
 			{
 				A_Warp(TracerPtr,0,0,16,0,WARPF_NOCHECKPOSITION|WARPF_INTERPOLATE|WARPF_STOP);
 				A_ChangeFlag(NOCLIP,false);
@@ -531,12 +531,12 @@ ACTOR GasPinata : Gas
 		}
 		"####" "#" 1
 		{
-			if (GetDistance(true,TracerPtr) <= sv_ammorange + 32 && CountInv("GoFatality",TracerPtr) == 0 && CountInv("DoGloryChainsaw",TracerPtr) == 0)
+			if (GetDistance(true,TracerPtr) <= sv_ammorange + 32 && CountInv("GoFatality",TracerPtr) == 0 && CountInv("DoGloryMelee",TracerPtr) == 0)
 			{
 				A_ChangeFlag(NOCLIP,true);
 				A_FaceTracer(0,0,0,0,FAF_MIDDLE);
 			}
-			if (GetDistance(true,TracerPtr) <= sv_ammorange && CountInv("GoFatality",TracerPtr) == 0 && CountInv("DoGloryChainsaw",TracerPtr) == 0)
+			if (GetDistance(true,TracerPtr) <= sv_ammorange && CountInv("GoFatality",TracerPtr) == 0 && CountInv("DoGloryMelee",TracerPtr) == 0)
 			{
 				A_Warp(TracerPtr,0,0,16,0,WARPF_NOCHECKPOSITION|WARPF_INTERPOLATE|WARPF_STOP);
 				A_ChangeFlag(NOCLIP,false);
@@ -609,12 +609,12 @@ ACTOR StunGrenadePinata : StunGrenadeAmmo
 		}
 		"####" "#" 1
 		{
-			if (GetDistance(true,TracerPtr) <= sv_ammorange + 32 && CountInv("GoFatality",TracerPtr) == 0 && CountInv("DoGloryChainsaw",TracerPtr) == 0)
+			if (GetDistance(true,TracerPtr) <= sv_ammorange + 32 && CountInv("GoFatality",TracerPtr) == 0 && CountInv("DoGloryMelee",TracerPtr) == 0)
 			{
 				A_ChangeFlag(NOCLIP,true);
 				A_FaceTracer(0,0,0,0,FAF_MIDDLE);
 			}
-			if (GetDistance(true,TracerPtr) <= sv_ammorange && CountInv("GoFatality",TracerPtr) == 0 && CountInv("DoGloryChainsaw",TracerPtr) == 0)
+			if (GetDistance(true,TracerPtr) <= sv_ammorange && CountInv("GoFatality",TracerPtr) == 0 && CountInv("DoGloryMelee",TracerPtr) == 0)
 			{
 				A_Warp(TracerPtr,0,0,16,0,WARPF_NOCHECKPOSITION|WARPF_INTERPOLATE|WARPF_STOP);
 				A_ChangeFlag(NOCLIP,false);

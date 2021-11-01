@@ -1,4 +1,4 @@
-Actor DoGloryChainsaw : Inventory {inventory.maxamount 1}
+Actor DoGloryMelee : Inventory {inventory.maxamount 1}
 Actor CrucibleToken : Inventory {inventory.maxamount 1}
 Actor CrucibleEnergy : Inventory {inventory.maxamount 3}
 

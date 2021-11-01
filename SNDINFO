@@ -16,6 +16,7 @@ Glorykill				"sounds/Glorykill/GloryKillDing.ogg"
 Bloodpunch				"sounds/Glorykill/fistblod.ogg"
 BpunchReady				"sounds/Glorykill/BPCharge.ogg"
 
+Equip_notready				"sounds/FlameBelch/equipnotready.ogg"
 Flame_belch1				"sounds/FlameBelch/flamebelch1.ogg"
 Flame_belch2				"sounds/FlameBelch/flamebelch2.ogg"
 Flame_belch3				"sounds/FlameBelch/flamebelch3.ogg"
