@@ -27,7 +27,6 @@ Actor PB_Deadabus replaces Fatso
 	damagefactor "Blood", 0.0 damagefactor "BlueBlood", 0.0 damagefactor "GreenBlood", 0.0
 	damagefactor "HEAD", 3
 	DropItem "DemonStrengthRune" 5
-	DropItem "DemonMorphRune" 3
 	DropItem "HasteSphere" 4
 	DropItem "DoubleSphere" 4
 	Species "BigFatAss"
@@ -468,6 +467,16 @@ Actor PB_Deadabus replaces Fatso
 		  DAED IG 5 A_FaceTarget
 		  TNT1 A 0 A_SpawnItem("HeadshotTarget10", 24, 68, 0)
 		  Goto See
+		  
+	Death.IceBeam:
+		TNT1 A 0 A_ChangeFlag("SHOOTABLE", 0)
+		TNT1 A 0 A_ChangeFlag("SOLID", 0)
+		TNT1 A 0 A_SpawnItem("FrozenDaedabus")
+		TNT1 A 0 A_SpawnItem("IceCrystalGround")
+		TNT1 A 0 A_SpawnItem("IceCrystalGround")
+		TNT1 A 0 A_SpawnItem("IceCrystalGround")
+		TNT1 A 0 A_SpawnItem("IceCrystalGround")
+		Stop
 		  
 	Death.Ice:
 	Death.Freeze:

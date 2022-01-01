@@ -468,6 +468,15 @@ Stop
         TNT1 A 0 A_SpawnItem ("XDeadSpider", 1)
        Goto XBurns
 	   
+	Death.IceBeam:
+		TNT1 A 0 A_ChangeFlag("SHOOTABLE", 0)
+		TNT1 A 0 A_ChangeFlag("SOLID", 0)
+		TNT1 A 0 A_SpawnItem("FrozenArachnotron")
+		TNT1 A 0 A_SpawnItem("IceCrystalGround")
+		TNT1 A 0 A_SpawnItem("IceCrystalGround")
+		TNT1 A 0 A_SpawnItem("IceCrystalGround")
+		Stop
+	   
 	  Death.Ice:
 	Death.Freeze:
 	Death.Frost:
@@ -777,12 +786,6 @@ ACTOR ArachnoTurretFrame
 		Goto Death
 		
 		Death.Fatality:
-		//TNT1 A 0 A_GiveToTarget("ArachnoGunAmmo", 50)
-		TNT1 A 0 A_GiveToTarget("GoFatality", 1)
-		TNT1 A 0 A_GiveToTarget("ArachnotronTurret", 1)
-		TNT1 A 0 A_GiveToTarget("ArachnoGun", 1)
-		Stop
-		
 		Death:
 		TNT1 A 0 A_SpawnItemEx("NoLegsSpider", 0, 1, 1, 1, 1)
 		stop

@@ -1,6 +1,5 @@
-Actor DoFlamethrower : Inventory {inventory.maxamount 1}
-Actor SCfiremode : Inventory {inventory.maxamount 1}
-Actor ToggleGKEquipment : Inventory {inventory.maxamount 1}
+Actor FlameBelchSelected : Inventory {inventory.maxamount 1}
+Actor IceBombSelected : Inventory {inventory.maxamount 1}
 Actor GK_FlamebelchSelected : Inventory {inventory.maxamount 1}
 Actor GK_IcebombSelected : Inventory {inventory.maxamount 1}
 

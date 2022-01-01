@@ -1792,6 +1792,16 @@ Class PB_ShotgunGuy : PB_Monster
 			SPOS KJIH 5;
 			Goto See;
 			
+		Death.IceBeam:
+			TNT1 A 0 {
+				bSHOOTABLE = false;
+				bSOLID = false;
+				A_SpawnItem("FrozenShotgunGuy");
+				A_SpawnItem("IceCrystalGround");
+				A_SpawnItem("IceCrystalGround");
+			}
+			Stop;
+			
 		Death.Ice:
 		Death.Freeze:
 		Death.Frost:

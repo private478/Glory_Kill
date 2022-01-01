@@ -1152,6 +1152,13 @@ ACTOR ASGGuy : PB_Sergeant Replaces ShotgunGuy
 	TNT1 A 1
 	Stop
 
+	Death.IceBeam:
+	TNT1 A 0 A_ChangeFlag("SHOOTABLE", 0)
+	TNT1 A 0 A_ChangeFlag("SOLID", 0)
+	TNT1 A 0 A_SpawnItem("FrozenAutoShotgunGuy")
+	TNT1 A 0 A_SpawnItem("IceCrystalGround")
+	TNT1 A 0 A_SpawnItem("IceCrystalGround")
+	Stop
 		
 	Death.Ice:
 	Death.Freeze:
@@ -1331,7 +1338,6 @@ ACTOR DyingASGGuy : SwitchableDecoration
 	Spawn:
     TNT1 A 0
 	TNT1 A 0 A_SpawnItem ("GrowingBloodPool")
-	TNT1 A 0 A_PlaySound ("BURNZOM")
 	ASG5 A 10
 	TNT1 A 0 A_Jump(120, "Death")
 	Goto Suffer
@@ -1721,7 +1727,6 @@ ACTOR DyingASGGuyLegBlewedOff: DyingASGGuyNoLeg
 	Spawn:
     TNT1 A 0
 	TNT1 A 0 A_SpawnItem ("GrowingBloodPool")
-	TNT1 A 0 A_PlaySound ("BURNZOM")
 	ASG3 A 10
 	TNT1 A 0 A_Jump(160, "Death")
 	Goto Suffer

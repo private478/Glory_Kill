@@ -28,7 +28,6 @@ Actor PB_Volcabus : Fatso replaces Fatso
 	damagefactor "Blood", 0.0 damagefactor "BlueBlood", 0.0 damagefactor "GreenBlood", 0.0
     damagefactor "HEAD", 3
 	DropItem "DemonStrengthRune" 5
-	DropItem "DemonMorphRune" 5
 	DropItem "HasteSphere" 4
 	DropItem "DoubleSphere" 4
 	Species "BigFatAss"
@@ -473,7 +472,16 @@ Actor PB_Volcabus : Fatso replaces Fatso
 		TNT1 A 0 A_SpawnItem("BurningVolcabus", 0, 10)
         Stop
 
-	//Frozen
+	Death.IceBeam:
+		TNT1 A 0 A_ChangeFlag("SHOOTABLE", 0)
+		TNT1 A 0 A_ChangeFlag("SOLID", 0)
+		TNT1 A 0 A_SpawnItem("FrozenVolcabus")
+		TNT1 A 0 A_SpawnItem("IceCrystalGround")
+		TNT1 A 0 A_SpawnItem("IceCrystalGround")
+		TNT1 A 0 A_SpawnItem("IceCrystalGround")
+		TNT1 A 0 A_SpawnItem("IceCrystalGround")
+	Stop
+	
 	Death.Ice:
 	Death.Freeze:
 	Death.Frost:
