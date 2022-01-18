@@ -1,4 +1,4 @@
-Actor PB_Deadabus replaces Fatso
+Actor PB_Daedabus replaces Fatso
 {
 //$Category Z2M3_Monsters
    Health 850
@@ -1851,7 +1851,7 @@ Actor DeadDaedabusDAT5J: DEADDAEDABUSHEAD
 
 ///////////////////////////======VANILLA======//////////////////////////////////
 
-Actor Vanilla_Daedabus : PB_Mancubus Replaces Fatso
+Actor Vanilla_Daedabus : PB_Daedabus Replaces Fatso
 {
 	DropItem "DemonStrengthRune" 6
 	States

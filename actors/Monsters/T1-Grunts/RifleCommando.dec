@@ -1381,16 +1381,16 @@ actor CommandoSpawnBeacon
   Health 100
   Radius 10
   Height 30
-  Species "ZombieFlyer"
+  Species "Former_Human"
   States
   {
   Spawn:
 	TNT1 A 0
-	TNT1 A 0 A_JumpIf(CallACS("GetActorZDist") <= 200, "SpawnFlyers")
+
   SpawnTroops:
 	TNT1 A 0
 	BEAC Z 1
-	TNT1 A 0 A_JumpIf(CallACS("IsThisSky") == 1, "SpawnFlyers")
+
 	BEAC Z 3 A_SpawnItem("RedFlare", 0, 4)
 	BEAC Z 1 
 	BEAC Z 3 A_SpawnItem("RedFlare", 0, 4)
@@ -1407,30 +1407,6 @@ actor CommandoSpawnBeacon
     BEAC ZZZZZZZZZZ 5 A_SpawnItem("RedFlare", 1, 4)
     BEAC Z 1 A_SpawnItemEx ("TeleportFog", -2, 1, 8, 0, 0, 0, 0, 1)
     BEAC A 0 A_SpawnItemEx ("PB_ZombieMan", -10, -40, 10, 0, 0, 0, 0, 1)
-    BEAC Z 105
-    goto Death1
-	
-  SpawnFlyers:
-	TNT1 A 0
-	TNT1 A 0 A_JumpIf(CallACS("IsThisSky") == 1, 2)
-	Goto SpawnTroops
-	TNT1 AA 0
-	BEAC Z 3 A_SpawnItem("RedFlare", 0, 4)
-	BEAC Z 1 
-	BEAC Z 3 A_SpawnItem("RedFlare", 0, 4)
-	BEAC Z 1 
-	BEAC Z 3 A_SpawnItem("RedFlare", 0, 4)
-	BEAC Z 1 
-	TNT1 A 0 A_Playsound("MRNWT",9)
-    BEAC ZZZZZZZZZZ 5 A_SpawnItem("RedFlare", 0, 4)
-    BEAC Z 1 A_SpawnItemEx ("TeleportFog", -10, 10, 200, 0, 0, 0, 1)
-    BEAC A 0 A_SpawnItemEx ("PB_ZombieFlyer", -10, 40, 200, 0, 0, 0, 0, 1)
-    BEAC ZZZZZZZZZZ 5 A_SpawnItem("RedFlare", 1, 4)
-    BEAC Z 1 A_SpawnItemEx ("TeleportFog", 10, -10, 200, 0, 0, 0, 1)
-    BEAC A 0 A_SpawnItemEx ("PB_ZombieFlyer", 10, -40, 200, 0, 0, 0, 0, 1)
-    BEAC ZZZZZZZZZZ 5 A_SpawnItem("RedFlare", 1, 4)
-    BEAC Z 1 A_SpawnItemEx ("TeleportFog", 10, 10, 200, 0, 0, 0, 1)
-    BEAC A 0 A_SpawnItemEx ("PB_ZombieFlyer", 80, 10, 200, 0, 0, 0, 0, 1)
     BEAC Z 105
     goto Death1
 
@@ -1476,11 +1452,11 @@ actor CommandoSpawnBeaconFriendly : CommandoSpawnBeacon
   {
   Spawn:
 	TNT1 A 0
-	TNT1 A 0 A_JumpIf(CallACS("GetActorZDist") <= 200, "SpawnFlyers")
+	
   SpawnTroops:
 	TNT1 A 0
 	BEAC Z 1
-	TNT1 A 0 A_JumpIf(CallACS("IsThisSky") == 1, "SpawnFlyers")
+
 	BEAC Z 3 A_SpawnItem("RedFlare", 0, 4)
 	BEAC Z 1 
 	BEAC Z 3 A_SpawnItem("RedFlare", 0, 4)
@@ -1500,29 +1476,6 @@ actor CommandoSpawnBeaconFriendly : CommandoSpawnBeacon
     BEAC Z 105
     goto Death1
 	
-  SpawnFlyers:
-	TNT1 A 0
-	TNT1 A 0 A_JumpIf(CallACS("IsThisSky") == 1, 2)
-	Goto SpawnTroops
-	TNT1 AA 0
-	BEAC Z 3 A_SpawnItem("RedFlare", 0, 4)
-	BEAC Z 1 
-	BEAC Z 3 A_SpawnItem("RedFlare", 0, 4)
-	BEAC Z 1 
-	BEAC Z 3 A_SpawnItem("RedFlare", 0, 4)
-	BEAC Z 1 
-	TNT1 A 0 A_Playsound("MRNWT",9)
-    BEAC ZZZZZZZZZZ 5 A_SpawnItem("RedFlare", 0, 4)
-    BEAC Z 1 A_SpawnItemEx ("TeleportFog", -10, 10, 200, 0, 0, 0, 1)
-    BEAC A 0 A_SpawnItemEx ("ZombieFlyerFriendly", -10, 40, 200, 0, 0, 0, 0, 1)
-    BEAC ZZZZZZZZZZ 5 A_SpawnItem("RedFlare", 1, 4)
-    BEAC Z 1 A_SpawnItemEx ("TeleportFog", 10, -10, 200, 0, 0, 0, 1)
-    BEAC A 0 A_SpawnItemEx ("ZombieFlyerFriendly", 10, -40, 200, 0, 0, 0, 0, 1)
-    BEAC ZZZZZZZZZZ 5 A_SpawnItem("RedFlare", 1, 4)
-    BEAC Z 1 A_SpawnItemEx ("TeleportFog", 10, 10, 200, 0, 0, 0, 1)
-    BEAC A 0 A_SpawnItemEx ("ZombieFlyerFriendly", 80, 10, 200, 0, 0, 0, 0, 1)
-    BEAC Z 105
-    goto Death1
 
   Death1:
     TNT1 A 1 A_CustomMissile ("TeleportFog", 0, 0, 0, 0, 0)
