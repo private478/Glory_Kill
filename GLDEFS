@@ -545,3 +545,10 @@ hardwareshader sprite ANNFG2G8 	{ Shader "shaders/glorykill.shader" Speed 1.0 }
 hardwareshader sprite ANNFG3G7 	{ Shader "shaders/glorykill.shader" Speed 1.0 }
 hardwareshader sprite ANNFG4G6 	{ Shader "shaders/glorykill.shader" Speed 1.0 }
 hardwareshader sprite ANNFG5 	{ Shader "shaders/glorykill.shader" Speed 1.0 }
+
+//NAZIS
+hardwareshader sprite NGZIG1 	{ Shader "shaders/glorykill.shader" Speed 1.0 }
+hardwareshader sprite NGZIG2G8 	{ Shader "shaders/glorykill.shader" Speed 1.0 }
+hardwareshader sprite NGZIG3G7 	{ Shader "shaders/glorykill.shader" Speed 1.0 }
+hardwareshader sprite NGZIG4G6 	{ Shader "shaders/glorykill.shader" Speed 1.0 }
+hardwareshader sprite NGZIG5 	{ Shader "shaders/glorykill.shader" Speed 1.0 }
