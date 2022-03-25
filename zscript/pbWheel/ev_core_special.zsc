@@ -738,9 +738,9 @@ Class PB_SpecialWheelHandler : EventHandler
 	void specialWheel_Rifle()
 	{
 				wheelSpecials.Clear();
-				iconScale = (1.0, 1.0);
-
-
+				iconScale = (0.55, 0.55);
+				
+				
 				// Check Dual Wield Icons
 				if(players[consoleplayer].mo.FindInventory("DualWieldingDMRs")) {
 					PB_SpecialWheel_Mode rifle_single = new ("PB_SpecialWheel_Mode");
@@ -760,8 +760,8 @@ Class PB_SpecialWheelHandler : EventHandler
 					rifle_dual.iconScale = iconScale;
 					wheelSpecials.Push(rifle_dual);
 				}
-
-
+				
+				
 				if(players[consoleplayer].mo.FindInventory("HDMRGrenadeMode")) {
 					PB_SpecialWheel_Mode rifle_grenade_off = new ("PB_SpecialWheel_Mode");
 					rifle_grenade_off.specialIcon = TexMan.CheckForTexture("graphics/pywheel/hdmr_grenade_off.png",TexMan.Type_Any);
@@ -780,8 +780,8 @@ Class PB_SpecialWheelHandler : EventHandler
 					rifle_grenade_on.iconScale = iconScale;
 					wheelSpecials.Push(rifle_grenade_on);
 				}
-
-
+				
+				
 				if(players[consoleplayer].mo.FindInventory("HDMRSniperMode")) {
 					PB_SpecialWheel_Mode rifle_normal = new ("PB_SpecialWheel_Mode");
 					rifle_normal.specialIcon = TexMan.CheckForTexture("graphics/pywheel/hdmr_normal.png",TexMan.Type_Any);
@@ -800,15 +800,15 @@ Class PB_SpecialWheelHandler : EventHandler
 					rifle_sniper.iconScale = iconScale;
 					wheelSpecials.Push(rifle_sniper);
 				}
-
+				
 				specialWheel_handleMouse();
 	}
-	
+
 	void specialWheel_QSG()
 	{
 				wheelSpecials.Clear();
-				iconScale = (0.5, 0.5);
-
+				iconScale = (0.4, 0.4);
+				
 				if(players[consoleplayer].mo.FindInventory("QuadAkimboMode")) {
 					PB_SpecialWheel_Mode qsg_undual = new ("PB_SpecialWheel_Mode");
 					qsg_undual.specialIcon = TexMan.CheckForTexture("graphics/pywheel/Quad_Single.png",TexMan.Type_Any);
@@ -827,7 +827,7 @@ Class PB_SpecialWheelHandler : EventHandler
 					qsg_dual.iconScale = iconScale;
 					wheelSpecials.Push(qsg_dual);
 				}
-
+			
 				if(players[consoleplayer].mo.FindInventory("FullBlastMode")) {
 					PB_SpecialWheel_Mode qsg_halfnormal = new ("PB_SpecialWheel_Mode");
 					qsg_halfnormal.specialIcon = TexMan.CheckForTexture("graphics/pywheel/Quad_Half.png",TexMan.Type_Any);
@@ -865,10 +865,10 @@ Class PB_SpecialWheelHandler : EventHandler
 					qsg_demon.iconScale = iconScale;
 					wheelSpecials.Push(qsg_demon);
 				}
-
+				
 				specialWheel_handleMouse();
 	}
-
+	
 	void specialWheel_SMG()
 	{
 				wheelSpecials.Clear();
@@ -911,7 +911,8 @@ Class PB_SpecialWheelHandler : EventHandler
 				}
 				specialWheel_handleMouse();
 	}
-	
+
+
 	void specialWheel_Pistol()
 	{
 				wheelSpecials.Clear();
@@ -1075,6 +1076,8 @@ Class PB_SpecialWheelHandler : EventHandler
 				}
 				specialWheel_handleMouse();
 	}
+	
+	
 	//Beginning of part 1 of 2 of pump shotgun changes.  Seems for more than just myself this file is where a lot of issues come from
 	//due to so many branches altering this file.  I am marking with comments exactly where I changed things since the last
 	//time just a change of three lines caused more issues than fixes
@@ -1313,7 +1316,7 @@ if (players[consoleplayer].ReadyWeapon == NULL)
 			//string current_weapon = players[consoleplayer].ReadyWeapon.GetClassName();
 			 
 			switch(players[consoleplayer].ReadyWeapon.GetClassName()) {
-				
+					
 				case 'PB_Carbine':
 					specialWheel_Carbine();
 					return;
@@ -1323,9 +1326,9 @@ if (players[consoleplayer].ReadyWeapon == NULL)
 					return;
 					
 				case 'PB_QuadSG':
-					specialWheel_QSG();
-					return;			
-					
+				specialWheel_QSG();
+				return;
+
 				case 'Rifle':
 					if (players[consoleplayer].mo.FindInventory("DMRUpgraded")) {
 						specialWheel_Rifle();
@@ -1342,7 +1345,7 @@ if (players[consoleplayer].ReadyWeapon == NULL)
 				
 				case 'PB_SMG':
 					specialWheel_SMG();
-					return;			
+					return;
 					
 				case 'PB_Pistol':
 					specialWheel_Pistol();
