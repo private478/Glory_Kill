@@ -65,6 +65,7 @@ ACTOR PB_InfernalCaco : PainElemental replaces Cacodemon
 				
 				if(GetCvar(be_MonsterStagger)==1) //will the monsters stagger at all?
 				{
+					A_ChangeFlag (NOGRAVITY, 0);
 					return state("Stagger");	//stays there for a few seconds
 				}
 				else
@@ -94,6 +95,7 @@ ACTOR PB_InfernalCaco : PainElemental replaces Cacodemon
 		{
 			if(!countinv("FinisherToken"))
 			{
+				A_ChangeFlag (NOGRAVITY, 1);
 				return state("See");
 			}
 			if(getcvar(be_NoisyStagger) && countinv("PainSoundToken"))

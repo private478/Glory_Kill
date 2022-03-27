@@ -34,7 +34,7 @@ damagefactor "Blood", 0.0 damagefactor "BlueBlood", 0.0 damagefactor "GreenBlood
 	Obituary "%o has been sodomized by a Spectre."
 	
 	DropItem "Demonpickup" 100
-	DropItem "Crucible" 3
+	DropItem "Crucible" 1
 	WoundHealth 50
 	
 	

@@ -41,7 +41,7 @@ Actor PB_MeanDemon : Demon Replaces Demon
 	PainChance "Siphon", 255
 	MaxStepHeight 32
 	MaxDropOffHeight 32
-	DropItem "Crucible" 3
+	DropItem "Crucible" 1
 	WoundHealth 80
 	
 	States

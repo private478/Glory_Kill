@@ -38,7 +38,7 @@ ACTOR PB_Arachnotron: Arachnotron replaces Arachnotron
 	
 	DropItem "Demonpickup2" 255
 	DropItem "Demonpickup" 55
-	DropItem "Crucible" 6
+	DropItem "Crucible" 3
 	WoundHealth 100
 	
 	States

@@ -50,7 +50,7 @@ Actor PB_Afrit replaces Cacodemon
 	
 	DropItem "Demonpickup2" 160
 	DropItem "Demonpickup" 255
-	DropItem "Crucible" 9
+	DropItem "Crucible" 6
 	WoundHealth 100
 	
 	Species "FlyingBalls"
@@ -72,6 +72,7 @@ Actor PB_Afrit replaces Cacodemon
 				
 				if(GetCvar(be_MonsterStagger)==1) //will the monsters stagger at all?
 				{
+					A_ChangeFlag (NOGRAVITY, 0);
 					return state("Stagger");	//stays there for a few seconds
 				}
 				else
@@ -101,6 +102,7 @@ Actor PB_Afrit replaces Cacodemon
 		{
 			if(!countinv("FinisherToken"))
 			{
+				A_ChangeFlag (NOGRAVITY, 1);
 				return state("See");
 			}
 			if(getcvar(be_NoisyStagger) && countinv("PainSoundToken"))
