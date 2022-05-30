@@ -337,6 +337,11 @@ States
 	// Shoulder Cannon
 	////////////////////////////////////////////////////////////////////////////////////////////
 		
+	FireShoulderCannon:
+		TNT1 A 0 A_JumpIfInventory("FlameBelchSelected", 1, "FireFlameBelch")
+		TNT1 A 0 A_JumpIfInventory("IceBombSelected", 1, "FireIceBomb")
+		Goto GoingToReady	
+		
 	FireFlameBelch:
 		TNT1 A 0
 		{
@@ -349,18 +354,19 @@ States
 			A_TakeInventory("ADSmode",1);
 			return ResolveState("");
 		}
-		SCF0 ABCD 1 A_PlaySound("Flamethrower/Charge",1)
-		SCF0 E 3
-		SCF0 F 3 A_Quake(8, 8, 0, 32)
+		SCL0 ABCD 1 A_PlaySound("Flamethrower/Charge",1)
+		SCL0 EFGHIJ 1
+		SCL0 K 1 A_Quake(8, 8, 0, 32)
 		TNT1 A 0 A_Recoil (4)
 		TNT1 A 0 A_PlaySoundEx("Flamebelch", "Weapon")
-		SCF0 G 5 bright A_GunFlash
+		SCF0 A 5 bright A_GunFlash
 		TNT1 A 0 A_AlertMonsters
 		TNT1 A 0 A_TakeInventory("Gas",50)
-		SCF0 HIJHIJHIJ 1 bright {
+		SCF0 BCDBCDBCD 1 bright {
 			A_FireCustomMissile("GloryFireMissile", -3, 0, Random(-20, -10), 12, FPF_NOAUTOAIM, -10);
 		}
-		SCF0 DCBA 1 
+		SCF0 EF 1
+		SCL0 KJIHGFEDCBA 1
 		{
 			A_TakeInventory("UseEquipment", 1);
 			A_TakeInventory("ToggleEquipment", 1);
@@ -379,19 +385,20 @@ States
 			A_TakeInventory("ADSmode",1);
 			return ResolveState("");
 		}
-		SCF0 ABCD 1 A_PlaySound("Flamethrower/Charge",1)
-		SCF0 E 3
-		SCF0 F 3 A_Quake(8, 8, 0, 32)
+		SCL0 ABCD 1 A_PlaySound("Flamethrower/Charge",1)
+		SCL0 EFGHIJ 1
+		SCL0 K 1 A_Quake(8, 8, 0, 32)
 		TNT1 A 0 A_Recoil (4)
-		SCF0 F 3 bright A_GunFlash
+		SCF0 A 3 bright A_GunFlash
 		TNT1 A 0 A_AlertMonsters
 		TNT1 A 0 A_TakeInventory("RocketAmmo",1)
-		SCF0 CD 1 bright
-		SCFG E 1 bright {
+		SCF0 BC 1 bright
+		SCFG D 1 bright {
 			A_PlaySound ("weapons/firegrenade", CHAN_WEAPON);
 			A_FireCustomMissile("SC_CryoGrenade", -3, 0, Random(-17, -13), 12, FPF_NOAUTOAIM, -10);
 		}
-		SCF0 DCBA 1 
+		SCF0 EF 1
+		SCL0 KJIHGFEDCBA 1
 		{
 			A_TakeInventory("UseEquipment", 1);
 			A_TakeInventory("ToggleEquipment", 1);
@@ -556,8 +563,6 @@ States
 		TNT1 A 0 A_JumpIfInventory("StunGrenadeSelected", 1, "ThrowStun")
 		TNT1 A 0 A_JumpIfInventory("LeechSelected", 1, "ThrowLeech")
 		TNT1 A 0 A_JumpIfInventory("RevGunSelected", 1, "FireRevGun")
-		TNT1 A 0 A_JumpIfInventory("FlameBelchSelected", 1, "FireFlameBelch")
-		TNT1 A 0 A_JumpIfInventory("IceBombSelected", 1, "FireIceBomb")
 		//More stuff to come.....
 		
 		
@@ -627,8 +632,6 @@ States
 						A_SetInventory("LeechSelected",0);
 						A_SetInventory("RevGunSelected",0);
 						A_SetInventory("FragGrenadeSelected",0);
-						A_SetInventory("FlameBelchSelected",0);
-						A_SetInventory("IceBombSelected",0);
 						A_PlaySound("GRNPIN", 3);
 						Return State("WheelCancelEquipment");
 					}
@@ -640,8 +643,6 @@ States
 						A_SetInventory("LeechSelected",0);
 						A_SetInventory("RevGunSelected",0);
 						A_SetInventory("FragGrenadeSelected",0);
-						A_SetInventory("FlameBelchSelected",0);
-						A_SetInventory("IceBombSelected",0);
 						A_PlaySound("GRNPIN", 3);
 						Return State("WheelCancelEquipment");
 					}
@@ -653,8 +654,6 @@ States
 						A_SetInventory("LeechSelected",1);
 						A_SetInventory("RevGunSelected",0);
 						A_SetInventory("FragGrenadeSelected",0);
-						A_SetInventory("FlameBelchSelected",0);
-						A_SetInventory("IceBombSelected",0);
 						A_PlaySound("GRNPIN", 3);
 						Return State("WheelCancelEquipment");
 					}
@@ -666,8 +665,6 @@ States
 						A_SetInventory("LeechSelected",0);
 						A_SetInventory("RevGunSelected",1);
 						A_SetInventory("FragGrenadeSelected",0);
-						A_SetInventory("FlameBelchSelected",0);
-						A_SetInventory("IceBombSelected",0);
 						A_PlaySound("REVUP", 3);
 						Return State("WheelCancelEquipment");
 					}
@@ -679,19 +676,12 @@ States
 						A_SetInventory("LeechSelected",0);
 						A_SetInventory("RevGunSelected",0);
 						A_SetInventory("FragGrenadeSelected",1);
-						A_SetInventory("FlameBelchSelected",0);
-						A_SetInventory("IceBombSelected",0);
 						A_PlaySound("GRNPIN", 3);
 						Return State("WheelCancelEquipment");
 					}
 				if(CountInv("GK_FlamebelchSelected") >=1)
 				{ 
 					A_Print("Equipment Selected: Flame Belch"); 
-					A_SetInventory("ProximityMineSelected",0);
-					A_SetInventory("StunGrenadeSelected",0);
-					A_SetInventory("LeechSelected",0);
-					A_SetInventory("RevGunSelected",0);
-					A_SetInventory("FragGrenadeSelected",0);
 					A_SetInventory("FlameBelchSelected",1);
 					A_SetInventory("IceBombSelected",0);
 					A_PlaySound("FLMDRAW", CHAN_UI);
@@ -700,11 +690,6 @@ States
 				if(CountInv("GK_IcebombSelected") >=1)
 				{ 
 					A_Print("Equipment Selected: Ice Bomb"); 
-					A_SetInventory("ProximityMineSelected",0);
-					A_SetInventory("StunGrenadeSelected",0);
-					A_SetInventory("LeechSelected",0);
-					A_SetInventory("RevGunSelected",0);
-					A_SetInventory("FragGrenadeSelected",0);
 					A_SetInventory("FlameBelchSelected",0);
 					A_SetInventory("IceBombSelected",1);
 					A_PlaySound("weapons/freezer/reload1", CHAN_UI);

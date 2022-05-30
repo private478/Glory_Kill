@@ -281,6 +281,10 @@ class PB_WeaponBase : DoomWeapon
 		{
 			return ResolveState("GloryMelee");
 		}
+		if (CountInv("DoShoulderCannon")>=1) 
+		{
+			return ResolveState("FireShoulderCannon");
+		}
 		else if (CountInv("Taunting")>=1) 
 		{
 			return ResolveState("Taunt");
