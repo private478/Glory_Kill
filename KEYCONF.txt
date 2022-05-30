@@ -1,9 +1,8 @@
 addkeysection "Glory kill" GloryKill             
 addmenukey "Crucible" +glorysaw
-addmenukey "Shoulder Cannon" +shouldercannon
+addmenukey "Shoulder Cannon" shouldercannon
 
 alias +glorysaw "puke 6000"
 alias -glorysaw "puke 6001"
 
-alias +shouldercannon "puke 6003"
-alias -shouldercannon "puke 6004"
+alias shouldercannon "puke 6003"

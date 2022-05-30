@@ -338,8 +338,26 @@ States
 	////////////////////////////////////////////////////////////////////////////////////////////
 		
 	FireShoulderCannon:
-		TNT1 A 0 A_JumpIfInventory("FlameBelchSelected", 1, "FireFlameBelch")
-		TNT1 A 0 A_JumpIfInventory("IceBombSelected", 1, "FireIceBomb")
+		TNT1 A 0
+		{	
+			if(CountInv("FlameBelchSelected") > 0)
+			{
+				A_TakeInventory("Zoomed",1);
+				A_ZoomFactor(1.0);
+				A_TakeInventory("ADSmode",1);
+				return ResolveState("FireFlameBelch");
+			}
+			if(CountInv("IceBombSelected") > 0)
+			{
+				A_TakeInventory("Zoomed",1);
+				A_ZoomFactor(1.0);
+				A_TakeInventory("ADSmode",1);
+				return ResolveState("FireIceBomb");
+			}
+			return ResolveState("");
+		}
+		TNT1 A 0 A_PlaySound("Equip_notready")
+		TNT1 A 0 A_TakeInventory("DoShoulderCannon", 1)
 		Goto GoingToReady	
 		
 	FireFlameBelch:
@@ -367,10 +385,7 @@ States
 		}
 		SCF0 EF 1
 		SCL0 KJIHGFEDCBA 1
-		{
-			A_TakeInventory("UseEquipment", 1);
-			A_TakeInventory("ToggleEquipment", 1);
-		}
+		TNT1 A 0 A_TakeInventory("DoShoulderCannon", 1)
 		TNT1 A 1 A_Raise	
 		Goto GoingToReady
 		
@@ -399,21 +414,14 @@ States
 		}
 		SCF0 EF 1
 		SCL0 KJIHGFEDCBA 1
-		{
-			A_TakeInventory("UseEquipment", 1);
-			A_TakeInventory("ToggleEquipment", 1);
-		}
+		TNT1 A 0 A_TakeInventory("DoShoulderCannon", 1)
 		TNT1 A 1 A_Raise
 		Goto GoingToReady
 		
 	EmptyCannon:
 		TNT1 A 0 A_StopSoundEx("Weapon")
 		TNT1 A 0 A_PlaySound("Equip_notready")
-		TNT1 A 0 
-		{
-			A_TakeInventory("UseEquipment", 1);
-			A_TakeInventory("ToggleEquipment", 1);
-		}
+		TNT1 A 0 A_TakeInventory("DoShoulderCannon", 1)
 		Goto GoingToReady
 		
 	//First Person Legs in Doom (because, you know, "I'm not original")
