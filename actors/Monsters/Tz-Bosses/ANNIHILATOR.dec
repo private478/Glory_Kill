@@ -1,5 +1,8 @@
 ACTOR PB_Annihilator: Cyberdemon Replaces Cyberdemon
 {
+	//$Title Annihilator
+	//$Category Project Brutality - Monsters/Bosses
+	//$Sprite 4NNIE1
 	SpawnID 2410
 	
     damagefactor "BFG", .5
@@ -66,7 +69,6 @@ DamageFactor "Blood", 0.0 DamageFactor "BlueBlood", 0.0 DamageFactor "GreenBlood
 	PainSound "monster/annpain" 
 	DeathSound "monster/anndth" 
 	ActiveSound "monster/annidle" 
-	
 	PainChance "BloodPunch", 255
 	WoundHealth 400
 	
@@ -453,8 +455,9 @@ DamageFactor "Blood", 0.0 DamageFactor "BlueBlood", 0.0 DamageFactor "GreenBlood
 		TNT1 A 0 A_BossDeath
 		CYBR P -1 A_BossDeath
 		Stop
-
-	Death.IceBeam:
+	
+		Death.IceBeam:
+		TNT1 A 0 A_BossDeath
 	TNT1 A 0 A_ChangeFlag("SHOOTABLE", 0)
 	TNT1 A 0 A_ChangeFlag("SOLID", 0)
 	TNT1 A 0 A_SpawnItem("FrozenAnnihilator")
@@ -462,16 +465,16 @@ DamageFactor "Blood", 0.0 DamageFactor "BlueBlood", 0.0 DamageFactor "GreenBlood
 	TNT1 A 0 A_SpawnItem("IceCrystalGround")
 	TNT1 A 0 A_SpawnItem("IceCrystalGround")
 	Stop
-
+	
 	Death.Freeze:
 	Death.Ice:
 	Death.Frost:
+	TNT1 A 0 A_BossDeath
 	TNT1 A 0 A_ChangeFlag("SHOOTABLE", 0)
 	TNT1 A 0 A_ChangeFlag("SOLID", 0)
 	TNT1 A 0 A_SpawnItem("FrozenAnnihilator")
 	Stop
-
-
+	
     Crush:
         TNT1 A 0 A_PlaySound("misc/xdeath4")
         CRS3 A 5

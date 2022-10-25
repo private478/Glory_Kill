@@ -2,6 +2,9 @@ Class PB_PlasmaZombie : PB_Zombieman
 {
 		Default
 		{
+			//$Title Plasma Zombieman
+			//$Category Project Brutality - Monsters/Former Humans/Zombiemen
+			//$Sprite ZMAYB1
 			Health 110;
 			DropItem "Cell";
 			DropItem "StunGrenadeAmmo", 15;
@@ -316,27 +319,27 @@ Class PB_PlasmaZombie : PB_Zombieman
 			Attack3:
 				ZMAY E 6 A_FaceTarget();
 				PZ01 A 10 A_StartSound("ULTCHAR", CHAN_AUTO, CHANF_OVERLAP);
-				PZ01 AB 2 BRIGHT  {
+				PZ01 AB 2  {
 					A_FaceTarget();
 					A_SpawnProjectile("BlueFlareSpawn", 28, 0, 0, 0);
 				}
 				TNT1 A 0 A_StartSound("PLSC_1", CHAN_AUTO, CHANF_OVERLAP);
-				PZ01 AB 2 BRIGHT {
+				PZ01 AB 2  {
 					A_FaceTarget();
 					A_SpawnProjectile("BlueFlareSpawn", 28, 0, 0, 0);
 				}
 				TNT1 A 0 A_StartSound("PLSC_2", CHAN_AUTO, CHANF_OVERLAP);
-				PZ01 AB 2 BRIGHT {
+				PZ01 AB 2  {
 					A_FaceTarget();
 					A_SpawnProjectile("BlueFlareSpawn", 28, 0, 0, 0);
 				}
 				TNT1 A 0 A_StartSound("PLSC_3", CHAN_AUTO, CHANF_OVERLAP);
-				PZ01 AB 2 BRIGHT {
+				PZ01 AB 2  {
 					A_FaceTarget();
 					A_SpawnProjectile("BlueFlareSpawn", 28, 0, 0, 0);
 				}
 				TNT1 A 0 A_StartSound("PLSC_4", CHAN_AUTO, CHANF_OVERLAP);
-				PZ01 ABABABAB 1 BRIGHT {
+				PZ01 ABABABAB 1  {
 					A_FaceTarget();
 					A_SpawnProjectile("BlueFlareSpawn", 28, 0, 0, 0);
 				}
@@ -473,7 +476,7 @@ Class PB_PlasmaZombie : PB_Zombieman
 					A_TakeInventory("FallingHeight", 100);
 					A_Stop();
 					bSOLID = false;
-					A_PlaySound("BODYF",6);
+					A_StartSound("BODYF",6);
 				}
 				PZ03 GGGGGGGGGG 5 A_JumpIf(Vel.Z < 0, "FallingAfterImpact");
 				PZ03 H 10 {
@@ -508,7 +511,7 @@ Class PB_PlasmaZombie : PB_Zombieman
 					}
 				PZ03 E 2;
 				PZ03 F 2 {
-					A_PlaySound("BODYF",6);
+					A_StartSound("BODYF",6);
 					A_SpawnItem ("GrowingBloodPool");
 					A_SpawnItem ("DeadPlasmaZombie2");
 				}
@@ -672,7 +675,7 @@ Class PB_PlasmaZombie : PB_Zombieman
 			ZMAY I 6 A_NoBlocking();
 			ZMAY JK 6;
 			ZMAY L 6 {
-				A_PlaySound("BODYF",6);
+				A_StartSound("BODYF",6);
 				A_SpawnItem ("GrowingBloodPool");
 			}
 			TNT1 A 0 A_SpawnItem ("DeadPlasmaZombie1");
@@ -691,7 +694,7 @@ Class PB_PlasmaZombie : PB_Zombieman
 			}
 			13DG CD 4;
 			13DG E 4 BRIGHT {
-				A_PlaySound("PLSM9");
+				A_StartSound("PLSM9");
 				A_SpawnProjectile ("ZombiePlasma", 24, -5, 20, 2, 30);
 				A_NoBlocking();
 			}
@@ -726,7 +729,6 @@ Class PB_PlasmaZombie : PB_Zombieman
 			TNT1 A 0 A_Jump(16, "Death.arm");
 			Goto Saw2;
 		Death.Tear:
-			TNT1 A 0 A_Scream();
 			TNT1 A 0 A_NoBlocking();
 			TNT1 AAAA 0 A_SpawnProjectile("PB_Intestine", 24, 0, random (0, 360), CMF_AIMDIRECTION|CMF_ABSOLUTEPITCH|CMF_OFFSETPITCH|CMF_BADPITCH|CMF_SAVEPITCH, random (0, 160));
 			TNT1 AAA 0 A_SpawnProjectile ("PB_XDeath1", 42, 0, random (0, 360), CMF_AIMDIRECTION|CMF_ABSOLUTEPITCH|CMF_OFFSETPITCH|CMF_BADPITCH|CMF_SAVEPITCH, random (0, 160));
@@ -838,7 +840,6 @@ Class PB_PlasmaZombie : PB_Zombieman
 				A_SpawnProjectile ("PB_SuperWallRedBlood", 46, 0, random (170, 190), CMF_AIMDIRECTION|CMF_ABSOLUTEPITCH|CMF_OFFSETPITCH|CMF_BADPITCH|CMF_SAVEPITCH, random (0, 40));
 			}
 			PZD8 A 9;
-			TNT1 A 0 A_Scream();
 			PZD8 B 8;
 			TNT1 A 0 A_StartSound("BODYF", CHAN_AUTO);
 			PZD8 CDE 8;
@@ -850,7 +851,6 @@ Class PB_PlasmaZombie : PB_Zombieman
 			Stop;
 		DeathMinorHead2:
 			TNT1 A 0 {
-				A_Scream();
 				A_FaceTarget();
 				A_NoBlocking();
 				A_Stop();
@@ -867,7 +867,6 @@ Class PB_PlasmaZombie : PB_Zombieman
 			Stop;
 		DeathMinorhead3:
 			TNT1 A 0 {
-				A_Scream();
 				A_FaceTarget();
 				A_Stop();
 				A_SpawnProjectile ("Brains4Blue", random (45, 55), random (5, -5), random (170, 190), CMF_AIMDIRECTION|CMF_ABSOLUTEPITCH|CMF_OFFSETPITCH|CMF_BADPITCH|CMF_SAVEPITCH, random (-10, 10));
@@ -1179,22 +1178,23 @@ Class PB_PlasmaZombie : PB_Zombieman
 		Death.fire:
 		Death.Flames:
 		Death.Burn:
-			TNT1 A 0 A_JumpIfInTargetInventory("HasIncendiaryWeapon",1,"Death.Incinerate");
-			TNT1 A 0 A_Scream();
-			TNT1 A 0 A_NoBlocking();
-			TNT1 A 0 A_SpawnItem("BurningZombieMan");
+			TNT1 A 1 {
+				A_JumpIfInTargetInventory("HasIncendiaryWeapon",1,"Death.Incinerate");
+				A_ScreamAndUnblock();
+				A_SpawnItemEx("BurningZombieMan",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION);
+			}
 			Stop;
 		  
 		Death.Desintegrate:
-			TNT1 A 0 A_Scream();
-			TNT1 A 0 A_NoBlocking();
-			TNT1 A 0 A_SpawnItem("DesintegratedHuman");
+			TNT1 A 1 {
+				A_ScreamAndUnblock();
+				A_SpawnItemEx("DesintegratedHuman",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION);
+			}
 			Stop;
 			
 		Death.Blackhole:
-			TNT1 A 0 A_Scream();
 			TNT1 A 0 A_NoBlocking();
-			TNT1 A 0 A_SpawnItem("BlackHoledHuman");
+			TNT1 A 1 A_SpawnItemEx("BlackHoledHuman",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION);
 			Stop;
 			
 		Death.Plasma: 
@@ -1538,7 +1538,6 @@ Class PB_PlasmaZombie : PB_Zombieman
 		TNT1 A 0 A_NoBlocking();
 		TNT1 A 0 A_Jump(128, "Death.Blast2");
 		TNT1 A 0 {
-			A_Scream();
 			A_SpawnProjectile ("PB_Intestine", 32, 0, random (150, 210), CMF_AIMDIRECTION|CMF_ABSOLUTEPITCH|CMF_OFFSETPITCH|CMF_BADPITCH|CMF_SAVEPITCH, random (0, 40));
 			A_SpawnProjectile ("PB_Intestine", 32, 0, random (150, 210), CMF_AIMDIRECTION|CMF_ABSOLUTEPITCH|CMF_OFFSETPITCH|CMF_BADPITCH|CMF_SAVEPITCH, random (0, 40));
 			A_SpawnProjectile ("PB_Intestine", 32, 0, random (150, 210), CMF_AIMDIRECTION|CMF_ABSOLUTEPITCH|CMF_OFFSETPITCH|CMF_BADPITCH|CMF_SAVEPITCH, random (0, 40));
@@ -1669,7 +1668,7 @@ Class PB_PlasmaZombie : PB_Zombieman
 		Raise:
 			POSS KJIH 5;
 			Goto See;
-			
+		
 		Death.IceBeam:
 			TNT1 A 0 {
 				bSHOOTABLE = false;
@@ -1679,7 +1678,7 @@ Class PB_PlasmaZombie : PB_Zombieman
 				A_SpawnItem("IceCrystalGround");
 			}
 			Stop;
-			
+		
 		Death.Ice:
 		Death.Freeze:
 		Death.Frost:
@@ -1693,19 +1692,15 @@ Class PB_PlasmaZombie : PB_Zombieman
 		Death.Fatality:
 				TNT1 A 0 A_Pain();
 				TNT1 A 0 A_NoBlocking();
-		//		TNT1 A 0 A_JumpIfIntargetInventory("FistsSelected", 1, 1);
-		//		Goto Death.ExplosiveImpact;
 				TNT1 A 0 A_SpawnItemEx("GloryLowPinataSpawn",0,0,Height / 2,random(0,8),0,random(0,8),random(0,360));
 				TNT1 A 0 A_GiveToTarget("GoFatality", 1);
 				TNT1 A 0 A_Jump(256,"Death.Fatality1", "Death.Fatality2");
 				Goto Death.Fatality1;
 
 		Death.Fatality1:
-			TNT1 A 0 A_Scream();
 			TNT1 A 0 A_GiveToTarget("PlasmaZombieFatality", 1);
 			Stop;
 		Death.Fatality2:
-			TNT1 A 0 A_Scream();
 			TNT1 A 0 A_GiveToTarget("PlasmaZombieFatality2", 1);
 			Stop;
 			
@@ -1716,7 +1711,6 @@ Class PB_PlasmaZombie : PB_Zombieman
 		 Crush:
 		 Death.Crush:
 		 Death.Crusher:
-			TNT1 A 0 A_Scream();
 			TNT1 A 0 A_NoBlocking();
 			POSS IJK 2;
 			TNT1 A 1 A_XScream();

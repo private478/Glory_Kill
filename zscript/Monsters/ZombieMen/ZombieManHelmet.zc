@@ -2,6 +2,9 @@ Class PB_HelmetZombieman: PB_Zombieman //Replaces ZombieMan
 {
 	Default
 	{
+		//$Title Helmet Zombieman
+		//$Category Project Brutality - Monsters/Former Humans/Zombiemen
+		//$Sprite ZIV1A1
 		damagefactor "Head", 0.60;
 		DropItem "Rifle";
 	}
@@ -208,7 +211,7 @@ Class PB_HelmetZombieman: PB_Zombieman //Replaces ZombieMan
 			TNT1 A 0 A_JumpIfInTargetInventory("TargetIsAMarine",1, "DialogueCheck");
 			Goto AttackHandler;
 		MissileContinue:
-			ZIV1 E 6 {
+			ZSV1 E 6 {
 				A_Stop();
 				A_FaceTarget();
 				return A_CheckLOF("AttackHandler");
@@ -409,7 +412,7 @@ Class PB_HelmetZombieman: PB_Zombieman //Replaces ZombieMan
 			TNT1 A 0 A_StartSound("monsters/zombie/reload",CHAN_AUTO);
 			ZSV1 E 4 {
 				A_TakeInventory("ZombieManAmmo", 20);
-				A_SpawnProjectile("EmptyClipMP40", 38, 0, random(-11, 11), 0);
+				A_SpawnItemEx("EmptyDMRMag",17,-9.4, 24.4,frandom(-1,1),frandom(-5,-2),frandom(3, 5));
 				A_StartSound("PSRLOUT");
 				}
 			P05R AAB 6;
@@ -639,7 +642,6 @@ Class PB_HelmetZombieman: PB_Zombieman //Replaces ZombieMan
 			TNT1 A 0 A_Jump(32, "Death.arm");
 			Goto Death.Tear;
 		Saw2:
-			TNT1 A 0 A_Scream();
 			TNT1 A 0 A_NoBlocking();
 			TNT1 AAAA 0 A_SpawnProjectile("PB_Intestine", 24, 0, random (0, 360), CMF_AIMDIRECTION|CMF_ABSOLUTEPITCH|CMF_OFFSETPITCH|CMF_BADPITCH|CMF_SAVEPITCH, random (0, 160));
 			TNT1 AAA 0 A_SpawnProjectile ("PB_XDeath1", 42, 0, random (0, 360), CMF_AIMDIRECTION|CMF_ABSOLUTEPITCH|CMF_OFFSETPITCH|CMF_BADPITCH|CMF_SAVEPITCH, random (0, 160));
@@ -942,7 +944,6 @@ Class PB_HelmetZombieman: PB_Zombieman //Replaces ZombieMan
 			U4M7 A 6 A_SpawnProjectile ("PB_MuchBlood2", 40, 0, random (0, 360), CMF_AIMDIRECTION|CMF_ABSOLUTEPITCH|CMF_OFFSETPITCH|CMF_BADPITCH|CMF_SAVEPITCH, random (0, 160));
 			U4M7 BC 8;
 			
-			TNT1 A 0 A_Scream();
 			U4M7 D 6 A_NoBlocking();
 			TNT1 A 0 A_SpawnItem ("GrowingBloodPool");
 			TNT1 A 0 A_StartSound("BODYF",6);
@@ -961,7 +962,6 @@ Class PB_HelmetZombieman: PB_Zombieman //Replaces ZombieMan
 			U4M7 F 6 A_SpawnProjectile ("PB_MuchBlood2", 40, 0, random (0, 360), CMF_AIMDIRECTION|CMF_ABSOLUTEPITCH|CMF_OFFSETPITCH|CMF_BADPITCH|CMF_SAVEPITCH, random (0, 160));
 			U4M7 GH 8;
 			
-			TNT1 A 0 A_Scream();
 			U4M7 I 6 A_NoBlocking();
 			TNT1 A 0 A_SpawnItem ("GrowingBloodPool");
 			TNT1 A 0 A_StartSound("BODYF",6);
@@ -969,7 +969,6 @@ Class PB_HelmetZombieman: PB_Zombieman //Replaces ZombieMan
 			TNT1 A 0 A_SpawnItem ("DeadZombieman_U4M7J");
 			Stop;
 		DeathMinorhead3:
-			TNT1 A 0 A_Scream();
 			U4M9 A 5 A_SpawnProjectile ("PB_MuchBlood2", 40, 0, random (0, 360), CMF_AIMDIRECTION|CMF_ABSOLUTEPITCH|CMF_OFFSETPITCH|CMF_BADPITCH|CMF_SAVEPITCH, random (0, 160));
 			U4M9 B 5;
 			TNT1 A 0 A_SpawnProjectile ("PB_Brains2", random (45, 55), random (5, -5), random (170, 190), CMF_AIMDIRECTION|CMF_ABSOLUTEPITCH|CMF_OFFSETPITCH|CMF_BADPITCH|CMF_SAVEPITCH, random (-10, 10));
@@ -995,7 +994,6 @@ Class PB_HelmetZombieman: PB_Zombieman //Replaces ZombieMan
 			PXS4 A 6 A_SpawnProjectile ("PB_MuchBlood2", 40, 0, random (0, 360), CMF_AIMDIRECTION|CMF_ABSOLUTEPITCH|CMF_OFFSETPITCH|CMF_BADPITCH|CMF_SAVEPITCH, random (0, 160));
 			PXS4 BC 7;
 			
-			TNT1 A 0 A_Scream();
 			PXS4 D 6 A_NoBlocking();
 			PXS4 EF 6;
 			TNT1 A 0 A_SpawnItem ("GrowingBloodPool");
@@ -1071,7 +1069,6 @@ Class PB_HelmetZombieman: PB_Zombieman //Replaces ZombieMan
 			TNT1 A 0 A_NoBlocking();
 			TNT1 A 0 A_Jump(128, "Death.Blast2");
 			TNT1 A 0 {
-				A_Scream();
 				A_SpawnProjectile ("PB_Intestine", 32, 0, random (150, 210), CMF_AIMDIRECTION|CMF_ABSOLUTEPITCH|CMF_OFFSETPITCH|CMF_BADPITCH|CMF_SAVEPITCH, random (0, 40));
 				A_SpawnProjectile ("PB_Intestine", 32, 0, random (150, 210), CMF_AIMDIRECTION|CMF_ABSOLUTEPITCH|CMF_OFFSETPITCH|CMF_BADPITCH|CMF_SAVEPITCH, random (0, 40));
 				A_SpawnProjectile ("PB_Intestine", 32, 0, random (150, 210), CMF_AIMDIRECTION|CMF_ABSOLUTEPITCH|CMF_OFFSETPITCH|CMF_BADPITCH|CMF_SAVEPITCH, random (0, 40));
@@ -1186,25 +1183,19 @@ Class PB_HelmetZombieman: PB_Zombieman //Replaces ZombieMan
 				TNT1 A 0 A_Pain();
 				TNT1 A 0 A_NoBlocking();
 				TNT1 A 0 A_SpawnItemEx("GloryLowPinataSpawn",0,0,Height / 2,random(0,8),0,random(0,8),random(0,360));
-			//	TNT1 A 0 A_JumpIfIntargetInventory("FistsSelected", 1, 1);
-			//	Goto Death.ExplosiveImpact;
 				TNT1 A 0 A_GiveToTarget("GoFatality", 1);
 				TNT1 A 0 A_Jump(256,"Death.Fatality1", "Death.Fatality2", "Death.Fatality3", "Death.Fatality4");
 				Stop;
 			Death.Fatality1:
-				TNT1 A 0 A_Scream();
 				TNT1 A 0 A_GiveToTarget("HelmetZombieManFatality", 1);
 				Stop;
 			Death.Fatality2:
-				TNT1 A 0 A_Scream();
 				TNT1 A 0 A_GiveToTarget("HelmetZombieManFatality2", 1);
 				Stop;
 			Death.Fatality3:
-				TNT1 A 0 A_Scream();
 				TNT1 A 0 A_GiveToTarget("HelmetZombieManFatality3", 1);
 				Stop;
 			Death.Fatality4:
-				TNT1 A 0 A_Scream();
 				TNT1 A 0 A_GiveToTarget("HelmetZombieManFatality4", 1);
 				Stop;	
 		
@@ -1243,7 +1234,7 @@ Class PB_HelmetZombieman: PB_Zombieman //Replaces ZombieMan
 			ZDE5 C 25 A_Stop();
 			ZDE5 D 6;
 			P056 F 6;
-			ZMV1 E 6;
+			ZSV1 E 6;
 			Goto Missile;
 		
 		//Avoid damage
@@ -1252,7 +1243,7 @@ Class PB_HelmetZombieman: PB_Zombieman //Replaces ZombieMan
 		Avoid:
 			TNT1 A 0 A_Jump(256, "DiveLeft", "DiveRight", "DiveLeft", "DiveRight", "DiveFront");
 			Goto DiveFront;
-			
+		
 		Death.IceBeam:
 			TNT1 A 0 {
 				bSHOOTABLE = false;
@@ -1262,7 +1253,7 @@ Class PB_HelmetZombieman: PB_Zombieman //Replaces ZombieMan
 				A_SpawnItem("IceCrystalGround");
 			}
 			Stop;
-			
+		
 		Death.Ice:
 		Death.Freeze:
 		Death.Frost:

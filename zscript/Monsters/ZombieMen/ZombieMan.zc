@@ -1,7 +1,9 @@
 Class PB_ZombieMan : PB_Monster
 {
-		Default
-		{
+	Default
+	{
+		//$Title Rifle Zombieman
+		//$Category Project Brutality - Monsters/Former Humans/Zombiemen
 		Monster;
 		Radius 16;
 		Height 56;
@@ -28,7 +30,7 @@ Class PB_ZombieMan : PB_Monster
 		PainChance "Trample", 255;
 		PainChance "Stun", 255;
 		PainChance "Siphon", 255;
-		damagefactor "Crush", 5.0;
+			damagefactor "Crush", 5.0;
 		damagefactor "Avoid", 1.0;
 		damagefactor "GibRemoving", 0.0;
 		damagefactor "DontCallTheBaron", 0.0;
@@ -45,9 +47,10 @@ Class PB_ZombieMan : PB_Monster
 		damagefactor "Cut", 0.75;
 		damagefactor "Tear", 0.25;
 		damagefactor "TeleportRemover", 0.0;
+		damagefactor "Execution", 1000.0;
 		DropItem "Rifle";
 		DropItem "DropedGrenade", 7;
-		DropItem "PB_Pistol";
+		
 		Obituary "%o has been gunned down by a Zombie Soldier.";
 		+FLOORCLIP;
 		+SLIDESONWALLS;
@@ -56,7 +59,7 @@ Class PB_ZombieMan : PB_Monster
 		+STANDSTILL
 		Species "Former_Human";
 		WoundHealth 25;
-		}
+	}
 		
 		int movement_direction;
 		
@@ -111,82 +114,90 @@ Class PB_ZombieMan : PB_Monster
 		
 		States
 		{
-		
 		Wound:
-		"####" "#" 1
-		{
-			if(GetCvar("be_ExecutionsON"))
+			"####" "#" 1
 			{
-				if(countinv("FinisherToken")==0) //if it isnt healing already
-				{								//will heal and give the token that indicates it's executable
-					A_SpawnItemEx("ZombieHighlight",0,0,0,0,0,0,0,SXF_SETMASTER|SXF_NOCHECKPOSITION); //to highlight if ON, and to remove the token after the monster heals
-					A_GiveInventory("FinisherToken",1);	//token to allow melee attack to execute
-				}
-				
-				if(GetCvar("be_MonsterStagger")==1) //will the monsters stagger at all?
+				if(GetCvar("be_ExecutionsON"))
 				{
-					return ResolveState("Stagger");	//stays there for a few seconds
+					if(countinv("FinisherToken")==0) //if it isnt healing already
+					{								//will heal and give the token that indicates it's executable
+						A_SpawnItemEx("ZombieHighlight",0,0,0,0,0,0,0,SXF_SETMASTER|SXF_NOCHECKPOSITION); //to highlight if ON, and to remove the token after the monster heals
+						A_GiveInventory("FinisherToken",1);	//token to allow melee attack to execute
+					}
+					
+					if(GetCvar("be_MonsterStagger")==1) //will the monsters stagger at all?
+					{
+						return ResolveState("Stagger");	//stays there for a few seconds
+					}
+					else
+					{
+						return ResolveState(null);
+					}
 				}
+				return ResolveState(null);
+			}
+			Goto See;
+		Stagger:
+			POSS G 0
+			{
+				if(getcvar("be_ExecutionHighlight")==1)
+				{	return ResolveState("PrepareStaggerHighlight");}
 				else
-				{
-					return ResolveState(null);
-				}
+				{	return ResolveState("StagLooper");	}
 			}
-			return ResolveState(null);
-		}
-		Goto See;
-	Stagger:
-		POSS G 0
-		{
-			if(getcvar("be_ExecutionHighlight")==1)
-			{	return ResolveState("PrepareStaggerHighlight");}
-			else
-			{	return ResolveState("StagLooper");	}
-		}
-		Goto StagLooper;
-	PrepareStaggerHighlight:
-		//RFTR X 0
-		PGSS G 0;
-		Goto StagLooper;
-	
-	StagLooper:
-		"####" "#" 4
-		{
-			if(!countinv("FinisherToken"))
+			Goto StagLooper;
+		PrepareStaggerHighlight:
+			//RFTR X 0
+			PGSS G 0;
+			Goto StagLooper;
+		
+		StagLooper:
+			"####" "#" 4
 			{
-				return ResolveState("See");
+				if(!countinv("FinisherToken"))
+				{
+					return ResolveState("See");
+				}
+				if(getcvar("be_NoisyStagger") && countinv("PainSoundToken"))
+				{ 
+					A_Pain(); 
+					A_TakeInventory("PainSoundToken");
+				}
+				return ResolveState(null);
 			}
-			if(getcvar("be_NoisyStagger") && countinv("PainSoundToken"))
-			{ 
-				A_Pain(); 
-				A_TakeInventory("PainSoundToken");
-			}
-			return ResolveState(null);
-		}
-		"####" "#" 0 { A_SpawnItem ("HeadshotTarget4", 0, 40,0); A_SpawnItem ("LegTarget4", 10); }
-		"####" "#" 0;
-		Loop;
-	
-	Death.GloryKill:
-		TNT1 A 0 A_GiveToTarget("BPtoken",2);
-		Goto Death.Fatality;
+			"####" "#" 0 { A_SpawnItem ("HeadshotTarget4", 0, 40,0); A_SpawnItem ("LegTarget4", 10); }
+			"####" "#" 0;
+			Loop;
 		
-	Death.Crucible:
-		TNT1 A 0 A_SpawnItemEx("GlorySawPinataLow",0,0,Height / 2,random(0,8),0,random(0,8),random(0,360));
-		Goto Death.cut;
+		Death.GloryKill:
+			TNT1 A 0 A_GiveToTarget("BPtoken",2);
+			Goto Death.Fatality;
+			
+		Death.Crucible:
+			TNT1 A 0 A_SpawnItemEx("GlorySawPinataLow",0,0,Height / 2,random(0,8),0,random(0,8),random(0,360));
+			Goto Death.cut;
+			
+		Death.GloryFire:
+			TNT1 A 0 A_SpawnItemEx("FlamePinataSpawn",0,0,Height / 2,random(0,8),0,random(0,8),random(0,360));
+			Goto Death.Flames;		
+			
+		Death.BloodPunch:
+			TNT1 A 0 A_GiveToTarget("BloodPunchKilled",1);
+			TNT1 A 0	A_SpawnItemEx("BloodpunchWave", 0, 0, Height / 2, 0, 0, 0, 0, SXF_CLIENTSIDE|SXF_TRANSFERPITCH);
+			TNT1 A 0	A_SpawnItemEx("BloodpunchWave", 0, 0, Height / 2, 0, 0, 0, 0, SXF_CLIENTSIDE|SXF_TRANSFERPITCH);
+			TNT1 A 0	A_SpawnItemEx("BloodpunchWave", 0, 0, Height / 2, 0, 0, 0, 0, SXF_CLIENTSIDE|SXF_TRANSFERPITCH);
+			TNT1 A 0	A_SpawnItemEx("BloodpunchWave", 0, 0, Height / 2, 0, 0, 0, 0, SXF_CLIENTSIDE|SXF_TRANSFERPITCH);
+			TNT1 A 0 A_SpawnItemEx("GlorySawPinataLow",0,0,Height / 2,random(0,8),0,random(0,8),random(0,360));
+			Goto Death.ExtremePunches;
 		
-	Death.GloryFire:
-		TNT1 A 0 A_SpawnItemEx("FlamePinataSpawn",0,0,Height / 2,random(0,8),0,random(0,8),random(0,360));
-		Goto Death.Flames;		
-		
-	Death.BloodPunch:
-		TNT1 A 0 A_GiveToTarget("BloodPunchKilled",1);
-		TNT1 A 0	A_SpawnItemEx("BloodpunchWave", 0, 0, Height / 2, 0, 0, 0, 0, SXF_CLIENTSIDE|SXF_TRANSFERPITCH);
-		TNT1 A 0	A_SpawnItemEx("BloodpunchWave", 0, 0, Height / 2, 0, 0, 0, 0, SXF_CLIENTSIDE|SXF_TRANSFERPITCH);
-		TNT1 A 0	A_SpawnItemEx("BloodpunchWave", 0, 0, Height / 2, 0, 0, 0, 0, SXF_CLIENTSIDE|SXF_TRANSFERPITCH);
-		TNT1 A 0	A_SpawnItemEx("BloodpunchWave", 0, 0, Height / 2, 0, 0, 0, 0, SXF_CLIENTSIDE|SXF_TRANSFERPITCH);
-		TNT1 A 0 A_SpawnItemEx("GlorySawPinataLow",0,0,Height / 2,random(0,8),0,random(0,8),random(0,360));
-		Goto Death.ExtremePunches;
+		Execution:
+			TNT1 A 1 A_Die("Execution");
+			Stop;
+		Death.Execution:
+			TNT1 A 0;
+			Stop;
+			
+			
 		
 		Spawn:
 			PSSS A 1;
@@ -269,6 +280,7 @@ Class PB_ZombieMan : PB_Monster
 		//Attack Logic// 
 		////////////////
 		Melee:
+			TNT1 A 0 A_JumpIfInventory("ExecutionToken", 1, "Execution");
 			TNT1 A 0 A_Jump(224, 2);
 			TNT1 A 0 A_CombatDialogueHandler();
 			ZBS1 A 6 A_FaceTarget();
@@ -466,7 +478,7 @@ Class PB_ZombieMan : PB_Monster
 			TNT1 A 0 A_StartSound("monsters/zombie/reload",CHAN_AUTO);
 			POSS E 4 {
 				A_TakeInventory("ZombieManAmmo", 20);
-				A_SpawnProjectile("EmptyClipSpawn", 38, 0, random(-11, 11), 0);
+				A_SpawnItemEx("EmptyDMRMag",17,-9.4, 24.4,frandom(-1,1),frandom(-5,-2),frandom(3, 5));
 				A_StartSound("Reload", 1);
 				}
 			ID12 ABCD 10;
@@ -777,7 +789,6 @@ Class PB_ZombieMan : PB_Monster
 			TNT1 A 0 A_Jump(32, "Death.arm");
 			Goto Death.Tear;
 		Saw2:
-			TNT1 A 0 A_Scream();
 			TNT1 A 0 A_NoBlocking();
 			TNT1 AAAA 0 A_SpawnProjectile("PB_Intestine", 24, 0, random (0, 360), CMF_AIMDIRECTION|CMF_ABSOLUTEPITCH|CMF_OFFSETPITCH|CMF_BADPITCH|CMF_SAVEPITCH, random (0, 160));
 			TNT1 AAA 0 A_SpawnProjectile ("PB_XDeath1", 42, 0, random (0, 360), CMF_AIMDIRECTION|CMF_ABSOLUTEPITCH|CMF_OFFSETPITCH|CMF_BADPITCH|CMF_SAVEPITCH, random (0, 160));
@@ -817,6 +828,7 @@ Class PB_ZombieMan : PB_Monster
 			12DG SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS 1 A_SpawnProjectile ("PB_SquirtingBloodTrail", 12, 0, random (0, 360), CMF_AIMDIRECTION|CMF_ABSOLUTEPITCH|CMF_OFFSETPITCH|CMF_BADPITCH|CMF_SAVEPITCH, random (0, 90));
 			TNT1 A 0 A_SpawnItem ("DeadZombieMan_ToplessActionMovie");
 			Stop;
+			
 
 		 Death.cutless:
 			TNT1 A 0 A_JumpIfInventory ("IsDown", 1, "Death.Down");
@@ -867,7 +879,6 @@ Class PB_ZombieMan : PB_Monster
 			TNT1 A 0 A_StartSound("MinorHeadshot");
 			TNT1 A 0 A_Jump (256, "DeathMinorhead1", "DeathMinorhead2", "DeathMinorhead3", "DeathMinorhead4");
 		DeathMinorHead1:
-			TNT1 A 0 A_Scream();
 			TNT1 A 0 A_NoBlocking();
 			TNT1 A 0 A_SpawnItem("ZombieMan_DeathHeadMinor");
 			Stop;
@@ -985,7 +996,7 @@ Class PB_ZombieMan : PB_Monster
 		POSS K 6 ;
 		TNT1 A 0 {
 			A_StartSound("BODYF",6);
-			A_SpawnItem("Dead_AR_ZombieMan1");
+			A_SpawnItem("DeadZombieman1");
 			A_SpawnItem ("GrowingBloodPool");
 			}
 		Stop;
@@ -1183,22 +1194,25 @@ Class PB_ZombieMan : PB_Monster
 		Death.fire:
 		Death.Flames:
 		Death.Burn:
-			TNT1 A 0 A_JumpIfInTargetInventory("HasIncendiaryWeapon",1,"Death.Incinerate");
-			TNT1 A 0 A_Scream();
-			TNT1 A 0 A_NoBlocking();
-			TNT1 A 0 A_SpawnItem("BurningZombieMan");
+			TNT1 A 1 {
+				A_JumpIfInTargetInventory("HasIncendiaryWeapon",1,"Death.Incinerate");
+				A_ScreamAndUnblock();
+				A_SpawnItemEx("BurningZombieMan",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION);
+			}
 			Stop;
 		  
 		Death.Desintegrate:
-			TNT1 A 0 A_Scream();
-			TNT1 A 0 A_NoBlocking();
-			TNT1 A 0 A_SpawnItem("DesintegratedHuman");
+			TNT1 A 1 {
+				A_ScreamAndUnblock();
+				A_SpawnItemEx("DesintegratedHuman",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION);
+			}
 			Stop;
 			
 		Death.Blackhole:
-			TNT1 A 0 A_Scream();
-			TNT1 A 0 A_NoBlocking();
-			TNT1 A 0 A_SpawnItem("BlackHoledHuman");
+			TNT1 A 1 {
+				A_NoBlocking();
+				A_SpawnItemEx("BlackHoledHuman",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION);
+			}
 			Stop;
 			
 		Death.Plasma: 
@@ -1529,7 +1543,6 @@ Class PB_ZombieMan : PB_Monster
 		TNT1 A 0 A_NoBlocking();
 		TNT1 A 0 A_Jump(128, "Death.Blast2");
 		TNT1 A 0 {
-			A_Scream();
 			A_SpawnProjectile ("PB_Intestine", 32, 0, random (150, 210), CMF_AIMDIRECTION|CMF_ABSOLUTEPITCH|CMF_OFFSETPITCH|CMF_BADPITCH|CMF_SAVEPITCH, random (0, 40));
 			A_SpawnProjectile ("PB_Intestine", 32, 0, random (150, 210), CMF_AIMDIRECTION|CMF_ABSOLUTEPITCH|CMF_OFFSETPITCH|CMF_BADPITCH|CMF_SAVEPITCH, random (0, 40));
 			A_SpawnProjectile ("PB_Intestine", 32, 0, random (150, 210), CMF_AIMDIRECTION|CMF_ABSOLUTEPITCH|CMF_OFFSETPITCH|CMF_BADPITCH|CMF_SAVEPITCH, random (0, 40));
@@ -1660,7 +1673,7 @@ Class PB_ZombieMan : PB_Monster
 		Raise:
 			POSS KJIH 5;
 			Goto See;
-			
+		
 		Death.IceBeam:
 			TNT1 A 0 {
 				bSHOOTABLE = false;
@@ -1670,7 +1683,7 @@ Class PB_ZombieMan : PB_Monster
 				A_SpawnItem("IceCrystalGround");
 			}
 			Stop;
-
+		
 		Death.Ice:
 		Death.Freeze:
 		Death.Frost:
@@ -1685,41 +1698,32 @@ Class PB_ZombieMan : PB_Monster
 				TNT1 A 0 A_Pain();
 				TNT1 A 0 A_NoBlocking();
 				TNT1 A 0 A_SpawnItemEx("GloryLowPinataSpawn",0,0,Height / 2,random(0,8),0,random(0,8),random(0,360));
-			//	TNT1 A 0 A_JumpIfIntargetInventory("FistsSelected", 1, 1);
-			//	Goto Death.ExplosiveImpact;
 				TNT1 A 0 A_GiveToTarget("GoFatality", 1);
-				TNT1 A 0 A_Jump(256,"Death.Fatality1", "Death.Fatality2", "Death.Fatality3", "Death.Fatality4", "Death.Fatality5", "Death.Fatality5");
+				TNT1 A 0 A_Jump(256,"Death.Fatality1", "Death.Fatality1", "Death.Fatality2", "Death.Fatality2", "Death.Fatality3", "Death.Fatality4");
 				Goto Death.Fatality1;
 
 		Death.Fatality1:
-			TNT1 A 0 A_Scream();
 			TNT1 A 0 A_GiveToTarget("ZombieManFatality", 1);
 			Stop;
 		Death.Fatality2:
-			TNT1 A 0 A_Scream();
 			TNT1 A 0 A_GiveToTarget("ZombieManFatality2", 1);
 			Stop;
 		Death.Fatality3:
-			TNT1 A 0 A_Scream();
 			TNT1 A 0 A_GiveToTarget("ZombieManFatality3", 1);
 			Stop;
 		Death.Fatality4:
-			TNT1 A 0 A_Scream();
 			TNT1 A 0 A_GiveToTarget("ZombieManFatality4", 1);
 			Stop;
 		Death.Fatality5://Didn't like this one, but it gives me an idea...
-			TNT1 A 0 A_Scream();
 			TNT1 A 0 A_GiveToTarget("ZombieManFatality5", 1);
 			Stop;
 		Death.Fatality6:
-			TNT1 A 0 A_Scream();
 			TNT1 A 0 A_GiveToTarget("ZombieManFatality6", 1);
 			Stop;
 			
 		Death.HelperMarineFatallity:
 			TNT1 A 1 {
 				A_Pain();
-				A_Scream();
 				A_NoBlocking();
 				A_GiveToTarget("ZombieManFatality3", 1);
 			}
