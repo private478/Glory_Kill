@@ -5,3 +5,13 @@
 #include ParticleEffect.txt
 #include ShoulderCannon.txt
 #include BloodPunch.txt
+#include Monsters/T1-Grunts.txt
+#include Monsters/T1-Imps.txt
+#include Monsters/T2-Pinkies.txt
+#include Monsters/T3-Arachnos.txt
+#include Monsters/T3-Fats.txt
+#include Monsters/T3-Floaters.txt
+#include Monsters/T3-Revies.txt
+#include Monsters/T4-Nobles.txt
+#include Monsters/T4-Viles.txt
+#include Monsters/Tz-Bosses.txt
