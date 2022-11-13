@@ -1,5 +1,6 @@
 ACTOR PB_DemonGK: PB_Demon Replaces PB_Demon
 {
+	DropItem "Demonpickup" 100
 	DropItem "Crucible" 1
 	WoundHealth 70
 	
@@ -93,6 +94,7 @@ ACTOR PB_DemonGK: PB_Demon Replaces PB_Demon
 
 Actor PB_MeanDemonGK : PB_MeanDemon Replaces PB_MeanDemon
 {
+	DropItem "Demonpickup" 100
 	DropItem "Crucible" 1
 	WoundHealth 80
 	
@@ -193,6 +195,8 @@ Actor PB_MeanDemonGK : PB_MeanDemon Replaces PB_MeanDemon
 
 ACTOR PB_MechDemonGK: PB_MechDemon Replaces PB_MechDemon
 {
+	DropItem "Demonpickup" 150
+	DropItem "Demonpickup" 100
 	DropItem "Crucible" 1
 	WoundHealth 100
 	
@@ -292,6 +296,7 @@ ACTOR PB_MechDemonGK: PB_MechDemon Replaces PB_MechDemon
 }
 ACTOR PB_SpectreGK: PB_Spectre Replaces PB_Spectre
 {
+	DropItem "Demonpickup" 100
 	DropItem "Crucible" 1
 	WoundHealth 50
 	
@@ -384,6 +389,7 @@ ACTOR PB_SpectreGK: PB_Spectre Replaces PB_Spectre
 
 ACTOR PB_VoidSpectreGK: PB_VoidSpectre Replaces PB_VoidSpectre
 {
+	DropItem "Demonpickup" 100
 	DropItem "Crucible" 3
 	WoundHealth 100
 	

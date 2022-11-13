@@ -1,5 +1,8 @@
 ACTOR PB_BaronGK : PB_Baron Replaces PB_Baron
 {
+	DropItem "DemonStrengthRune" 9
+	DropItem "Demonpickup2" 76
+	DropItem "Demonpickup2" 76
 	DropItem "Crucible" 9
 	WoundHealth 220
 	
@@ -104,8 +107,11 @@ ACTOR PB_BaronGK : PB_Baron Replaces PB_Baron
 
 ACTOR PB_BelphegorGK : PB_Belphegor replaces PB_Belphegor
 {
+	DropItem "DemonStrengthRune" 9
+	DropItem "Demonpickup2" 76
+	DropItem "Demonpickup2" 76
 	DropItem "Crucible" 12
-   WoundHealth 260
+	WoundHealth 260
    
 	States
 	{
@@ -206,6 +212,9 @@ ACTOR PB_BelphegorGK : PB_Belphegor replaces PB_Belphegor
 
 ACTOR PB_CyberBaronGK: PB_CyberBaron replaces PB_CyberBaron
 {
+	DropItem "DemonStrengthRune" 9
+	DropItem "Demonpickup2" 76
+	DropItem "Demonpickup2" 76
 	DropItem "Crucible" 9
 	WoundHealth 250
 	
@@ -308,6 +317,9 @@ ACTOR PB_CyberBaronGK: PB_CyberBaron replaces PB_CyberBaron
 
 Actor PB_CyberKnightGK: PB_CyberKnight Replaces PB_CyberKnight
 {
+	DropItem "DemonStrengthRune" 9
+	DropItem "Demonpickup2" 76
+	DropItem "Demonpickup2" 76
 	DropItem "Crucible" 9
 	WoundHealth 150
 	
@@ -407,6 +419,9 @@ Actor PB_CyberKnightGK: PB_CyberKnight Replaces PB_CyberKnight
 
 ACTOR PB_CyberPaladinGK: PB_CyberPaladin replaces PB_CyberPaladin
 {
+	DropItem "DemonStrengthRune" 9
+	DropItem "Demonpickup2" 76
+	DropItem "Demonpickup2" 76
 	DropItem "Crucible" 9
 	WoundHealth 165
 	
@@ -508,6 +523,9 @@ ACTOR PB_CyberPaladinGK: PB_CyberPaladin replaces PB_CyberPaladin
 
 Actor PB_InfernusGK : PB_Infernus replaces PB_Infernus
 {
+	DropItem "Demonpickup2" 76
+	DropItem "Demonpickup2" 76
+	DropItem "Demonpickup2" 76
 	DropItem "Crucible" 12
 	WoundHealth 300
   
@@ -614,6 +632,8 @@ Actor PB_InfernusGK : PB_Infernus replaces PB_Infernus
 
 ACTOR PB_KnightGK : PB_Knight Replaces PB_Knight
 {
+	DropItem "Demonpickup2" 50
+	DropItem "Demonpickup" 196
 	DropItem "Crucible" 9
 	WoundHealth 100
 	States

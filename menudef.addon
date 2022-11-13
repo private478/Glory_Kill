@@ -25,7 +25,7 @@ OptionMenu "Glorykills"
 	Option "Holdable Crucible", "be_holdablesaw", YesNo
 	Option "Protection during Glory kill", "be_Protection", YesNo
 	Option "Fear during Glory kill", "be_Fear", YesNo
-	Slider  "Stun duration","be_StaggerLenght",4 ,12, 1
+	Slider  "Stun duration","be_StaggerLenght",2 ,12, 1
 	StaticText " "
 	Option "Fatality kill HealthBonus", "be_HealthBonus", YesNo
 	StaticText " "

@@ -1,5 +1,7 @@
 Actor PB_AfritGK: PB_Afrit replaces PB_Afrit
 {
+	DropItem "Demonpickup2" 160
+	DropItem "Demonpickup" 255
 	DropItem "Crucible" 6
 	WoundHealth 100
 	
@@ -101,6 +103,8 @@ Actor PB_AfritGK: PB_Afrit replaces PB_Afrit
 
 ACTOR PB_CacodemonGK : PB_Cacodemon Replaces PB_Cacodemon
 {
+	DropItem "Demonpickup2" 25
+	DropItem "Demonpickup" 255
 	DropItem "Crucible" 6
 	WoundHealth 80
 	
@@ -211,6 +215,8 @@ ACTOR PB_CacodemonGK : PB_Cacodemon Replaces PB_Cacodemon
 
 ACTOR PB_InfernalCacoGK : PB_InfernalCaco replaces PB_InfernalCaco
 {
+	DropItem "Demonpickup2" 65
+	DropItem "Demonpickup" 255
 	DropItem "Crucible" 6
 	WoundHealth 85
 
@@ -316,7 +322,8 @@ ACTOR PB_InfernalCacoGK : PB_InfernalCaco replaces PB_InfernalCaco
 
 actor PB_OverlordGK: PB_Overlord replaces PB_Overlord
 {
-
+	DropItem "Demonpickup2" 255
+	DropItem "Demonpickup2" 188
 	DropItem "Crucible" 9
 	WoundHealth 300
 
@@ -419,7 +426,7 @@ actor PB_OverlordGK: PB_Overlord replaces PB_Overlord
 
 ACTOR PB_PainElementalGK: PB_PainElemental Replaces PB_PainElemental
 {
-
+	DropItem "Demonpickup" 128
 	DropItem "Crucible" 6
 	WoundHealth 100
 	
@@ -523,7 +530,8 @@ ACTOR PB_PainElementalGK: PB_PainElemental Replaces PB_PainElemental
 }
 
 ACTOR PB_SufferingElementalGK: PB_SufferingElemental replaces PB_SufferingElemental
-{ 
+{
+	DropItem "Demonpickup" 168
 	DropItem "Crucible" 6
 	WoundHealth 105
 	

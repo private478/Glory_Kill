@@ -1,5 +1,7 @@
 ACTOR PB_BeamRevGK : PB_BeamRev Replaces PB_BeamRev
 {
+	DropItem "Demonpickup2" 80
+	DropItem "Demonpickup" 255
 	DropItem "Crucible" 6
 	WoundHealth 80
 	
@@ -104,6 +106,8 @@ ACTOR PB_BeamRevGK : PB_BeamRev Replaces PB_BeamRev
 
 ACTOR PB_DraugrGK : PB_Draugr Replaces PB_Draugr
 {
+	DropItem "Demonpickup2" 80
+	DropItem "Demonpickup" 255
 	DropItem "Crucible" 6
 	WoundHealth 110
    
@@ -208,6 +212,8 @@ ACTOR PB_DraugrGK : PB_Draugr Replaces PB_Draugr
 
 ACTOR PB_RevenantGK : PB_Revenant Replaces PB_Revenant
 {
+	DropItem "Demonpickup2" 50
+	DropItem "Demonpickup" 255
 	DropItem "Crucible" 6
 	WoundHealth 80
 	

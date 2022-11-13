@@ -1,5 +1,8 @@
 Actor PB_DaedabusGK: PB_Daedabus replaces PB_Daedabus
 {
+	DropItem "Demonpickup2" 80
+	DropItem "Demonpickup2" 30
+	DropItem "Demonpickup2" 250
 	DropItem "Crucible" 6
 	WoundHealth 170
 	
@@ -102,6 +105,8 @@ Actor PB_DaedabusGK: PB_Daedabus replaces PB_Daedabus
 
 ACTOR PB_MancubusGK: PB_Mancubus Replaces PB_Mancubus
 {
+	DropItem "Demonpickup2" 60
+	DropItem "Demonpickup2" 250
 	DropItem "Crucible" 6
 	WoundHealth 130
 	
@@ -202,6 +207,9 @@ ACTOR PB_MancubusGK: PB_Mancubus Replaces PB_Mancubus
 
 Actor PB_VolcabusGK : PB_Volcabus replaces PB_Volcabus
 {
+	DropItem "Demonpickup2" 80
+	DropItem "Demonpickup2" 30
+	DropItem "Demonpickup2" 250
 	DropItem "Crucible" 6
 	WoundHealth 210
    

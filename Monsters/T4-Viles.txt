@@ -1,5 +1,10 @@
 ACTOR PB_ArchvileGK: PB_Archvile Replaces PB_Archvile
 {
+	DropItem "DemonStrengthRune" 5
+	DropItem "DoubleSphere" 5
+	DropItem "HasteSphere" 2
+	DropItem "Demonpickup2" 255
+	DropItem "Demonpickup2" 25
 	DropItem "Crucible" 15
 	WoundHealth 140
 	
@@ -103,6 +108,11 @@ ACTOR PB_ArchvileGK: PB_Archvile Replaces PB_Archvile
 
 actor PB_FleshWizardGK: PB_FleshWizard Replaces PB_FleshWizard
 {
+	DropItem "DemonStrengthRune" 5
+	DropItem "DoubleSphere" 5
+	DropItem "HasteSphere" 2
+	DropItem "Demonpickup2" 255
+	DropItem "Demonpickup2" 25
 	WoundHealth 185
 	DropItem "Crucible" 15
 	
@@ -204,6 +214,11 @@ actor PB_FleshWizardGK: PB_FleshWizard Replaces PB_FleshWizard
 
 Actor PB_HellionGK: PB_Hellion Replaces PB_Hellion
 {
+	DropItem "DemonStrengthRune" 5
+	DropItem "DoubleSphere" 5
+	DropItem "HasteSphere" 2
+	DropItem "Demonpickup2" 255
+	DropItem "Demonpickup2" 25
 	WoundHealth 180
 	DropItem "Crucible" 15
   
@@ -307,6 +322,11 @@ Actor PB_HellionGK: PB_Hellion Replaces PB_Hellion
 
 ACTOR PB_IcevileGK: PB_Icevile Replaces PB_Icevile
 {
+	DropItem "DemonStrengthRune" 5
+	DropItem "DoubleSphere" 5
+	DropItem "HasteSphere" 2
+	DropItem "Demonpickup2" 255
+	DropItem "Demonpickup2" 25
 	WoundHealth 140
 	DropItem "Crucible" 15
 	States

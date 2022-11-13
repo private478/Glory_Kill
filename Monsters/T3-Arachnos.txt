@@ -1,5 +1,9 @@
 ACTOR PB_ArachnophyteGK: PB_Arachnophyte replaces PB_Arachnophyte
 {
+	DropItem "DemonStrengthRune" 1
+	DropItem "Demonpickup2" 255
+	DropItem "Demonpickup" 95
+	DropItem "Demonpickup" 85
 	DropItem "Crucible" 6
 	WoundHealth 70
 	
@@ -103,6 +107,8 @@ ACTOR PB_ArachnophyteGK: PB_Arachnophyte replaces PB_Arachnophyte
 
 ACTOR PB_ArachnotronGK: PB_Arachnotron replaces PB_Arachnotron
 {
+	DropItem "Demonpickup2" 255
+	DropItem "Demonpickup" 55
 	DropItem "Crucible" 3
 	WoundHealth 100
 	
@@ -313,6 +319,12 @@ actor AracnorbGK: Aracnorb replaces Aracnorb
 
 ACTOR PB_EliteArachnotronGK: PB_EliteArachnotron replaces PB_EliteArachnotron
 {
+	DropItem "DemonStrengthRune" 8
+	DropItem "HasteSphere" 8
+	DropItem "DoubleSphere" 7
+	DropItem "Demonpickup2" 255
+	DropItem "Demonpickup" 55
+	DropItem "Demonpickup" 55
 	DropItem "Crucible" 6
 	WoundHealth 150
 	
@@ -417,6 +429,12 @@ ACTOR PB_EliteArachnotronGK: PB_EliteArachnotron replaces PB_EliteArachnotron
 
 ACTOR PB_InfernalArachnotronGK: PB_InfernalArachnotron replaces PB_InfernalArachnotron
 {
+	DropItem "DemonStrengthRune" 8
+	DropItem "HasteSphere" 8
+	DropItem "DoubleSphere" 7
+	DropItem "Demonpickup2" 255
+	DropItem "Demonpickup" 55
+	DropItem "Demonpickup" 55
 	DropItem "Crucible" 6
 	WoundHealth 110
 	
