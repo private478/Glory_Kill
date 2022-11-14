@@ -65,14 +65,16 @@ States
 	Melee_Equipment_Handler_Overlay:
 		TNT1 A 1 {
 			
-			if(JustPressed(BT_USER1) && !PB_usingMelee() && !PB_executingEnemy() && !PB_usingEquipment()) {
+			if(JustPressed(BT_USER1) && !PB_usingMelee() && !PB_executingEnemy() && !PB_usingEquipment() &&
+			!CheckInventory("GoFatality",1)) {
 				A_OverlayOffset(PSP_WEAPON, 0, 32);
 				PB_SetUsingEquipment(true);
 				A_Overlay(PSP_WEAPON, "UseEquipment");
 				A_OverlayOffset(PSP_WEAPON, 0, 32);
 			}
 		
-			if(JustPressed(BT_USER2) && !PB_usingMelee() && !PB_executingEnemy() && !PB_usingEquipment() && !CheckInventory("Zoomed", 1)) {
+			if(JustPressed(BT_USER2) && !PB_usingMelee() && !PB_executingEnemy() && !PB_usingEquipment() && !CheckInventory("Zoomed", 1)
+			&& !CheckInventory("GoFatality",1)) {
 				A_OverlayOffset(PSP_WEAPON, 0, 32);
 				PB_SetUsingMelee(true);
 				A_Overlay(PSP_WEAPON, "QuickMelee");
@@ -82,7 +84,8 @@ States
 		Loop
 	KickHandler_Overlay:
 		TNT1 A 1 {
-			if(JustPressed(BT_USER4) && !PB_usingKick() && !PB_executingEnemy() && !CheckInventory("Zoomed", 1) && PB_MeleeAttackKickCheck()
+			if(JustPressed(BT_USER4) && !PB_usingKick() && !PB_executingEnemy() && !CheckInventory("Zoomed", 1) && PB_MeleeAttackKickCheck() &&
+			!CheckInventory("GoFatality",1)
 			) {
 				PB_SetUsingKick(true);
 				A_OverlayOffset(-999, 0, 32);
@@ -494,8 +497,8 @@ States
 		
 	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	// Glory Kill End
-	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-		
+	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	
 	//First Person Legs in Doom
 	FirstPersonLegsKickRight:
 		//STGN A 0 A_JumpIfInventory("GreenBloodOnBoots",1,4)
@@ -961,9 +964,21 @@ States
 		Goto GoingToReady
 // 		TNT1 A 0 A_Giveinventory("PB_LockScreenTilt",1)
 		TNT1 A 0 A_Giveinventory("PlayerIsThrowingAGrenade",1)
-		HNDF ABCDEFGHI 1 A_SetRoll(roll+2.0, SPF_INTERPOLATE)
+		
+		HNDF ABCDE 1 A_SetRoll(roll+2.0, SPF_INTERPOLATE)
+		HNDF FGHI 1 {
+			A_SetRoll(roll+2.0, SPF_INTERPOLATE);
+			if(JustPressed(BT_USER1)) {
+				A_GiveInventory("UseEquipment",1);
+				}
+			}
 		TNT1 A 0 A_PlaySoundEx("OPNGRN", "Auto")
-		HNDF JKLMNOPQR 1 A_SetRoll(roll+2.0, SPF_INTERPOLATE)
+		HNDF JKLMNOPQR 1 {
+			A_SetRoll(roll+2.0, SPF_INTERPOLATE);
+			if(JustPressed(BT_USER1)) {
+				A_GiveInventory("UseEquipment",1);
+				}
+			}
 		TNT1 A 0 A_JumpIfInventory("UseEquipment", 1, "TossGrenade")
 		TNT1 A 1 A_SetRoll(roll-18.0)
 		HND1 I 1 A_PlaySoundEx("THRGRN", "Auto")
@@ -1041,8 +1056,10 @@ States
 			}
 			return ResolveState("");
 		}
+		TNT1 A 0 A_ClearOverlays(3,65)
+		TNT1 A 0 A_Gunflash("Null")
 		TNT1 AAA 1 PB_Execute() // Check if monster can be executed, jump to execution handler instead
-		
+	GoMeleeInstead:
 		TNT1 A 0 {
 			A_Overlay(4, "FlashPunching");
 			A_GiveInventory("HasCutingWeapon", 1);
