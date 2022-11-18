@@ -75,6 +75,11 @@ ACTOR PB_ImpGK: PB_Imp Replaces PB_Imp
 		TNT1 A 0 A_SpawnItemEx("FlamePinataSpawn",0,0,Height / 2,random(0,8),0,random(0,8),random(0,360))
 		Goto Super::Death.Flames
 	
+	Pain.GloryFire:
+		TNT1 A 0 A_Jump(192, "See")
+		TNT1 A 0 A_SpawnItemEx("FlamePinataSpawn",0,0,Height / 2,random(0,8),0,random(0,8),random(0,360))
+		Goto See
+	
 	Death.BloodPunch:
 		TNT1 A 0 A_GiveToTarget("BloodPunchKilled",1)
 		TNT1 A 0	A_SpawnItemEx("BloodpunchWave", 0, 0, Height / 2, 0, 0, 0, 0, SXF_CLIENTSIDE|SXF_TRANSFERPITCH)
@@ -170,6 +175,11 @@ actor PB_DarkImpNamiGK : PB_DarkImpNami Replaces PB_DarkImpNami
 	Death.GloryFire:
 		TNT1 A 0 A_SpawnItemEx("FlamePinataSpawn",0,0,Height / 2,random(0,8),0,random(0,8),random(0,360))
 		Goto Super::Death.Flames
+	
+	Pain.GloryFire:
+		TNT1 A 0 A_Jump(192, "See")
+		TNT1 A 0 A_SpawnItemEx("FlamePinataSpawn",0,0,Height / 2,random(0,8),0,random(0,8),random(0,360))
+		Goto See
 	
 	Death.BloodPunch:
 		TNT1 A 0 A_GiveToTarget("BloodPunchKilled",1)
@@ -269,6 +279,11 @@ actor PB_DarkImpNetherGK : PB_DarkImpNether Replaces PB_DarkImpNether
 		TNT1 A 0 A_SpawnItemEx("FlamePinataSpawn",0,0,Height / 2,random(0,8),0,random(0,8),random(0,360))
 		Goto Super::Death.Flames
 	
+	Pain.GloryFire:
+		TNT1 A 0 A_Jump(192, "See")
+		TNT1 A 0 A_SpawnItemEx("FlamePinataSpawn",0,0,Height / 2,random(0,8),0,random(0,8),random(0,360))
+		Goto See
+	
 	Death.BloodPunch:
 		TNT1 A 0 A_GiveToTarget("BloodPunchKilled",1)
 		TNT1 A 0	A_SpawnItemEx("BloodpunchWave", 0, 0, Height / 2, 0, 0, 0, 0, SXF_CLIENTSIDE|SXF_TRANSFERPITCH)
@@ -366,6 +381,11 @@ actor PB_DarkImpSTGK : PB_DarkImpST Replaces PB_DarkImpST
 	Death.GloryFire:
 		TNT1 A 0 A_SpawnItemEx("FlamePinataSpawn",0,0,Height / 2,random(0,8),0,random(0,8),random(0,360))
 		Goto Super::Death.Flames
+	
+	Pain.GloryFire:
+		TNT1 A 0 A_Jump(192, "See")
+		TNT1 A 0 A_SpawnItemEx("FlamePinataSpawn",0,0,Height / 2,random(0,8),0,random(0,8),random(0,360))
+		Goto See
 	
 	Death.BloodPunch:
 		TNT1 A 0 A_GiveToTarget("BloodPunchKilled",1)
@@ -465,6 +485,11 @@ actor PB_DarkImpVoidGK : PB_DarkImpVoid Replaces PB_DarkImpVoid
 		TNT1 A 0 A_SpawnItemEx("FlamePinataSpawn",0,0,Height / 2,random(0,8),0,random(0,8),random(0,360))
 		Goto Super::Death.Flames
 	
+	Pain.GloryFire:
+		TNT1 A 0 A_Jump(192, "See")
+		TNT1 A 0 A_SpawnItemEx("FlamePinataSpawn",0,0,Height / 2,random(0,8),0,random(0,8),random(0,360))
+		Goto See
+	
 	Death.BloodPunch:
 		TNT1 A 0 A_GiveToTarget("BloodPunchKilled",1)
 		TNT1 A 0	A_SpawnItemEx("BloodpunchWave", 0, 0, Height / 2, 0, 0, 0, 0, SXF_CLIENTSIDE|SXF_TRANSFERPITCH)
@@ -562,6 +587,11 @@ Actor DNImpVariant1GK : DNImpVariant1 Replaces DNImpVariant1
 		TNT1 A 0 A_SpawnItemEx("FlamePinataSpawn",0,0,Height / 2,random(0,8),0,random(0,8),random(0,360))
 		Goto Super::Death.Flames
 	
+	Pain.GloryFire:
+		TNT1 A 0 A_Jump(192, "See")
+		TNT1 A 0 A_SpawnItemEx("FlamePinataSpawn",0,0,Height / 2,random(0,8),0,random(0,8),random(0,360))
+		Goto See
+	
 	Death.BloodPunch:
 		TNT1 A 0 A_GiveToTarget("BloodPunchKilled",1)
 		TNT1 A 0	A_SpawnItemEx("BloodpunchWave", 0, 0, Height / 2, 0, 0, 0, 0, SXF_CLIENTSIDE|SXF_TRANSFERPITCH)
@@ -649,6 +679,11 @@ Actor DNImpVariant2GK : DNImpVariant2 Replaces DNImpVariant2
 		TNT1 A 0 A_SpawnItemEx("FlamePinataSpawn",0,0,32,random(0,8),0,random(0,8),random(0,360))
 		Goto Super::Death.Flames
 	
+	Pain.GloryFire:
+		TNT1 A 0 A_Jump(192, "See")
+		TNT1 A 0 A_SpawnItemEx("FlamePinataSpawn",0,0,Height / 2,random(0,8),0,random(0,8),random(0,360))
+		Goto See
+	
 	Death.BloodPunch:
 		TNT1 A 0 A_GiveToTarget("BloodPunchKilled",1)
 		TNT1 A 0	A_SpawnItemEx("BloodpunchWave", 0, 0, Height / 2, 0, 0, 0, 0, SXF_CLIENTSIDE|SXF_TRANSFERPITCH)
@@ -735,6 +770,11 @@ Actor DNImpVariant3GK : DNImpVariant3 Replaces DNImpVariant3
 	Death.GloryFire:
 		TNT1 A 0 A_SpawnItemEx("FlamePinataSpawn",0,0,Height / 2,random(0,8),0,random(0,8),random(0,360))
 		Goto Super::Death.Flames
+	
+	Pain.GloryFire:
+		TNT1 A 0 A_Jump(192, "See")
+		TNT1 A 0 A_SpawnItemEx("FlamePinataSpawn",0,0,Height / 2,random(0,8),0,random(0,8),random(0,360))
+		Goto See
 	
 	Death.BloodPunch:
 		TNT1 A 0 A_GiveToTarget("BloodPunchKilled",1)
@@ -824,6 +864,11 @@ ACTOR PB_InfectedImpGK: PB_InfectedImp Replaces PB_InfectedImp
 	Death.GloryFire:
 		TNT1 A 0 A_SpawnItemEx("FlamePinataSpawn",0,0,Height / 2,random(0,8),0,random(0,8),random(0,360))
 		Goto Super::Death.Flames
+	
+	Pain.GloryFire:
+		TNT1 A 0 A_Jump(192, "See")
+		TNT1 A 0 A_SpawnItemEx("FlamePinataSpawn",0,0,Height / 2,random(0,8),0,random(0,8),random(0,360))
+		Goto See
 	
 	Death.BloodPunch:
 		TNT1 A 0 A_GiveToTarget("BloodPunchKilled",1)

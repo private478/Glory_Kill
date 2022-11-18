@@ -2,7 +2,7 @@ Actor PB_AfritGK: PB_Afrit replaces PB_Afrit
 {
 	DropItem "Demonpickup2" 160
 	DropItem "Demonpickup" 255
-	DropItem "Crucible" 6
+	DropItem "Crucible" 3
 	WoundHealth 100
 	
 	States
@@ -74,7 +74,12 @@ Actor PB_AfritGK: PB_Afrit replaces PB_Afrit
 	Death.GloryFire:
 		TNT1 A 0 A_SpawnItemEx("FlamePinataSpawnHigh",0,0,Height / 2,random(0,8),0,random(0,8),random(0,360))
 		Goto Super::Death.Vanish
-		
+	
+	Pain.GloryFire:
+		TNT1 A 0 A_Jump(192, "See")
+		TNT1 A 0 A_SpawnItemEx("FlamePinataSpawnHigh",0,0,Height / 2,random(0,8),0,random(0,8),random(0,360))
+		Goto See
+	
 	Death.BloodPunch:
 		TNT1 A 0 A_GiveToTarget("BloodPunchKilled",1)
 		TNT1 A 0	A_SpawnItemEx("BloodpunchWave", 0, 0, Height / 2, 0, 0, 0, 0, SXF_CLIENTSIDE|SXF_TRANSFERPITCH)
@@ -103,9 +108,10 @@ Actor PB_AfritGK: PB_Afrit replaces PB_Afrit
 
 ACTOR PB_CacodemonGK : PB_Cacodemon Replaces PB_Cacodemon
 {
+	DropItem "DemonStrengthRune" 5
 	DropItem "Demonpickup2" 25
 	DropItem "Demonpickup" 255
-	DropItem "Crucible" 6
+	DropItem "Crucible" 3
 	WoundHealth 80
 	
 	States
@@ -178,6 +184,11 @@ ACTOR PB_CacodemonGK : PB_Cacodemon Replaces PB_Cacodemon
 		TNT1 A 0 A_SpawnItemEx("FlamePinataSpawn",0,0,Height / 2,random(0,8),0,random(0,8),random(0,360))
 		Goto Super::Death.Flames
 	
+	Pain.GloryFire:
+		TNT1 A 0 A_Jump(192, "See")
+		TNT1 A 0 A_SpawnItemEx("FlamePinataSpawn",0,0,Height / 2,random(0,8),0,random(0,8),random(0,360))
+		Goto See
+	
 	Death.BloodPunch:
 		TNT1 A 0 A_GiveToTarget("BloodPunchKilled",1)
 		TNT1 A 0	A_SpawnItemEx("BloodpunchWave", 0, 0, Height / 2, 0, 0, 0, 0, SXF_CLIENTSIDE|SXF_TRANSFERPITCH)
@@ -215,9 +226,13 @@ ACTOR PB_CacodemonGK : PB_Cacodemon Replaces PB_Cacodemon
 
 ACTOR PB_InfernalCacoGK : PB_InfernalCaco replaces PB_InfernalCaco
 {
+	DropItem "DemonStrengthRune" 5
+	DropItem "DemonStrengthRune" 3
+	DropItem "HasteSphere" 4
+	DropItem "DoubleSphere" 2
 	DropItem "Demonpickup2" 65
 	DropItem "Demonpickup" 255
-	DropItem "Crucible" 6
+	DropItem "Crucible" 3
 	WoundHealth 85
 
 	States 
@@ -287,9 +302,14 @@ ACTOR PB_InfernalCacoGK : PB_InfernalCaco replaces PB_InfernalCaco
 		Goto Super::Death
 	   
 	Death.GloryFire:
-		TNT1 A 0 A_SpawnItemEx("FlamePinataSpawnHigh",0,0,Height / 2,random(0,8),0,random(0,8),random(0,360))
+		TNT1 A 0 A_SpawnItemEx("FlamePinataSpawn",0,0,Height / 2,random(0,8),0,random(0,8),random(0,360))
 		Goto Super::Death  
-	   
+	
+	Pain.GloryFire:
+		TNT1 A 0 A_Jump(192, "See")
+		TNT1 A 0 A_SpawnItemEx("FlamePinataSpawn",0,0,Height / 2,random(0,8),0,random(0,8),random(0,360))
+		Goto See
+	
 	Death.BloodPunch:
 		TNT1 A 0 A_GiveToTarget("BloodPunchKilled",1)
 		TNT1 A 0	A_SpawnItemEx("BloodpunchWave", 0, 0, Height / 2, 0, 0, 0, 0, SXF_CLIENTSIDE|SXF_TRANSFERPITCH)
@@ -322,9 +342,15 @@ ACTOR PB_InfernalCacoGK : PB_InfernalCaco replaces PB_InfernalCaco
 
 actor PB_OverlordGK: PB_Overlord replaces PB_Overlord
 {
+	DropItem "DemonStrengthRune" 25
+	DropItem "Demonpickup2" 76
+	DropItem "Demonpickup2" 76
+	DropItem "Demonpickup2" 76
+	DropItem "HasteSphere" 22
+	DropItem "DoubleSphere" 15
 	DropItem "Demonpickup2" 255
 	DropItem "Demonpickup2" 188
-	DropItem "Crucible" 9
+	DropItem "Crucible" 6
 	WoundHealth 300
 
 	states
@@ -396,7 +422,12 @@ actor PB_OverlordGK: PB_Overlord replaces PB_Overlord
 	Death.GloryFire:
 		TNT1 A 0 A_SpawnItemEx("FlamePinataSpawnHigh",0,0,Height / 2,random(0,8),0,random(0,8),random(0,360))
 		Goto Super::Death
-		
+	
+	Pain.GloryFire:
+		TNT1 A 0 A_Jump(192, "See")
+		TNT1 A 0 A_SpawnItemEx("FlamePinataSpawnHigh",0,0,Height / 2,random(0,8),0,random(0,8),random(0,360))
+		Goto See
+	
 	Death.BloodPunch:
 		TNT1 A 0 A_GiveToTarget("BloodPunchKilled",1)
 		TNT1 A 0	A_SpawnItemEx("BloodpunchWave", 0, 0, Height / 2, 0, 0, 0, 0, SXF_CLIENTSIDE|SXF_TRANSFERPITCH)
@@ -426,8 +457,9 @@ actor PB_OverlordGK: PB_Overlord replaces PB_Overlord
 
 ACTOR PB_PainElementalGK: PB_PainElemental Replaces PB_PainElemental
 {
+	DropItem "DemonStrengthRune" 5
 	DropItem "Demonpickup" 128
-	DropItem "Crucible" 6
+	DropItem "Crucible" 3
 	WoundHealth 100
 	
 	States
@@ -500,6 +532,11 @@ ACTOR PB_PainElementalGK: PB_PainElemental Replaces PB_PainElemental
 		TNT1 A 0 A_SpawnItemEx("FlamePinataSpawn",0,0,Height / 2,random(0,8),0,random(0,8),random(0,360))
 		Goto Super::Death
 	
+	Pain.GloryFire:
+		TNT1 A 0 A_Jump(192, "See")
+		TNT1 A 0 A_SpawnItemEx("FlamePinataSpawn",0,0,Height / 2,random(0,8),0,random(0,8),random(0,360))
+		Goto See
+	
 	Death.BloodPunch:
 		TNT1 A 0 A_GiveToTarget("BloodPunchKilled",1)
 		TNT1 A 0	A_SpawnItemEx("BloodpunchWave", 0, 0, Height / 2, 0, 0, 0, 0, SXF_CLIENTSIDE|SXF_TRANSFERPITCH)
@@ -531,8 +568,9 @@ ACTOR PB_PainElementalGK: PB_PainElemental Replaces PB_PainElemental
 
 ACTOR PB_SufferingElementalGK: PB_SufferingElemental replaces PB_SufferingElemental
 {
+	DropItem "DemonStrengthRune" 5
 	DropItem "Demonpickup" 168
-	DropItem "Crucible" 6
+	DropItem "Crucible" 3
 	WoundHealth 105
 	
    States 
@@ -604,6 +642,11 @@ ACTOR PB_SufferingElementalGK: PB_SufferingElemental replaces PB_SufferingElemen
    	Death.GloryFire:
 		TNT1 A 0 A_SpawnItemEx("FlamePinataSpawnHigh",0,0,Height / 2,random(0,8),0,random(0,8),random(0,360))
 		Goto Super::Death
+   
+	Pain.GloryFire:
+		TNT1 A 0 A_Jump(192, "See")
+		TNT1 A 0 A_SpawnItemEx("FlamePinataSpawnHigh",0,0,Height / 2,random(0,8),0,random(0,8),random(0,360))
+		Goto See
    
    Death.BloodPunch:
 		TNT1 A 0 A_GiveToTarget("BloodPunchKilled",1)
