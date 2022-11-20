@@ -93,7 +93,7 @@ Class PB_ShotgunGuyGK : PB_ShotgunGuy Replaces PB_ShotgunGuy
 		TNT1 A 0 A_SpawnItemEx("GloryLowPinataSpawn",0,0,Height / 2,random(0,8),0,random(0,8),random(0,360));
 		TNT1 A 0 A_GiveToTarget("GoFatality", 1);
 		TNT1 A 0 A_Jump(256,"Death.Fatality1", "Death.Fatality2", "Death.Fatality3", "Death.Fatality4", "Death.Fatality5", "Death.Fatality6");
-		Goto Super::Death.Fatality1;	
+		Goto Death.Fatality1;
 	}
 }
 
@@ -192,7 +192,7 @@ Class PB_ShotgunGuyHelmetGK : PB_ShotgunGuyHelmet Replaces PB_ShotgunGuyHelmet
 		TNT1 A 0 A_SpawnItemEx("GloryLowPinataSpawn",0,0,Height / 2,random(0,8),0,random(0,8),random(0,360));
 		TNT1 A 0 A_GiveToTarget("GoFatality", 1);
 		TNT1 A 0 A_Jump(256,"Death.Fatality1", "Death.Fatality2", "Death.Fatality3");
-		Goto Super::Death.Fatality1;
+		Goto Death.Fatality1;
 	}
 }
 
@@ -291,6 +291,6 @@ Class PB_RiotShieldGuyGK : PB_RiotShieldGuy Replaces PB_RiotShieldGuy
 		TNT1 A 0 A_SpawnItemEx("GloryLowPinataSpawn",0,0,Height / 2,random(0,8),0,random(0,8),random(0,360));
 		TNT1 A 0 A_GiveToTarget("GoFatality", 1);
 		TNT1 A 0 A_Jump(256,"Death.Fatality1", "Death.Fatality2", "Death.Fatality3", "Death.Fatality4", "Death.Fatality5", "Death.Fatality6");
-		Goto Super::Death.Fatality1;	
+		Goto Death.Fatality1;
 	}
 }
