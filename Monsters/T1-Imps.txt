@@ -513,6 +513,7 @@ actor PB_DarkImpVoidGK : PB_DarkImpVoid Replaces PB_DarkImpVoid
 
 Actor DNImpVariant1GK : DNImpVariant1 Replaces DNImpVariant1
 {
+	WoundHealth 25
 	States
 	{
 	Wound:
@@ -577,7 +578,7 @@ Actor DNImpVariant1GK : DNImpVariant1 Replaces DNImpVariant1
 	
 	Death.GloryKill:
 		TNT1 A 0 A_GiveToTarget("BPtoken",2)
-		Goto Super::Death.Fatality
+		Goto Death.Fatality
 	
 	Death.Crucible:
 		TNT1 A 0 A_SpawnItemEx("GlorySawPinataLow",0,0,Height / 2,random(0,8),0,random(0,8),random(0,360))
@@ -600,11 +601,22 @@ Actor DNImpVariant1GK : DNImpVariant1 Replaces DNImpVariant1
 		TNT1 A 0	A_SpawnItemEx("BloodpunchWave", 0, 0, Height / 2, 0, 0, 0, 0, SXF_CLIENTSIDE|SXF_TRANSFERPITCH)
 		TNT1 A 0 A_SpawnItemEx("GlorySawPinataLow",0,0,Height / 2,random(0,8),0,random(0,8),random(0,360))
 		Goto Super::Death.ExtremePunches
+		
+	Death.Fatality:
+		TNT1 A 0 A_Pain
+        TNT1 A 0 //A_NoBlocking
+		TNT1 A 0 A_SpawnItemEx("GloryLowPinataSpawn",0,0,Height / 2,random(0,8),0,random(0,8),random(0,360))
+	//	TNT1 A 0 A_JumpIfIntargetInventory("FistsSelected", 1, 1)
+	//	Goto Death.ExplosiveImpact
+		TNT1 A 0 A_GiveToTarget("GoFatality", 1)
+		TNT1 A 0 A_Jump(255, "Death.Fatality1", "Death.Fatality2")
+		Goto Super::Death.Fatality1	
 	}
 }
 
 Actor DNImpVariant2GK : DNImpVariant2 Replaces DNImpVariant2
 {
+	WoundHealth 25
 	States
 	{
 	Wound:
@@ -669,7 +681,7 @@ Actor DNImpVariant2GK : DNImpVariant2 Replaces DNImpVariant2
 	
 	Death.GloryKill:
 		TNT1 A 0 A_GiveToTarget("BPtoken",2)
-		Goto Super::Death.Fatality
+		Goto Death.Fatality
 		
 	Death.Crucible:
 		TNT1 A 0 A_SpawnItemEx("GloryLowPinataSpawn",0,0,32,random(0,8),0,random(0,8),random(0,360))
@@ -692,11 +704,22 @@ Actor DNImpVariant2GK : DNImpVariant2 Replaces DNImpVariant2
 		TNT1 A 0	A_SpawnItemEx("BloodpunchWave", 0, 0, Height / 2, 0, 0, 0, 0, SXF_CLIENTSIDE|SXF_TRANSFERPITCH)
 		TNT1 A 0 A_SpawnItemEx("GlorySawPinataLow",0,0,32,random(0,8),0,random(0,8),random(0,360))
 		Goto Super::Death.ExtremePunches
+		
+	Death.Fatality:
+		TNT1 A 0 A_Pain
+        TNT1 A 0 //A_NoBlocking
+		TNT1 A 0 A_SpawnItemEx("GloryLowPinataSpawn",0,0,Height / 2,random(0,8),0,random(0,8),random(0,360))
+	//	TNT1 A 0 A_JumpIfIntargetInventory("FistsSelected", 1, 1)
+	//	Goto Death.ExplosiveImpact
+		TNT1 A 0 A_GiveToTarget("GoFatality", 1)
+		TNT1 A 0 A_Jump(255, "Death.Fatality1", "Death.Fatality2")
+		Goto Super::Death.Fatality1		
 	}
 }
 
 Actor DNImpVariant3GK : DNImpVariant3 Replaces DNImpVariant3
 {
+	WoundHealth 25
     States
     {
 	Wound:
@@ -761,7 +784,7 @@ Actor DNImpVariant3GK : DNImpVariant3 Replaces DNImpVariant3
 	
 	Death.GloryKill:
 		TNT1 A 0 A_GiveToTarget("BPtoken",2)
-		Goto Super::Death.Fatality
+		Goto Death.Fatality
 		
 	Death.Crucible:
 		TNT1 A 0 A_SpawnItemEx("GloryLowPinataSpawn",0,0,Height / 2,random(0,8),0,random(0,8),random(0,360))
@@ -784,6 +807,16 @@ Actor DNImpVariant3GK : DNImpVariant3 Replaces DNImpVariant3
 		TNT1 A 0	A_SpawnItemEx("BloodpunchWave", 0, 0, Height / 2, 0, 0, 0, 0, SXF_CLIENTSIDE|SXF_TRANSFERPITCH)
 		TNT1 A 0 A_SpawnItemEx("GlorySawPinataLow",0,0,Height / 2,random(0,8),0,random(0,8),random(0,360))
 		Goto Super::Death.ExtremePunches
+		
+	Death.Fatality:
+		TNT1 A 0 A_Pain
+        TNT1 A 0 //A_NoBlocking
+		TNT1 A 0 A_SpawnItemEx("GloryLowPinataSpawn",0,0,Height / 2,random(0,8),0,random(0,8),random(0,360))
+	//	TNT1 A 0 A_JumpIfIntargetInventory("FistsSelected", 1, 1)
+	//	Goto Death.ExplosiveImpact
+		TNT1 A 0 A_GiveToTarget("GoFatality", 1)
+		TNT1 A 0 A_Jump(255, "Death.Fatality1", "Death.Fatality2")
+		Goto Super::Death.Fatality1
 	}	
 }
 
