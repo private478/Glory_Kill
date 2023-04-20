@@ -19,7 +19,6 @@ ACTOR SC_CryoGrenade: PB_FragGrenade
 		Spawn:
 			TNT1 A 0 {
 				if(waterlevel > 1) {A_SpawnItem ("CryoRifleTrailSparksSmall"); }
-				else {A_CustomMissile ("BUBULZ", 0, 0, random (0, 360), 2, random (0, 180));}
 				A_SpawnItem("BlueFlareSmall",0,0);
 			}
 			GRNP A 1 Bright Light("SGL_CRYO") A_JumpIfInventory("GrenadeDetonator",1,"Detonate",AAPTR_TARGET) 
