@@ -260,27 +260,49 @@ extend class PB_WeaponBase
 		
 		switch(enemy){
 			// Zombieman
-			case 'PB_Zombieman':
+			case 'PB_ZombiemanGK':
 				return PB_ExecuteZombieMan();
-			case 'PB_PistolZombieman1':
+			case 'PB_PistolZombieman1GK':
 				return PB_ExecuteZombieMan();
-			case 'PB_HelmetZombieman':
+			case 'PB_HelmetZombiemanGK':
 				return PB_ExecuteZombieMan();
-			case 'PB_PistolZombieman2':
+			case 'PB_PistolZombieman2GK':
 				return PB_ExecuteZombieMan();
+			case 'PB_CarbineZombiemanGK':
+				return PB_ExecuteZombieMan();	
 			
 			// Imp
-			case 'PB_Imp1':
+			case 'PB_Imp1GK':
 				return PB_ExecuteImp();
+			case 'PB_DarkImpNamiGK':
+				return PB_ExecuteImp();
+			case 'PB_DarkImpNetherGK':
+				return PB_ExecuteImp();
+			case 'PB_DarkImpSTGK':
+				return PB_ExecuteImp();		
+			case 'PB_DarkImpVoidGK':
+				return PB_ExecuteImp();
+			case 'DNImpVariant1GK':
+				return PB_ExecuteImp();
+			case 'DNImpVariant2GK':
+				return PB_ExecuteImp();			
+			case 'DNImpVariant3GK':
+				return PB_ExecuteImp();
+			case 'PB_InfectedImpGK':
+				return PB_ExecuteImp();			
 				
 			//Shotgun Guy
-			case 'PB_ShotgunGuy':
+			case 'PB_ShotgunGuyGK':
 				return PB_ExecuteShotguny();
-				
+			case 'PB_ShotgunGuyHelmetGK':
+				return PB_ExecuteShotguny();
+			case 'PB_RiotShieldGuyGK':
+				return PB_ExecuteShotguny();
+			
 			default:
-				A_Print("Execution Failed");
+			//	A_Print("Execution Failed");
 				PB_UnsetPlayerExecutionProperties();
-				return "GoingToReady2";
+				return "PerformGloryKill";
 		}
 	}
 	
@@ -294,27 +316,25 @@ extend class PB_WeaponBase
 			{
 // 				if (GetPointer(AAPTR_PLAYER_GETTARGET) is "PB_Monster" && Distance3D(AAPTR_PLAYER_GETTARGET) < 120 ){
 				
-				if(GetPointer(AAPTR_PLAYER_GETTARGET) is "PB_Monster")
-				{
-					LookExParams look;
-					look.FOV = 110;
-					
-					Actor monster = GetPointer(AAPTR_PLAYER_GETTARGET);
-					
-					if (GetPointer(AAPTR_PLAYER_GETTARGET).IsVisible(self, false, look) && Distance3D(monster) < 250 ){
+					if(GetPointer(AAPTR_PLAYER_GETTARGET) is "PB_Monster")
+					{
+						LookExParams look;
+						look.FOV = 120;
 						
-// 						Actor monster = self.AimTarget();
+						Actor monster = GetPointer(AAPTR_PLAYER_GETTARGET);
+						
+						if (GetPointer(AAPTR_PLAYER_GETTARGET).IsVisible(self, false, look) && Distance3D(monster) < 250 ){
+							
+	// 						Actor monster = self.AimTarget();
 
-						int targetMaxHealth = monster.spawnHealth();
-						int targetCurrentHealth = monster.health;
-						
-						if (targetCurrentHealth <= targetMaxHealth*0.2|| targetCurrentHealth < 65) {
+							int targetMaxHealth = monster.spawnHealth();
+							int targetCurrentHealth = monster.health;
+							
 							StateLabel st = PB_ExecutionHandlerString(monster);
 							return ResolveState(st);
 						}
 					}
 				}
-			}
 		}
 		return null;
 	}
