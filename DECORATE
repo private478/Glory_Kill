@@ -5,6 +5,7 @@
 #include ParticleEffect.txt
 #include ShoulderCannon.txt
 #include BloodPunch.txt
+#include HardSettings.txt
 #include Monsters/T1-Grunts.txt
 #include Monsters/T1-Imps.txt
 #include Monsters/T2-Pinkies.txt

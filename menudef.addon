@@ -27,7 +27,9 @@ OptionMenu "Glorykills"
 	Option "Fear during Glory kill", "be_Fear", YesNo
 	Slider  "Stun duration","be_StaggerLenght",2 ,12, 1
 	StaticText " "
-	Option "Fatality kill HealthBonus", "be_HealthBonus", YesNo
+	Option "Hardmode", "be_GKHard", YesNo
+	StaticText "Glory Kill Health bonus halved. if ammo drop enabled, ammo drop chance to 1/3."
+	Option "Vanilla Fatality HealthBonus", "be_HealthBonus", YesNo
 	StaticText " "
 	StaticText "This option requires Fatality kill HealthBonus turned on."
 	Option "Only Berserk Kill HealthBonus", "be_OnlyBerserk", YesNo
@@ -37,6 +39,7 @@ OptionMenu "Glorykills"
 	Option "Ammo Bonus Drop", "be_AmmoBonus", YesNo
 	Option "Glory Melee Ammo Bonus", "be_GSAmmoBonus", YesNo
 	StaticText " "
+	Option "Bonus Trail Effect", "PinataParticles", YesNo
 	Slider  "Collecting Health & Armor Radius","sv_bonusrange",0 ,200, 1
 	Slider  "Collecting Ammo & Grenade Radius","sv_ammorange",0 ,200, 1
 	StaticText " "
