@@ -568,7 +568,7 @@ ACTOR PB_Railgun : PB_Weapon
 			goto Ready3
 		
 		RailFireSparks:
-			R126 CCDDDEE 1 BRIGHT
+			R126 CDE 1 BRIGHT
 			Stop
 
 		Fire_Laser:
