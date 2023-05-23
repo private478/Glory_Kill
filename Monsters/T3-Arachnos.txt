@@ -109,7 +109,6 @@ ACTOR PB_ArachnophyteGK: PB_Arachnophyte replaces PB_Arachnophyte
 
 ACTOR PB_ArachnotronGK: PB_Arachnotron replaces PB_Arachnotron
 {
-	DropItem "DemonStrengthRune" 5
 	DropItem "Demonpickup2" 255
 	DropItem "Demonpickup" 55
 	DropItem "Crucible" 2
@@ -332,7 +331,6 @@ actor AracnorbGK: Aracnorb replaces Aracnorb
 
 ACTOR PB_EliteArachnotronGK: PB_EliteArachnotron replaces PB_EliteArachnotron
 {
-	DropItem "DemonStrengthRune" 8
 	DropItem "DoubleSphere" 7
 	DropItem "HasteSphere" 2
 	DropItem "Demonpickup2" 255
@@ -447,7 +445,6 @@ ACTOR PB_EliteArachnotronGK: PB_EliteArachnotron replaces PB_EliteArachnotron
 
 ACTOR PB_InfernalArachnotronGK: PB_InfernalArachnotron replaces PB_InfernalArachnotron
 {
-	DropItem "DemonStrengthRune" 8
 	DropItem "HasteSphere" 8
 	DropItem "DoubleSphere" 7
 	DropItem "Demonpickup2" 255

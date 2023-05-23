@@ -1,6 +1,5 @@
 Actor PB_DaedabusGK: PB_Daedabus replaces PB_Daedabus
 {
-	DropItem "DemonStrengthRune" 5
 	DropItem "HasteSphere" 4
 	DropItem "DoubleSphere" 4
 	DropItem "Demonpickup2" 80
@@ -113,7 +112,6 @@ Actor PB_DaedabusGK: PB_Daedabus replaces PB_Daedabus
 
 ACTOR PB_MancubusGK: PB_Mancubus Replaces PB_Mancubus
 {
-	DropItem "DemonStrengthRune" 5
 	DropItem "Demonpickup2" 60
 	DropItem "Demonpickup2" 250
 	DropItem "Crucible" 3
@@ -225,7 +223,6 @@ Actor PB_VolcabusGK : PB_Volcabus replaces PB_Volcabus
 	DropItem "Demonpickup2" 50
 	DropItem "Demonpickup2" 50
 	DropItem "Demonpickup2" 250
-	DropItem "DemonStrengthRune" 5
 	DropItem "HasteSphere" 4
 	DropItem "DoubleSphere" 4
 	DropItem "Crucible" 3

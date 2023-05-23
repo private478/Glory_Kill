@@ -1,6 +1,5 @@
 ACTOR PB_BaronGK : PB_Baron Replaces PB_Baron
 {
-	DropItem "DemonStrengthRune" 9
 	DropItem "Demonpickup2" 76
 	DropItem "Demonpickup2" 76
 	DropItem "Crucible" 4
@@ -222,7 +221,6 @@ ACTOR PB_BelphegorGK : PB_Belphegor replaces PB_Belphegor
 
 ACTOR PB_CyberBaronGK: PB_CyberBaron replaces PB_CyberBaron
 {
-	DropItem "DemonStrengthRune" 9
 	DropItem "HasteSphere" 8
 	DropItem "DoubleSphere" 7
 	DropItem "Crucible" 4
@@ -332,8 +330,6 @@ ACTOR PB_CyberBaronGK: PB_CyberBaron replaces PB_CyberBaron
 
 Actor PB_CyberKnightGK: PB_CyberKnight Replaces PB_CyberKnight
 {
-	DropItem "DemonStrengthRune" 3
-	DropItem "DemonStrengthRune" 7
 	DropItem "HasteSphere" 6
 	DropItem "DoubleSphere" 5
 	DropItem "Demonpickup2" 90
@@ -442,7 +438,6 @@ Actor PB_CyberKnightGK: PB_CyberKnight Replaces PB_CyberKnight
 
 ACTOR PB_CyberPaladinGK: PB_CyberPaladin replaces PB_CyberPaladin
 {
-	DropItem "DemonStrengthRune" 7
 	DropItem "HasteSphere" 6
 	DropItem "DoubleSphere" 5
 	DropItem "Demonpickup2" 90
@@ -667,7 +662,6 @@ Actor PB_InfernusGK : PB_Infernus replaces PB_Infernus
 
 ACTOR PB_KnightGK : PB_Knight Replaces PB_Knight
 {
-	DropItem "DemonStrengthRune" 3
 	DropItem "Demonpickup2" 50
 	DropItem "Demonpickup" 196
 	DropItem "Crucible" 4

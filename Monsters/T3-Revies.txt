@@ -222,7 +222,6 @@ ACTOR PB_DraugrGK : PB_Draugr Replaces PB_Draugr
 
 ACTOR PB_RevenantGK : PB_Revenant Replaces PB_Revenant
 {
-	DropItem "DemonStrengthRune" 5
 	DropItem "Demonpickup2" 50
 	DropItem "Demonpickup" 255
 	DropItem "Crucible" 3
