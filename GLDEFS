@@ -221,6 +221,16 @@ hardwareshader sprite ZSG2G3G7 	{ Shader "shaders/glorykill.shader" Speed 1.0 }
 hardwareshader sprite ZSG2G4G6 	{ Shader "shaders/glorykill.shader" Speed 1.0 }
 hardwareshader sprite ZSG2G5 	{ Shader "shaders/glorykill.shader" Speed 1.0 }
 
+//ClassicCommando
+hardwareshader sprite CP0SH1 	{ Shader "shaders/glorykill.shader" Speed 1.0 }
+hardwareshader sprite CP0SH2 	{ Shader "shaders/glorykill.shader" Speed 1.0 }
+hardwareshader sprite CP0SH3 	{ Shader "shaders/glorykill.shader" Speed 1.0 }
+hardwareshader sprite CP0SH4 	{ Shader "shaders/glorykill.shader" Speed 1.0 }
+hardwareshader sprite CP0SH5 	{ Shader "shaders/glorykill.shader" Speed 1.0 }
+hardwareshader sprite CP0SH6 	{ Shader "shaders/glorykill.shader" Speed 1.0 }
+hardwareshader sprite CP0SH7 	{ Shader "shaders/glorykill.shader" Speed 1.0 }
+hardwareshader sprite CP0SH8 	{ Shader "shaders/glorykill.shader" Speed 1.0 }
+
 //HelmetCommando
 hardwareshader sprite MP2GG1 	{ Shader "shaders/glorykill.shader" Speed 1.0 }
 hardwareshader sprite MP2GG2 	{ Shader "shaders/glorykill.shader" Speed 1.0 }

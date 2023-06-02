@@ -126,6 +126,7 @@ extend class PB_WeaponBase
 		PB_SetExecutingEnemy(false);
 		//A_ClearTarget();
 		A_TakeInventory("ExecutionToken", 1);
+		A_CustomPunch(10000,1,0,"GloryKillPuff",150,0,0);
 	}
 	
 	

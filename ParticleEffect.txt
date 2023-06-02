@@ -23,9 +23,9 @@ ACTOR Superarmor : PowerInvulnerable
   Powerup.Mode Reflective
 }
 
-ACTOR Superarmorsmall : PowerInvulnerable
+ACTOR BloodPunchArmor : PowerInvulnerable
 {
-  Powerup.Duration -1
+  Powerup.Duration 25
   Powerup.Mode Reflective
 }
 

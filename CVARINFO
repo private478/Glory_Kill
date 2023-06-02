@@ -3,6 +3,7 @@ server cheat bool be_ExecutionsON = true;
 server noarchive bool be_ExecutionHighlight = true;
 server noarchive bool be_MonsterStagger = true;
 server noarchive bool be_NoisyStagger = true;
+server bool be_ShortFatality = true;
 server bool be_GKHard = false;
 server bool be_HealthBonus = true;
 server bool be_OnlyBerserk = true;
