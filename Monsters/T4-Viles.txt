@@ -62,10 +62,6 @@ ACTOR PB_ArchvileGK: PB_Archvile Replaces PB_Archvile
 			return state(0);
 		}
 		Loop
-	
-	Death.GloryKill:
-		TNT1 A 0 A_GiveToTarget("BPtoken",4)
-		Goto Death.Fatality
 		
 	Death.Crucible:
 		TNT1 A 0 A_SpawnItemEx("GlorySawPinataHight",0,0,Height / 2,random(0,8),0,random(0,8),random(0,360))
@@ -99,16 +95,20 @@ ACTOR PB_ArchvileGK: PB_Archvile Replaces PB_Archvile
 		TNT1 A 0	A_SpawnItemEx("BloodpunchWave", 0, 0, Height / 2, 0, 0, 0, 0, SXF_CLIENTSIDE|SXF_TRANSFERPITCH)
 		Goto Super::Pain.ExtremePunches
 
-	Death.Fatality:
-	    TNT1 A 0 A_Pain
+	Death.Execution:
+		TNT1 A 0 {
+// 			A_Stop;
+			A_Stopsound;
+			A_FaceTarget;
+			A_NoBlocking;
+		}
+		DIAB A 4 
+		TNT1 A 0 A_Pain
+		DIAB Q 21
+		TNT1 A 0 A_Recoil(4)
+		TNT1 A 0 A_GiveToTarget("BPtoken",4)
 		TNT1 A 0 A_SpawnItemEx("GloryHightPinataSpawn2",0,0,Height / 2,random(0,8),0,random(0,8),random(0,360))
-	//   TNT1 A 0 A_JumpIfIntargetInventory("FistsSelected", 1, 1)
-	//	Goto Death
-		TNT1 A 0 A_Jump(128, "Fatality2")
-	    TNT1 A 0 A_GiveToTarget("GoFatality", 1)
-        TNT1 A 0 A_NoBlocking
-        TNT1 A 0 A_GiveToTarget("ArchvileFatality", 1)
-        Stop
+		Goto Super::Death.SSG	
 	}
 }
 
@@ -176,10 +176,6 @@ actor PB_FleshWizardGK: PB_FleshWizard Replaces PB_FleshWizard
 			return state(0);
 		}
 		Loop
-	
-	Death.GloryKill:
-		TNT1 A 0 A_GiveToTarget("BPtoken",4)
-		Goto Death.Fatality
   
   	Death.Crucible:
 		TNT1 A 0 A_SpawnItemEx("GlorySawPinataHight",0,0,Height / 2,random(0,8),0,random(0,8),random(0,360))
@@ -213,13 +209,20 @@ actor PB_FleshWizardGK: PB_FleshWizard Replaces PB_FleshWizard
 		TNT1 A 0	A_SpawnItemEx("BloodpunchWave", 0, 0, Height / 2, 0, 0, 0, 0, SXF_CLIENTSIDE|SXF_TRANSFERPITCH)
 		Goto Super::Pain.Stun
   
-	Death.Fatality:
+	Death.Execution:
+		TNT1 A 0 {
+// 			A_Stop;
+			A_Stopsound;
+			A_FaceTarget;
+			A_NoBlocking;
+		}
+		LMW1 G 4 
+		TNT1 A 0 A_Pain
+		LMWZ I 21
+		TNT1 A 0 A_Recoil(4)
+		TNT1 A 0 A_GiveToTarget("BPtoken",4)
 		TNT1 A 0 A_SpawnItemEx("GloryHightPinataSpawn2",0,0,Height / 2,random(0,8),0,random(0,8),random(0,360))
-		TNT1 A 0 A_GiveToTarget("GoFatality", 1)
-        TNT1 A 0 A_GiveToTarget("FleshWizardFatality", 1)
-        TNT1 A 1 A_NoBlocking
-        TNT1 A 0 
-		stop
+		Goto Super::Death.QuadBlast	
   
 	}
 }
@@ -287,10 +290,6 @@ Actor PB_HellionGK: PB_Hellion Replaces PB_Hellion
 			return state(0);
 		}
 		Loop
-	
-	Death.GloryKill:
-		TNT1 A 0 A_GiveToTarget("BPtoken",4)
-		Goto Death.Fatality
   
   	Death.Crucible:
 		TNT1 A 0 A_SpawnItemEx("GlorySawPinataHight",0,0,Height / 2,random(0,8),0,random(0,8),random(0,360))
@@ -324,15 +323,20 @@ Actor PB_HellionGK: PB_Hellion Replaces PB_Hellion
 		TNT1 A 0	A_SpawnItemEx("BloodpunchWave", 0, 0, Height / 2, 0, 0, 0, 0, SXF_CLIENTSIDE|SXF_TRANSFERPITCH)
 		Goto Super::Pain.Stun
 
-	Death.Fatality:
-	    TNT1 A 0 A_Pain
+	Death.Execution:
+		TNT1 A 0 {
+// 			A_Stop;
+			A_Stopsound;
+			A_FaceTarget;
+			A_NoBlocking;
+		}
+		HELN A 4 
+		TNT1 A 0 A_Pain
+		HELN M 21
+		TNT1 A 0 A_Recoil(4)
+		TNT1 A 0 A_GiveToTarget("BPtoken",4)
 		TNT1 A 0 A_SpawnItemEx("GloryHightPinataSpawn2",0,0,Height / 2,random(0,8),0,random(0,8),random(0,360))
-	//  TNT1 A 0 A_JumpIfIntargetInventory("FistsSelected", 1, 1)
-	//	Goto Death
-        TNT1 A 0 A_NoBlocking
-	    TNT1 A 0 A_GiveToTarget("GoFatality", 1)
-        TNT1 A 0 A_GiveToTarget("HellionFatality", 1)
-        Stop
+		Goto Super::Death.SSG	
 
 	}
 }
@@ -401,10 +405,6 @@ ACTOR PB_IcevileGK: PB_Icevile Replaces PB_Icevile
 		}
 		Loop
 	
-	Death.GloryKill:
-		TNT1 A 0 A_GiveToTarget("BPtoken",4)
-		Goto Death.Fatality
-	
 	Death.Crucible:
 		TNT1 A 0 A_SpawnItemEx("GlorySawPinataHight",0,0,Height / 2,random(0,8),0,random(0,8),random(0,360))
 		Goto Super::Death
@@ -436,14 +436,21 @@ ACTOR PB_IcevileGK: PB_Icevile Replaces PB_Icevile
 		TNT1 A 0	A_SpawnItemEx("BloodpunchWave", 0, 0, Height / 2, 0, 0, 0, 0, SXF_CLIENTSIDE|SXF_TRANSFERPITCH)
 		TNT1 A 0	A_SpawnItemEx("BloodpunchWave", 0, 0, Height / 2, 0, 0, 0, 0, SXF_CLIENTSIDE|SXF_TRANSFERPITCH)
 		Goto Super::Pain.Stun
-
-	Death.Fatality:
+	
+	Death.Execution:
+		TNT1 A 0 {
+// 			A_Stop;
+			A_Stopsound;
+			A_FaceTarget;
+			A_NoBlocking;
+		}
+		DIAF A 4 
+		TNT1 A 0 A_Pain
+		DIAF Q 21
+		TNT1 A 0 A_Recoil(4)
+		TNT1 A 0 A_GiveToTarget("BPtoken",4)
 		TNT1 A 0 A_SpawnItemEx("GloryHightPinataSpawn2",0,0,Height / 2,random(0,8),0,random(0,8),random(0,360))
-		TNT1 A 0 A_GiveToTarget("GoFatality", 1)
-        TNT1 A 0 A_GiveToTarget("IceVileFatality", 1)
-        TNT1 A 1 A_BossDeath
-        TNT1 A 0 
-		stop
-		
+		Goto Super::Death
+	
 	}
 }

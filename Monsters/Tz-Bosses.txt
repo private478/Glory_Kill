@@ -60,7 +60,7 @@ ACTOR PB_CyberdemonGK: PB_Cyberdemon Replaces PB_Cyberdemon
 		"####" "#" 0
 		Loop
 	
-	Death.GloryKill:
+	Death.Execution:
 		TNT1 A 0 A_GiveToTarget("BPtoken",5)
 		TNT1 A 0 A_SpawnItemEx("GloryHightPinataSpawn2",0,0,Height / 2,random(0,8),0,random(0,8),random(0,360))
 		TNT1 A 0 A_NoBlocking
@@ -201,7 +201,7 @@ ACTOR PB_AnnihilatorGK: PB_Annihilator Replaces PB_Annihilator
 		"####" "#" 0
 		Loop
 	
-	Death.GloryKill:
+	Death.Execution:
 		TNT1 A 0 A_GiveToTarget("BPtoken",5)
 		TNT1 A 0 A_SpawnItemEx("GloryHightPinataSpawn2",0,0,Height / 2,random(0,8),0,random(0,8),random(0,360))
 		TNT1 A 0 A_NoBlocking
@@ -303,7 +303,7 @@ ACTOR PB_MastermindGK: PB_Mastermind Replaces PB_Mastermind
 		"####" "#" 0
 		Loop
 	
-	Death.GloryKill:
+	Death.Execution:
 		TNT1 A 0 A_GiveToTarget("BPtoken",3)
 		TNT1 A 0 A_SpawnItemEx("GloryHightPinataSpawn2",0,0,Height / 2,random(0,8),0,random(0,8),random(0,360))
 		TNT1 A 0 A_NoBlocking

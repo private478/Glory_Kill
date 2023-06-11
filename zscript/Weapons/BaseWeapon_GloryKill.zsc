@@ -1,4 +1,4 @@
-// not working
+// not used
 
 extend class PB_WeaponBase
 {

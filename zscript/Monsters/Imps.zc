@@ -67,18 +67,6 @@ Class PB_Imp1GK : PB_Imp1 Replaces PB_Imp1
 		"####" "#" 0 { A_SpawnItem("HeadshotTarget4", 0, 48,0); A_SpawnItem ("LegTarget4", 10); }
 		"####" "#" 0;
 		Loop;
-	
-	Death.GloryKill:
-		TNT1 A 0 A_GiveToTarget("BPtoken",2);
-		TNT1 A 0
-		{
-			if(GetCvar("be_ShortFatality"))
-			{
-				return ResolveState("Death.ShortFatality");
-			}
-			return ResolveState("Death.Fatality");
-		}
-		Goto Death.Fatality;
 		
 	Death.Crucible:
 		TNT1 A 0 A_SpawnItemEx("GlorySawPinataLow",0,0,Height / 2,random(0,8),0,random(0,8),random(0,360));
@@ -102,27 +90,11 @@ Class PB_Imp1GK : PB_Imp1 Replaces PB_Imp1
 		TNT1 A 0	A_SpawnItemEx("BloodpunchWave", 0, 0, Height / 2, 0, 0, 0, 0, SXF_CLIENTSIDE|SXF_TRANSFERPITCH);
 		TNT1 A 0 A_SpawnItemEx("GlorySawPinataLow",0,0,Height / 2,random(0,8),0,random(0,8),random(0,360));
 		Goto Super::Death.ExtremePunches;
-	
-	Death.ShortFatality:
-		TNT1 A 0 A_Pain();
-		TNT1 A 0 A_NoBlocking();
-		TNT1 A 0 A_SpawnItemEx("GloryLowPinataSpawn",0,0,Height / 2,random(0,8),0,random(0,8),random(0,360));
-		TNT1 A 0 A_GiveToTarget("GoFatality", 1);
-		TNT1 A 0 A_Jump(256, "Death.Fatality1", "Death.Fatality1", "Death.Fatality2", "Death.Fatality2", "Death.Fatality4");
-		Goto Super::Death.Fatality1;
-	
-	Death.Fatality:
-		TNT1 A 0 A_Pain();
-		TNT1 A 0 A_NoBlocking();
-		TNT1 A 0 A_SpawnItemEx("GloryLowPinataSpawn",0,0,Height / 2,random(0,8),0,random(0,8),random(0,360));
-		TNT1 A 0 A_GiveToTarget("GoFatality", 1);
-		TNT1 A 0 A_Jump(256,"Death.Fatality1", "Death.Fatality4", "Death.Fatality2", "Death.Fatality2", "Death.Fatality3", "Death.Fatality4", "Death.Fatality5");
-		Goto Super::Death.Fatality1;
 		
 	Death.Execution:
 		TNT1 A 0 A_Stopsound();
 		TNT1 A 0 A_GiveToTarget("BPtoken",2);
 		TNT1 A 0 A_SpawnItemEx("GloryLowPinataSpawn",0,0,Height / 2,random(0,8),0,random(0,8),random(0,360));
-		Stop;	
+		Stop;
 	}
 }

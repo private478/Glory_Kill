@@ -62,10 +62,6 @@ ACTOR PB_ImpGK: PB_Imp Replaces PB_Imp
 		"####" "#" 0 { A_SpawnItem("HeadshotTarget4", 0, 48,0); A_SpawnItem ("LegTarget4", 10); }
 		"####" "#" 0
 		Loop
-	
-	Death.GloryKill:
-		TNT1 A 0 A_GiveToTarget("BPtoken",2)
-		Goto Death.Fatality	
 		
 	Death.Crucible:
 		TNT1 A 0 A_SpawnItemEx("GlorySawPinataLow",0,0,Height / 2,random(0,8),0,random(0,8),random(0,360))
@@ -89,7 +85,8 @@ ACTOR PB_ImpGK: PB_Imp Replaces PB_Imp
 		TNT1 A 0	A_SpawnItemEx("BloodpunchWave", 0, 0, Height / 2, 0, 0, 0, 0, SXF_CLIENTSIDE|SXF_TRANSFERPITCH)
 		TNT1 A 0 A_SpawnItemEx("GlorySawPinataLow",0,0,Height / 2,random(0,8),0,random(0,8),random(0,360))
 		Goto Super::Death.ExtremePunches
-		
+	
+	Death.Execution:
 	Death.Fatality:
 		TNT1 A 0 A_Pain
         TNT1 A 0 A_NoBlocking
@@ -97,15 +94,6 @@ ACTOR PB_ImpGK: PB_Imp Replaces PB_Imp
 		TNT1 A 0 A_GiveToTarget("GoFatality", 1)
 		TNT1 A 0 A_Jump(255, "Death.Fatality1", "Death.Fatality1", "Death.Fatality2", "Death.Fatality2", "Death.Fatality3", "Death.Fatality3", "Death.Fatality4", "Death.Fatality5")
 		Goto Super::Death.Fatality1
-		
-	Execution:
-		TNT1 A 1 A_Die("Execution")
-		Stop
-	Death.Execution:
-		TNT1 A 0 A_Stopsound
-		TNT1 A 0 A_GiveToTarget("BPtoken",2)
-		TNT1 A 0 A_SpawnItemEx("GloryLowPinataSpawn",0,0,Height / 2,random(0,8),0,random(0,8),random(0,360))
-		Stop
 	}	
 }
 
@@ -173,18 +161,6 @@ actor PB_DarkImpNamiGK : PB_DarkImpNami Replaces PB_DarkImpNami
 		"####" "#" 0 { A_SpawnItem("HeadshotTarget4", 0, 48,0); A_SpawnItem ("LegTarget4", 10); }
 		"####" "#" 0
 		Loop
-	
-	Death.GloryKill:
-		TNT1 A 0 A_GiveToTarget("BPtoken",2)
-		TNT1 A 0
-		{
-			if(GetCvar("be_ShortFatality"))
-			{
-				return state("Death.ShortFatality");
-			}
-			return state("Death.Fatality");
-		}
-		Goto Death.Fatality
 		
 	Death.Crucible:
 		TNT1 A 0 A_SpawnItemEx("GlorySawPinataLow",0,0,Height / 2,random(0,8),0,random(0,8),random(0,360))
@@ -209,34 +185,20 @@ actor PB_DarkImpNamiGK : PB_DarkImpNami Replaces PB_DarkImpNami
 		TNT1 A 0 A_SpawnItemEx("GlorySawPinataLow",0,0,Height / 2,random(0,8),0,random(0,8),random(0,360))
 		Goto Super::Death.ExtremePunches
 	
-	Death.ShortFatality:
-		TNT1 A 0 A_Pain
-        TNT1 A 0 //A_NoBlocking
-		TNT1 A 0 A_SpawnItemEx("GloryLowPinataSpawn",0,0,Height / 2,random(0,8),0,random(0,8),random(0,360))
-	//	TNT1 A 0 A_JumpIfIntargetInventory("FistsSelected", 1, 1)
-	//	Goto Death.ExplosiveImpact
-		TNT1 A 0 A_GiveToTarget("GoFatality", 1)
-		TNT1 A 0 A_Jump(255, "Death.Fatality2")
-		Goto Super::Death.Fatality1
-	
-	Death.Fatality:
-		TNT1 A 0 A_Pain
-        TNT1 A 0 //A_NoBlocking
-		TNT1 A 0 A_SpawnItemEx("GloryLowPinataSpawn",0,0,Height / 2,random(0,8),0,random(0,8),random(0,360))
-	//	TNT1 A 0 A_JumpIfIntargetInventory("FistsSelected", 1, 1)
-	//	Goto Death.ExplosiveImpact
-		TNT1 A 0 A_GiveToTarget("GoFatality", 1)
-		TNT1 A 0 A_Jump(255, "Death.Fatality1", "Death.Fatality2")
-		Goto Super::Death.Fatality1
-		
-	Execution:
-		TNT1 A 1 A_Die("Execution")
-		Stop
 	Death.Execution:
-		TNT1 A 0 A_Stopsound
+		TNT1 A 0 {
+// 			A_Stop;
+ 			A_Stopsound;
+			A_FaceTarget;
+			A_NoBlocking;
+		}
+		DRKI EF 4 
+		TNT1 A 0 A_Pain
+		DRKI H 21
+		TNT1 A 0 A_Recoil(4)
 		TNT1 A 0 A_GiveToTarget("BPtoken",2)
 		TNT1 A 0 A_SpawnItemEx("GloryLowPinataSpawn",0,0,Height / 2,random(0,8),0,random(0,8),random(0,360))
-		Stop	
+		Goto Super::Death.SSG
 	}
 }
 
@@ -304,18 +266,6 @@ actor PB_DarkImpNetherGK : PB_DarkImpNether Replaces PB_DarkImpNether
 		"####" "#" 0 { A_SpawnItem("HeadshotTarget4", 0, 48,0); A_SpawnItem ("LegTarget4", 10); }
 		"####" "#" 0
 		Loop
-	
-	Death.GloryKill:
-		TNT1 A 0 A_GiveToTarget("BPtoken",2)
-		TNT1 A 0
-		{
-			if(GetCvar("be_ShortFatality"))
-			{
-				return state("Death.ShortFatality");
-			}
-			return state("Death.Fatality");
-		}
-		Goto Death.Fatality
 		
 	Death.Crucible:
 		TNT1 A 0 A_SpawnItemEx("GlorySawPinataLow",0,0,Height / 2,random(0,8),0,random(0,8),random(0,360))
@@ -340,34 +290,20 @@ actor PB_DarkImpNetherGK : PB_DarkImpNether Replaces PB_DarkImpNether
 		TNT1 A 0 A_SpawnItemEx("GlorySawPinataLow",0,0,Height / 2,random(0,8),0,random(0,8),random(0,360))
 		Goto Super::Death.ExtremePunches
 
-	Death.ShortFatality:
-		TNT1 A 0 A_Pain
-        TNT1 A 0 //A_NoBlocking
-		TNT1 A 0 A_SpawnItemEx("GloryLowPinataSpawn",0,0,Height / 2,random(0,8),0,random(0,8),random(0,360))
-	//	TNT1 A 0 A_JumpIfIntargetInventory("FistsSelected", 1, 1)
-	//	Goto Death.ExplosiveImpact
-		TNT1 A 0 A_GiveToTarget("GoFatality", 1)
-		TNT1 A 0 A_Jump(255, "Death.Fatality2")
-		Goto Super::Death.Fatality1
-	
-	Death.Fatality:
-		TNT1 A 0 A_Pain
-        TNT1 A 0 //A_NoBlocking
-		TNT1 A 0 A_SpawnItemEx("GloryLowPinataSpawn",0,0,Height / 2,random(0,8),0,random(0,8),random(0,360))
-	//	TNT1 A 0 A_JumpIfIntargetInventory("FistsSelected", 1, 1)
-	//	Goto Death.ExplosiveImpact
-		TNT1 A 0 A_GiveToTarget("GoFatality", 1)
-		TNT1 A 0 A_Jump(255, "Death.Fatality1", "Death.Fatality2")
-		Goto Super::Death.Fatality1	
-		
-	Execution:
-		TNT1 A 1 A_Die("Execution")
-		Stop
 	Death.Execution:
-		TNT1 A 0 A_Stopsound
+		TNT1 A 0 {
+// 			A_Stop;
+ 			A_Stopsound;
+			A_FaceTarget;
+			A_NoBlocking;
+		}
+		DRKF IJ 4 
+		TNT1 A 0 A_Pain
+		DRKF H 21
+		TNT1 A 0 A_Recoil(4)
 		TNT1 A 0 A_GiveToTarget("BPtoken",2)
 		TNT1 A 0 A_SpawnItemEx("GloryLowPinataSpawn",0,0,Height / 2,random(0,8),0,random(0,8),random(0,360))
-		Stop
+		Goto Super::Death.SSG
 	}
 }
 
@@ -435,18 +371,6 @@ actor PB_DarkImpSTGK : PB_DarkImpST Replaces PB_DarkImpST
 		"####" "#" 0 { A_SpawnItem("HeadshotTarget4", 0, 48,0); A_SpawnItem ("LegTarget4", 10); }
 		"####" "#" 0
 		Loop
-	
-	Death.GloryKill:
-		TNT1 A 0 A_GiveToTarget("BPtoken",2)
-		TNT1 A 0
-		{
-			if(GetCvar("be_ShortFatality"))
-			{
-				return state("Death.ShortFatality");
-			}
-			return state("Death.Fatality");
-		}
-		Goto Death.Fatality
 		
 	Death.Crucible:
 		TNT1 A 0 A_SpawnItemEx("GlorySawPinataLow",0,0,Height / 2,random(0,8),0,random(0,8),random(0,360))
@@ -471,34 +395,20 @@ actor PB_DarkImpSTGK : PB_DarkImpST Replaces PB_DarkImpST
 		TNT1 A 0 A_SpawnItemEx("GlorySawPinataLow",0,0,Height / 2,random(0,8),0,random(0,8),random(0,360))
 		Goto Super::Death.ExtremePunches
 	
-	Death.ShortFatality:
-		TNT1 A 0 A_Pain
-        TNT1 A 0 //A_NoBlocking
-		TNT1 A 0 A_SpawnItemEx("GloryLowPinataSpawn",0,0,Height / 2,random(0,8),0,random(0,8),random(0,360))
-	//	TNT1 A 0 A_JumpIfIntargetInventory("FistsSelected", 1, 1)
-	//	Goto Death.ExplosiveImpact
-		TNT1 A 0 A_GiveToTarget("GoFatality", 1)
-		TNT1 A 0 A_Jump(255, "Death.Fatality2")
-		Goto Super::Death.Fatality1
-	
-	Death.Fatality:
-		TNT1 A 0 A_Pain
-        TNT1 A 0 //A_NoBlocking
-		TNT1 A 0 A_SpawnItemEx("GloryLowPinataSpawn",0,0,Height / 2,random(0,8),0,random(0,8),random(0,360))
-	//	TNT1 A 0 A_JumpIfIntargetInventory("FistsSelected", 1, 1)
-	//	Goto Death.ExplosiveImpact
-		TNT1 A 0 A_GiveToTarget("GoFatality", 1)
-		TNT1 A 0 A_Jump(255, "Death.Fatality1", "Death.Fatality2")
-		Goto Super::Death.Fatality1
-		
-	Execution:
-		TNT1 A 1 A_Die("Execution")
-		Stop
 	Death.Execution:
-		TNT1 A 0 A_Stopsound
+		TNT1 A 0 {
+// 			A_Stop;
+ 			A_Stopsound;
+			A_FaceTarget;
+			A_NoBlocking;
+		}
+		DRKS EF 4 
+		TNT1 A 0 A_Pain
+		DRKS H 21
+		TNT1 A 0 A_Recoil(4)
 		TNT1 A 0 A_GiveToTarget("BPtoken",2)
 		TNT1 A 0 A_SpawnItemEx("GloryLowPinataSpawn",0,0,Height / 2,random(0,8),0,random(0,8),random(0,360))
-		Stop	
+		Goto Super::Death.SSG
 	}
 }
 
@@ -566,18 +476,6 @@ actor PB_DarkImpVoidGK : PB_DarkImpVoid Replaces PB_DarkImpVoid
 		"####" "#" 0 { A_SpawnItem("HeadshotTarget4", 0, 48,0); A_SpawnItem ("LegTarget4", 10); }
 		"####" "#" 0
 		Loop
-	
-	Death.GloryKill:
-		TNT1 A 0 A_GiveToTarget("BPtoken",2)
-		TNT1 A 0
-		{
-			if(GetCvar("be_ShortFatality"))
-			{
-				return state("Death.ShortFatality");
-			}
-			return state("Death.Fatality");
-		}
-		Goto Death.Fatality	
 		
 	Death.Crucible:
 		TNT1 A 0 A_SpawnItemEx("GlorySawPinataLow",0,0,Height / 2,random(0,8),0,random(0,8),random(0,360))
@@ -601,36 +499,21 @@ actor PB_DarkImpVoidGK : PB_DarkImpVoid Replaces PB_DarkImpVoid
 		TNT1 A 0	A_SpawnItemEx("BloodpunchWave", 0, 0, Height / 2, 0, 0, 0, 0, SXF_CLIENTSIDE|SXF_TRANSFERPITCH)
 		TNT1 A 0 A_SpawnItemEx("GlorySawPinataLow",0,0,Height / 2,random(0,8),0,random(0,8),random(0,360))
 		Goto Super::Death.ExtremePunches
-	
 
-	Death.ShortFatality:
-		TNT1 A 0 A_Pain
-        TNT1 A 0 //A_NoBlocking
-		TNT1 A 0 A_SpawnItemEx("GloryLowPinataSpawn",0,0,Height / 2,random(0,8),0,random(0,8),random(0,360))
-	//	TNT1 A 0 A_JumpIfIntargetInventory("FistsSelected", 1, 1)
-	//	Goto Death.ExplosiveImpact
-		TNT1 A 0 A_GiveToTarget("GoFatality", 1)
-		TNT1 A 0 A_Jump(255, "Death.Fatality2")
-		Goto Super::Death.Fatality1
-		
-	Death.Fatality:
-		TNT1 A 0 A_Pain
-        TNT1 A 0 //A_NoBlocking
-		TNT1 A 0 A_SpawnItemEx("GloryLowPinataSpawn",0,0,Height / 2,random(0,8),0,random(0,8),random(0,360))
-	//	TNT1 A 0 A_JumpIfIntargetInventory("FistsSelected", 1, 1)
-	//	Goto Death.ExplosiveImpact
-		TNT1 A 0 A_GiveToTarget("GoFatality", 1)
-		TNT1 A 0 A_Jump(255, "Death.Fatality1", "Death.Fatality2")
-		Goto Super::Death.Fatality1
-		
-	Execution:
-		TNT1 A 1 A_Die("Execution")
-		Stop
 	Death.Execution:
-		TNT1 A 0 A_Stopsound
+		TNT1 A 0 {
+// 			A_Stop;
+ 			A_Stopsound;
+			A_FaceTarget;
+			A_NoBlocking;
+		}
+		DRKV IJ 4 
+		TNT1 A 0 A_Pain
+		DRKV H 21
+		TNT1 A 0 A_Recoil(4)
 		TNT1 A 0 A_GiveToTarget("BPtoken",2)
 		TNT1 A 0 A_SpawnItemEx("GloryLowPinataSpawn",0,0,Height / 2,random(0,8),0,random(0,8),random(0,360))
-		Stop
+		Goto Super::Death.SSG
 	}
 }
 
@@ -699,10 +582,6 @@ Actor DNImpVariant1GK : DNImpVariant1 Replaces DNImpVariant1
 		"####" "#" 0
 		Loop
 	
-	Death.GloryKill:
-		TNT1 A 0 A_GiveToTarget("BPtoken",2)
-		Goto Death.Fatality
-	
 	Death.Crucible:
 		TNT1 A 0 A_SpawnItemEx("GlorySawPinataLow",0,0,Height / 2,random(0,8),0,random(0,8),random(0,360))
 		Goto Super::Death.cut
@@ -726,24 +605,20 @@ Actor DNImpVariant1GK : DNImpVariant1 Replaces DNImpVariant1
 		TNT1 A 0 A_SpawnItemEx("GlorySawPinataLow",0,0,Height / 2,random(0,8),0,random(0,8),random(0,360))
 		Goto Super::Death.ExtremePunches
 		
-	Death.Fatality:
-		TNT1 A 0 A_Pain
-        TNT1 A 0 //A_NoBlocking
-		TNT1 A 0 A_SpawnItemEx("GloryLowPinataSpawn",0,0,Height / 2,random(0,8),0,random(0,8),random(0,360))
-	//	TNT1 A 0 A_JumpIfIntargetInventory("FistsSelected", 1, 1)
-	//	Goto Death.ExplosiveImpact
-		TNT1 A 0 A_GiveToTarget("GoFatality", 1)
-		TNT1 A 0 A_Jump(255, "Death.Fatality1", "Death.Fatality2")
-		Goto Super::Death.Fatality1	
-		
-	Execution:
-		TNT1 A 1 A_Die("Execution")
-		Stop
 	Death.Execution:
-		TNT1 A 0 A_Stopsound
+		TNT1 A 0 {
+// 			A_Stop;
+ 			A_Stopsound;
+			A_FaceTarget;
+			A_NoBlocking;
+		}
+		TRO5 A 4 
+		TNT1 A 0 A_Pain
+		TRO5 H 21
+		TNT1 A 0 A_Recoil(4)
 		TNT1 A 0 A_GiveToTarget("BPtoken",2)
-		TNT1 A 0 A_SpawnItemEx("GloryLowPinataSpawn",0,0,Height / 2,random(0,8),0,random(0,8),random(0,360))
-		Stop
+		TNT1 A 0 A_SpawnItemEx("GloryLowPinataSpawn2",0,0,Height / 2,random(0,8),0,random(0,8),random(0,360))
+		Goto Super::Death.SSG
 	}
 }
 
@@ -811,10 +686,6 @@ Actor DNImpVariant2GK : DNImpVariant2 Replaces DNImpVariant2
 		"####" "#" 0 { A_SpawnItem("HeadshotTarget4", 0, 48,0); A_SpawnItem ("LegTarget4", 10); }
 		"####" "#" 0
 		Loop
-	
-	Death.GloryKill:
-		TNT1 A 0 A_GiveToTarget("BPtoken",2)
-		Goto Death.Fatality
 		
 	Death.Crucible:
 		TNT1 A 0 A_SpawnItemEx("GloryLowPinataSpawn",0,0,32,random(0,8),0,random(0,8),random(0,360))
@@ -839,24 +710,20 @@ Actor DNImpVariant2GK : DNImpVariant2 Replaces DNImpVariant2
 		TNT1 A 0 A_SpawnItemEx("GlorySawPinataLow",0,0,32,random(0,8),0,random(0,8),random(0,360))
 		Goto Super::Death.ExtremePunches
 		
-	Death.Fatality:
-		TNT1 A 0 A_Pain
-        TNT1 A 0 //A_NoBlocking
-		TNT1 A 0 A_SpawnItemEx("GloryLowPinataSpawn",0,0,Height / 2,random(0,8),0,random(0,8),random(0,360))
-	//	TNT1 A 0 A_JumpIfIntargetInventory("FistsSelected", 1, 1)
-	//	Goto Death.ExplosiveImpact
-		TNT1 A 0 A_GiveToTarget("GoFatality", 1)
-		TNT1 A 0 A_Jump(255, "Death.Fatality1", "Death.Fatality2")
-		Goto Super::Death.Fatality1		
-		
-	Execution:
-		TNT1 A 1 A_Die("Execution")
-		Stop
 	Death.Execution:
-		TNT1 A 0 A_Stopsound
+		TNT1 A 0 {
+// 			A_Stop;
+ 			A_Stopsound;
+			A_FaceTarget;
+			A_NoBlocking;
+		}
+		TRO3 A 4 
+		TNT1 A 0 A_Pain
+		TRO3 H 21
+		TNT1 A 0 A_Recoil(4)
 		TNT1 A 0 A_GiveToTarget("BPtoken",2)
-		TNT1 A 0 A_SpawnItemEx("GloryLowPinataSpawn",0,0,Height / 2,random(0,8),0,random(0,8),random(0,360))
-		Stop
+		TNT1 A 0 A_SpawnItemEx("GloryLowPinataSpawn2",0,0,Height / 2,random(0,8),0,random(0,8),random(0,360))
+		Goto Super::Death.SSG
 	}
 }
 
@@ -924,10 +791,6 @@ Actor DNImpVariant3GK : DNImpVariant3 Replaces DNImpVariant3
 		"####" "#" 0 { A_SpawnItem("HeadshotTarget4", 0, 48,0); A_SpawnItem ("LegTarget4", 10); }
 		"####" "#" 0
 		Loop
-	
-	Death.GloryKill:
-		TNT1 A 0 A_GiveToTarget("BPtoken",2)
-		Goto Death.Fatality
 		
 	Death.Crucible:
 		TNT1 A 0 A_SpawnItemEx("GloryLowPinataSpawn",0,0,Height / 2,random(0,8),0,random(0,8),random(0,360))
@@ -952,24 +815,21 @@ Actor DNImpVariant3GK : DNImpVariant3 Replaces DNImpVariant3
 		TNT1 A 0 A_SpawnItemEx("GlorySawPinataLow",0,0,Height / 2,random(0,8),0,random(0,8),random(0,360))
 		Goto Super::Death.ExtremePunches
 		
-	Death.Fatality:
-		TNT1 A 0 A_Pain
-        TNT1 A 0 //A_NoBlocking
-		TNT1 A 0 A_SpawnItemEx("GloryLowPinataSpawn",0,0,Height / 2,random(0,8),0,random(0,8),random(0,360))
-	//	TNT1 A 0 A_JumpIfIntargetInventory("FistsSelected", 1, 1)
-	//	Goto Death.ExplosiveImpact
-		TNT1 A 0 A_GiveToTarget("GoFatality", 1)
-		TNT1 A 0 A_Jump(255, "Death.Fatality1", "Death.Fatality2")
-		Goto Super::Death.Fatality1
-		
-	Execution:
-		TNT1 A 1 A_Die("Execution")
-		Stop
 	Death.Execution:
-		TNT1 A 0 A_Stopsound
+		TNT1 A 0 {
+// 			A_Stop;
+ 			A_Stopsound;
+			A_FaceTarget;
+			A_NoBlocking;
+		}
+		TRO4 A 4 
+		TNT1 A 0 A_Pain
+		TRO4 H 21
+		TNT1 A 0 A_Recoil(4)
 		TNT1 A 0 A_GiveToTarget("BPtoken",2)
-		TNT1 A 0 A_SpawnItemEx("GloryLowPinataSpawn",0,0,Height / 2,random(0,8),0,random(0,8),random(0,360))
-		Stop
+		TNT1 A 0 A_SpawnItemEx("GloryLowPinataSpawn2",0,0,Height / 2,random(0,8),0,random(0,8),random(0,360))
+		Goto Super::Death.SSG
+		
 	}	
 }
 
@@ -1039,10 +899,6 @@ ACTOR PB_InfectedImpGK: PB_InfectedImp Replaces PB_InfectedImp
 		"####" "#" 0
 		Loop
 	
-	Death.GloryKill:
-		TNT1 A 0 A_GiveToTarget("BPtoken",2)
-		Goto Death.Fatality	
-	
 	Death.Crucible:
 		TNT1 A 0 A_SpawnItemEx("GlorySawPinataLow",0,0,Height / 2,random(0,8),0,random(0,8),random(0,360))
 		Goto Super::Death.cut
@@ -1065,22 +921,20 @@ ACTOR PB_InfectedImpGK: PB_InfectedImp Replaces PB_InfectedImp
 		TNT1 A 0	A_SpawnItemEx("BloodpunchWave", 0, 0, Height / 2, 0, 0, 0, 0, SXF_CLIENTSIDE|SXF_TRANSFERPITCH)
 		TNT1 A 0 A_SpawnItemEx("GlorySawPinataLow",0,0,Height / 2,random(0,8),0,random(0,8),random(0,360))
 		Goto Super::Death.ExtremePunches
-		
-	Death.Fatality:
-		TNT1 A 0 A_Pain
-        TNT1 A 0 A_NoBlocking
-		TNT1 A 0 A_SpawnItemEx("GloryLowPinataSpawn2",0,0,Height / 2,random(0,8),0,random(0,8),random(0,360))
-		TNT1 A 0 A_GiveToTarget("GoFatality", 1)
-		TNT1 A 0 A_Jump(255, "Death.Fatality1", "Death.Fatality2")
-		Goto Super::Death.Fatality1	
-		
-	Execution:
-		TNT1 A 1 A_Die("Execution")
-		Stop
+	
 	Death.Execution:
-		TNT1 A 0 A_Stopsound
+		TNT1 A 0 {
+// 			A_Stop;
+ 			A_Stopsound;
+			A_FaceTarget;
+			A_NoBlocking;
+		}
+		1ROO EF 4 
+		TNT1 A 0 A_Pain
+		1ROO H 21
+		TNT1 A 0 A_Recoil(4)
 		TNT1 A 0 A_GiveToTarget("BPtoken",2)
 		TNT1 A 0 A_SpawnItemEx("GloryLowPinataSpawn2",0,0,Height / 2,random(0,8),0,random(0,8),random(0,360))
-		Stop
+		Goto Super::Death.SSG
 	}
 }
