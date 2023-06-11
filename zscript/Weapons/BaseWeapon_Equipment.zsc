@@ -27,8 +27,6 @@ extend class PB_WeaponBase
 			TNT1 A 0 A_JumpIfInventory("StunGrenadeSelected", 1, "ThrowStun");
 			TNT1 A 0 A_JumpIfInventory("LeechSelected", 1, "ThrowLeech");
 			TNT1 A 0 A_JumpIfInventory("RevGunSelected", 1, "FireRevGun");
-			TNT1 A 0 A_JumpIfInventory("LeechSelected", 1, "ThrowLeech");	
-			TNT1 A 0 A_JumpIfInventory("RevGunSelected", 1, "FireRevGun");
 			//More stuff to come.....
 			Goto GoingToReady;
 		WheelCancelEquipment:
@@ -59,12 +57,12 @@ extend class PB_WeaponBase
 					{A_Print("Equipment already selected: Revenant Launcher"); return ResolveState("WheelCancelEquipment");}
 				if(CountInv("WW_ProximityMineSelected") >=1)
 					{
-					if(CountInv("MineAmmo") <=0)
+					if(CountInv("PB_ProxMineAmmo") <=0)
 						{A_Print("No Mines Available"); return ResolveState("WheelCancelEquipment");}
 					}
 				if(CountInv("WW_StunGrenadeSelected") >=1)
 					{
-					if(CountInv("StunGrenadeAmmo") <=0)
+					if(CountInv("PB_StunGrenadeAmmo") <=0)
 						{A_Print("No Stun Grenades Available"); return ResolveState("WheelCancelEquipment");}
 					}
 				if(CountInv("WW_LeechSelected") >=1)
@@ -74,89 +72,89 @@ extend class PB_WeaponBase
 					}
 				if(CountInv("WW_RevGunSelected") >=1)
 					{
-					if(CountInv("MiniHellRocketAmmo") <=0)
+					if(CountInv("PB_QuickLauncherAmmo") <=0)
 						{A_Print("No Revenant Launcher Available"); return ResolveState("WheelCancelEquipment");}
 					}
 				if(CountInv("WW_FragGrenadeSelected") >=1)
 					{
-					if(CountInv("HandGrenadeAmmo") <=0)
+					if(CountInv("PB_GrenadeAmmo") <=0)
 						{A_Print("No Frag Grenades Available"); return ResolveState("WheelCancelEquipment");}
 					}
 				return ResolveState(null);
 				}
 			TNT1 A 0 
-			{
-				if(CountInv("WW_ProximityMineSelected") >=1)
+				{
+					if(CountInv("WW_ProximityMineSelected") >=1)
+						{ 
+							A_Print("Equipment Selected: Proximity Mine"); 
+							A_SetInventory("ProximityMineSelected",1);
+							A_SetInventory("StunGrenadeSelected",0);
+							A_SetInventory("LeechSelected",0);
+							A_SetInventory("RevGunSelected",0);
+							A_SetInventory("FragGrenadeSelected",0);
+							A_StartSound("GRNPIN", 3);
+							return ResolveState("WheelCancelEquipment");
+						}
+					if(CountInv("WW_StunGrenadeSelected") >=1)
+						{ 
+							A_Print("Equipment Selected: Stun Grenade"); 
+							A_SetInventory("ProximityMineSelected",0);
+							A_SetInventory("StunGrenadeSelected",1);
+							A_SetInventory("LeechSelected",0);
+							A_SetInventory("RevGunSelected",0);
+							A_SetInventory("FragGrenadeSelected",0);
+							A_StartSound("GRNPIN", 3);
+							return ResolveState("WheelCancelEquipment");
+						}
+					if(CountInv("WW_LeechSelected") >=1)
+						{ 
+							A_Print("Equipment Selected: Leech"); 
+							A_SetInventory("ProximityMineSelected",0);
+							A_SetInventory("StunGrenadeSelected",0);
+							A_SetInventory("LeechSelected",1);
+							A_SetInventory("RevGunSelected",0);
+							A_SetInventory("FragGrenadeSelected",0);
+							A_StartSound("GRNPIN", 3);
+							return ResolveState("WheelCancelEquipment");
+						}
+					if(CountInv("WW_RevGunSelected") >=1)
+						{ 
+							A_Print("Equipment Selected: Revenant Launcher"); 
+							A_SetInventory("ProximityMineSelected",0);
+							A_SetInventory("StunGrenadeSelected",0);
+							A_SetInventory("LeechSelected",0);
+							A_SetInventory("RevGunSelected",1);
+							A_SetInventory("FragGrenadeSelected",0);
+							A_StartSound("REVUP", 3);
+							return ResolveState("WheelCancelEquipment");
+						}
+					if(CountInv("WW_FragGrenadeSelected") >=1)
+						{ 
+							A_Print("Equipment Selected: Frag Grenade"); 
+							A_SetInventory("ProximityMineSelected",0);
+							A_SetInventory("StunGrenadeSelected",0);
+							A_SetInventory("LeechSelected",0);
+							A_SetInventory("RevGunSelected",0);
+							A_SetInventory("FragGrenadeSelected",1);
+							A_StartSound("GRNPIN", 3);
+							return ResolveState("WheelCancelEquipment");
+						}
+					if(CountInv("GK_FlamebelchSelected") >=1)
 					{ 
-						A_Print("Equipment Selected: Proximity Mine"); 
-						A_SetInventory("ProximityMineSelected",1);
-						A_SetInventory("StunGrenadeSelected",0);
-						A_SetInventory("LeechSelected",0);
-						A_SetInventory("RevGunSelected",0);
-						A_SetInventory("FragGrenadeSelected",0);
-						A_StartSound("GRNPIN", 3);
+						A_Print("Equipment Selected: Flame Belch"); 
+						A_SetInventory("FlameBelchSelected",1);
+						A_SetInventory("IceBombSelected",0);
+						A_StartSound("FLMDRAW", CHAN_UI);
 						Return ResolveState("WheelCancelEquipment");
 					}
-				if(CountInv("WW_StunGrenadeSelected") >=1)
+					if(CountInv("GK_IcebombSelected") >=1)
 					{ 
-						A_Print("Equipment Selected: Stun Grenade"); 
-						A_SetInventory("ProximityMineSelected",0);
-						A_SetInventory("StunGrenadeSelected",1);
-						A_SetInventory("LeechSelected",0);
-						A_SetInventory("RevGunSelected",0);
-						A_SetInventory("FragGrenadeSelected",0);
-						A_StartSound("GRNPIN", 3);
+						A_Print("Equipment Selected: Ice Bomb"); 
+						A_SetInventory("FlameBelchSelected",0);
+						A_SetInventory("IceBombSelected",1);
+						A_StartSound("weapons/freezer/reload1", CHAN_UI);
 						Return ResolveState("WheelCancelEquipment");
-					}
-				if(CountInv("WW_LeechSelected") >=1)
-					{ 
-						A_Print("Equipment Selected: Leech"); 
-						A_SetInventory("ProximityMineSelected",0);
-						A_SetInventory("StunGrenadeSelected",0);
-						A_SetInventory("LeechSelected",1);
-						A_SetInventory("RevGunSelected",0);
-						A_SetInventory("FragGrenadeSelected",0);
-						A_StartSound("GRNPIN", 3);
-						Return ResolveState("WheelCancelEquipment");
-					}
-				if(CountInv("WW_RevGunSelected") >=1)
-					{ 
-						A_Print("Equipment Selected: Revenant Launcher"); 
-						A_SetInventory("ProximityMineSelected",0);
-						A_SetInventory("StunGrenadeSelected",0);
-						A_SetInventory("LeechSelected",0);
-						A_SetInventory("RevGunSelected",1);
-						A_SetInventory("FragGrenadeSelected",0);
-						A_StartSound("REVUP", 3);
-						Return ResolveState("WheelCancelEquipment");
-					}
-				if(CountInv("WW_FragGrenadeSelected") >=1)
-					{ 
-						A_Print("Equipment Selected: Frag Grenade"); 
-						A_SetInventory("ProximityMineSelected",0);
-						A_SetInventory("StunGrenadeSelected",0);
-						A_SetInventory("LeechSelected",0);
-						A_SetInventory("RevGunSelected",0);
-						A_SetInventory("FragGrenadeSelected",1);
-						A_StartSound("GRNPIN", 3);
-						Return ResolveState("WheelCancelEquipment");
-					}
-				if(CountInv("GK_FlamebelchSelected") >=1)
-				{ 
-					A_Print("Equipment Selected: Flame Belch"); 
-					A_SetInventory("FlameBelchSelected",1);
-					A_SetInventory("IceBombSelected",0);
-					A_StartSound("FLMDRAW", CHAN_UI);
-					Return ResolveState("WheelCancelEquipment");
-				}
-				if(CountInv("GK_IcebombSelected") >=1)
-				{ 
-					A_Print("Equipment Selected: Ice Bomb"); 
-					A_SetInventory("FlameBelchSelected",0);
-					A_SetInventory("IceBombSelected",1);
-					A_StartSound("weapons/freezer/reload1", CHAN_UI);
-					Return ResolveState("WheelCancelEquipment");
-				}
+					}		
 				return ResolveState(null);
 				}
 			goto Equipment_Toggle_Handler_Overlay;
@@ -204,7 +202,7 @@ extend class PB_WeaponBase
 				A_TakeInventory("ADSMode", 1);
 				A_TakeInventory("UseEquipment", 1);
 			}
-			TNT1 A 0 A_JumpIfInventory("StunGrenadeAmmo", 1, 2);
+			TNT1 A 0 A_JumpIfInventory("PB_StunGrenadeAmmo", 1, 2);
 			TNT1 A 0 A_Print("No Stun Grenades left");
 			Goto GoingToReady;
 			STNG BCDEF 1;
@@ -213,7 +211,7 @@ extend class PB_WeaponBase
 			STNG GIJJJIHGKLMNOP 1;
 			
 			HND1 I 1 A_StartSound("THRGRN", 1);
-			TNT1 A 0 A_TakeInventory("StunGrenadeAmmo", 1);
+			TNT1 A 0 A_TakeInventory("PB_StunGrenadeAmmo", 1);
 			HND1 J 1 A_FireProjectile("ThrownStunGrenade",0,0,0,0,0,0);
 			HND1 KLMNOPQ 1;
 			TNT1 A 0 {
@@ -228,11 +226,11 @@ extend class PB_WeaponBase
 				A_TakeInventory("ADSMode", 1);
 				A_TakeInventory("UseEquipment", 1);
 			}
-			TNT1 A 0 A_JumpIfInventory("MiniHellRocketAmmo", 1, 2);
+			TNT1 A 0 A_JumpIfInventory("PB_QuickLauncherAmmo", 1, 2);
 			TNT1 A 0 A_Print("No Revenant Launcher Ammo");
 			Goto GoingToReady;
 			TNT1 A 0 {
-				A_TakeInventory("MiniHellRocketAmmo", 1);
+				A_TakeInventory("PB_QuickLauncherAmmo", 1);
 				A_StartSound("revup");
 			}
 			RVCA ABCDEFGHIJK 1;
@@ -299,7 +297,7 @@ extend class PB_WeaponBase
 				A_TakeInventory("ADSMode", 1);
 				A_TakeInventory("UseEquipment", 1);
 			}
-			TNT1 A 0 A_JumpIfInventory("HandGrenadeAmmo", 1, 2);
+			TNT1 A 0 A_JumpIfInventory("PB_GrenadeAmmo", 1, 2);
 			TNT1 A 0 A_Print("No Grenades left");
 			Goto GoingToReady;
 			TNT1 A 0 A_Giveinventory("PlayerIsThrowingAGrenade",1);
@@ -318,7 +316,7 @@ extend class PB_WeaponBase
 			HND1 I 1 A_StartSound("THRGRN",0);
 			HND1 J 1 {
 				A_FireProjectile("ThrownGrenade30",0,0,0,0,0,0);
-				A_TakeInventory("HandGrenadeAmmo", 1);
+				A_TakeInventory("PB_GrenadeAmmo", 1);
 				A_FireProjectile("Alerter",0,0,0,0,0,0);
 			}
 			HND1 KLMNOPQ 1 A_SetRoll(roll-5.0);
@@ -335,7 +333,7 @@ extend class PB_WeaponBase
 			HND1 RSTU 1 A_SetRoll(roll-1.5, SPF_INTERPOLATE);
 			TNT1 A 0 {
 				A_StartSound("THRGRN", 1);
-				A_TakeInventory("HandGrenadeAmmo", 1);
+				A_TakeInventory("PB_GrenadeAmmo", 1);
 				A_FireProjectile("Alerter",0,0,0,0,0,0);
 				A_FireProjectile("ThrownGrenade15", 0,0,0,-2,0,3);
 			}
@@ -355,7 +353,7 @@ extend class PB_WeaponBase
 				A_TakeInventory("ADSMode", 1);
 				A_TakeInventory("UseEquipment", 1);
 			}
-			TNT1 A 0 A_JumpIfInventory("MineAmmo", 1, 2);
+			TNT1 A 0 A_JumpIfInventory("PB_ProxMineAmmo", 1, 2);
 			TNT1 A 0 A_Print("No Land Mines left");
 			Goto GoingToReady;
 			XPFF FEDCBA 1;
@@ -363,7 +361,7 @@ extend class PB_WeaponBase
 			XHFF A 0 {
 				A_StartSound("MINE002", 3);
 				A_ThrowGrenade("ThrownProxMine",4,11,1,0);
-				A_TakeInventory("MineAmmo", 1);
+				A_TakeInventory("PB_ProxMineAmmo", 1);
 			}
 			XHFF MNOPQRSTUVWXYZ 1;
 			TNT1 A 0 {
