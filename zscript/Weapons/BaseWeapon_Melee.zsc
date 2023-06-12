@@ -301,7 +301,7 @@ extend class PB_WeaponBase
 			TNT1 A 0 A_AlertMonsters;
 			TNT1 A 0 A_TakeInventory("PB_Fuel",50);
 			SCF0 BCDBCDBCD 1 bright {
-				A_FireProjectile("GloryFireMissile", -3, 0, Random(-25, -20), 12, FPF_NOAUTOAIM, 0);
+				A_FireProjectile("SCFireMissile", -3, 0, Random(-25, -20), 12, FPF_NOAUTOAIM, 0);
 			}
 			SCF0 EF 1;
 			SCL0 KJIHGFEDCBA 1;

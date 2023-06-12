@@ -136,7 +136,7 @@ States
 
 
 		Ready:
-			TNT1 A 0 A_JumpIfInventory("GoFatality", 1, "Steady")
+			TNT1 A 0 A_JumpIfInventory("GoFatality",1,"Steady")
 			TNT1 A 0 PB_RespectIfNeeded
 			CHEG ABCD 0
 		WeaponRespect:
@@ -647,7 +647,7 @@ States
 			A_Overlay(3,"AmmoMeterOverlayFire");
 			//A_FireBullets(4, 4, 1, 10, "MachineGunBulletPuff", 1);
 			A_TakeInventory("PB_HighCalMag",1);
-			A_FireProjectile("PB_556x45mm", frandom(-0.1,0.1),0,0,0, FPF_NOAUTOAIM, frandom(-0.1,0.1));
+			A_FireProjectile("PB_556x45mmAP", frandom(-0.1,0.1),0,0,0, FPF_NOAUTOAIM, frandom(-0.1,0.1));
 			A_FireCustomMissile("GunFireSmoke", 0, 0, 0, 0, 0, 0);
 			A_Overlay(-3,"MuzzleFlash");
 			A_Firecustommissile("FiftyCaseSpawn",0,0,-12,-18);
@@ -672,7 +672,7 @@ States
 			A_Overlay(3,"AmmoMeterOverlayFire");
 			//A_FireBullets(4, 4, 1, 10, "MachineGunBulletPuff", 1);
 			A_TakeInventory("PB_HighCalMag",1);
-			A_FireProjectile("PB_556x45mm", frandom(-0.1,0.1),0,0,0, FPF_NOAUTOAIM, frandom(-0.1,0.1));
+			A_FireProjectile("PB_556x45mmAP", frandom(-0.1,0.1),0,0,0, FPF_NOAUTOAIM, frandom(-0.1,0.1));
 			A_FireCustomMissile("GunFireSmoke", 0, 0, 0, 0, 0, 0);
 			A_Overlay(-3,"MuzzleFlash");
 			A_Firecustommissile("MiniBeltPieceSpawn",0,0,-12,-18);
@@ -697,7 +697,7 @@ States
 			A_Overlay(3,"AmmoMeterOverlayFire");
 			//A_FireBullets(4, 4, 1, 10, "MachineGunBulletPuff", 1);
 			A_TakeInventory("PB_HighCalMag",1);
-			A_FireProjectile("PB_556x45mm", frandom(-0.1,0.1),0,0,0, FPF_NOAUTOAIM, frandom(-0.1,0.1));
+			A_FireProjectile("PB_556x45mmAP", frandom(-0.1,0.1),0,0,0, FPF_NOAUTOAIM, frandom(-0.1,0.1));
 			A_FireCustomMissile("GunFireSmoke", 0, 0, 0, 0, 0, 0);
 			A_Overlay(-3,"MuzzleFlash");
 			A_Firecustommissile("FiftyCaseSpawn",0,0,-12,-18);
@@ -721,7 +721,7 @@ States
 			A_Overlay(3,"AmmoMeterOverlayFire");
 			//A_FireBullets(4, 4, 1, 10, "MachineGunBulletPuff", 1);
 			A_TakeInventory("PB_HighCalMag",1);
-			A_FireProjectile("PB_556x45mm", frandom(-0.1,0.1),0,0,0, FPF_NOAUTOAIM, frandom(-0.1,0.1));
+			A_FireProjectile("PB_556x45mmAP", frandom(-0.1,0.1),0,0,0, FPF_NOAUTOAIM, frandom(-0.1,0.1));
 			A_FireCustomMissile("GunFireSmoke", 0, 0, 0, 0, 0, 0);
 			A_Overlay(-3,"MuzzleFlash");
 			A_Firecustommissile("MiniBeltPieceSpawn",0,0,-12,-18);
@@ -883,7 +883,7 @@ States
 			else {A_Overlay(4,"AmmoBeltIdle");}
 			//A_FireBullets(4, 4, 1, 10, "MachineGunBulletPuff", 1);
 			A_TakeInventory("PB_HighCalMag",1);
-			A_FireProjectile("PB_556x45mm", frandom(-0.1,0.1),0,0,0, FPF_NOAUTOAIM, frandom(-0.1,0.1));
+			A_FireProjectile("PB_556x45mmAP", frandom(-0.1,0.1),0,0,0, FPF_NOAUTOAIM, frandom(-0.1,0.1));
 			A_FireCustomMissile("GunFireSmoke", 0, 0, 0, 0, 0, 0);
 			A_Firecustommissile("FiftyCaseSpawn",0,0,-12,-18);
 			A_Overlay(-3,"MuzzleFlash");
@@ -928,7 +928,7 @@ States
 			else {A_Overlay(4,"AmmoBeltIdle");}
 			//A_FireBullets(4, 4, 1, 10, "MachineGunBulletPuff", 1);
 			A_TakeInventory("PB_HighCalMag",1);
-			A_FireProjectile("PB_556x45mm", frandom(-0.1,0.1),0,0,0, FPF_NOAUTOAIM, frandom(-0.1,0.1));
+			A_FireProjectile("PB_556x45mmAP", frandom(-0.1,0.1),0,0,0, FPF_NOAUTOAIM, frandom(-0.1,0.1));
 			A_FireCustomMissile("GunFireSmoke", 0, 0, 0, 0, 0, 0);
 			A_Firecustommissile("FiftyCaseSpawn",0,0,-12,-18);
 			A_Overlay(-3,"MuzzleFlash");
@@ -973,7 +973,7 @@ States
 			else {A_Overlay(4,"AmmoBeltIdle");}
 			//A_FireBullets(4, 4, 1, 10, "MachineGunBulletPuff", 1);
 			A_TakeInventory("PB_HighCalMag",1);
-			A_FireProjectile("PB_556x45mm", frandom(-0.1,0.1),0,0,0, FPF_NOAUTOAIM, frandom(-0.1,0.1));
+			A_FireProjectile("PB_556x45mmAP", frandom(-0.1,0.1),0,0,0, FPF_NOAUTOAIM, frandom(-0.1,0.1));
 			A_FireCustomMissile("GunFireSmoke", 0, 0, 0, 0, 0, 0);
 			A_Firecustommissile("FiftyCaseSpawn",0,0,-12,-18);
 			A_Overlay(-3,"MuzzleFlash");
@@ -1017,7 +1017,7 @@ States
 			A_StartSound("weapons/minigun/chaingunmode/fire", CHAN_WEAPON, CHANF_OVERLAP);
 			//A_FireBullets(4, 4, 1, 10, "MachineGunBulletPuff", 1);
 			A_TakeInventory("PB_HighCalMag",1);
-			A_FireProjectile("PB_556x45mm", frandom(-0.1,0.1),0,0,0, FPF_NOAUTOAIM, frandom(-0.1,0.1));
+			A_FireProjectile("PB_556x45mmAP", frandom(-0.1,0.1),0,0,0, FPF_NOAUTOAIM, frandom(-0.1,0.1));
 			A_FireCustomMissile("GunFireSmoke", 0, 0, 0, 0, 0, 0);
 			A_Overlay(-3,"MuzzleFlash");
 			A_Firecustommissile("FiftyCaseSpawn",0,0,-12,-18);
@@ -1048,7 +1048,7 @@ States
 			A_StartSound("weapons/minigun/chaingunmode/fire", CHAN_WEAPON, CHANF_OVERLAP);
 			//A_FireBullets(4, 4, 1, 10, "MachineGunBulletPuff", 1);
 			A_TakeInventory("PB_HighCalMag",1);
-			A_FireProjectile("PB_556x45mm", frandom(-0.1,0.1),0,0,0, FPF_NOAUTOAIM, frandom(-0.1,0.1));
+			A_FireProjectile("PB_556x45mmAP", frandom(-0.1,0.1),0,0,0, FPF_NOAUTOAIM, frandom(-0.1,0.1));
 			A_FireCustomMissile("GunFireSmoke", 0, 0, 0, 0, 0, 0);
 			A_Overlay(-3,"MuzzleFlash");
 			A_Firecustommissile("FiftyCaseSpawn",0,0,-12,-18);
@@ -1081,7 +1081,7 @@ States
 			A_StartSound("weapons/minigun/chaingunmode/fire", CHAN_WEAPON, CHANF_OVERLAP);
 			//A_FireBullets(4, 4, 1, 10, "MachineGunBulletPuff", 1);
 			A_TakeInventory("PB_HighCalMag",1);
-			A_FireProjectile("PB_556x45mm", frandom(-0.1,0.1),0,0,0, FPF_NOAUTOAIM, frandom(-0.1,0.1));
+			A_FireProjectile("PB_556x45mmAP", frandom(-0.1,0.1),0,0,0, FPF_NOAUTOAIM, frandom(-0.1,0.1));
 			A_FireCustomMissile("GunFireSmoke", 0, 0, 0, 0, 0, 0);
 			A_Overlay(-3,"MuzzleFlash");
 			A_Firecustommissile("FiftyCaseSpawn",0,0,-12,-18);
@@ -1222,7 +1222,7 @@ States
 			A_Overlay(3,"AmmoMeterOverlayFire");
 			//A_FireBullets(4, 3, -1, 10, "MachineGunBulletPuff", 1);
 			A_TakeInventory("PB_HighCalMag",1);
-			A_FireProjectile("PB_556x45mm", frandom(-0.1,0.1),0,0,0, FPF_NOAUTOAIM, frandom(-0.1,0.1));
+			A_FireProjectile("PB_556x45mmAP", frandom(-0.1,0.1),0,0,0, FPF_NOAUTOAIM, frandom(-0.1,0.1));
 			A_FireCustomMissile("GunFireSmoke", 0, 0, 0, 0, 0, 0);
 			A_Overlay(-3,"MuzzleFlash");
 			if(GetCvar("PB_alttracer") >=1)
@@ -1241,7 +1241,7 @@ States
 			A_Overlay(3,"AmmoMeterOverlayFire");
 			//A_FireBullets(4, 3, -1, 10, "MachineGunBulletPuff", 1);
 			A_TakeInventory("PB_HighCalMag",1);
-			A_FireProjectile("PB_556x45mm", frandom(-0.1,0.1),0,0,0, FPF_NOAUTOAIM, frandom(-0.1,0.1));
+			A_FireProjectile("PB_556x45mmAP", frandom(-0.1,0.1),0,0,0, FPF_NOAUTOAIM, frandom(-0.1,0.1));
 			A_FireCustomMissile("GunFireSmoke", 0, 0, 0, 0, 0, 0);
 			A_Overlay(-3,"MuzzleFlash");
 			if(GetCvar("PB_alttracer") >=1)
@@ -1260,7 +1260,7 @@ States
 			A_Overlay(3,"AmmoMeterOverlayFire");
 			//A_FireBullets(4, 3, -1, 10, "MachineGunBulletPuff", 1);
 			A_TakeInventory("PB_HighCalMag",1);
-			A_FireProjectile("PB_556x45mm", frandom(-0.1,0.1),0,0,0, FPF_NOAUTOAIM, frandom(-0.1,0.1));
+			A_FireProjectile("PB_556x45mmAP", frandom(-0.1,0.1),0,0,0, FPF_NOAUTOAIM, frandom(-0.1,0.1));
 			A_FireCustomMissile("GunFireSmoke", 0, 0, 0, 0, 0, 0);
 			A_Overlay(-3,"MuzzleFlash");
 			if(GetCvar("PB_alttracer") >=1)
@@ -1279,7 +1279,7 @@ States
 			A_Overlay(3,"AmmoMeterOverlayFire");
 			//A_FireBullets(4, 3, -1, 10, "MachineGunBulletPuff", 1);
 			A_TakeInventory("PB_HighCalMag",1);
-			A_FireProjectile("PB_556x45mm", frandom(-0.1,0.1),0,0,0, FPF_NOAUTOAIM, frandom(-0.1,0.1));
+			A_FireProjectile("PB_556x45mmAP", frandom(-0.1,0.1),0,0,0, FPF_NOAUTOAIM, frandom(-0.1,0.1));
 			A_FireCustomMissile("GunFireSmoke", 0, 0, 0, 0, 0, 0);
 			A_Overlay(-3,"MuzzleFlash");
 			if(GetCvar("PB_alttracer") >=1)
@@ -1298,7 +1298,7 @@ States
 			A_Overlay(3,"AmmoMeterOverlayFire");
 			//A_FireBullets(4, 3, -1, 10, "MachineGunBulletPuff", 1);
 			A_TakeInventory("PB_HighCalMag",1);
-			A_FireProjectile("PB_556x45mm", frandom(-0.1,0.1),0,0,0, FPF_NOAUTOAIM, frandom(-0.1,0.1));
+			A_FireProjectile("PB_556x45mmAP", frandom(-0.1,0.1),0,0,0, FPF_NOAUTOAIM, frandom(-0.1,0.1));
 			A_FireCustomMissile("GunFireSmoke", 0, 0, 0, 0, 0, 0);
 			A_Overlay(-3,"MuzzleFlash");
 			if(GetCvar("PB_alttracer") >=1)
@@ -1317,7 +1317,7 @@ States
 			A_Overlay(3,"AmmoMeterOverlayFire");
 			//A_FireBullets(4, 3, -1, 10, "MachineGunBulletPuff", 1);
 			A_TakeInventory("PB_HighCalMag",1);
-			A_FireProjectile("PB_556x45mm", frandom(-0.1,0.1),0,0,0, FPF_NOAUTOAIM, frandom(-0.1,0.1));
+			A_FireProjectile("PB_556x45mmAP", frandom(-0.1,0.1),0,0,0, FPF_NOAUTOAIM, frandom(-0.1,0.1));
 			A_FireCustomMissile("GunFireSmoke", 0, 0, 0, 0, 0, 0);
 			A_Overlay(-3,"MuzzleFlash");
 			if(GetCvar("PB_alttracer") >=1)
@@ -1336,7 +1336,7 @@ States
 			A_Overlay(3,"AmmoMeterOverlayFire");
 			//A_FireBullets(4, 3, -1, 10, "MachineGunBulletPuff", 1);
 			A_TakeInventory("PB_HighCalMag",1);
-			A_FireProjectile("PB_556x45mm", frandom(-0.1,0.1),0,0,0, FPF_NOAUTOAIM, frandom(-0.1,0.1));
+			A_FireProjectile("PB_556x45mmAP", frandom(-0.1,0.1),0,0,0, FPF_NOAUTOAIM, frandom(-0.1,0.1));
 			A_FireCustomMissile("GunFireSmoke", 0, 0, 0, 0, 0, 0);
 			A_Overlay(-3,"MuzzleFlash");
 			if(GetCvar("PB_alttracer") >=1)
@@ -1355,7 +1355,7 @@ States
 			A_Overlay(3,"AmmoMeterOverlayFire");
 			//A_FireBullets(4, 3, -1, 10, "MachineGunBulletPuff", 1);
 			A_TakeInventory("PB_HighCalMag",1);
-			A_FireProjectile("PB_556x45mm", frandom(-0.1,0.1),0,0,0, FPF_NOAUTOAIM, frandom(-0.1,0.1));
+			A_FireProjectile("PB_556x45mmAP", frandom(-0.1,0.1),0,0,0, FPF_NOAUTOAIM, frandom(-0.1,0.1));
 			A_FireCustomMissile("GunFireSmoke", 0, 0, 0, 0, 0, 0);
 			A_Overlay(-3,"MuzzleFlash");
 			if(GetCvar("PB_alttracer") >=1)
@@ -1455,9 +1455,9 @@ States
 			A_Firecustommissile("MiniBeltPieceSpawn",0,0,-12,-18);
 			//A_FireBullets(7, 7, 1, 9, "MachineGunBulletPuff");
 			//A_FireBullets(7, 7, 1, 9, "MachineGunBulletPuff");
-			A_FireProjectile("PB_556x45mm", frandom(-1,1),0,0,0, FPF_NOAUTOAIM, frandom(-1,1));
-			A_FireProjectile("PB_556x45mm", frandom(-1,1),0,0,0, FPF_NOAUTOAIM, frandom(-1,1));
-			A_FireProjectile("PB_556x45mm", frandom(-1,1),0,0,0, FPF_NOAUTOAIM, frandom(-1,1));
+			A_FireProjectile("PB_556x45mmAP", frandom(-1,1),0,0,0, FPF_NOAUTOAIM, frandom(-1,1));
+			A_FireProjectile("PB_556x45mmAP", frandom(-1,1),0,0,0, FPF_NOAUTOAIM, frandom(-1,1));
+			A_FireProjectile("PB_556x45mmAP", frandom(-1,1),0,0,0, FPF_NOAUTOAIM, frandom(-1,1));
 			A_TakeInventory("PB_HighCalMag",1);
 			A_Overlay(3,"AmmoMeterOverlayIdle_DeathDealer");
 			A_Overlayoffset(3,-27,0,WOF_ADD);
@@ -1478,9 +1478,9 @@ States
 			else {A_FireCustomMissile("MinigunTracer", random(-6,6), 0, -1, random(-6,6));}
 			A_Firecustommissile("FiftyCaseSpawn",0,0,-12,-18);
 			//A_FireBullets(7, 7, 0, 9, "MachineGunBulletPuff",0);
-			A_FireProjectile("PB_556x45mm", frandom(-1,1),0,0,0, FPF_NOAUTOAIM, frandom(-1,1));
-			A_FireProjectile("PB_556x45mm", frandom(-1,1),0,0,0, FPF_NOAUTOAIM, frandom(-1,1));
-			A_FireProjectile("PB_556x45mm", frandom(-1,1),0,0,0, FPF_NOAUTOAIM, frandom(-1,1));
+			A_FireProjectile("PB_556x45mmAP", frandom(-1,1),0,0,0, FPF_NOAUTOAIM, frandom(-1,1));
+			A_FireProjectile("PB_556x45mmAP", frandom(-1,1),0,0,0, FPF_NOAUTOAIM, frandom(-1,1));
+			A_FireProjectile("PB_556x45mmAP", frandom(-1,1),0,0,0, FPF_NOAUTOAIM, frandom(-1,1));
 			A_TakeInventory("PB_HighCalMag",1);
 			A_Overlay(3,"AmmoMeterOverlayIdle_DeathDealer");
 			A_Overlayoffset(3,-27,0,WOF_ADD);
@@ -1506,9 +1506,9 @@ States
 			A_Firecustommissile("MiniBeltPieceSpawn",0,0,-12,-18);
 			//A_FireBullets(7, 7, 1, 9, "MachineGunBulletPuff");
 			//A_FireBullets(7, 7, 1, 9, "MachineGunBulletPuff");
-			A_FireProjectile("PB_556x45mm", frandom(-1,1),0,0,0, FPF_NOAUTOAIM, frandom(-1,1));
-			A_FireProjectile("PB_556x45mm", frandom(-1,1),0,0,0, FPF_NOAUTOAIM, frandom(-1,1));
-			A_FireProjectile("PB_556x45mm", frandom(-1,1),0,0,0, FPF_NOAUTOAIM, frandom(-1,1));
+			A_FireProjectile("PB_556x45mmAP", frandom(-1,1),0,0,0, FPF_NOAUTOAIM, frandom(-1,1));
+			A_FireProjectile("PB_556x45mmAP", frandom(-1,1),0,0,0, FPF_NOAUTOAIM, frandom(-1,1));
+			A_FireProjectile("PB_556x45mmAP", frandom(-1,1),0,0,0, FPF_NOAUTOAIM, frandom(-1,1));
 			A_TakeInventory("PB_HighCalMag",1);
 			A_Overlay(3,"AmmoMeterOverlayIdle_DeathDealer");
 			A_Overlayoffset(3,-27,0,WOF_ADD);
@@ -1529,9 +1529,9 @@ States
 			else {A_FireCustomMissile("MinigunTracer", random(-6,6), 0, -1, random(-6,6));}
 			A_Firecustommissile("FiftyCaseSpawn",0,0,-12,-18);
 			//A_FireBullets(7, 7, 0, 9, "MachineGunBulletPuff",0);
-			A_FireProjectile("PB_556x45mm", frandom(-1,1),0,0,0, FPF_NOAUTOAIM, frandom(-1,1));
-			A_FireProjectile("PB_556x45mm", frandom(-1,1),0,0,0, FPF_NOAUTOAIM, frandom(-1,1));
-			A_FireProjectile("PB_556x45mm", frandom(-1,1),0,0,0, FPF_NOAUTOAIM, frandom(-1,1));
+			A_FireProjectile("PB_556x45mmAP", frandom(-1,1),0,0,0, FPF_NOAUTOAIM, frandom(-1,1));
+			A_FireProjectile("PB_556x45mmAP", frandom(-1,1),0,0,0, FPF_NOAUTOAIM, frandom(-1,1));
+			A_FireProjectile("PB_556x45mmAP", frandom(-1,1),0,0,0, FPF_NOAUTOAIM, frandom(-1,1));
 			A_TakeInventory("PB_HighCalMag",1);
 			A_Overlay(3,"AmmoMeterOverlayIdle_DeathDealer");
 			A_Overlayoffset(3,-27,0,WOF_ADD);
@@ -1557,9 +1557,9 @@ States
 			A_Firecustommissile("MiniBeltPieceSpawn",0,0,-12,-18);
 			//A_FireBullets(7, 7, 1, 9, "MachineGunBulletPuff");
 			//A_FireBullets(7, 7, 1, 9, "MachineGunBulletPuff");
-			A_FireProjectile("PB_556x45mm", frandom(-1,1),0,0,0, FPF_NOAUTOAIM, frandom(-1,1));
-			A_FireProjectile("PB_556x45mm", frandom(-1,1),0,0,0, FPF_NOAUTOAIM, frandom(-1,1));
-			A_FireProjectile("PB_556x45mm", frandom(-1,1),0,0,0, FPF_NOAUTOAIM, frandom(-1,1));
+			A_FireProjectile("PB_556x45mmAP", frandom(-1,1),0,0,0, FPF_NOAUTOAIM, frandom(-1,1));
+			A_FireProjectile("PB_556x45mmAP", frandom(-1,1),0,0,0, FPF_NOAUTOAIM, frandom(-1,1));
+			A_FireProjectile("PB_556x45mmAP", frandom(-1,1),0,0,0, FPF_NOAUTOAIM, frandom(-1,1));
 			A_TakeInventory("PB_HighCalMag",1);
 			A_Overlay(3,"AmmoMeterOverlayIdle_DeathDealer");
 			A_Overlayoffset(3,-27,0,WOF_ADD);
@@ -1580,9 +1580,9 @@ States
 			else {A_FireCustomMissile("MinigunTracer", random(-6,6), 0, -1, random(-6,6));}
 			A_Firecustommissile("FiftyCaseSpawn",0,0,-12,-18);
 			//A_FireBullets(7, 7, 0, 9, "MachineGunBulletPuff",0);
-			A_FireProjectile("PB_556x45mm", frandom(-1,1),0,0,0, FPF_NOAUTOAIM, frandom(-1,1));
-			A_FireProjectile("PB_556x45mm", frandom(-1,1),0,0,0, FPF_NOAUTOAIM, frandom(-1,1));
-			A_FireProjectile("PB_556x45mm", frandom(-1,1),0,0,0, FPF_NOAUTOAIM, frandom(-1,1));
+			A_FireProjectile("PB_556x45mmAP", frandom(-1,1),0,0,0, FPF_NOAUTOAIM, frandom(-1,1));
+			A_FireProjectile("PB_556x45mmAP", frandom(-1,1),0,0,0, FPF_NOAUTOAIM, frandom(-1,1));
+			A_FireProjectile("PB_556x45mmAP", frandom(-1,1),0,0,0, FPF_NOAUTOAIM, frandom(-1,1));
 			A_TakeInventory("PB_HighCalMag",1);
 			A_Overlay(3,"AmmoMeterOverlayIdle_DeathDealer");
 			A_Overlayoffset(3,-27,0,WOF_ADD);
@@ -1608,9 +1608,9 @@ States
 			A_Firecustommissile("MiniBeltPieceSpawn",0,0,-12,-18);
 			//A_FireBullets(7, 7, 1, 9, "MachineGunBulletPuff");
 			//A_FireBullets(7, 7, 1, 9, "MachineGunBulletPuff");
-			A_FireProjectile("PB_556x45mm", frandom(-1,1),0,0,0, FPF_NOAUTOAIM, frandom(-1,1));
-			A_FireProjectile("PB_556x45mm", frandom(-1,1),0,0,0, FPF_NOAUTOAIM, frandom(-1,1));
-			A_FireProjectile("PB_556x45mm", frandom(-1,1),0,0,0, FPF_NOAUTOAIM, frandom(-1,1));
+			A_FireProjectile("PB_556x45mmAP", frandom(-1,1),0,0,0, FPF_NOAUTOAIM, frandom(-1,1));
+			A_FireProjectile("PB_556x45mmAP", frandom(-1,1),0,0,0, FPF_NOAUTOAIM, frandom(-1,1));
+			A_FireProjectile("PB_556x45mmAP", frandom(-1,1),0,0,0, FPF_NOAUTOAIM, frandom(-1,1));
 			A_TakeInventory("PB_HighCalMag",1);
 			A_Overlay(3,"AmmoMeterOverlayIdle_DeathDealer");
 			A_Overlayoffset(3,-27,0,WOF_ADD);
@@ -1631,9 +1631,9 @@ States
 			else {A_FireCustomMissile("MinigunTracer", random(-6,6), 0, -1, random(-6,6));}
 			A_Firecustommissile("FiftyCaseSpawn",0,0,-12,-18);
 			//A_FireBullets(7, 7, 0, 9, "MachineGunBulletPuff",0);
-			A_FireProjectile("PB_556x45mm", frandom(-1,1),0,0,0, FPF_NOAUTOAIM, frandom(-1,1));
-			A_FireProjectile("PB_556x45mm", frandom(-1,1),0,0,0, FPF_NOAUTOAIM, frandom(-1,1));
-			A_FireProjectile("PB_556x45mm", frandom(-1,1),0,0,0, FPF_NOAUTOAIM, frandom(-1,1));
+			A_FireProjectile("PB_556x45mmAP", frandom(-1,1),0,0,0, FPF_NOAUTOAIM, frandom(-1,1));
+			A_FireProjectile("PB_556x45mmAP", frandom(-1,1),0,0,0, FPF_NOAUTOAIM, frandom(-1,1));
+			A_FireProjectile("PB_556x45mmAP", frandom(-1,1),0,0,0, FPF_NOAUTOAIM, frandom(-1,1));
 			A_TakeInventory("PB_HighCalMag",1);
 			A_Overlay(3,"AmmoMeterOverlayIdle_DeathDealer");
 			A_Overlayoffset(3,-27,0,WOF_ADD);

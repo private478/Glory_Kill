@@ -1,10 +1,10 @@
-ACTOR CartridgePinata : BulletCartridge
+ACTOR CartridgePinata : PB_LowCalMag
 {
 	var int user_timer;
 	var int user_curtime;
 	-COUNTITEM
 	+INVENTORY.ALWAYSPICKUP
-	Inventory.Amount 7
+	Inventory.Amount 5
 	scale 0.4
 	Gravity 0.65
 	RenderStyle Add
@@ -76,13 +76,13 @@ ACTOR CartridgePinata : BulletCartridge
 	}
 }
 
-ACTOR ClipPinata : NewClip
+ACTOR ClipPinata : PB_HighCalMag
 {
 	var int user_timer;
 	var int user_curtime;
 	-COUNTITEM
 	+INVENTORY.ALWAYSPICKUP
-	Inventory.Amount 5
+	Inventory.Amount 7
 	scale 0.4
 	Gravity 0.65
 	RenderStyle Add
@@ -154,7 +154,7 @@ ACTOR ClipPinata : NewClip
 	}
 }
 
-ACTOR ShellPinata : NewShell
+ACTOR ShellPinata : PB_Shell
 {
 	var int user_timer;
 	var int user_curtime;
@@ -232,7 +232,7 @@ ACTOR ShellPinata : NewShell
 	}
 }
 
-ACTOR RocketPinata : NewRocketAmmo
+ACTOR RocketPinata : PB_RocketAmmo
 {
 	var int user_timer;
 	var int user_curtime;
@@ -309,7 +309,7 @@ ACTOR RocketPinata : NewRocketAmmo
 	}
 }
 
-ACTOR CellPinata : NewCell
+ACTOR CellPinata : PB_Cell
 {
 	var int user_timer;
 	var int user_curtime;
@@ -387,7 +387,7 @@ ACTOR CellPinata : NewCell
 	}
 }
 
-ACTOR GrenadePinata : HandGrenadeAmmo
+ACTOR GrenadePinata : PB_GrenadeAmmo
 {
 	var int user_timer;
 	var int user_curtime;
@@ -542,7 +542,7 @@ ACTOR GasPinata : PB_Fuel
 	}
 }
 
-ACTOR StunGrenadePinata : StunGrenadeAmmo
+ACTOR StunGrenadePinata : PB_StunGrenadeAmmo
 {
 	var int user_timer;
 	var int user_curtime;
