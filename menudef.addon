@@ -13,9 +13,9 @@ OptionValue "FHudsize"
 
 OptionValue "BackStyle"
 {
-    0, "Panel"
-    1, "Panel + Font"
-	2, "None"
+    0, "None"
+    1, "Panel Style"
+	2, "Eternal Style"
 }
 
 OptionMenu "Glorykills"
@@ -31,16 +31,17 @@ OptionMenu "Glorykills"
 	StaticText " "
 	Option "Additional Bonus Drop", "be_AdditionalBonus", YesNo
 	Option "Ammo Bonus Drop", "be_AmmoBonus", YesNo
-	Option "Glory Melee Ammo Bonus", "be_GSAmmoBonus", YesNo
+	Option "Crucible Ammo Bonus", "be_GSAmmoBonus", YesNo
 	StaticText " "
 	Option "Bonus Trail Effect", "PinataParticles", YesNo
 	Slider  "Collecting Health & Armor Radius","sv_bonusrange",0 ,200, 1
 	Slider  "Collecting Ammo & Grenade Radius","sv_ammorange",0 ,200, 1
 	StaticText " "
+	Option "Flame Belch Performance Mode", "be_FBperformance", YesNo
 	StaticText " "
 	StaticText "Glory HUD"
 	Option "Glory Hud Enable", "be_fuelhud", YesNo
-	Option "Glory Hud Background", "sv_fuelhud_background", "BackStyle"
+	Option "Glory Hud Style", "sv_fuelhud_background", "BackStyle"
 	Option "Glory Hud Size", "sv_fuelhud_size", "FHudsize"
 	Slider  "Glory Hud X","sv_fuelhud_x",-1024 ,1024, 1
 	Slider  "Glory Hud Y","sv_fuelhud_y",-768 ,768, 1

@@ -10,3 +10,6 @@ Item Collecting Mechanics - D4D Teams
 CYBERDEMON FATALITY - SgtMarkIV (BrutalDoom)
 MATSTERMIND FATALITY - SgtMarkIV (BrutalDoom)
 Flamethrower Crucible Mod - a90doomguy , Tunasz & Officer_D
+Hud Graphic Soucce - EOA Teams
+
+thx :D

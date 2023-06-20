@@ -96,6 +96,105 @@ ACTOR SCFireMissile : FlamethrowerMissileNew
 	}
 }
 
+ACTOR SCFireMissileSimple
+{
+	Game Doom
+	Radius 2
+	Height 2
+	Speed 25
+	Damage 1
+    +NOBLOCKMAP
+    +NOTELEPORT
+    +DONTSPLASH
+	+MISSILE
+	+FORCEXYBILLBOARD
+	-RIPPER
+	+NOBLOOD
+	+NOBLOODDECALS
+	+BLOODLESSIMPACT
+	-BLOODSPLATTER
+	+FORCEPAIN
+	RenderStyle Add
+    DamageType GloryFire
+    Scale 0.65
+	Alpha 1.0
+	Gravity 0
+	States
+	{
+    Spawn:
+	    TNT1 A 0
+		FIR5 ABC 1 BRIGHT A_SpawnItem("RedFlareSmall", 0, 0)
+        FIR3 A 1 BRIGHT A_SpawnItem("RedFlareSmall", 0, 0)
+		EXPL A 0 A_CustomMissile ("SmallFireTrail", 6, 0, 0, 2, random (0, 10))
+		DB54 D 1 BRIGHT A_SpawnItem("RedFlareSmall", 0, 0)
+		EXPL A 0 A_CustomMissile ("SmallFireTrail", 6, 0, 0, 2, random (0, 20))
+		TNT1 A 0 A_Explode(3, 100, 0)
+		EXPL A 0 A_CustomMissile ("SmallFireTrail", 6, 0, 0, 2, random (0, 30))
+		DB54 E 1 BRIGHT A_SpawnItem("RedFlareSmall", 0, 0)
+		EXPL A 0 A_CustomMissile ("SmallFireTrail", 6, 0, 0, 2, random (0, 40))
+		DB54 F 1 BRIGHT A_SpawnItem("RedFlareSmall", 0, 0)
+		EXPL A 0 A_CustomMissile ("SmallFireTrail", 6, 0, 0, 2, random (0, 50))
+		DB54 G 1 BRIGHT A_SpawnItem("RedFlareSmall", 0, 0)
+		TNT1 A 0 A_Explode(3, 100, 0)
+		EXPL A 0 A_CustomMissile ("SmallFireTrail", 6, 0, 0, 2, random (-10, 60))
+		DB54 H 1 BRIGHT A_SpawnItem("RedFlareSmall", 0, 0)
+		EXPL A 0 A_CustomMissile ("SmallFireTrail", 6, 0, 0, 2, random (-50, 70))
+		DB54 I 1 BRIGHT A_SpawnItem("RedFlareSmall", 0, 0)
+		EXPL A 0 A_CustomMissile ("SmallFireTrail", 6, 0, 0, 2, random (-60, 80))
+		DB54 J 1 BRIGHT A_SpawnItem("RedFlareSmall", 0, 0)
+		TNT1 A 0 A_Explode(3, 100, 0)
+		EXPL A 0 A_CustomMissile ("FBFireParticles", 6, 0, 0, 2, random (10, 20))
+		DB54 KL 1 BRIGHT A_SpawnItem("RedFlare", 0, 0)
+		TNT1 A 0 A_Explode(3, 150, 0)
+		EXPL A 0 A_CustomMissile ("FBFireParticles", 6, 0, random (0, 360), 2, random (10, 90))
+		TNT1 A 0 A_Playsound("Afrit/Hellfire")
+		Stop
+	Death:
+	TNT1 A 0 A_Explode(35, 150, 0)
+	TNT1 A 0 A_Explode(3, 50)
+	TNT1 A 0 A_SpawnItemEx("FBTinyBurningPiece2", random (-25, 25), random (-15, 15))
+	TNT1 A 0 A_SpawnItemEx("FBTinyBurningPiece", random (-15, 15), random (-15, 15))
+	EXPL AA 0 A_CustomMissile ("FBFireParticles", 6, 0, random (0, 360), 2, random (10, 90))
+	Stop
+	}
+}
+
+ACTOR FBFireParticles
+{
+	Game Doom
+	Radius 1
+	Height 1
+	Speed 2
+	Damage 0 
+    +NOBLOCKMAP
+    +NOTELEPORT
+    +DONTSPLASH
+	+MISSILE
+    +CLIENTSIDEONLY
+    +NOINTERACTION
+	+NOCLIP
+	+FORCEXYBILLBOARD
+	DamageType GloryFire
+	Renderstyle Add
+    Scale 1.25
+	Alpha 1.0
+	Gravity 0
+	States
+	{
+    Spawn:
+	    TNT1 A 0
+        DB54 ABCD 2 BRIGHT A_SpawnItem("RedFlare", 0, 10)
+		TNT1 A 0 A_CustomMissile ("BigBlackSmoke", 40, 0, random (0, 360), 2, random (40, 160))
+		DB54 EFGHIJKLMNO 2 BRIGHT A_SpawnItem("RedFlare", 0, 10)
+		TNT1 A 0 A_SpawnItemEx("BurningEmberParticlesFloating_Bigger_Faster", random(16,-16), random(16,-16), random(16,-16), 0, 0, 0, 0, 128, 0)
+		DB54 PQR 2 BRIGHT
+	    Stop
+	}
+}
+
+ACTOR FBTinyBurningPiece: TinyBurningPiece {DamageType GloryFire}
+ACTOR FBTinyBurningPiece2: TinyBurningPiece2 {DamageType GloryFire}
+
 ACTOR GKFloorIce
 {
  game Doom
@@ -132,9 +231,6 @@ ACTOR GKFloorIce
   Stop
     }
 }
-
-ACTOR GKTinyBurningPiece: TinyBurningPiece {DamageType GloryFire}
-ACTOR GKTinyBurningPiece2: TinyBurningPiece2 {DamageType GloryFire}
 
 ACTOR FireArmorPinata : ArmorPinata
 {

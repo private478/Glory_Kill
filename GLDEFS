@@ -382,13 +382,6 @@ hardwareshader sprite PL3GG3G7 	{ Shader "shaders/glorykill.shader" Speed 1.0 }
 hardwareshader sprite PL3GG4G6 	{ Shader "shaders/glorykill.shader" Speed 1.0 }
 hardwareshader sprite PL3GG5 	{ Shader "shaders/glorykill.shader" Speed 1.0 }
 
-//Overlord
-hardwareshader sprite OVEGL1 	{ Shader "shaders/glorykill.shader" Speed 1.0 }
-hardwareshader sprite OVEGL2L8 	{ Shader "shaders/glorykill.shader" Speed 1.0 }
-hardwareshader sprite OVEGL3L7 	{ Shader "shaders/glorykill.shader" Speed 1.0 }
-hardwareshader sprite OVEGL4L6 	{ Shader "shaders/glorykill.shader" Speed 1.0 }
-hardwareshader sprite OVEGL5 	{ Shader "shaders/glorykill.shader" Speed 1.0 }
-
 //BeamRev
 hardwareshader sprite RGSKL1 	{ Shader "shaders/glorykill.shader" Speed 1.0 }
 hardwareshader sprite RGSKL2 	{ Shader "shaders/glorykill.shader" Speed 1.0 }
