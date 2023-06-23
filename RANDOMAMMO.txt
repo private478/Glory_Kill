@@ -1,13 +1,14 @@
-ACTOR CartridgePinata : PB_LowCalMag
+ACTOR CartridgePinata : CartridgeBonus
 {
 	var int user_timer;
 	var int user_curtime;
 	-COUNTITEM
 	+INVENTORY.ALWAYSPICKUP
-	Inventory.Amount 5
 	scale 0.4
 	Gravity 0.65
 	RenderStyle Add
+	Inventory.PickupMessage "+5 Low Caliber Rounds"
+	Inventory.PickupSound "misc/clip_PickUp"
 	States
 	{
 	Spawn:
@@ -26,7 +27,7 @@ ACTOR CartridgePinata : PB_LowCalMag
 			}
 			return state(0);
 		}
-	Loop
+		Loop
 	Fade:
 		PINA N 4 bright A_FadeOut(0.2)
 		PINA N 4 A_FadeOut(0.2)
@@ -76,16 +77,17 @@ ACTOR CartridgePinata : PB_LowCalMag
 	}
 }
 
-ACTOR ClipPinata : PB_HighCalMag
+ACTOR ClipPinata : ClipBonus
 {
 	var int user_timer;
 	var int user_curtime;
 	-COUNTITEM
 	+INVENTORY.ALWAYSPICKUP
-	Inventory.Amount 7
 	scale 0.4
 	Gravity 0.65
 	RenderStyle Add
+	Inventory.PickupMessage "+5 High Caliber Rounds"
+	Inventory.PickupSound "misc/clip_PickUp"
 	States
 	{
 	Spawn:
@@ -154,16 +156,17 @@ ACTOR ClipPinata : PB_HighCalMag
 	}
 }
 
-ACTOR ShellPinata : PB_Shell
+ACTOR ShellPinata : ShellBonus
 {
 	var int user_timer;
 	var int user_curtime;
 	-COUNTITEM
 	+INVENTORY.ALWAYSPICKUP
-	Inventory.Amount 2
 	scale 0.4
 	Gravity 0.65
 	RenderStyle Add
+	Inventory.PickupMessage "+2 Shotgun Shells"
+	Inventory.PickupSound "misc/shell_PickUp"
 	States
 	{
 	Spawn:
@@ -232,7 +235,7 @@ ACTOR ShellPinata : PB_Shell
 	}
 }
 
-ACTOR RocketPinata : PB_RocketAmmo
+ACTOR RocketPinata : RocketBonus
 {
 	var int user_timer;
 	var int user_curtime;
@@ -241,6 +244,8 @@ ACTOR RocketPinata : PB_RocketAmmo
 	scale 0.4
 	Gravity 0.65
 	RenderStyle Add
+	Inventory.PickupMessage "+1 Explosive Round"
+	Inventory.PickupSound "misc/rocket_PickUp"
 	States
 	{
 	Spawn:
@@ -309,16 +314,17 @@ ACTOR RocketPinata : PB_RocketAmmo
 	}
 }
 
-ACTOR CellPinata : PB_Cell
+ACTOR CellPinata : CellBonus
 {
 	var int user_timer;
 	var int user_curtime;
-	Inventory.Amount 10
 	-COUNTITEM
 	+INVENTORY.ALWAYSPICKUP
 	scale 0.4
 	Gravity 0.65
 	RenderStyle Add
+	Inventory.PickupMessage "+10 Cells"
+	Inventory.PickupSound "misc/cell_PickUp"
 	States
 	{
 	Spawn:
@@ -387,7 +393,7 @@ ACTOR CellPinata : PB_Cell
 	}
 }
 
-ACTOR GrenadePinata : PB_GrenadeAmmo
+ACTOR GrenadePinata : GrenadeBonus
 {
 	var int user_timer;
 	var int user_curtime;
@@ -396,6 +402,8 @@ ACTOR GrenadePinata : PB_GrenadeAmmo
 	scale 0.4
 	Gravity 0.65
 	RenderStyle Add
+	Inventory.PickupMessage "+1 Frag Grenade"
+	Inventory.PickupSound "GRNPIN"
 	States
 	{
 	Spawn:
@@ -464,7 +472,7 @@ ACTOR GrenadePinata : PB_GrenadeAmmo
 	}
 }
 
-ACTOR GasPinata : PB_Fuel
+ACTOR GasPinata : GasBonus
 {
 	var int user_timer;
 	var int user_curtime;
@@ -473,7 +481,8 @@ ACTOR GasPinata : PB_Fuel
 	scale 0.4
 	Gravity 0.65
 	RenderStyle Add
-	Inventory.Amount 25
+	Inventory.PickupMessage "+25 Fuels"
+	Inventory.PickupSound "CSAWGAS"
 	States
 	{
 	Spawn:
@@ -542,7 +551,7 @@ ACTOR GasPinata : PB_Fuel
 	}
 }
 
-ACTOR StunGrenadePinata : PB_StunGrenadeAmmo
+ACTOR StunGrenadePinata : StunGrenadeBonus
 {
 	var int user_timer;
 	var int user_curtime;
@@ -551,6 +560,8 @@ ACTOR StunGrenadePinata : PB_StunGrenadeAmmo
 	scale 0.4
 	Gravity 0.65
 	RenderStyle Add
+	Inventory.PickupMessage "+1 Stun Grenade"
+	Inventory.PickupSound "StunGrenadePickup"
 	States
 	{
 	Spawn:
