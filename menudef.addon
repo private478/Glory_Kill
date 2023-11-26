@@ -37,6 +37,8 @@ OptionMenu "Glorykills"
 	Slider  "Collecting Health & Armor Radius","sv_bonusrange",0 ,200, 1
 	Slider  "Collecting Ammo & Grenade Radius","sv_ammorange",0 ,200, 1
 	StaticText " "
+	Slider  "Flame Belch Cooldown","sv_Flamebelch_Cool",10 ,60, 1
+	Slider  "Ice Bomb Cooldown","sv_Icebomb_Cool",10 ,60, 1
 	Option "Flame Belch Performance Mode", "be_FBperformance", YesNo
 	StaticText " "
 	StaticText "Glory HUD"

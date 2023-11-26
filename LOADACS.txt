@@ -2,3 +2,4 @@ lowhealth
 GloryMelee
 GloryHUD
 BloodPunch
+EquipmentLanucher

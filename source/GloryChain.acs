@@ -10,12 +10,3 @@ Script 6001 (VOID) NET
 {
  TakeInventory("DoGloryMelee",1);
 }
-
-Script 6003 (VOID) NET
-{
-	GiveInventory("DoShoulderCannon",1);
-}
-Script 6004 (VOID) NET
-{
-	TakeInventory("DoShoulderCannon",1);
-}

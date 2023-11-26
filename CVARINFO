@@ -20,3 +20,5 @@ server int sv_fuelhud_background = 0;
 server int sv_fuelhud_size = 0;
 server int sv_fuelhud_x = 0;
 server int sv_fuelhud_y = 0;
+server int sv_Flamebelch_Cool = 12;
+server int sv_Icebomb_Cool = 35;

@@ -22,8 +22,8 @@ script "GloryHud" ENTER
 		BPtoken = CheckInventory("BPtoken");
 		CrucibleSelect = CheckInventory("CrucibleToken");
 		CrucibleAmmo = CheckInventory("CrucibleEnergy");
-		FBMode = CheckInventory("FlameBelchSelected");
-		ICMode = CheckInventory("IceBombSelected");
+		FBMode = CheckInventory("FlameBelchReady");
+		ICMode = CheckInventory("IceBombReady");
 
 		if (GetCVar ("sv_fuelhud_size") == 2)
 		{

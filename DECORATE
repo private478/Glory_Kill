@@ -3,7 +3,7 @@
 #include SOULCUBE.txt
 #include RANDOMAMMO.txt
 #include ParticleEffect.txt
-#include ShoulderCannon.txt
+#include EquipmentLauncher.txt
 #include BloodPunch.txt
 #include HardSettings.txt
 #include Monsters/T1-Grunts.txt
